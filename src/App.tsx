@@ -1,25 +1,58 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import './App.css';
+import Favorites from './pages/Favorites';
+import Guides from './pages/Guides';
+import Learn from './pages/Learn';
+import Troubleshoot from './pages/Troubleshoot';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Link to="/learn">
+          <button type="button">
+            Learn
+          </button>
+        </Link>
+        <Link to="/favorites">
+          <button type="button">
+            Favorites
+          </button>
+        </Link>
+        <Link to="/guides">
+          <button type="button">
+            Guides
+          </button>
+        </Link>
+        <Link to="/troubleshoot">
+          <button type="button">
+            Troubleshoot
+          </button>
+        </Link>
+
+        <Switch>
+          <Route path="/learn">
+            <Learn />
+          </Route>
+          <Route path="/favorites">
+            <Favorites />
+          </Route>
+          <Route path="/guides">
+            <Guides />
+          </Route>
+          <Route path="/troubleshoot">
+            <Troubleshoot />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
