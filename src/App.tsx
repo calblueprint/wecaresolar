@@ -8,7 +8,7 @@ import {
 import './App.css';
 import Favorites from './pages/Favorites';
 import Guides from './pages/Guides';
-import Learn from './pages/Learn';
+import Suitcase from './pages/Suitcase';
 import Troubleshoot from './pages/Troubleshoot';
 
 
@@ -16,9 +16,9 @@ function App() {
   return (
     <Router>
       <div>
-        <Link to="/learn">
+        <Link to="/suitcase">
           <button type="button">
-            Learn
+            Suitcase
           </button>
         </Link>
         <Link to="/favorites">
@@ -38,8 +38,8 @@ function App() {
         </Link>
 
         <Switch>
-          <Route path="/learn">
-            <Learn />
+          <Route path="/suitcase">
+            <Suitcase />
           </Route>
           <Route path="/favorites">
             <Favorites />
