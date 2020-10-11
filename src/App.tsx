@@ -5,38 +5,16 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import './App.css';
 import Favorites from './pages/Favorites';
 import Guides from './pages/Guides';
 import Suitcase from './pages/Suitcase';
 import Troubleshoot from './pages/Troubleshoot';
-
+import TabBar from './components/TabBar'
 
 function App() {
   return (
     <Router>
       <div>
-        <Link to="/suitcase">
-          <button type="button">
-            Suitcase
-          </button>
-        </Link>
-        <Link to="/favorites">
-          <button type="button">
-            Favorites
-          </button>
-        </Link>
-        <Link to="/guides">
-          <button type="button">
-            Guides
-          </button>
-        </Link>
-        <Link to="/troubleshoot">
-          <button type="button">
-            Troubleshoot
-          </button>
-        </Link>
-
         <Switch>
           <Route path="/suitcase">
             <Suitcase />
@@ -52,6 +30,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <TabBar />
     </Router>
   );
 }

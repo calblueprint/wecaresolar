@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import TabBar from './components/TabBar';
 import * as serviceWorker from './serviceWorker';
-import Resources from "./components/Resources"; 
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Resources />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
