@@ -1,9 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 const initialState = {
-  "lessons": {
+  lessons: {
     0: {
-      description: '',
+      'description': '',
       objectives: [],
       resourceIds: []
     }
