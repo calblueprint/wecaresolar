@@ -1,33 +1,31 @@
 import { createReducer } from '@reduxjs/toolkit';
 
-const initialState = { 
+const initialState = {
   "lessons": {
     0: {
-      "description": "",
-      "objectives": [],
-      "resourceIds": [],
+      description: '',
+      objectives: [],
+      resourceIds: []
     }
   },
-  "resources": {
+  resources: {
     0: {
-      "type": "",
-      "tags": [],
-      "data": {
-        "watchUrl": "",
-        "downloadUrl": "",
-        "fileSize": 0,   // File size in bytes
-        "duration": 0,   // Video duration in seconds
+      type: '',
+      tags: [],
+      data: {
+        watchUrl: '',
+        downloadUrl: '',
+        fileSize: 0, // File size in bytes
+        duration: 0 // Video duration in seconds
       },
-      "isFinished": true,
-      "isCached": true,
-      "isFavorited": true,
+      isFinished: true,
+      isCached: true,
+      isFavorited: true
     }
   },
-  "currentUser": {
-    "userId": "",
-    "favorited": [],
-    "downloaded": [],
+  currentUser: {
+    userId: '',
+    favorited: [],
+    downloaded: []
   }
 };
-
-
