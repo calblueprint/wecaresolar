@@ -1,5 +1,1 @@
-const initialState = { value: 0 };
-
-export default function rootReducer(state = initialState) {
-  return state;
-};
+import { createReducer } from '@reduxjs/toolkit'
