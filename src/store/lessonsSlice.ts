@@ -13,7 +13,7 @@ export type Lesson = {
 };
 
 export const lessonsSlice = createSlice({
-  name: 'resources',
+  name: 'lessons',
   initialState: INITIAL_LESSONS,
   reducers: {
     setLessonIsFinished(state, action) {

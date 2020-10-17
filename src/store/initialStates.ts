@@ -1,5 +1,6 @@
 import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
+import { UserSlice } from './userSlice';
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   17: {
@@ -35,6 +36,15 @@ export const INITIAL_LESSONS: LessonsSlice = {
     objectives: ['A list of', 'Things that the user', 'Will learn'],
     resourceIds: [3, 6, 8, 12],
     isFinished: false
+  }
+  // ...
+};
+
+export const INITIAL_USER: UserSlice = {
+  0: {
+    userId: '',
+    favorited: [],
+    downloaded: []
   }
   // ...
 };
