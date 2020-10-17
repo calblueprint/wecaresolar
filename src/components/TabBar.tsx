@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
-    width: 500,
-  },
+    width: 500
+  }
 });
 
 function TabBar() {
