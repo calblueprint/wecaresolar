@@ -1,3 +1,9 @@
+/**
+ * Defines a few placeholder states with fake data for each of the reducer slices (resources, lessons, etc.).
+ * This is for testing purposes only!! Ideally, we'd want to populate the Redux store with real data
+ * from Firebase when the app first loads.
+ */
+
 import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';

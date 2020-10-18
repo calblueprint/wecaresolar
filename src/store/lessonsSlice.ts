@@ -23,4 +23,5 @@ export const lessonsSlice = createSlice({
   }
 });
 
+export const { setLessonIsFinished } = lessonsSlice.actions;
 export default lessonsSlice.reducer;
