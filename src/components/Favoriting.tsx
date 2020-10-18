@@ -1,15 +1,22 @@
 import React from 'react';
 import { useSelector } from 'react-redux'; 
 import { RootState } from '../store/reducers';
-import Favorites from './Favorites'; 
 import { setResourceIsFinished } from '../store/resourcesSlice';
 import { selectFavoritedResources }from '../store/resourcesSlice'; 
+import { ResourcesSlice } from '../store/resourcesSlice'; 
+
+interface FavoriteProps {
+  list: ResourcesSlice; 
+}
+
+function Favorites(props : FavoriteProps) {
+  return <div>list</div>
+}
 
 function Favoriting() {
     const favResources = useSelector(selectFavoritedResources); 
-
-  //how do I make favResources a Selector type? 
-  return (<div> <Favorites list={favResources}> </Favorites> </div>)
+  return (<div> <Favorites list={favResources}/>
+  console.log({favResources})</div>)
 }
 
 

@@ -10,10 +10,12 @@ import Guides from './pages/Guides';
 import Suitcase from './pages/Suitcase';
 import Troubleshoot from './pages/Troubleshoot';
 import TabBar from './components/TabBar'
+import Favoriting from './components/Favoriting'; 
 
 function App() {
   return (
     <Router>
+      <div> <Favoriting/> </div>
       <div>
         <Switch>
           <Route path="/suitcase">
