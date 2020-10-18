@@ -1,9 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import resourcesReducer from './resourcesSlice';
+import lessonsReducer from './lessonsSlice';
 
-export default configureStore({
+const store = configureStore({
   reducer: {
-    resources: resourcesReducer
+    resources: resourcesReducer,
+    lessons: lessonsReducer
   }
 });
+
+export default store;
+export type RootState = ReturnType<typeof store.getState>;
