@@ -35,3 +35,11 @@ export const userSlice = createSlice({
     }
   }
 });
+
+export const {
+  addFavorited,
+  removeFavorited,
+  addDownloaded,
+  removeDownloaded
+} = userSlice.actions;
+export default userSlice.reducer;

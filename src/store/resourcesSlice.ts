@@ -55,4 +55,9 @@ export const selectFavoritedResources = (state: RootState) =>
       return res;
     }, {});
 
+export const {
+  setResourceIsFinished,
+  setResourceIsCached,
+  setResourceIsFavorited
+} = resourcesSlice.actions;
 export default resourcesSlice.reducer;
