@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setResourceIsFavorited } from '../store/resourcesSlice';
 
 //package component's action + rendering 
-
+//object interacting with itself 
 
 interface FavoriteButtonProps {
   id: number; 

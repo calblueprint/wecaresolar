@@ -6,17 +6,16 @@ import { useDispatch } from 'react-redux';
 import { setResourceIsFavorited } from '../store/resourcesSlice';
 import FavoriteCard from './FavoriteCard'; 
 
-
+//filters through resources --> FavoriteCard determines what is rendered 
 function FavoriteList() {
     const favResources = useSelector(selectFavoritedResources); 
 
-    console.log(favResources); 
-
+    console.log(favResources) 
 
   return (<div><pre>{ JSON.stringify(favResources, null, 2) }</pre>
         <div>
-          {favResources.map((resource : any) => (
-              <FavoriteCard id={resource.id} isFavorited={resource.isFavorited} />
+          {Object.keys(favResources).map((resource : any) => (
+            <FavoriteCard id={resource} isFavorited={favResources[resource].isFavorited} />
           )
           )}
         </div>
