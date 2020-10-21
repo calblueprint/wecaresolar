@@ -1,0 +1,22 @@
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.container {
+  display: flex;
+  overflow-x: scroll;
+  width: 360px;
+  padding: 20px 0;
+  margin-top: 60px;
+}
+
+.card {
+  flex-shrink: 0;
+  width: 219px;
+  height: 148px;
+  border-radius: 10px;
+  margin-left: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
