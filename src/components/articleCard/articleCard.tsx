@@ -19,9 +19,9 @@ const articles = [
 const ArticleCard = () => {
   return (
     <>
-      <div className="container">
+      <div className="article-container">
         {articles.map((src) => (
-          <div className="card">
+          <div className="article-card">
             <p className="title">{src.title}</p>
             <p className="description">{src.description}</p>
           </div>

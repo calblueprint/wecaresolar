@@ -2,15 +2,15 @@
     width: 0px;
   }
   
-  .container {
+  .article-container {
     display: flex;
     overflow-x: scroll;
-    width: 500px;
-    padding: 0px 0;
+    width: 360px;
+    padding: 20px 0;
     margin-top: 0px;
   }
   
-  .card {
+  .article-card {
     flex-shrink: 0;
     padding: 11px;
     width: 168px;

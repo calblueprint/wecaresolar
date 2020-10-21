@@ -31,10 +31,10 @@ const topics = [
 const TopicCard = () => {
   return (
     <>
-      <div className="container">
+      <div className="topic-container">
         {topics.map((src) => (
           <div 
-          className="card"
+          className="topic-card"
           style={{ 
             backgroundImage:`url(${src.image})` 
         }}

@@ -7,8 +7,8 @@ export default class Guides extends Component {
   render() {
     return <div>
       <TopicCard/>
-      <VideoCard/>
       <ArticleCard/>
+      <VideoCard/>
     </div>
   }
 }

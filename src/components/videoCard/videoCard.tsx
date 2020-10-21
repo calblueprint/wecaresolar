@@ -9,11 +9,11 @@ const videos = ["https://uc6d51392a907535bc8af5b9eb36.previews.dropboxuserconten
 const VideoCard = () => {
   return (
     <>
-      <div className="container">
+      <div className="video-container">
         {videos.map((src) => (
           <div
             key={src}
-            className="card"
+            className="video-card"
             style={{
               backgroundImage: `url(${src})`
             }}
