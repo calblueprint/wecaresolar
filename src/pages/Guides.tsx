@@ -5,7 +5,7 @@ import ArticleCard from '../components/articleCard/articleCard';
 
 export default class Guides extends Component {
   render() {
-    return <div>Guides
+    return <div>
       <TopicCard/>
       <VideoCard/>
       <ArticleCard/>
