@@ -1,23 +1,22 @@
 import * as React from "react";
-import { render } from "react-dom";
-import "./components/articleCard/articleStyle.scss";
+import "./articleStyle.scss";
 
 const articles = [
     {
+        title: "Article Title Lorem Ipsum Here",
+        description: "Lorem Ipsum is not simply text. It has roots in a piece"
+    },
+    {
         title: "Article Title #1",
-        description: "Description #1"
+        description: "Description #1",
     },
     {
         title: "Article Title #2",
-        description: "Description #2",
-    },
-    {
-        title: "Article Title #3",
-        description: "Description #3"
+        description: "Description #2"
     }
 ];
 
-const App = () => {
+const ArticleCard = () => {
   return (
     <>
       <div className="container">
@@ -32,7 +31,4 @@ const App = () => {
   );
 };
 
-const rootElement = document.getElementById("root");
-render(<App />, rootElement);
-
-export default App;
+export default ArticleCard;

@@ -1,15 +1,14 @@
 import * as React from "react";
-import { render } from "react-dom";
-import "./components/topicCard/topicStyle.scss";
+import "./topicStyle.scss";
 
 const topics = [
   {
     topic: "Applicances",
-    image: "https://uccefbd6a9e62c26c2e918e72e47.previews.dropboxusercontent.com/p/thumb/AA_Y0y2XIOvJOKT4YahdNDbtQoSL0POnCb3poOhKVIa3A5GYgpc5q0NLW9WFwscMTnkGeP9DJV3C7esazVyrOI6lk-dG3eowBC03cI2zlqf2j6pqthf-Vr8Sc9xihKqlib5t-rUlQzheoE7lbuXlukXYIEuU3C4qsS5SP7A2HKDZi2nK8b4uvMMvitMN1b_YQpkqxlgxsWJIOcnl1y1czYzJPQMlk_-1gswsdjIEChgpw3hyu5TpbENUiDnIveuE8UBg4BhYsydqp2PT1ZlIUeJ6wgqjJxxeqGdMtfe-UFU6hjySDA6foD94ejUNPxlP4-plYlrFyJJAk58ASfFnxmM5JuMNSRuMBSoqrmeJkOdK8CnZqU6UdPpI-3bIzIzoOARRDORD6S0sYV6-7Vr9FtJVErhny4kl5_K8GvFy-DPw-w/p.jpeg?size=2048x1536&size_mode=3",
+    image: "https://uc743a967df22be55c30730eba4b.previews.dropboxusercontent.com/p/thumb/AA_1b6akaHkfSli7msQNw25XInSmHM94CpVSq4aIkgPI-7xT5JvnSOuwjCSl6HOI7ZAFkOX7DS5YezowwDRf4Z6XnfhPv0vLG2buDlzdqNDQkfSjat1u0XR-GxbjS3BwRhXP9tt8B0xj7gRCLbM0SxOERARFMhzfHyMWzd6jmeq8EJVbqRF43hVD_f0ptOmv-CL4Loyrk5mR28LfMIVvq76j6yuHeSSZsaoTsl3Oie0bEUds-RwnLjHQ8Yf5osaYkJhpzz3x8qG91gQmiOtCFgaEtpsB-8QkIfcHqXU8MgD5E1Ngw13xSO5eV-kd_DOw4AP4TXlFVdaBufKSPFCyh-ppSkulrFw8pxhLPvqjdxxjMiDPkRaksmQcCiVRVdmEQf8eJboyi2rggmE-B3N7gw6IzK0He71eG5TmfHU9WE41NQ/p.jpeg?fv_content=true&size_mode=5",
   },
   {
     topic: "Cables",
-    image: "https://uc0aabfdee7fd2843c08c823bdf9.previews.dropboxusercontent.com/p/thumb/AA-LbnhTHkZVl2nG_qhG0FcOEr3N05DGKwbnV_85Uv2vD-gv2m2Gj7ERPfQDS1Iug-cvEujZsKmUBk18VWPcFP-iAwaJN_lkdo1uD14B63GDXJfgF4FRYbIBZ1aVEPq96AwkWBugPggbkm5xZbHUQmFi022jBFiJGVebwvcgt_WESXtGcOUUOfVdjkQ0HP9l3raMrziIm6Rjm63GDw3tUpGLqJuQR2s2JACyiHk_k91404EZPgEn1H2Q2tMei4DSCxuNTk1jizW37Sv6Gt3t0Du5tUp6ebWCazWVLSdwAiD_ziYrwMJZ8jMLzD0TlpeAWu134W5PBFz8pMlIgjAmhHS1UOofvvHN8r6fEUv2nn0zvwgw3WQ1HYwMKYbadYlDZohIWWT7NmqMmLwRMTkOmHhXdsJDY-sj7PhrExEJEd4LNw/p.png?size=2048x1536&size_mode=3",
+    image: "https://uc743a967df22be55c30730eba4b.previews.dropboxusercontent.com/p/thumb/AA_1b6akaHkfSli7msQNw25XInSmHM94CpVSq4aIkgPI-7xT5JvnSOuwjCSl6HOI7ZAFkOX7DS5YezowwDRf4Z6XnfhPv0vLG2buDlzdqNDQkfSjat1u0XR-GxbjS3BwRhXP9tt8B0xj7gRCLbM0SxOERARFMhzfHyMWzd6jmeq8EJVbqRF43hVD_f0ptOmv-CL4Loyrk5mR28LfMIVvq76j6yuHeSSZsaoTsl3Oie0bEUds-RwnLjHQ8Yf5osaYkJhpzz3x8qG91gQmiOtCFgaEtpsB-8QkIfcHqXU8MgD5E1Ngw13xSO5eV-kd_DOw4AP4TXlFVdaBufKSPFCyh-ppSkulrFw8pxhLPvqjdxxjMiDPkRaksmQcCiVRVdmEQf8eJboyi2rggmE-B3N7gw6IzK0He71eG5TmfHU9WE41NQ/p.jpeg?fv_content=true&size_mode=5",
   },
   {
     topic: "LCD Screen",
@@ -25,7 +24,7 @@ const topics = [
   }
 ]
 
-const App = () => {
+const TopicCard = () => {
   return (
     <>
       <div className="container">
@@ -44,7 +43,4 @@ const App = () => {
   );
 };
 
-const rootElement = document.getElementById("root");
-render(<App />, rootElement);
-
-export default App;
+export default TopicCard;
