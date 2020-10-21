@@ -10,10 +10,15 @@ import Guides from './pages/Guides';
 import Suitcase from './pages/Suitcase';
 import Troubleshoot from './pages/Troubleshoot';
 import TabBar from './components/TabBar'
+import PlaylistCard from './components/PlaylistCard';
+import { favoritedResource } from './components/PlaylistCard';
+
+
 
 function App() {
   return (
     <Router>
+      <PlaylistCard />
       <div>
         <Switch>
           <Route path="/suitcase">

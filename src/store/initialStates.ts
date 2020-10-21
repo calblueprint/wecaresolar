@@ -10,6 +10,7 @@ import { UserSlice } from './userSlice';
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   17: {
+    title: 'How to use the Fetal Doppler',
     type: 'Video',
     tags: ['Fetal Doppler', 'Setup'],
     data: {
@@ -23,6 +24,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   23: {
+    title: 'Bruh Moment',
     type: 'Article',
     tags: ['Help what other topics are there'],
     data: {
