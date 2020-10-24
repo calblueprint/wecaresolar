@@ -9,11 +9,13 @@ import Favorites from './pages/Favorites';
 import Guides from './pages/Guides';
 import Suitcase from './pages/Suitcase';
 import Troubleshoot from './pages/Troubleshoot';
-import TabBar from './components/TabBar'
+import TabBar from './components/TabBar';
+import SearchBar from './components/SearchBar';
 
 function App() {
   return (
     <Router>
+      <SearchBar />
       <div>
         <Switch>
           <Route path="/suitcase">
