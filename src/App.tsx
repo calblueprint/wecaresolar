@@ -1,21 +1,15 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Favorites from './pages/Favorites';
 import Guides from './pages/Guides';
 import Suitcase from './pages/Suitcase';
 import Troubleshoot from './pages/Troubleshoot';
-import TabBar from './components/TabBar'
-import FavoriteList from './components/FavoriteList'; 
+import TabBar from './components/TabBar';
+import FavoriteList from './components/FavoriteList';
 
 function App() {
   return (
     <Router>
-      <div> <FavoriteList/> </div>
       <div>
         <Switch>
           <Route path="/suitcase">
