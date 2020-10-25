@@ -1,21 +1,22 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Favorites from './pages/Favorites';
 import Guides from './pages/Guides';
 import Suitcase from './pages/Suitcase';
 import Troubleshoot from './pages/Troubleshoot';
 import TabBar from './components/TabBar';
-import SearchBar from './components/SearchBar';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    position: 'fixed'
+  }
+});
 
 function App() {
+  const classes = useStyles();
   return (
     <Router>
-      <SearchBar />
       <div>
         <Switch>
           <Route path="/suitcase">

@@ -11,8 +11,10 @@ import { UserSlice } from './userSlice';
 export const INITIAL_RESOURCES: ResourcesSlice = {
   17: {
     type: 'Video',
+    title: 'How to Use the Fetal Doppler',
     tags: ['Fetal Doppler', 'Setup'],
     data: {
+      preview: 'this is a video preview ....',
       watchUrl: 'https://www.youtube.com/watch?v=oMCKWkvGLLA&ab_channel=WeCareSolar',
       downloadUrl: 'https://v3solarsuitcaseinstructionalvideos.s3-us-west-1.amazonaws.com/1_v3SolarSuitcase_InstallationPlanning.mp4',
       fileSize: 13050, // File size in bytes
@@ -24,8 +26,10 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
   },
   23: {
     type: 'Article',
+    title: 'How to Use this very cool thing',
     tags: ['Help what other topics are there'],
     data: {
+      preview: 'this is an article preview ....',
       textUrl: '<cloud firestore or s3 link here>',
       fileSize: 13050 // QUESTION: file size on text resources?
     },

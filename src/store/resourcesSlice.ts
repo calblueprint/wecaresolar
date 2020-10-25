@@ -8,6 +8,7 @@ export type ResourcesSlice = {
 
 export type Resource = {
   type: string;
+  title: string;
   tags: string[];
   data: VideoData | ArticleData;
   isFinished: boolean;
@@ -20,11 +21,13 @@ export type VideoData = {
   downloadUrl: string;
   fileSize: number;
   duration: number;
+  preview: string;
 };
 
 export type ArticleData = {
   textUrl: string;
   fileSize: number;
+  preview: string;
 };
 
 export type VideoOrArticle = VideoData | ArticleData;
