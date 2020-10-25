@@ -27,6 +27,8 @@ export type ArticleData = {
   fileSize: number;
 };
 
+export type VideoOrArticle = VideoData | ArticleData;
+
 export const resourcesSlice = createSlice({
   name: 'resources',
   initialState: INITIAL_RESOURCES,

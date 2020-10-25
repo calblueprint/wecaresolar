@@ -5,6 +5,9 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store/reducers';
+import { Store } from 'idb-keyval';
+
+export const videoStore = new Store("Resources", "VideoStore");
 
 ReactDOM.render(
   <React.StrictMode>

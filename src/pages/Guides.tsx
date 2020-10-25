@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
+import Video from '../components/Video'
 export default class Guides extends Component {
   render() {
-    return <div>Guides</div>
+    return <Video />
   }
 }
