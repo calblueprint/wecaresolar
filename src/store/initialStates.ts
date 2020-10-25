@@ -11,7 +11,7 @@ import { UserSlice } from './userSlice';
 export const INITIAL_RESOURCES: ResourcesSlice = {
   17: {
     type: 'Video',
-    tags: ['Fetal Doppler', 'Setup'],
+    tags: ['Fetal Doppler', 'Setup'], //topics 
     data: {
       watchUrl: 'https://youtube.com/watch?v=_______',
       downloadUrl: '<s3 link here>',
@@ -20,18 +20,20 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true, // QUESTION: once viewed, or manually mark finished?
     isCached: true,
-    isFavorited: true
+    isFavorited: true, 
+    isTroubleshooting: false, 
   },
   23: {
-    type: 'Article',
-    tags: ['Help what other topics are there'],
+    type: 'Article', 
+    tags: ['Fetal Doppler', 'Troubleshooting'],
     data: {
       textUrl: '<cloud firestore or s3 link here>',
       fileSize: 13050 // QUESTION: file size on text resources?
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true, 
+    isTroubleshooting: true, 
   }
   // ...
 };

@@ -13,6 +13,7 @@ export type Resource = {
   isFinished: boolean;
   isCached: boolean;
   isFavorited: boolean;
+  isTroubleshooting: boolean; 
 };
 
 export type VideoData = {
@@ -49,11 +50,21 @@ export const resourcesSlice = createSlice({
 export const selectFavoritedResources = (state: RootState) =>
   Object.keys(state.resources as ResourcesSlice)
     .filter((id) => state.resources[(id as unknown) as number].isFavorited)
-    .reduce<ResourcesSlice>((res, key) => {
+    .reduce<ResourcesSlice>((res, key) => { //don't need this 
       res[(key as unknown) as number] =
         state.resources[(key as unknown) as number];
       return res;
     }, {});
+
+
+export const selectTopicResources = (state: RootState) => 
+  Object.keys(state.resources as ResourcesSlice) 
+    .filter((id) => state.resources[(id as unknown) as number].tags.includes('Fetal Doppler'))
+    .reduce<ResourcesSlice>((res, key) => {
+      res[(key as unknown) as number] =
+          state.resources[(key as unknown) as number];
+        return res;
+  }, {}); 
 
 export const {
   setResourceIsFinished,
