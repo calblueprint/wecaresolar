@@ -3,10 +3,6 @@ import FavoriteList from '../components/FavoriteList';
 
 export default class Favorites extends Component {
   render() {
-    return (
-      <div>
-        <FavoriteList />
-      </div>
-    );
+    return <FavoriteList />;
   }
 }
