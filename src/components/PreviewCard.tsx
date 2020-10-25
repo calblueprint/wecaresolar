@@ -1,13 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Resource, VideoData, ArticleData } from '../store/resourcesSlice';
+import { Resource } from '../store/resourcesSlice';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
 import FavoriteButton from './FavoriteButton';
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 
 const useStyles = makeStyles({
     root: {},
@@ -20,7 +17,6 @@ interface PlaylistCardProps {
     resource: Resource,
     resourceID: number
 }
-
 
 const PlaylistCard = (props: PlaylistCardProps) => {
     const classes = useStyles();
