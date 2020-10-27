@@ -26,8 +26,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
   },
   23: {
     type: 'Article',
-    title: 'How to Use this very cool thing',
-    tags: ['Help what other topics are there'],
+    title: 'TROUBLED FETAL',
+    tags: ['Fetal Doppler', 'Troubleshooting'],
     data: {
       preview: 'this is an article preview ....',
       textUrl: '<cloud firestore or s3 link here>',
@@ -36,8 +36,48 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
     isFavorited: true
-  }
-  // ...
+  }, 
+  25: {
+    type: 'Article',
+    title: 'Doppler 101',
+    tags: ['Fetal Doppler', 'Setup'],
+    data: {
+      preview: 'this is an article preview ....',
+      textUrl: '<cloud firestore or s3 link here>',
+      fileSize: 13050 // QUESTION: file size on text resources?
+    },
+    isFinished: false, // QUESTION: once viewed, or manually mark finished?
+    isCached: false, // QUESTION: allow caching text resources?
+    isFavorited: true
+  }, 
+   27: {
+    type: 'Video',
+    title: 'How to Batter Up Charger',
+    tags: ['Battery Charger', 'Set Up'],
+    data: {
+      preview: 'this is a video preview ....',
+      watchUrl: 'https://youtube.com/watch?v=_______',
+      downloadUrl: '<s3 link here>',
+      fileSize: 13050, // File size in bytes
+      duration: 67 // Video duration in seconds
+    },
+    isFinished: false, // QUESTION: once viewed, or manually mark finished?
+    isCached: false, // QUESTION: allow caching text resources?
+    isFavorited: true
+  }, 
+  31: {
+    type: 'Article',
+    title: 'COMBUSTED BATTERIES',
+    tags: ['Battery Charger', 'Troubleshooting'],
+    data: {
+      preview: 'this is an article preview ....',
+      textUrl: '<cloud firestore or s3 link here>',
+      fileSize: 13050 // QUESTION: file size on text resources?
+    },
+    isFinished: false, // QUESTION: once viewed, or manually mark finished?
+    isCached: false, // QUESTION: allow caching text resources?
+    isFavorited: true
+  },
 };
 
 export const INITIAL_LESSONS: LessonsSlice = {
