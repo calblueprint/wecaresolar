@@ -6,9 +6,9 @@ export type TopicsSlice = {
 };
 
 export type Topic = {
-  name: string; 
+  name: string;
   description: string;
-  url: string; 
+  url: string;
   isFinished: boolean;
 };
 

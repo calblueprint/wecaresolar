@@ -1,18 +1,23 @@
 import React from 'react';
-import { Resource } from '../store/resourcesSlice';
 
 interface TopicHeaderProps {
-    image: string; 
+    topicTitle: string; 
     articleCount: number; 
     videoCount: number; 
 }
-//how do I inherit the topic name and image props from TopicCard component? 
 
 function TopicHeader(props : TopicHeaderProps) {
     return (
-        <div></div>
+        <div>
+            <h1>{props.topicTitle}</h1>
+            <h3>{props.articleCount} Article(s) {props.videoCount} Video(s)</h3>
+        </div>
     ); 
 }
 
 
 export default TopicHeader; 
+
+//another child of TopicView 
+//count inside of TopicView 
+//View is whole page - we'd want to render the header on top of the view 
