@@ -1,17 +1,29 @@
 import React from 'react';
+import { set } from 'idb-keyval';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import { videoOrArticle, VideoData, ArticleData } from '../store/resourcesSlice'
+import { videoStore } from '../index'
+import Button from '@material-ui/core/Button';
 
-type PlaylistCardProps = {
-  title: string,
-  description: string,
+type DownloadButtonProps = {
+  id: number,
+  videoData?: VideoData | ArticleData,
 }
 
-const PlaylistCard = ({ title, description }: PlaylistCardProps) => {
-
+const DownloadButton = ({ id, videoData }: DownloadButtonProps) => {
+  async function downloadVideo(resId, videoStore, videoData) {
+    let downloadUrl = videoOrArticle(videoData) ? videoData.downloadUrl : null
+    if (downloadUrl) {
+      let blob = await fetch(downloadUrl).then(res => res.blob())
+      set(resId, blob, videoStore).then(() => console.log("Success"));
+    }
+  }
   return (
-    <div>
-
-    </div>
+    <Button variant="contained" color="primary" onClick={() => downloadVideo(id, videoStore, videoData)}>
+      Download
+      <GetAppIcon />
+    </Button>
   );
 }
 
-export default PlaylistCard;
+export default DownloadButton;

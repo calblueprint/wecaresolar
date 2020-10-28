@@ -1,17 +1,21 @@
 import React from 'react';
-import { SvgIconProps } from '@material-ui/core/SvgIcon';
-
+import { makeStyles, createStyles } from "@material-ui/core/styles"
 
 type LabelProps = {
   title: string,
-  icon?: SvgIconProps,
 }
 
-const Label = ({ title, icon }: LabelProps) => {
+const styles = makeStyles(() => createStyles({
+  label: {
+    padding: "1%"
+  }
+}))
+
+const Label = ({ title }: LabelProps) => {
+  const classes = styles();
   return (
-    <div>
+    <div className={classes.label}>
       <p>{title}</p>
-      {icon}
     </div>
   )
 }
