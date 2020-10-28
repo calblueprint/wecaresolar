@@ -31,6 +31,9 @@ function App() {
           <Route path="/troubleshoot">
             <Troubleshoot />
           </Route>
+          <Route path="/firebase-messaging-sw.js">
+            Oh no
+          </Route>
         </Switch>
       </div>
       <TabBar />
