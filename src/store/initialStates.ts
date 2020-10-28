@@ -9,6 +9,21 @@ import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
+  3: {
+    type: 'Video',
+    title: 'How the Fetal Doppler',
+    tags: ['Fetal Doppler', 'Setup'],
+    data: {
+      preview: 'this is a video preview ....',
+      watchUrl: 'https://youtube.com/watch?v=_______',
+      downloadUrl: '<s3 link here>',
+      fileSize: 13050, // File size in bytes
+      duration: 67 // Video duration in seconds
+    },
+    isFinished: true, // QUESTION: once viewed, or manually mark finished?
+    isCached: true,
+    isFavorited: true
+  },
   17: {
     type: 'Video',
     title: 'How to Use the Fetal Doppler',
@@ -42,9 +57,38 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
 
 export const INITIAL_LESSONS: LessonsSlice = {
   6: {
+    title: 'The Title',
     description: 'A short description of this lesson',
     objectives: ['A list of', 'Things that the user', 'Will learn'],
     resourceIds: [3, 6, 8, 12],
+    isFinished: false
+  },
+  7: {
+    title: 'The Title 2 ',
+    description: 'A short description of this lesson 2 ',
+    objectives: ['A list of', 'Things that the user', 'Will learn'],
+    resourceIds: [3, 12],
+    isFinished: false
+  },
+  8: {
+    title: 'The Title 2 ',
+    description: 'A short description of this lesson 2 ',
+    objectives: ['A list of', 'Things that the user', 'Will learn'],
+    resourceIds: [3, 12],
+    isFinished: false
+  },
+  9: {
+    title: 'The Title 2 ',
+    description: 'A short description of this lesson 2 ',
+    objectives: ['A list of', 'Things that the user', 'Will learn'],
+    resourceIds: [3, 12],
+    isFinished: false
+  },
+  10: {
+    title: 'The Title 2 ',
+    description: 'A short description of this lesson 2 ',
+    objectives: ['A list of', 'Things that the user', 'Will learn'],
+    resourceIds: [3, 12],
     isFinished: false
   }
   // ...
