@@ -27,6 +27,7 @@ function fuzzysearch(needle, haystack) {
 }
 
 function matcher(query, resource, id) {
+  console.log(query, resource);
   const description =
     resource.title + resource.tags.join(' ') + resource.data.preview;
   return (
@@ -36,12 +37,12 @@ function matcher(query, resource, id) {
   );
 }
 
-function SearchList(query) {
+function SearchList(props) {
   const resources = useSelector((state: RootState) => state.resources);
-  console.log(query);
+  console.log(props.query);
   return (
     <div>
-      {Object.keys(resources).map((r: any) => matcher(query, resources[r], r))}
+      {props.query != '' && Object.keys(resources).map((r: any) => matcher(props.query, resources[r], r))}
     </div>
   );
 }
