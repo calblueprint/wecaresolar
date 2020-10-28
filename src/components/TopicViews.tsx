@@ -1,16 +1,20 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PreviewCard from './PreviewCard';
-import { INITIAL_RESOURCES } from '../store/initialStates';
 import { RootState } from '../store/reducers';
 import { ResourcesSlice } from '../store/resourcesSlice';
-import TopicHeader from './TopicHeader'; 
-import { TagFacesSharp } from '@material-ui/icons';
+import { Topic } from '../store/topicsSlice'; 
 
+//in card component --> pass in the topics prop 
+//was thinking we can get topic + image from TopicCard component --> how to do this? 
+interface TopicViewProps {
+  topic: Topic,
+}
 
-const selectTopicResources = (state: RootState) =>
+function TopicViews (props : TopicViewProps) {
+  const selectTopicResources = (state: RootState) =>
   Object.keys(state.resources as ResourcesSlice)
-    .filter((id) => state.resources[(id as unknown) as number].tags.includes('Fetal Doppler', 0) && 
+    .filter((id) => state.resources[(id as unknown) as number].tags.includes('{props.topic.name}', 0) && 
                     !state.resources[(id as unknown) as number].tags.includes('Troubleshooting', 0))
     .reduce<ResourcesSlice>((res, key) => {
       res[(key as unknown) as number] =
@@ -18,20 +22,18 @@ const selectTopicResources = (state: RootState) =>
       return res; 
     }, {});
 
-const selectTroubleshootingResources = (state: RootState) =>
-  Object.keys(state.resources as ResourcesSlice)
-    .filter((id) => state.resources[(id as unknown) as number].tags.includes('Fetal Doppler', 0) &&
-                    state.resources[(id as unknown) as number].tags.includes('Troubleshooting', 0))
-    .reduce<ResourcesSlice>((res, key) => {
-      res[(key as unknown) as number] =
-        state.resources[(key as unknown) as number];
-      return res; 
-    }, {});
+  const selectTroubleshootingResources = (state: RootState) =>
+    Object.keys(state.resources as ResourcesSlice)
+      .filter((id) => state.resources[(id as unknown) as number].tags.includes('{props.topic.name}', 0) &&
+                      state.resources[(id as unknown) as number].tags.includes('Troubleshooting', 0))
+      .reduce<ResourcesSlice>((res, key) => {
+        res[(key as unknown) as number] =
+          state.resources[(key as unknown) as number];
+        return res; 
+      }, {});
 
-//in card component --> pass in the topics prop 
-//was thinking we can get topic + image from TopicCard component --> how to do this? 
 
-function TopicViews() {
+  console.log(props); 
   const topics = useSelector(selectTopicResources);
   const troubleshooting = useSelector(selectTroubleshootingResources); 
 
@@ -51,5 +53,6 @@ function TopicViews() {
     </div>
   );
 }
+
 
 export default TopicViews;
