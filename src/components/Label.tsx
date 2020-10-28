@@ -3,7 +3,7 @@ import { SvgIconProps } from '@material-ui/core/SvgIcon';
 
 
 type LabelProps = {
-  title?: string,
+  title: string,
   icon?: SvgIconProps,
 }
 

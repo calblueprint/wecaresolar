@@ -21,7 +21,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       duration: 67 // Video duration in seconds
     },
     isFinished: true, // QUESTION: once viewed, or manually mark finished?
-    isCached: true,
+    isCached: false,
     isFavorited: true
   },
   23: {

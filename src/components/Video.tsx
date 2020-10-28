@@ -5,7 +5,7 @@ import GetAppIcon from '@material-ui/icons/GetApp';
 import Label from './Label'
 import { set, get } from 'idb-keyval';
 import { videoStore } from '../index'
-import { Resource, VideoData, VideoOrArticle } from '../store/resourcesSlice'
+import { Resource, videoOrArticle } from '../store/resourcesSlice'
 var S3 = require('aws-sdk/clients/s3');
 
 type VideoProps = {
@@ -13,37 +13,51 @@ type VideoProps = {
   videoDetails: Resource,
 }
 
-const videoOrArticle = (tbd: VideoOrArticle): tbd is VideoData => {
-  if ((tbd as VideoData)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 const Video = ({ resId, videoDetails }: VideoProps) => {
-  let videoUrl = videoOrArticle(videoDetails.data) ? videoDetails.data.watchUrl : null;
+  let videoUrl;
 
   // if videoURL is cached, get it
   if (videoDetails.isCached) {
-    let videoBlob = get(resId, videoStore);
-    if (videoBlob !== undefined) {
-      videoUrl = URL.createObjectURL(videoBlob);
-    }
+    console.log("CACHED")
+    get(resId, videoStore).then(videoBlob => {
+      if (videoBlob !== undefined) {
+        videoUrl = URL.createObjectURL(videoBlob);
+      }
+    });
+  } else {
+    videoUrl = videoOrArticle(videoDetails.data) ? videoDetails.data.watchUrl : null
   }
 
+  function getId(url) {
+    // this regex function is from stackoverflow 
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  }
+
+
   function downloadVideo() {
-    if (!videoDetails.isCached && videoUrl) {
-      let urlArray = videoUrl.split("/")
+    let downloadUrl = videoOrArticle(videoDetails.data) ? videoDetails.data.downloadUrl : null
+    console.log(downloadUrl)
+    if (!videoDetails.isCached && downloadUrl) {
+      let urlArray = downloadUrl.split("/")
       let bucket = urlArray[3]
-      console.log(bucket)
       let key = `${urlArray[4]}/${urlArray[5]}`
       let s3 = new S3({ params: { Bucket: bucket } })
       let params = { Bucket: bucket, Key: key }
+
       s3.getObject(params, (err, data) => {
-        let blob = new Blob([data.Body], { type: data.ContentType });
-        set(resId, blob, videoStore)
+        console.log(data, err)
+        if (!err) {
+          let blob = new Blob([data.Body], { type: data.ContentType });
+          console.log(blob)
+
+          set(resId, blob, videoStore).then(() => console.log("Success"));
+
+        }
       })
+      //set videoDetails to cached
+
     }
   }
 
@@ -51,7 +65,7 @@ const Video = ({ resId, videoDetails }: VideoProps) => {
     <div>
 
       <h1>Insert Title</h1>
-      {videoUrl ? <iframe src={videoUrl}
+      {videoUrl != null ? <iframe src={"//www.youtube.com/embed/" + getId(videoUrl)}
         allow='autoplay; encrypted-media'
         allowFullScreen
         title='video'
@@ -60,7 +74,7 @@ const Video = ({ resId, videoDetails }: VideoProps) => {
 
       {videoDetails.isFavorited ? <Label title="Favorite" icon={<TurnedInIcon />} /> : <Label title="UnFavorite" icon={<TurnedInNotIcon />} />}
       {videoDetails.isCached ? <Label title="Downloaded" icon={<GetAppIcon />} /> : <span />}
-
+      {videoDetails.tags.map(tag => <Label title={tag} />)}
     </div>
   )
 }
