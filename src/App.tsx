@@ -6,6 +6,7 @@ import Suitcase from './pages/Suitcase';
 import Troubleshoot from './pages/Troubleshoot';
 import TabBar from './components/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
+import SearchBar from './components/SearchBar';
 
 const useStyles = makeStyles({
   root: {
@@ -17,6 +18,7 @@ function App() {
   const classes = useStyles();
   return (
     <Router>
+      <SearchBar/ >
       <div>
         <Switch>
           <Route path="/suitcase">

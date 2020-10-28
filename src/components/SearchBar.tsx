@@ -12,7 +12,9 @@ import {
   Theme,
   makeStyles
 } from '@material-ui/core/styles';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/reducers';
+import SearchList from './SearchList';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -53,7 +55,6 @@ type SearchProps = {
 
 const SearchAppBar = ({ back }: SearchProps) => {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -77,6 +78,7 @@ const SearchAppBar = ({ back }: SearchProps) => {
           </Offline>
         </Toolbar>
       </AppBar>
+      <SearchList query={'how'} />
     </div>
   );
 };
