@@ -52,7 +52,7 @@ const Video = ({ resId, videoDetails }: VideoProps) => {
       /> : <p>Unable to Display</p>}
 
       <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
-      <DownloadButton id={resId} videoData={videoDetails.data} />
+      {videoDetails.isCached ? <p>Already Downloaded</p> : <DownloadButton id={resId} videoData={videoDetails.data} />}
       <div className={classes.labelList}>
         {videoDetails.tags.map(tag => <Label title={tag} />)}
       </div>
