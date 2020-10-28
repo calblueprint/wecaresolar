@@ -6,7 +6,6 @@ import Label from './Label'
 import { set, get } from 'idb-keyval';
 import { videoStore } from '../index'
 import { Resource, videoOrArticle } from '../store/resourcesSlice'
-var S3 = require('aws-sdk/clients/s3');
 
 type VideoProps = {
   resId: number,
@@ -35,29 +34,11 @@ const Video = ({ resId, videoDetails }: VideoProps) => {
     return (match && match[2].length === 11) ? match[2] : null;
   }
 
-
-  function downloadVideo() {
+  async function downloadVideo() {
     let downloadUrl = videoOrArticle(videoDetails.data) ? videoDetails.data.downloadUrl : null
-    console.log(downloadUrl)
-    if (!videoDetails.isCached && downloadUrl) {
-      let urlArray = downloadUrl.split("/")
-      let bucket = urlArray[3]
-      let key = `${urlArray[4]}/${urlArray[5]}`
-      let s3 = new S3({ params: { Bucket: bucket } })
-      let params = { Bucket: bucket, Key: key }
-
-      s3.getObject(params, (err, data) => {
-        console.log(data, err)
-        if (!err) {
-          let blob = new Blob([data.Body], { type: data.ContentType });
-          console.log(blob)
-
-          set(resId, blob, videoStore).then(() => console.log("Success"));
-
-        }
-      })
-      //set videoDetails to cached
-
+    if (downloadUrl) {
+      let blob = await fetch(downloadUrl).then(res => res.blob())
+      set(resId, blob, videoStore).then(() => console.log("Success"));
     }
   }
 

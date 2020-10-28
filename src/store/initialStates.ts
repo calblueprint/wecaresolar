@@ -15,8 +15,10 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     tags: ['Fetal Doppler', 'Setup'],
     data: {
       preview: 'this is a video preview ....',
-      watchUrl: 'https://www.youtube.com/watch?v=oMCKWkvGLLA&ab_channel=WeCareSolar',
-      downloadUrl: 'https://v3solarsuitcaseinstructionalvideos.s3-us-west-1.amazonaws.com/1_v3SolarSuitcase_InstallationPlanning.mp4',
+      watchUrl:
+        'https://www.youtube.com/watch?v=oMCKWkvGLLA&ab_channel=WeCareSolar',
+      downloadUrl:
+        'https://v3solarsuitcaseinstructionalvideos.s3-us-west-1.amazonaws.com/1_v3SolarSuitcase_InstallationPlanning.mp4',
       fileSize: 13050, // File size in bytes
       duration: 67 // Video duration in seconds
     },
