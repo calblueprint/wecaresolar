@@ -7,7 +7,7 @@
 import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
-import { TopicsSlice } from './topicsSlice';
+import { TopicsSlice } from '../store/topicSlice';
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   17: {
