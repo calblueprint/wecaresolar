@@ -13,7 +13,6 @@ import {
   makeStyles
 } from '@material-ui/core/styles';
 
-
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -49,7 +48,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type SearchProps = {
   back: boolean; // In future, pass in returning function
-}
+};
 
 const SearchAppBar = ({ back }: SearchProps) => {
   const classes = useStyles();
