@@ -21,11 +21,7 @@ function TopicViews(props: TopicViewProps) {
       .filter(
         (id) =>
           state.resources[(id as unknown) as number].tags.includes(name, 0) &&
-          !state.resources[(id as unknown) as number].tags.includes(
-            'Troubleshooting',
-            0
-          )
-      )
+          !state.resources[(id as unknown) as number].tags.includes('Troubleshooting', 0))
       .reduce<ResourcesSlice>((res, key) => {
         res[(key as unknown) as number] =
           state.resources[(key as unknown) as number];
@@ -37,11 +33,7 @@ function TopicViews(props: TopicViewProps) {
       .filter(
         (id) =>
           state.resources[(id as unknown) as number].tags.includes(name, 0) &&
-          state.resources[(id as unknown) as number].tags.includes(
-            'Troubleshooting',
-            0
-          )
-      )
+          state.resources[(id as unknown) as number].tags.includes('Troubleshooting', 0))
       .reduce<ResourcesSlice>((res, key) => {
         res[(key as unknown) as number] =
           state.resources[(key as unknown) as number];
@@ -92,10 +84,7 @@ function TopicViews(props: TopicViewProps) {
       <div>
         <h2>Facing Issues?</h2>
         {Object.keys(troubleshooting).map((resource: any) => (
-          <PreviewCard
-            resource={troubleshooting[resource]}
-            resourceID={resource}
-          />
+          <PreviewCard resource={troubleshooting[resource]} resourceID={resource} />
         ))}
       </div>
     </div>
