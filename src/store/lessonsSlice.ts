@@ -6,6 +6,7 @@ export type LessonsSlice = {
 };
 
 export type Lesson = {
+  title: string;
   description: string;
   objectives: string[];
   resourceIds: number[];
