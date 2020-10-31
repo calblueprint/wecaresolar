@@ -88,86 +88,163 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCached: false,
     isFavorited: false
   },
-  6 : {
-    "type": "Article",
-    "title": "exercitation incididunt qui velit nostrud",
-    "tags": [
-      "officia",
-      "minim"
-    ],
-    "data": {
-      "preview": "Fugiat in velit nulla commodo mollit dolor.",
-      "fileSize": 21204,
-      "textUrl": "https://aws.link/"
+  6: {
+    type: 'Article',
+    title: 'exercitation incididunt qui velit nostrud',
+    tags: ['officia', 'minim'],
+    data: {
+      preview: 'Fugiat in velit nulla commodo mollit dolor.',
+      fileSize: 21204,
+      textUrl: 'https://aws.link/'
     },
-    "isFinished": false,
-    "isCached": true,
-    "isFavorited": false
+    isFinished: false,
+    isCached: true,
+    isFavorited: false
   },
-  7 : {
-    "type": "Article",
-    "title": "laborum ex eiusmod eu id",
-    "tags": [
-      "anim",
-      "commodo",
-      "Lorem",
-      "elit"
-    ],
-    "data": {
-      "preview": "Anim eu ad eu aliqua qui sit exercitation.",
-      "fileSize": 15725,
-      "textUrl": "https://aws.link/"
+  7: {
+    type: 'Article',
+    title: 'laborum ex eiusmod eu id',
+    tags: ['anim', 'commodo', 'Lorem', 'elit'],
+    data: {
+      preview: 'Anim eu ad eu aliqua qui sit exercitation.',
+      fileSize: 15725,
+      textUrl: 'https://aws.link/'
     },
-    "isFinished": true,
-    "isCached": true,
-    "isFavorited": false
+    isFinished: true,
+    isCached: true,
+    isFavorited: false
   },
-  8 : { 
-    "type": "Article",
-    "title": "enim ut aute aute irure",
-    "tags": [
-      "aute",
-      "fugiat"
-    ],
-    "data": {
-      "preview": "Lorem ea eiusmod eu labore sint do occaecat elit magna sunt veniam aute.",
-      "fileSize": 27209,
-      "textUrl": "https://aws.link/"
+  8: {
+    type: 'Article',
+    title: 'enim ut aute aute irure',
+    tags: ['aute', 'fugiat'],
+    data: {
+      preview:
+        'Lorem ea eiusmod eu labore sint do occaecat elit magna sunt veniam aute.',
+      fileSize: 27209,
+      textUrl: 'https://aws.link/'
     },
-    "isFinished": false,
-    "isCached": true,
-    "isFavorited": false
+    isFinished: false,
+    isCached: true,
+    isFavorited: false
   },
-  9 : {
-    "type": "Article",
-    "title": "id esse amet mollit consequat",
-    "tags": [
-      "nulla"
-    ],
-    "data": {
-      "preview": "Consequat sint sunt labore id do irure qui excepteur laborum proident incididunt incididunt cupidatat velit.",
-      "fileSize": 20976,
-      "textUrl": "https://aws.link/"
+  9: {
+    type: 'Article',
+    title: 'id esse amet mollit consequat',
+    tags: ['nulla'],
+    data: {
+      preview:
+        'Consequat sint sunt labore id do irure qui excepteur laborum proident incididunt incididunt cupidatat velit.',
+      fileSize: 20976,
+      textUrl: 'https://aws.link/'
     },
-    "isFinished": false,
-    "isCached": true,
-    "isFavorited": false
+    isFinished: false,
+    isCached: true,
+    isFavorited: false
   },
-  10 : {
-    "type": "Article",
-    "title": "sit est cupidatat veniam do",
-    "tags": [
-      "et",
-      "consectetur"
-    ],
-    "data": {
-      "preview": "Tempor irure sint ea do voluptate magna laborum ad cillum.",
-      "fileSize": 28363,
-      "textUrl": "https://aws.link/"
+  10: {
+    type: 'Article',
+    title: 'sit est cupidatat veniam do',
+    tags: ['et', 'consectetur'],
+    data: {
+      preview: 'Tempor irure sint ea do voluptate magna laborum ad cillum.',
+      fileSize: 28363,
+      textUrl: 'https://aws.link/'
     },
-    "isFinished": true,
-    "isCached": false,
-    "isFavorited": false
+    isFinished: true,
+    isCached: false,
+    isFavorited: false
+  }
+};
+
+export const INITIAL_LESSONS: LessonsSlice = {
+  1 : {
+    "title": "irure proident et magna enim",
+    "description": "Mollit cupidatat et eiusmod adipisicing ullamco voluptate duis laborum excepteur cillum eu aute.",
+    "objectives": [
+      "dolore qui culpa",
+      "dolor ad aliquip"
+    ],
+    "resourceIds": [
+      8,
+      4
+    ],
+    "isFinished": false
+  },
+  2 : {
+    "title": "minim aliquip ut non cillum",
+    "description": "Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.",
+    "objectives": [
+      "irure proident non",
+      "veniam reprehenderit nostrud",
+      "aute ipsum est",
+      "Lorem voluptate in",
+      "sunt laboris exercitation"
+    ],
+    "resourceIds": [
+      4
+    ],
+    "isFinished": true
+  },
+  3 : {
+    "title": "nulla veniam aute qui laborum",
+    "description": "Sunt in ut in veniam.",
+    "objectives": [
+      "aliqua aute do"
+    ],
+    "resourceIds": [
+      5,
+      9,
+      10
+    ],
+    "isFinished": false
+  },
+  4:{
+    "title": "mollit laborum elit id irure",
+    "description": "Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.",
+    "objectives": [
+      "quis do incididunt",
+      "est cupidatat aliquip",
+      "proident do non",
+      "id nostrud qui",
+      "irure ex ipsum"
+    ],
+    "resourceIds": [
+      1,
+      2,
+      3,
+      7,
+      6
+    ],
+    "isFinished": true
+  },
+  5:{
+    "title": "fugiat in ullamco velit incididunt",
+    "description": "Irure ullamco veniam labore nisi veniam.",
+    "objectives": [
+      "ea minim voluptate",
+      "magna commodo enim"
+    ],
+    "resourceIds": [
+      6,
+      9,
+      8,
+      1,
+      4
+    ],
+    "isFinished": false
+  },
+  6:{
+    "title": "et in tempor dolore aliqua",
+    "description": "Laborum qui cupidatat commodo dolore sunt non Lorem cupidatat velit magna aliqua aliqua ut.",
+    "objectives": [
+      "incididunt magna incididunt",
+      "qui sit sint"
+    ],
+    "resourceIds": [
+      5
+    ],
+    "isFinished": false
   }
 };
 
