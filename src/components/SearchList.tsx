@@ -24,9 +24,9 @@ function fuzzysearch(needle, haystack) {
         continue outer;
       }
     }
-    return -score;
+    return score;
   }
-  return -score;
+  return score;
 }
 
 function SearchList(props) {
@@ -37,11 +37,12 @@ function SearchList(props) {
   const display = searchable
     .sort(function (a, b) {
       return (
-        fuzzysearch(props.query, resources[Number(a)].title) -
+        -fuzzysearch(props.query, resources[Number(a)].title) +
         fuzzysearch(props.query, resources[Number(b)].title)
       );
     })
-    .slice(0, Math.min(searchable.length, 5));
+    .slice(0, Math.min(searchable.length, 5))
+    .filter((r: any) => fuzzysearch(props.query, resources[r].title) > 2);
   console.log(display);
   
   return (
