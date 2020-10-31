@@ -158,93 +158,63 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
 };
 
 export const INITIAL_LESSONS: LessonsSlice = {
-  1 : {
-    "title": "irure proident et magna enim",
-    "description": "Mollit cupidatat et eiusmod adipisicing ullamco voluptate duis laborum excepteur cillum eu aute.",
-    "objectives": [
-      "dolore qui culpa",
-      "dolor ad aliquip"
-    ],
-    "resourceIds": [
-      8,
-      4
-    ],
-    "isFinished": false
+  1: {
+    title: 'irure proident et magna enim',
+    description:
+      'Mollit cupidatat et eiusmod adipisicing ullamco voluptate duis laborum excepteur cillum eu aute.',
+    objectives: ['dolore qui culpa', 'dolor ad aliquip'],
+    resourceIds: [8, 4],
+    isFinished: false
   },
-  2 : {
-    "title": "minim aliquip ut non cillum",
-    "description": "Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.",
-    "objectives": [
-      "irure proident non",
-      "veniam reprehenderit nostrud",
-      "aute ipsum est",
-      "Lorem voluptate in",
-      "sunt laboris exercitation"
+  2: {
+    title: 'minim aliquip ut non cillum',
+    description:
+      'Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.',
+    objectives: [
+      'irure proident non',
+      'veniam reprehenderit nostrud',
+      'aute ipsum est',
+      'Lorem voluptate in',
+      'sunt laboris exercitation'
     ],
-    "resourceIds": [
-      4
-    ],
-    "isFinished": true
+    resourceIds: [4],
+    isFinished: true
   },
-  3 : {
-    "title": "nulla veniam aute qui laborum",
-    "description": "Sunt in ut in veniam.",
-    "objectives": [
-      "aliqua aute do"
-    ],
-    "resourceIds": [
-      5,
-      9,
-      10
-    ],
-    "isFinished": false
+  3: {
+    title: 'nulla veniam aute qui laborum',
+    description: 'Sunt in ut in veniam.',
+    objectives: ['aliqua aute do'],
+    resourceIds: [5, 9, 10],
+    isFinished: false
   },
-  4:{
-    "title": "mollit laborum elit id irure",
-    "description": "Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.",
-    "objectives": [
-      "quis do incididunt",
-      "est cupidatat aliquip",
-      "proident do non",
-      "id nostrud qui",
-      "irure ex ipsum"
+  4: {
+    title: 'mollit laborum elit id irure',
+    description:
+      'Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.',
+    objectives: [
+      'quis do incididunt',
+      'est cupidatat aliquip',
+      'proident do non',
+      'id nostrud qui',
+      'irure ex ipsum'
     ],
-    "resourceIds": [
-      1,
-      2,
-      3,
-      7,
-      6
-    ],
-    "isFinished": true
+    resourceIds: [1, 2, 3, 7, 6],
+    isFinished: true
   },
-  5:{
-    "title": "fugiat in ullamco velit incididunt",
-    "description": "Irure ullamco veniam labore nisi veniam.",
-    "objectives": [
-      "ea minim voluptate",
-      "magna commodo enim"
-    ],
-    "resourceIds": [
-      6,
-      9,
-      8,
-      1,
-      4
-    ],
-    "isFinished": false
+  5: {
+    title: 'fugiat in ullamco velit incididunt',
+    description: 'Irure ullamco veniam labore nisi veniam.',
+    objectives: ['ea minim voluptate', 'magna commodo enim'],
+    resourceIds: [6, 9, 8, 1, 4],
+    isFinished: false
   },
-  6:{
-    "title": "et in tempor dolore aliqua",
-    "description": "Laborum qui cupidatat commodo dolore sunt non Lorem cupidatat velit magna aliqua aliqua ut.",
-    "objectives": [
-      "incididunt magna incididunt",
-      "qui sit sint"
-    ],
-    "resourceIds": [
-      5
-    ],
-    "isFinished": false
+  6: {
+    title: 'et in tempor dolore aliqua',
+    description:
+      'Laborum qui cupidatat commodo dolore sunt non Lorem cupidatat velit magna aliqua aliqua ut.',
+    objectives: ['incididunt magna incididunt', 'qui sit sint'],
+    resourceIds: [5],
+    isFinished: false
   }
 };
 
