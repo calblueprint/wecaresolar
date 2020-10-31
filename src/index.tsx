@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store/reducers';
 
-import { retrievePushToken } from './firebase';
+import { retrievePushToken } from './pushNotifications';
 
 ReactDOM.render(
   <React.StrictMode>
