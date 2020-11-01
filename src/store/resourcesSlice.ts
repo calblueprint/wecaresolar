@@ -32,7 +32,7 @@ export type ArticleData = {
 
 export type VideoArticle = VideoData | ArticleData;
 
-export const videoOrArticle = (tbd: VideoArticle): tbd is VideoData => {
+export const isVideo = (tbd: VideoArticle): tbd is VideoData => {
   if (tbd as VideoData) {
     return true;
   } else {

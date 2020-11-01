@@ -16,9 +16,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     data: {
       preview: 'this is a video preview ....',
       watchUrl:
-        'https://www.youtube.com/watch?v=oMCKWkvGLLA&ab_channel=WeCareSolar',
-      downloadUrl:
-        'https://v3solarsuitcaseinstructionalvideos.s3-us-west-1.amazonaws.com/1_v3SolarSuitcase_InstallationPlanning.mp4',
+        'https://www.youtube.com/watch?v=oMCKWkvGLLA',
+      downloadUrl: 'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/3378b57e-fa29-47c6-88af-28643dfc560f/1_v3SolarSuitcase_InstallationPlanning.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201031%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201031T075659Z&X-Amz-Expires=86400&X-Amz-Signature=21e60ecc1fa83fc3f728731808c438a0fb4083ad911db1a12db6f0c6134c2256&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%221_v3SolarSuitcase_InstallationPlanning.mp4%22',
       fileSize: 13050, // File size in bytes
       duration: 67 // Video duration in seconds
     },
