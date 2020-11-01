@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import TopicViews from '../components/TopicViews';
+import TopicCard from '../components/TopicCard'; 
+import TopicViews from '../components/TopicViews'; 
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/reducers';
+import { Link } from 'react-router-dom';
 import { Topic } from '../store/topicsSlice';
 
 const topicRes: Topic = {
@@ -10,12 +14,19 @@ const topicRes: Topic = {
   isFinished: false
 };
 
-export default class Suitcase extends Component {
-  render() {
-    return (
-      <div>
-        <TopicViews topic={topicRes} />
-      </div>
-    );
-  }
+function Suitcase({ match }) {
+  const topics = useSelector((state: RootState) => state.topics); 
+  console.log('match', match); 
+
+  return (
+    <div>
+      {Object.keys(topics).map((key: any) => (
+        <Link to={`${match.url}/${key}`}>
+          <TopicCard topic={topics[key]} />
+        </Link>
+      ))}
+    </div>
+  ); 
 }
+
+export default Suitcase; 
