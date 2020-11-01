@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import resourcesReducer from './resourcesSlice';
 import lessonsReducer from './lessonsSlice';
-import topicsReducer from './topicSlice';
+import topicsReducer from './topicsSlice';
 
 const store = configureStore({
   reducer: {

@@ -7,22 +7,23 @@
 import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
-import { TopicsSlice } from '../store/topicSlice';
+import { TopicsSlice } from './topicsSlice';
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
-  17: {
+  1: {
     type: 'Video',
-    title: 'How to Use the Fetal Doppler',
-    tags: ['Fetal Doppler', 'Setup'],
+    title: 'irure nisi enim Lorem non',
+    tags: ['mollit'],
     data: {
-      preview: 'this is a video preview ....',
-      watchUrl: 'https://youtube.com/watch?v=_______',
-      downloadUrl: '<s3 link here>',
-      fileSize: 13050, // File size in bytes
-      duration: 67 // Video duration in seconds
+      preview:
+        'Ad do officia tempor occaecat laboris non magna ea sint deserunt mollit.',
+      fileSize: 27790,
+      duration: 1536,
+      watchUrl: 'https://youtube.com/api',
+      downloadUrl: 'https://aws.link/'
     },
-    isFinished: true, // QUESTION: once viewed, or manually mark finished?
-    isCached: true,
+    isFinished: true,
+    isCached: false,
     isFavorited: true
   },
   23: {
@@ -97,24 +98,176 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     title: 'Doppler Article',
     tags: ['Fetal Doppler'],
     data: {
-      preview: 'this is an article preview ....',
-      textUrl: '<cloud firestore or s3 link here>',
-      fileSize: 13050 // QUESTION: file size on text resources?
+      preview: 'Sunt quis ea sint ea aute do consequat deserunt culpa commodo.',
+      fileSize: 22435,
+      duration: 1220,
+      watchUrl: 'https://youtube.com/api',
+      downloadUrl: 'https://aws.link/'
     },
-    isFinished: false, // QUESTION: once viewed, or manually mark finished?
-    isCached: false, // QUESTION: allow caching text resources?
+    isFinished: true,
+    isCached: false,
     isFavorited: true
+  },
+  4: {
+    type: 'Video',
+    title: 'pariatur voluptate id consectetur tempor',
+    tags: ['amet', 'laborum', 'elit', 'excepteur', 'ad'],
+    data: {
+      preview:
+        'Ipsum nostrud sit sunt laborum esse excepteur amet velit ullamco ipsum.',
+      fileSize: 24583,
+      duration: 1943,
+      watchUrl: 'https://youtube.com/api',
+      downloadUrl: 'https://aws.link/'
+    },
+    isFinished: true,
+    isCached: true,
+    isFavorited: false
+  },
+  5: {
+    type: 'Video',
+    title: 'commodo eiusmod aliquip sint cillum',
+    tags: ['duis'],
+    data: {
+      preview:
+        'Exercitation pariatur aliqua ad et dolore tempor id et pariatur laborum laborum.',
+      fileSize: 22070,
+      duration: 1691,
+      watchUrl: 'https://youtube.com/api',
+      downloadUrl: 'https://aws.link/'
+    },
+    isFinished: false,
+    isCached: false,
+    isFavorited: false
+  },
+  6: {
+    type: 'Article',
+    title: 'exercitation incididunt qui velit nostrud',
+    tags: ['officia', 'minim'],
+    data: {
+      preview: 'Fugiat in velit nulla commodo mollit dolor.',
+      fileSize: 21204,
+      textUrl: 'https://aws.link/'
+    },
+    isFinished: false,
+    isCached: true,
+    isFavorited: false
+  },
+  7: {
+    type: 'Article',
+    title: 'laborum ex eiusmod eu id',
+    tags: ['anim', 'commodo', 'Lorem', 'elit'],
+    data: {
+      preview: 'Anim eu ad eu aliqua qui sit exercitation.',
+      fileSize: 15725,
+      textUrl: 'https://aws.link/'
+    },
+    isFinished: true,
+    isCached: true,
+    isFavorited: false
+  },
+  8: {
+    type: 'Article',
+    title: 'enim ut aute aute irure',
+    tags: ['aute', 'fugiat'],
+    data: {
+      preview:
+        'Lorem ea eiusmod eu labore sint do occaecat elit magna sunt veniam aute.',
+      fileSize: 27209,
+      textUrl: 'https://aws.link/'
+    },
+    isFinished: false,
+    isCached: true,
+    isFavorited: false
+  },
+  9: {
+    type: 'Article',
+    title: 'id esse amet mollit consequat',
+    tags: ['nulla'],
+    data: {
+      preview:
+        'Consequat sint sunt labore id do irure qui excepteur laborum proident incididunt incididunt cupidatat velit.',
+      fileSize: 20976,
+      textUrl: 'https://aws.link/'
+    },
+    isFinished: false,
+    isCached: true,
+    isFavorited: false
+  },
+  10: {
+    type: 'Article',
+    title: 'sit est cupidatat veniam do',
+    tags: ['et', 'consectetur'],
+    data: {
+      preview: 'Tempor irure sint ea do voluptate magna laborum ad cillum.',
+      fileSize: 28363,
+      textUrl: 'https://aws.link/'
+    },
+    isFinished: true,
+    isCached: false,
+    isFavorited: false
   }
 };
 
 export const INITIAL_LESSONS: LessonsSlice = {
+  1: {
+    title: 'irure proident et magna enim',
+    description:
+      'Mollit cupidatat et eiusmod adipisicing ullamco voluptate duis laborum excepteur cillum eu aute.',
+    objectives: ['dolore qui culpa', 'dolor ad aliquip'],
+    resourceIds: [8, 4],
+    isFinished: false
+  },
+  2: {
+    title: 'minim aliquip ut non cillum',
+    description:
+      'Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.',
+    objectives: [
+      'irure proident non',
+      'veniam reprehenderit nostrud',
+      'aute ipsum est',
+      'Lorem voluptate in',
+      'sunt laboris exercitation'
+    ],
+    resourceIds: [4],
+    isFinished: true
+  },
+  3: {
+    title: 'nulla veniam aute qui laborum',
+    description: 'Sunt in ut in veniam.',
+    objectives: ['aliqua aute do'],
+    resourceIds: [5, 9, 10],
+    isFinished: false
+  },
+  4: {
+    title: 'mollit laborum elit id irure',
+    description:
+      'Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.',
+    objectives: [
+      'quis do incididunt',
+      'est cupidatat aliquip',
+      'proident do non',
+      'id nostrud qui',
+      'irure ex ipsum'
+    ],
+    resourceIds: [1, 2, 3, 7, 6],
+    isFinished: true
+  },
+  5: {
+    title: 'fugiat in ullamco velit incididunt',
+    description: 'Irure ullamco veniam labore nisi veniam.',
+    objectives: ['ea minim voluptate', 'magna commodo enim'],
+    resourceIds: [6, 9, 8, 1, 4],
+    isFinished: false
+  },
   6: {
-    description: 'A short description of this lesson',
-    objectives: ['A list of', 'Things that the user', 'Will learn'],
-    resourceIds: [3, 6, 8, 12],
+    title: 'et in tempor dolore aliqua',
+    description:
+      'Laborum qui cupidatat commodo dolore sunt non Lorem cupidatat velit magna aliqua aliqua ut.',
+    objectives: ['incididunt magna incididunt', 'qui sit sint'],
+    resourceIds: [5],
     isFinished: false
   }
-  // ...
 };
 
 export const INITIAL_USER: UserSlice = {

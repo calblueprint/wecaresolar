@@ -9,7 +9,7 @@ import TopicHeader from './TopicHeader';
 //in card component --> pass in the topics prop
 //was thinking we can get topic + image from TopicCard component --> how to do this?
 interface TopicViewProps {
-  topic: Topic;
+  topic: Topic
 }
 
 function TopicViews(props: TopicViewProps) {
@@ -66,6 +66,9 @@ function TopicViews(props: TopicViewProps) {
 
   const videoCount =
     countMedia(topics, 'Video') + countMedia(troubleshooting, 'Video');
+
+  console.log(props.topic); 
+
 
   return (
     <div>
