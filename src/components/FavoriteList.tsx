@@ -10,7 +10,7 @@ function FavoriteList() {
   return (
     <div>
       {Object.keys(favResources).map((resource: any) => (
-        <PreviewCard resource={favResources[resource]} resourceID={resource} />
+        <PreviewCard key={resource} resource={favResources[resource]} resourceID={resource} />
       ))}
     </div>
   );
