@@ -22,9 +22,9 @@ function App() {
       <div>
         <Switch>
           <Route exact path="/suitcase" component={Suitcase} />
-          <Route path={"/suitcase/:topic"}
+          <Route path={"/suitcase/:topicId"}
            render={props => 
-               <TopicViews topic={props.match.params.topic} /> 
+               <TopicViews topicId={props.match.params.topicId} /> 
              } />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/guides" component={Guides} />

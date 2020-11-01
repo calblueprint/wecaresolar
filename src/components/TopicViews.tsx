@@ -3,18 +3,16 @@ import { useSelector } from 'react-redux';
 import PreviewCard from './PreviewCard';
 import { RootState } from '../store/reducers';
 import { ResourcesSlice } from '../store/resourcesSlice';
-import { Topic } from '../store/topicsSlice';
 import TopicHeader from './TopicHeader';
 
-//in card component --> pass in the topics prop
-//was thinking we can get topic + image from TopicCard component --> how to do this?
 interface TopicViewProps {
-  topic: Topic, 
+  topicId: number, 
 }
 
-function TopicViews(props: TopicViewProps) {
-  const name: string = props.topic.name;
-  //only want {} when evaluate as javascript in react, but props.topic.name is already javascript
+function TopicViews( { topicId }: TopicViewProps) {
+  const allTopics = useSelector((state: RootState) => state.topics); 
+  const currentTopic = allTopics[topicId]; 
+  const name = currentTopic.name;
 
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
@@ -43,12 +41,10 @@ function TopicViews(props: TopicViewProps) {
   const topics = useSelector(selectTopicResources);
   const troubleshooting = useSelector(selectTroubleshootingResources);
 
-  console.log(topics); 
-
   const headerStyle = {
     width: '360px',
     height: '145px',
-    backgroundImage: `url(${props.topic.url})`,
+    backgroundImage: `url(${currentTopic.url})`,
     backgroundSize: 'cover'
   };
 
@@ -69,11 +65,12 @@ function TopicViews(props: TopicViewProps) {
   const videoCount =
     countMedia(topics, 'Video') + countMedia(troubleshooting, 'Video');
 
+
   return (
     <div>
       <div style={headerStyle}>
         <TopicHeader
-          topicTitle={props.topic.name}
+          topicTitle={currentTopic.name}
           articleCount={articleCount}
           videoCount={videoCount}
         />

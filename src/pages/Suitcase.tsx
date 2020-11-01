@@ -6,17 +6,8 @@ import { RootState } from '../store/reducers';
 import { Link } from 'react-router-dom';
 import { Topic } from '../store/topicsSlice';
 
-const topicRes: Topic = {
-  name: 'Fetal Doppler',
-  description: 'This is the Fetal Doppler topic.',
-  url:
-    'https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg',
-  isFinished: false
-};
-
 function Suitcase({ match }) {
   const topics = useSelector((state: RootState) => state.topics); 
-  console.log('match', match); 
 
   return (
     <div>
