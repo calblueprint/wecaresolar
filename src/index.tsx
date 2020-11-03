@@ -6,6 +6,8 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store/reducers';
 
+import { retrievePushToken } from './pushNotifications';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
@@ -14,6 +16,9 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+// TODO: best place to put this?
+retrievePushToken();
 
 serviceWorker.unregister();
 // If you want your app to work offline and load faster, you can change
