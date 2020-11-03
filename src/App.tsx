@@ -1,16 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Favorites from './pages/Favorites';
-import Guides from './pages/Guides';
-import Suitcase from './pages/Suitcase';
-import Troubleshoot from './pages/Troubleshoot';
-import TabBar from './components/TabBar';
+import Favorites from './pages/Favorites/Favorites';
+import Guides from './pages/Guides/Guides';
+import Suitcase from './pages/Suitcase/Suitcase';
+import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
+import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
-import PlaylistPage from './components/PlaylistPage';
+import PlaylistPage from './components/Playlist/PlaylistPage';
+import SearchBar from './components/SearchBar/SearchBar';
 
 const useStyles = makeStyles({
-  root: {
-    position: 'fixed'
+  navbar: {
+    position: 'fixed',
+    width: '100%',
+    zIndex: 100,
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   }
 });
 
@@ -18,6 +22,7 @@ function App() {
   const classes = useStyles();
   return (
     <Router>
+      <SearchBar />
       <div>
         <Switch>
           <Route exact path="/suitcase" component={Suitcase} />

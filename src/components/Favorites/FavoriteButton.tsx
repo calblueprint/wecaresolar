@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { setResourceIsFavorited } from '../store/resourcesSlice';
+import { setResourceIsFavorited } from '../../store/resourcesSlice';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 

@@ -1,30 +1,27 @@
 import React from 'react';
-import PlaylistCard from '../components/PlaylistCard';
+import PlaylistCard from '../../components/Playlist/PlaylistCard';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/reducers';
+import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
-import { makeStyles, createStyles } from "@material-ui/core/styles"
+import { withStyles } from "@material-ui/core/styles";
+import { styles } from './GuidesStyles';
 
-const styles = makeStyles(() => createStyles({
-  playlistScroll: {
-    display: "flex",
-    overflow: "scroll"
-  },
-  playlistCard: {
-    width: "200px"
-  }
-}))
+type GuidesProps = {
+  classes: any;
+  match
+}
 
-function Guides({ match }) {
+
+function Guides(props: GuidesProps) {
   const lessons = useSelector((state: RootState) => state.lessons);
-  const classes = styles();
+  const { classes } = props;
 
   return (
     <div>
       <h1>Playlists</h1>
       <div className={classes.playlistScroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link to={`${match.url}/${key}`}>
+          <Link to={`${props.match.url}/${key}`}>
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>
@@ -36,4 +33,4 @@ function Guides({ match }) {
   )
 
 }
-export default Guides;
+export default withStyles(styles)(Guides);

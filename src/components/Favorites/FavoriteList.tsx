@@ -1,12 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import PreviewCard from './PreviewCard';
-import { RootState } from '../store/reducers';
+import PreviewCard from '../Cards/PreviewCard';
+import { selectFavoritedResources } from '../../store/resourcesSlice';
 
 function FavoriteList() {
-  const favResources = useSelector((state: RootState) => state.resources);
-  console.log(favResources);
-
+  const favResources = useSelector(selectFavoritedResources);
   return (
     <div>
       {Object.keys(favResources).map((resource: any) => (
