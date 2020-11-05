@@ -20,6 +20,7 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
+
   return (
     <Router>
       <SearchBar />

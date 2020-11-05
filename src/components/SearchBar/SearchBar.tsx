@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import WifiIcon from '@material-ui/icons/WifiOff';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchBarStyles';
+import { useHistory } from "react-router-dom";
 
 type SearchProps = {
   back: boolean; // In future, pass in returning function
@@ -16,11 +17,13 @@ type SearchProps = {
 
 const SearchAppBar = (props: SearchProps) => {
   const { classes } = props;
+  const history = useHistory(); 
+
   return (
     <div className={classes.root}>
       <AppBar>
         <Toolbar>
-          {props.back && <BackIcon />}
+          {<BackIcon onClick={() => history.go(-1)} />}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
