@@ -20,14 +20,13 @@ const SearchAppBar = (props: SearchProps) => {
   const history = useHistory(); 
   const location = useLocation();
 
-
-  const hideBackButton = ["/Guides", "/Troubleshooting", "/Favorites", "/Suitcase"].includes(location.pathname); 
+  const hideBackButton = ["/Guides", "/Troubleshoot", "/Favorites", "/Suitcase"].includes(location.pathname); 
 
   return (
     <div className={classes.root}>
       <AppBar>
         <Toolbar>
-          {!hideBackButton && <BackIcon onClick={() => history.go(-1)} />}
+          {!hideBackButton && <BackIcon onClick={() => history.goBack()} />}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
