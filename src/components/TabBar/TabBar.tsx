@@ -14,7 +14,7 @@ type TabProps = {
 }
 
 const TabBar = (props: TabProps) => {
-  const { classes } = props;
+  const { classes } = props; 
   const [value, setValue] = React.useState(0);
 
   return (

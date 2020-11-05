@@ -9,21 +9,25 @@ import WifiIcon from '@material-ui/icons/WifiOff';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchBarStyles';
 import { useHistory } from "react-router-dom";
+import { useLocation } from 'react-router-dom'
 
 type SearchProps = {
-  back: boolean; // In future, pass in returning function
   classes: any;
 }
 
 const SearchAppBar = (props: SearchProps) => {
   const { classes } = props;
   const history = useHistory(); 
+  const location = useLocation();
+
+
+  const hideBackButton = ["/Guides", "/Troubleshooting", "/Favorites", "/Suitcase"].includes(location.pathname); 
 
   return (
     <div className={classes.root}>
       <AppBar>
         <Toolbar>
-          {<BackIcon onClick={() => history.go(-1)} />}
+          {!hideBackButton && <BackIcon onClick={() => history.go(-1)} />}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -45,7 +49,5 @@ const SearchAppBar = (props: SearchProps) => {
     </div>
   );
 };
-
-SearchAppBar.defaultProps = { back: false };
 
 export default withStyles(styles)(SearchAppBar);
