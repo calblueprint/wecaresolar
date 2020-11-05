@@ -10,19 +10,18 @@ interface TopicViewProps {
 }
 
 function TopicViews( { topicId }: TopicViewProps) {
-  const allTopics = useSelector((state: RootState) => state.topics); 
-  const currentTopic = allTopics[topicId]; 
+  const currentTopic = useSelector((state: RootState) => state.topics[topicId]);
   const name = currentTopic.name;
 
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
       .filter(
         (id) =>
-          state.resources[(id as unknown) as number].tags.includes(name, 0) &&
-          !state.resources[(id as unknown) as number].tags.includes('Troubleshooting', 0))
+          state.resources[(id)].tags.includes(name, 0) &&
+          !state.resources[(id)].tags.includes('Troubleshooting', 0))
       .reduce<ResourcesSlice>((res, key) => {
-        res[(key as unknown) as number] =
-          state.resources[(key as unknown) as number];
+        res[key] =
+          state.resources[key];
         return res;
       }, {});
 
@@ -30,40 +29,32 @@ function TopicViews( { topicId }: TopicViewProps) {
     Object.keys(state.resources as ResourcesSlice)
       .filter(
         (id) =>
-          state.resources[(id as unknown) as number].tags.includes(name, 0) &&
-          state.resources[(id as unknown) as number].tags.includes('Troubleshooting', 0))
+          state.resources[id].tags.includes(name, 0) &&
+          state.resources[id].tags.includes('Troubleshooting', 0))
       .reduce<ResourcesSlice>((res, key) => {
-        res[(key as unknown) as number] =
-          state.resources[(key as unknown) as number];
+        res[key] =
+          state.resources[key];
         return res;
       }, {});
 
-  const topics = useSelector(selectTopicResources);
-  const troubleshooting = useSelector(selectTroubleshootingResources);
+  const guideResources = useSelector(selectTopicResources);
+  const troubleshootingResources = useSelector(selectTroubleshootingResources);
 
   const headerStyle = {
     width: '360px',
     height: '145px',
-    backgroundImage: `url(${currentTopic.url})`,
+    backgroundImage: `url(${currentTopic.imageUrl})`,
     backgroundSize: 'cover'
   };
 
-  //iterate through keys and manually count Video + Article type
-  function countMedia(obj, media: string) {
-    let count = 0;
-    for (const resource in obj) {
-      if (obj[resource].type == media) {
-        count = count + 1;
-      }
-    }
-    return count;
-  }
+  const countMedia = (obj, media: string) => Object.keys(obj).filter((id) => obj[id].type == media).length
+
 
   const articleCount =
-    countMedia(topics, 'Article') + countMedia(troubleshooting, 'Article');
+    countMedia(guideResources, 'Article') + countMedia(troubleshootingResources, 'Article');
 
   const videoCount =
-    countMedia(topics, 'Video') + countMedia(troubleshooting, 'Video');
+    countMedia(guideResources, 'Video') + countMedia(troubleshootingResources, 'Video');
 
 
   return (
@@ -76,14 +67,14 @@ function TopicViews( { topicId }: TopicViewProps) {
         />
       </div>
       <div>
-        {Object.keys(topics).map((resource: any) => (
-          <PreviewCard resource={topics[resource]} resourceID={resource} />
+        {Object.keys(guideResources).map((resource: any) => (
+          <PreviewCard resource={guideResources[resource]} resourceID={resource} />
         ))}
       </div>
       <div>
         <h2>Facing Issues?</h2>
-        {Object.keys(troubleshooting).map((resource: any) => (
-          <PreviewCard resource={troubleshooting[resource]} resourceID={resource} />
+        {Object.keys(troubleshootingResources).map((resource: any) => (
+          <PreviewCard resource={troubleshootingResources[resource]} resourceID={resource} />
         ))}
       </div>
     </div>

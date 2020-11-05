@@ -8,20 +8,14 @@ export type TopicsSlice = {
 export type Topic = {
   name: string;
   description: string;
-  url: string;
-  isFinished: boolean;
+  imageUrl: string;
 };
 
 export const topicsSlice = createSlice({
   name: 'topics',
   initialState: INITIAL_TOPICS,
   reducers: {
-    setTopicIsFinished(state, action) {
-      const { id, isFinished } = action.payload;
-      state[id].isFinished = isFinished;
-    }
   }
 });
 
-export const { setTopicIsFinished } = topicsSlice.actions;
 export default topicsSlice.reducer;
