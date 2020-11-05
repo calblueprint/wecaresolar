@@ -48,7 +48,7 @@ export const resourcesSlice = createSlice({
       state[id].isFavorited = isFavorited;
     },
     setResourceIsCompleted(state, action) {
-      const {id, isCompleted } = action.payload;
+      const { id, isCompleted } = action.payload;
       state[id].isCompleted = isCompleted;
     }
   }
@@ -67,6 +67,6 @@ export const {
   setResourceIsFinished,
   setResourceIsCached,
   setResourceIsFavorited,
-  setResourceIsCompleted,
+  setResourceIsCompleted
 } = resourcesSlice.actions;
 export default resourcesSlice.reducer;
