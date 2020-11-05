@@ -23,7 +23,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: false,
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false,
   },
   2: {
     type: 'Video',
@@ -39,7 +40,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: false,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false,
   },
   3: {
     type: 'Video',
@@ -54,7 +56,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: false,
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false,
   },
   4: {
     type: 'Video',
@@ -70,7 +73,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false,
   },
   5: {
     type: 'Video',
@@ -86,7 +90,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: false,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false,
   },
   6: {
     type: 'Article',
@@ -99,7 +104,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false,
   },
   7: {
     type: 'Article',
@@ -112,7 +118,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false,
   },
   8: {
     type: 'Article',
@@ -126,7 +133,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false,
   },
   9: {
     type: 'Article',
@@ -140,7 +148,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false,
   },
   10: {
     type: 'Article',
@@ -153,7 +162,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: false,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false,
   }
 };
 

@@ -6,6 +6,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import FavoriteButton from '../Favorites/FavoriteButton';
 import { styles } from './PreviewCardStyles';
+import CompletedButton from '../Completed/CompletedButton';
 
 interface PreviewCardProps {
     resource: Resource,

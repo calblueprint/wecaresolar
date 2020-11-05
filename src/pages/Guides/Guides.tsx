@@ -5,6 +5,7 @@ import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
+import resources from '../../components/Playlist/PlaylistPage'
 
 type GuidesProps = {
   classes: any;
