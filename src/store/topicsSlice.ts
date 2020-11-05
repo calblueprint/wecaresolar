@@ -14,8 +14,7 @@ export type Topic = {
 export const topicsSlice = createSlice({
   name: 'topics',
   initialState: INITIAL_TOPICS,
-  reducers: {
-  }
+  reducers: {}
 });
 
 export default topicsSlice.reducer;
