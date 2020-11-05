@@ -1,0 +1,16 @@
+{
+  "name": "We Care Solar Suitcase Guide",
+  "short_name": "We Care Solar",
+  "description": "This app contains articles, videos, and other resources to help you use the We Care Solar Suitcase.",
+  "icons": [
+    {
+      "src": "icons/icon-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "theme_color": "#F5B836",
+  "background_color": "#F5B836"
+}
