@@ -19,13 +19,14 @@ const useStyles = makeStyles({
 });
 
 function App() {
-  const classes = useStyles();
+  const classes = useStyles(); 
+
   return (
     <Router>
-      <SearchBar />
       <div>
+      <Route component= {SearchBar} />
         <Switch>
-          <Route exact path="/suitcase" component={Suitcase} />
+          <Route exact path="/suitcase" component={Suitcase} /> 
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/guides" component={Guides} />
           <Route path={"/guides/:lessonId"}
