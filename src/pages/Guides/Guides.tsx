@@ -33,7 +33,7 @@ function Guides(props: GuidesProps) {
       <h1>Articles</h1>
       <div className={classes.articleScroll}>
         {Object.keys(articles).map((key: any) => (
-          <div className={classes.articleCard}>
+          <div>
             <ArticleCard resource={articles[key]}/>
           </div>
         ))}

@@ -1,8 +1,6 @@
-
 export const styles = {
-    root: {
-    },
-    title: {
-        fontSize: 20
-    }
+  root: {},
+  title: {
+    fontSize: 20
+  }
 };
