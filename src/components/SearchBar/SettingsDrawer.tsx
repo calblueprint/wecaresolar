@@ -30,7 +30,7 @@ function TemporaryDrawer() {
   });
 
   const toggleDrawer = (anchor: Anchor, open: boolean) => (
-    event: React.KeyboardEvent | React.MouseEvent,
+    event: React.KeyboardEvent | React.MouseEvent
   ) => {
     if (
       event.type === 'keydown' &&
