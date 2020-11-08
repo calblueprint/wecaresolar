@@ -1,5 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -8,7 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+import BugReportIcon from '@material-ui/icons/BugReport';
 import MailIcon from '@material-ui/icons/Mail';
 import SettingsIcon from '@material-ui/icons/Settings';
 
@@ -43,24 +43,23 @@ function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor: Anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+  const list = () => (
+    <div>
+    <div>
+        <h2> We Care Solar</h2>
+    </div>
+    <Divider />
       <List>
         {['Report An Incident', 'Report a Bug', 'Settings'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemIcon>
+                {index === 0 ? <MailIcon /> : null } 
+                {index === 1 ? <BugReportIcon/>: null }
+                {index === 2 ? <SettingsIcon/> : null } </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
-      <Divider />
     </div>
   );
 
@@ -70,7 +69,7 @@ function TemporaryDrawer() {
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}> <SettingsIcon/></Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-            {list(anchor)}
+            {list()}
           </Drawer>
         </React.Fragment>
       ))}
