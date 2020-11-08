@@ -5,15 +5,17 @@ import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
+import { selectArticles } from '../../store/resourcesSlice';
+import ArticleCard from '../../components/Cards/ArticleCard';
 
 type GuidesProps = {
   classes: any;
   match
 }
 
-
 function Guides(props: GuidesProps) {
   const lessons = useSelector((state: RootState) => state.lessons);
+  const articles = useSelector(selectArticles);
   const { classes } = props;
 
   return (
@@ -26,6 +28,14 @@ function Guides(props: GuidesProps) {
               <PlaylistCard lesson={lessons[key]} />
             </div>
           </Link>
+        ))}
+      </div>
+      <h1>Articles</h1>
+      <div className={classes.articleScroll}>
+        {Object.keys(articles).map((key: any) => (
+          <div className={classes.articleCard}>
+            <ArticleCard resource={articles[key]}/>
+          </div>
         ))}
       </div>
     </div>

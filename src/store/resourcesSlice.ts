@@ -58,6 +58,15 @@ export const selectFavoritedResources = (state: RootState) =>
       return res;
     }, {});
 
+export const selectArticles = (state: RootState) => 
+    Object.keys(state.resources as ResourcesSlice)
+      .filter((id) => state.resources[(id as unknown) as number].type == 'Article')
+      .reduce<ResourcesSlice>((res, key) => {
+        res[(key as unknown) as number] =
+          state.resources[(key as unknown) as number];
+        return res;
+      }, {});
+
 export const {
   setResourceIsFinished,
   setResourceIsCached,
