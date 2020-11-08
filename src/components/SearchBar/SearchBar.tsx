@@ -8,6 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import WifiIcon from '@material-ui/icons/WifiOff';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchBarStyles';
+import SettingsDrawer from './SettingsDrawer'; 
 
 type SearchProps = {
   back: boolean; // In future, pass in returning function
@@ -37,6 +38,7 @@ const SearchAppBar = (props: SearchProps) => {
           <Offline>
             <WifiIcon />
           </Offline>
+          <SettingsDrawer/>
         </Toolbar>
       </AppBar>
     </div>
