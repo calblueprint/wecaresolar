@@ -11,7 +11,6 @@ const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
   const lessons = useSelector((state: RootState) => state.lessons);
   const resources = useSelector((state: RootState) => state.resources);
   const currentLesson = lessons[lessonId]
-  console.log('the');
   return (
     <div>
       <h1>{currentLesson.title}</h1>

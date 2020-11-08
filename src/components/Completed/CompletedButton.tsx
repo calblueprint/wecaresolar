@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setResourceIsCompleted } from '../../store/resourcesSlice';
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 interface CompletedButtonProps {
     id: number;
@@ -17,7 +17,7 @@ function CompletedButton(props: CompletedButtonProps) {
             isCompleted: !props.isCompleted,
         })
     )}>
-        {props.isCompleted ? <BookmarkIcon /> : <BookmarkBorderIcon />}
+        {props.isCompleted ? <RadioButtonUncheckedIcon /> : <FiberManualRecordIcon />}
     </button></div>)
 };
 

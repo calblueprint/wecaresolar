@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import FavoriteButton from '../Favorites/FavoriteButton';
 import { styles } from './PreviewCardStyles';
 import CompletedButton from '../Completed/CompletedButton';
+import CardActions from '@material-ui/core/CardActions';
 
 interface PreviewCardProps {
     resource: Resource,
@@ -23,14 +24,18 @@ const PreviewCard = (props: PreviewCardProps) => {
                 titleTypographyProps={{ variant: 'h6' }}
                 subheader={props.resource.type}
                 subheaderTypographyProps={{ variant: 'body1' }}
-                action={
-                    <FavoriteButton
-                        id={props.resourceID}
-                        isFavorited={props.resource.isFavorited}
-                    />
-                }
             />
             <CardContent>{props.resource.data.preview}</CardContent>
+            <CardActions>
+                <FavoriteButton
+                    id={props.resourceID}
+                    isFavorited={props.resource.isFavorited}
+                />
+                <CompletedButton
+                    id={props.resourceID}
+                    isCompleted={props.resource.isCompleted}
+                />
+            </CardActions>
         </Card>
     );
 };
