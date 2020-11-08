@@ -45,9 +45,7 @@ function TemporaryDrawer() {
 
   const list = () => (
     <div>
-    <div>
         <h2> We Care Solar</h2>
-    </div>
     <Divider />
       <List>
         {['Report An Incident', 'Report a Bug', 'Settings'].map((text, index) => (
