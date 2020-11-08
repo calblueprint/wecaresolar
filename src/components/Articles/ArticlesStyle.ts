@@ -1,13 +1,6 @@
-import React from 'react';
-import { Resource } from '../../store/resourcesSlice';
-import Card from '@material-ui/core/Card';
 import { makeStyles } from '@material-ui/core/styles';
 
-type ArticleCardProps = {
-    resource: Resource,
-}
-
-const useStyles = makeStyles({
+export const useStyles = makeStyles({
     root: {
         padding: "11px",
         width: "186px",
@@ -40,17 +33,4 @@ const useStyles = makeStyles({
         lineHeight: "12px",
         color: "#8F8F8F"
     }
-})
-
-const ArticleCard = ({ resource }: ArticleCardProps) => {
-    const classes = useStyles();
-
-    return(
-        <Card className={classes.root}>
-            <p className={classes.title}>{resource.title}</p>
-            <p className={classes.description}>{resource.data.preview}</p>
-        </Card>
-    );
-}
-
-export default ArticleCard;
+});

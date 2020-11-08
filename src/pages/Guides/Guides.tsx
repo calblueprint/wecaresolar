@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
 import { selectArticles } from '../../store/resourcesSlice';
-import ArticleCard from '../../components/Cards/ArticleCard';
+import ArticleCard from '../../components/Articles/ArticleCard';
 
 type GuidesProps = {
   classes: any;
