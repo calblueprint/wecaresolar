@@ -7,6 +7,7 @@ export type ResourcesSlice = {
 };
 
 export type Resource = {
+  id: number;
   type: string;
   title: string;
   tags: string[];

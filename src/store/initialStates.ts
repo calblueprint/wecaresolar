@@ -10,6 +10,7 @@ import { UserSlice } from './userSlice';
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   1: {
+    id: 1,
     type: 'Video',
     title: 'irure nisi enim Lorem non',
     tags: ['mollit'],
@@ -26,6 +27,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   2: {
+    id: 2,
     type: 'Video',
     title: 'aliquip sunt ea sunt adipisicing',
     tags: ['consequat'],
@@ -42,6 +44,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: false
   },
   3: {
+    id: 3,
     type: 'Video',
     title: 'deserunt voluptate non ad amet',
     tags: ['veniam', 'culpa'],
@@ -57,6 +60,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   4: {
+    id: 4,
     type: 'Video',
     title: 'pariatur voluptate id consectetur tempor',
     tags: ['amet', 'laborum', 'elit', 'excepteur', 'ad'],
@@ -73,6 +77,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: false
   },
   5: {
+    id: 5,
     type: 'Video',
     title: 'commodo eiusmod aliquip sint cillum',
     tags: ['duis'],
@@ -89,6 +94,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: false
   },
   6: {
+    id: 6,
     type: 'Article',
     title: 'exercitation incididunt qui velit nostrud',
     tags: ['officia', 'minim'],
@@ -102,6 +108,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: false
   },
   7: {
+    id: 7,
     type: 'Article',
     title: 'laborum ex eiusmod eu id',
     tags: ['anim', 'commodo', 'Lorem', 'elit'],
@@ -115,6 +122,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: false
   },
   8: {
+    id: 8,
     type: 'Article',
     title: 'enim ut aute aute irure',
     tags: ['aute', 'fugiat'],
@@ -129,6 +137,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: false
   },
   9: {
+    id: 9,
     type: 'Article',
     title: 'id esse amet mollit consequat',
     tags: ['nulla'],
@@ -143,6 +152,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: false
   },
   10: {
+    id: 10,
     type: 'Article',
     title: 'sit est cupidatat veniam do',
     tags: ['et', 'consectetur'],
@@ -159,6 +169,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
 
 export const INITIAL_LESSONS: LessonsSlice = {
   1: {
+    id: 1,
     title: 'irure proident et magna enim',
     description:
       'Mollit cupidatat et eiusmod adipisicing ullamco voluptate duis laborum excepteur cillum eu aute.',
@@ -167,6 +178,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     isFinished: false
   },
   2: {
+    id: 2,
     title: 'minim aliquip ut non cillum',
     description:
       'Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.',
@@ -181,6 +193,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     isFinished: true
   },
   3: {
+    id: 3,
     title: 'nulla veniam aute qui laborum',
     description: 'Sunt in ut in veniam.',
     objectives: ['aliqua aute do'],
@@ -188,6 +201,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     isFinished: false
   },
   4: {
+    id: 4,
     title: 'mollit laborum elit id irure',
     description:
       'Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.',
@@ -202,6 +216,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     isFinished: true
   },
   5: {
+    id: 5,
     title: 'fugiat in ullamco velit incididunt',
     description: 'Irure ullamco veniam labore nisi veniam.',
     objectives: ['ea minim voluptate', 'magna commodo enim'],
@@ -209,6 +224,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     isFinished: false
   },
   6: {
+    id: 6,
     title: 'et in tempor dolore aliqua',
     description:
       'Laborum qui cupidatat commodo dolore sunt non Lorem cupidatat velit magna aliqua aliqua ut.',

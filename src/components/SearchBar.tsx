@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Offline } from 'react-detect-offline';
 import AppBar from '@material-ui/core/AppBar';
+import Chip from '@material-ui/core/Chip';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import BackIcon from '@material-ui/icons/ArrowBackIos';
@@ -36,13 +37,23 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center'
     },
     inputRoot: {
-      color: 'inherit'
+      color: 'inherit',
+      textOverflow: 'ellipsis'
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
+      textOverflow: 'ellipsis',
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-      width: '100%'
+      width: '200%'
+    },
+    buttons: {
+      display: 'flex',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      '& > *': {
+        margin: theme.spacing(0.5)
+      }
     }
   })
 );
@@ -53,8 +64,11 @@ type SearchProps = {
 
 const SearchAppBar = ({ back }: SearchProps) => {
   const classes = useStyles();
-  const initialQuery = '';
-  const [query, setQuery] = useState(initialQuery);
+
+  const [query, setQuery] = useState('');
+  const [video, setVideo] = useState(false);
+  const [article, setArticle] = useState(false);
+  const [playlist, setPlaylist] = useState(false);
 
   return (
     <div className={classes.root}>
@@ -66,7 +80,7 @@ const SearchAppBar = ({ back }: SearchProps) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="searchie search"
+              placeholder="Look for a video or article"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -79,8 +93,26 @@ const SearchAppBar = ({ back }: SearchProps) => {
             <WifiIcon />
           </Offline>
         </Toolbar>
+        {query && <div className={classes.buttons}>
+          <Chip
+            label="Video"
+            clickable
+            onClick={() => setVideo(!video)}
+          />
+          <Chip
+            label="Article"
+            clickable
+            onClick={() => setArticle(!article)}
+          />
+          <Chip
+            label="Playlist"
+            clickable
+            onClick={() => setPlaylist(!playlist)}
+          />
+        </div>}
+        
       </AppBar>
-      <SearchList query={query} />
+      {query && <SearchList video={video} article={article} playlist={playlist} query={query} />}
     </div>
   );
 };
