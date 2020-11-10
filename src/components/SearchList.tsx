@@ -1,5 +1,5 @@
 import React from 'react';
-import Fuse from 'fuse.js'
+import Fuse from 'fuse.js';
 import { useSelector } from 'react-redux';
 import { Resource } from '../store/resourcesSlice';
 import PreviewCard from './PreviewCard';
