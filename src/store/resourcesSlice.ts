@@ -48,8 +48,8 @@ export const resourcesSlice = createSlice({
       state[id].isFavorited = isFavorited;
     },
     setResourceIsCompleted(state, action) {
-      const { id, isCompleted} = action.payload;
-      state[id].isCompleted= isCompleted;
+      const { id, isCompleted } = action.payload;
+      state[id].isCompleted = isCompleted;
     }
   }
 });
