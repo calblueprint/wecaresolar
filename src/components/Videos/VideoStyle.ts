@@ -5,11 +5,11 @@ export const useStyles = makeStyles({
     width: '219px',
     height: '148px',
     borderRadius: '10px',
-    marginLeft: '5px',
+    marginLeft: '5px'
   },
   image: {
-      width: '219px',
-      height: '148px',
-      borderRadius: '10px'
+    width: '219px',
+    height: '148px',
+    borderRadius: '10px'
   }
 });

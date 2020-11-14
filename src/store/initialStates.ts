@@ -20,7 +20,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       duration: 1536,
       watchUrl: 'https://youtube.com/api',
       downloadUrl: 'https://aws.link/',
-      image: 'https://uc44ab6bc23b444cdf6c5c0d5d00.previews.dropboxusercontent.com/p/thumb/AA8ohMLDZl4DuG6uTK_tTLfnwYKoKKWxQZZTSXr7kaISTBaGytk9sGf4zgw0fCGGC8Z5AFMN1_xjmMTmuU2IU_erY-EewF5AqE2msw_KXsBHAzN3F3cPX3njfdgcR3xs9Y3k3NDxWsXgoCdEHvHqjBe7KmSUN_bzum09Tt3n4j-DaIpri-ZfECxlZFW9BaAo5qrRjjXUzpu8lPxUy3yAu4O54cbnywjVs9qJ1DFU58aLWZ4YtoxFaq3SLyry2P3omgZkeaeGfMEzLyFsNqy6sdVOLrmkceWDkPGqze-8o2YWU-vY1cM4zmAvxdEbnZMWYw7xe1ozdFwXPY05VmeACGC7bXOz8l9u-YmnV1SNqsFGug/p.jpeg?fv_content=true&size_mode=5'
+      image:
+        'https://uc44ab6bc23b444cdf6c5c0d5d00.previews.dropboxusercontent.com/p/thumb/AA8ohMLDZl4DuG6uTK_tTLfnwYKoKKWxQZZTSXr7kaISTBaGytk9sGf4zgw0fCGGC8Z5AFMN1_xjmMTmuU2IU_erY-EewF5AqE2msw_KXsBHAzN3F3cPX3njfdgcR3xs9Y3k3NDxWsXgoCdEHvHqjBe7KmSUN_bzum09Tt3n4j-DaIpri-ZfECxlZFW9BaAo5qrRjjXUzpu8lPxUy3yAu4O54cbnywjVs9qJ1DFU58aLWZ4YtoxFaq3SLyry2P3omgZkeaeGfMEzLyFsNqy6sdVOLrmkceWDkPGqze-8o2YWU-vY1cM4zmAvxdEbnZMWYw7xe1ozdFwXPY05VmeACGC7bXOz8l9u-YmnV1SNqsFGug/p.jpeg?fv_content=true&size_mode=5'
     },
     isFinished: true,
     isCached: false,
@@ -37,7 +38,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       duration: 2761,
       watchUrl: 'https://youtube.com/api',
       downloadUrl: 'https://aws.link/',
-      image: 'https://uc9f8e6b7cc7893201cfe4965919.previews.dropboxusercontent.com/p/thumb/AA9iFuvnD8WACF0h0-lufWBJf9IyKay5o6LNIJ9J3GWoN6a6flTILQZ6p_H-Y8OnDPxU01JqpNc1-JOl0DmTHVsWMaHXcivedDdOwMBBTgCRu1wUhtjwrhpWP8S7VODxiOVtnDfqeshYiW6n3w-S32Vy711wu08NKOdRTDjU2go7EzXj7iJQufxjJjqwVk84SpwN9Dcw5tO_HU2cdehUNUxpDexwdpq63QNEsP9YsGqXl8jgr27FALWWDTaQyf2H0HGF68YZBV5L1aKe_CxzDaGBWO_UMCP3adSTKoSaI5q5iUM99Rfv40asa94cMFm5YZB2EJmTqmvcbfPzNSPrFA7yFaE5PBmFbhMe-PF5HPYLNQ/p.jpeg?fv_content=true&size_mode=5'
+      image:
+        'https://uc9f8e6b7cc7893201cfe4965919.previews.dropboxusercontent.com/p/thumb/AA9iFuvnD8WACF0h0-lufWBJf9IyKay5o6LNIJ9J3GWoN6a6flTILQZ6p_H-Y8OnDPxU01JqpNc1-JOl0DmTHVsWMaHXcivedDdOwMBBTgCRu1wUhtjwrhpWP8S7VODxiOVtnDfqeshYiW6n3w-S32Vy711wu08NKOdRTDjU2go7EzXj7iJQufxjJjqwVk84SpwN9Dcw5tO_HU2cdehUNUxpDexwdpq63QNEsP9YsGqXl8jgr27FALWWDTaQyf2H0HGF68YZBV5L1aKe_CxzDaGBWO_UMCP3adSTKoSaI5q5iUM99Rfv40asa94cMFm5YZB2EJmTqmvcbfPzNSPrFA7yFaE5PBmFbhMe-PF5HPYLNQ/p.jpeg?fv_content=true&size_mode=5'
     },
     isFinished: false,
     isCached: false,
@@ -53,7 +55,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       duration: 1220,
       watchUrl: 'https://youtube.com/api',
       downloadUrl: 'https://aws.link/',
-      image: 'https://uccffc8b7dd3a147c59d4144753b.previews.dropboxusercontent.com/p/thumb/AA_WTOMi6mfFquN8k257dA5SEQcNDyh8rJQ15SAxQfzXW0Tl7Awn4WReFwoK0YczJ3yGKXFvxpfBX8FC_gKOKIDAKVLbTbjrTiGqYwoCQH6hal1NbDMd_fqw29ZRQizAhI0Pj1o_CIOHwdT6V6AajQf3DTzg58sVzGy308xhNIBt9S00g2vKysaYCsZYzmvOUHgushdA7_QDE1MiBdY0cw8NF0fMA8FG2CrQorP0Jlv8i5EHsgu3cPS9WNIEEne32Syc3m3lVL5oV5gOOOpDM7cWlS3H0gymCweZEhosGi-4g-5jEtYg4izn9k5ECCKJol_f_TzVNN7h7uiWkMxD1IOoqt94YpZjCrJpaF5dPAaIsQ/p.jpeg?fv_content=true&size_mode=5'
+      image:
+        'https://uccffc8b7dd3a147c59d4144753b.previews.dropboxusercontent.com/p/thumb/AA_WTOMi6mfFquN8k257dA5SEQcNDyh8rJQ15SAxQfzXW0Tl7Awn4WReFwoK0YczJ3yGKXFvxpfBX8FC_gKOKIDAKVLbTbjrTiGqYwoCQH6hal1NbDMd_fqw29ZRQizAhI0Pj1o_CIOHwdT6V6AajQf3DTzg58sVzGy308xhNIBt9S00g2vKysaYCsZYzmvOUHgushdA7_QDE1MiBdY0cw8NF0fMA8FG2CrQorP0Jlv8i5EHsgu3cPS9WNIEEne32Syc3m3lVL5oV5gOOOpDM7cWlS3H0gymCweZEhosGi-4g-5jEtYg4izn9k5ECCKJol_f_TzVNN7h7uiWkMxD1IOoqt94YpZjCrJpaF5dPAaIsQ/p.jpeg?fv_content=true&size_mode=5'
     },
     isFinished: true,
     isCached: false,
@@ -70,7 +73,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       duration: 1943,
       watchUrl: 'https://youtube.com/api',
       downloadUrl: 'https://aws.link/',
-      image: 'https://uc993bc2c3aafd1c47a10f8f5be4.previews.dropboxusercontent.com/p/thumb/AA_CWsFFNoW8JE2CyEvJUVyG5wPw7MCUANSJbQeBpQzb0WWUEcCx6l_khmDjOzYCqd0CTlueuf5BCJ9ljuIjPreD_YyT3aiTyQ4Y9BpEz_Of3as6sIsF0a-6hMwS69FFp9cCZG0roBQOtwLNr54sYBwX5czZrDy827ikeJqJoo4VQZK5rSRNjTEjF0aMuwc0TmXO5I5a4KDyDwOkFXIIO4Qvz6aQBnkg3D2i3UC5ZuO07kYk0Aw70HEl1yAaS2qnB5AS0NW-JwY5u8vl-QI3XRbXajOEbYOSLSMQ8a_zpO1AEecKiQQ3i5swjTC63vbpUIR-zcjxZdC4Q4w_NWyidS7b83IcNykpstAeIbn0DqqF_w/p.jpeg?fv_content=true&size_mode=5'
+      image:
+        'https://uc993bc2c3aafd1c47a10f8f5be4.previews.dropboxusercontent.com/p/thumb/AA_CWsFFNoW8JE2CyEvJUVyG5wPw7MCUANSJbQeBpQzb0WWUEcCx6l_khmDjOzYCqd0CTlueuf5BCJ9ljuIjPreD_YyT3aiTyQ4Y9BpEz_Of3as6sIsF0a-6hMwS69FFp9cCZG0roBQOtwLNr54sYBwX5czZrDy827ikeJqJoo4VQZK5rSRNjTEjF0aMuwc0TmXO5I5a4KDyDwOkFXIIO4Qvz6aQBnkg3D2i3UC5ZuO07kYk0Aw70HEl1yAaS2qnB5AS0NW-JwY5u8vl-QI3XRbXajOEbYOSLSMQ8a_zpO1AEecKiQQ3i5swjTC63vbpUIR-zcjxZdC4Q4w_NWyidS7b83IcNykpstAeIbn0DqqF_w/p.jpeg?fv_content=true&size_mode=5'
     },
     isFinished: true,
     isCached: true,
@@ -87,7 +91,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       duration: 1691,
       watchUrl: 'https://youtube.com/api',
       downloadUrl: 'https://aws.link/',
-      image: 'https://uca6db8ef5a292c6dc94d6745b02.previews.dropboxusercontent.com/p/thumb/AA-a7oM5R7l-DxYrxVh3kjCm-f90vNMlqtH4zfZuWrUq4gDpTmE9xtaoPxYe9YqD5d2CQERCtCbqBySeax4qPaI-HDbuOIuw2qz-7qr2NxfvMhcVvDnsvlVd4PEdL4Om_rE6TSmNzSCTWXCDCeq7TQV8qKjVkyYQXRsIZ2b2KD3sgZKJN_78I7-aFcHjc799-O33jTwWjULA5_8pJROD50zEmsVfBuWy_ztZ4hU8AFhvu6_4kIBkgDcKOgz_p_II1zzZC0qVVvMgekrSw8zHZkQ7e3sxJYTCdQE9N6svixcNozERmhVf8sUdRBldtkccwivYi0_aePHAVy78PacfJloXN0Y6RoMSmYDoF7V_Cn95yA/p.jpeg?fv_content=true&size_mode=5'
+      image:
+        'https://uca6db8ef5a292c6dc94d6745b02.previews.dropboxusercontent.com/p/thumb/AA-a7oM5R7l-DxYrxVh3kjCm-f90vNMlqtH4zfZuWrUq4gDpTmE9xtaoPxYe9YqD5d2CQERCtCbqBySeax4qPaI-HDbuOIuw2qz-7qr2NxfvMhcVvDnsvlVd4PEdL4Om_rE6TSmNzSCTWXCDCeq7TQV8qKjVkyYQXRsIZ2b2KD3sgZKJN_78I7-aFcHjc799-O33jTwWjULA5_8pJROD50zEmsVfBuWy_ztZ4hU8AFhvu6_4kIBkgDcKOgz_p_II1zzZC0qVVvMgekrSw8zHZkQ7e3sxJYTCdQE9N6svixcNozERmhVf8sUdRBldtkccwivYi0_aePHAVy78PacfJloXN0Y6RoMSmYDoF7V_Cn95yA/p.jpeg?fv_content=true&size_mode=5'
     },
     isFinished: false,
     isCached: false,
