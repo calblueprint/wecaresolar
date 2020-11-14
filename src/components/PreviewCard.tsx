@@ -4,7 +4,7 @@ import { Resource } from '../store/resourcesSlice';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
-import FavoriteButton from './FavoriteButton';
+import FavoriteButton from './Favorites/FavoriteButton';
 
 const useStyles = makeStyles({
   root: {},

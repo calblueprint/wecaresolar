@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import TopicCard from '../components/TopicCard'; 
-import TopicViews from '../components/TopicViews'; 
+import TopicCard from '../../components/TopicCard';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/reducers';
+import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
-import { Topic } from '../store/topicsSlice';
 
 function Suitcase({ match }) {
-  const topics = useSelector((state: RootState) => state.topics); 
+  const topics = useSelector((state: RootState) => state.topics);
 
   return (
     <div>
@@ -17,7 +15,7 @@ function Suitcase({ match }) {
         </Link>
       ))}
     </div>
-  ); 
+  );
 }
 
 export default Suitcase; 
