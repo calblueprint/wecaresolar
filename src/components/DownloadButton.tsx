@@ -15,16 +15,31 @@ type DownloadButtonProps = {
 const DownloadButton = ({ id, videoData }: DownloadButtonProps) => {
   const dispatch = useDispatch();
 
+
+
+  function blobToArrayBuffer(blob) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.addEventListener('loadend', (e) => {
+        resolve(reader.result);
+      });
+      reader.addEventListener('error', reject);
+      reader.readAsArrayBuffer(blob);
+    });
+  }
+
   async function downloadVideo(resId, videoStore, videoData) {
     let downloadUrl = videoData.downloadUrl
     if (downloadUrl) {
       let blob = await fetch(downloadUrl).then(res => res.blob())
+      let arrayBuffer = await blobToArrayBuffer(blob)
 
-      set(resId, blob, videoStore).then(() => console.log(blob)).catch(() => console.log(blob)).then(() => dispatch(setResourceIsCached({
-        id: id,
-        isCached: true,
-      }))
-      );
+      set(resId, arrayBuffer, videoStore).then(() => console.log(arrayBuffer))
+        .then(() => dispatch(setResourceIsCached({
+          id: id,
+          isCached: true,
+        })))
+        .catch(error => console.log(error));
     }
   }
 

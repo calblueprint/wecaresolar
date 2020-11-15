@@ -31,6 +31,10 @@ const Video = ({ resId, videoDetails }: VideoProps) => {
     return (match && match[2].length === 11) ? match[2] : null;
   }
 
+  function arrayBufferToBlob(buffer, type) {
+    return new Blob([buffer], { type: type });
+  }
+
   function createDownloadButton() {
     if (isVideo(videoDetails.data)) {
       if (!videoDetails.isCached) {
@@ -47,7 +51,7 @@ const Video = ({ resId, videoDetails }: VideoProps) => {
         get(resId, videoStore).then(videoBlob => {
           console.log(videoBlob)
           if (videoBlob !== undefined) {
-            return <video src={URL.createObjectURL(videoBlob)} />
+            return <video src={URL.createObjectURL(arrayBufferToBlob(videoBlob, "video/mp4"))} />
           }
         }).catch((error) => console.log(error))
       } else {
