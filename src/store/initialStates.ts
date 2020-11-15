@@ -38,7 +38,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: true
   },
   25: {
     type: 'Article',
@@ -51,7 +52,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   27: {
     type: 'Video',
@@ -80,7 +82,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   35: {
     type: 'Video',
@@ -93,7 +96,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: true
   },
   42: {
     type: 'Article',
