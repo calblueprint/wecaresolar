@@ -7,5 +7,10 @@ export const styles = (theme: Theme) =>
     },
     playlistCard: {
       width: '300px'
-    }
+    },
+    topicScroll: {
+      display: 'flex',
+      overflow: 'scroll',
+      width: '360px'
+    },
   });

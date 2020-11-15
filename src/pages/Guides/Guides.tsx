@@ -1,5 +1,6 @@
 import React from 'react';
 import PlaylistCard from '../../components/Playlist/PlaylistCard';
+import TopicCard from '../../components/Topics/TopicCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
@@ -14,6 +15,7 @@ type GuidesProps = {
 
 function Guides(props: GuidesProps) {
   const lessons = useSelector((state: RootState) => state.lessons);
+  const topics = useSelector((state: RootState) => state.topics)
   const { classes } = props;
 
   return (
@@ -28,8 +30,15 @@ function Guides(props: GuidesProps) {
           </Link>
         ))}
       </div>
+      <h1>Topics</h1>
+      <div className={classes.topicScroll}>
+        {Object.keys(topics).map((key: any) => (
+            <div className={classes.topicCard}>
+              <TopicCard topic={topics[key]} />
+            </div>
+        ))}
+      </div>
     </div>
-
   )
 
 }
