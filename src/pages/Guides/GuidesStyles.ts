@@ -12,5 +12,5 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       overflow: 'scroll',
       width: '360px'
-    },
+    }
   });
