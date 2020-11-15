@@ -8,6 +8,20 @@ import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
+import { HelpSlice } from './helpSlice';
+
+export const INITIAL_HELP: HelpSlice = {
+  '404_ERROR_YES': {
+    parent: null,
+    title: 'First Bug',
+    description: 'EEEE',
+    options: {
+      'yes' : null, //SOMETHING,
+      'no' : null, //SOMETHING
+    }
+
+  }
+}
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   1: {
