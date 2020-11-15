@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import resourcesReducer from './resourcesSlice';
 import lessonsReducer from './lessonsSlice';
+import topicsReducer from './topicsSlice';
 
 const store = configureStore({
   reducer: {
     resources: resourcesReducer,
-    lessons: lessonsReducer
+    lessons: lessonsReducer,
+    topics: topicsReducer
   }
 });
 

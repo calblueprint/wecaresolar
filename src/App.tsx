@@ -7,6 +7,7 @@ import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
 import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Playlist/PlaylistPage';
+import TopicViews from './components/TopicViews';
 import SearchBar from './components/SearchBar/SearchBar';
 
 const useStyles = makeStyles({
@@ -19,14 +20,18 @@ const useStyles = makeStyles({
 });
 
 function App() {
-  const classes = useStyles(); 
+  const classes = useStyles();
 
   return (
     <Router>
       <div>
-      <Route component= {SearchBar} />
+        <Route component={SearchBar} />
         <Switch>
-          <Route exact path="/suitcase" component={Suitcase} /> 
+          <Route exact path="/suitcase" component={Suitcase} />
+          <Route path={"/suitcase/:topicId"}
+            render={props =>
+              <TopicViews topicId={props.match.params.topicId} />
+            } />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/guides" component={Guides} />
           <Route path={"/guides/:lessonId"}
