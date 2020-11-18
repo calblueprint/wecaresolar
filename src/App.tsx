@@ -9,7 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Playlist/PlaylistPage';
 import TopicViews from './components/TopicViews';
 import SearchBar from './components/SearchBar/SearchBar';
-import TroubleShootCard from './components/TroubleShootCard';
+import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 
 const useStyles = makeStyles({
   navbar: {
@@ -25,29 +25,36 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <Route component={SearchBar} />
-        <Switch>
-          <Route exact path="/suitcase" component={Suitcase} />
-          <Route path={"/suitcase/:topicId"}
-            render={props =>
-              <TopicViews topicId={props.match.params.topicId} />
-            } />
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/guides" component={Guides} />
-          <Route path={"/guides/:lessonId"}
-            render={props =>
-              <PlaylistPage lessonId={props.match.params.lessonId} />
-            } />
-          <Route exact path="/troubleshoot" component={Troubleshoot} />
-          <Route path={"/Troubleshoot/:helpId"}
-            render={props =>
-              <TroubleShootCard helpId={props.match.params.helpId} />
-            } />
-        </Switch>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <div>
+          <Route component={SearchBar} />
+        </div>
+        <div>
+          <Switch>
+            <Route exact path="/suitcase" component={Suitcase} />
+            <Route path={"/suitcase/:topicId"}
+              render={props =>
+                <TopicViews topicId={props.match.params.topicId} />
+              } />
+            <Route exact path="/favorites" component={Favorites} />
+            <Route exact path="/guides" component={Guides} />
+            <Route path={"/guides/:lessonId"}
+              render={props =>
+                <PlaylistPage lessonId={props.match.params.lessonId} />
+              } />
+            <Route exact path="/troubleshoot" component={Troubleshoot} />
+            <Route path={"/Troubleshoot/:helpId"}
+              render={props =>
+                <TroubleShootCard helpId={props.match.params.helpId} />
+              } />
+          </Switch>
+        </div>
+        <div>
+          <TabBar />
+        </div >
       </div>
-      <TabBar />
-    </Router>
+    </Router >
+
   );
 }
 

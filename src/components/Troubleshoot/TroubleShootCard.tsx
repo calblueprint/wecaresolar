@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/reducers';
+import { RootState } from '../../store/reducers';
 import Card from '@material-ui/core/Card';
 
 type TroubleShootProps = {
@@ -19,7 +19,7 @@ const TroubleShootCard = ({ helpId }: TroubleShootProps) => {
           if (option == "error_code") {
           } else {
             console.log('/Troubleshoot/' + options[option])
-            return <Link to={'/Troubleshoot/' + options[option]}>{option}</Link>
+            return <Link to={'/Troubleshoot/' + options[option]}><button>{option}</button></Link>
           }
         })}
         {options['parent'] ? <Link to={'/Troubleshoot/' + options['parent']}>Back</Link> : <span />}
