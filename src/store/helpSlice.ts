@@ -2,15 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 import { INITIAL_HELP } from './initialStates';
 
 export type HelpSlice = {
-  [key: number]: Help;
+  [key: string]: Help;
 };
 
 export type Help = {
-  parent: Help | any;
+  parent: string | any;
   title: string;
   description: string;
   options: {
-    [key: string]: Help;
+    [key: string]: string;
   };
 };
 
