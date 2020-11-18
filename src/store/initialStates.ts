@@ -17,7 +17,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       preview: 'this is a video preview ....',
       watchUrl:
         'https://www.youtube.com/watch?v=oMCKWkvGLLA',
-      downloadUrl: 'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/028e79a0-3532-427b-be11-292e8f363ea1/1_v3SolarSuitcase_InstallationPlanning_%284%29.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201111%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201111T054204Z&X-Amz-Expires=86400&X-Amz-Signature=16d580eb3227391ecb2b35635f9ec17a55bf6695812b7b63cf1d624161faf9bd&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%221_v3SolarSuitcase_InstallationPlanning_%284%29.mp4%22',
+      downloadUrl: "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/68af8796-4a00-44c4-8e3e-b006d358bafe/1_v3SolarSuitcase_InstallationPlanning_%285%29.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201118%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201118T063037Z&X-Amz-Expires=86400&X-Amz-Signature=062bad74e216cd1ea00586ba6fa8ea86ab830da005844cfd3d596dcf2e87e329&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%221_v3SolarSuitcase_InstallationPlanning_%285%29.mp4%22",
       fileSize: 13050, // File size in bytes
       duration: 67 // Video duration in seconds
     },

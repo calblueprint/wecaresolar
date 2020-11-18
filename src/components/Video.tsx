@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DownloadButton from './DownloadButton';
 import FavoriteButton from './FavoriteButton';
 import Label from './Label'
 import { get } from 'idb-keyval';
 import { videoStore } from '../index'
-import { Resource, isVideo } from '../store/resourcesSlice'
+import { Resource, VideoData, isVideo } from '../store/resourcesSlice'
 import { makeStyles, createStyles } from "@material-ui/core/styles"
+import ReactPlayer from 'react-player'
+
 
 type VideoProps = {
   resId: number,
   videoDetails: Resource,
+  videoData: VideoData
 }
 
 const styles = makeStyles(() => createStyles({
@@ -20,7 +23,15 @@ const styles = makeStyles(() => createStyles({
   }
 }))
 
-const Video = ({ resId, videoDetails }: VideoProps) => {
+const Video = ({ resId, videoDetails, videoData }: VideoProps) => {
+
+  const [videoUrl, setVideoUrl] = useState(
+    videoData.watchUrl
+  );
+
+  useEffect(() => { refreshVideoUrl() },
+    [videoDetails.isCached],
+  );
 
   const classes = styles();
 
@@ -45,21 +56,18 @@ const Video = ({ resId, videoDetails }: VideoProps) => {
     }
   }
 
-  function getVideo() {
+  function refreshVideoUrl() {
     if (isVideo(videoDetails.data)) {
       if (videoDetails.isCached) {
         get(resId, videoStore).then(videoBlob => {
           console.log(videoBlob)
           if (videoBlob !== undefined) {
-            return <video src={URL.createObjectURL(arrayBufferToBlob(videoBlob, "video/mp4"))} />
+            setVideoUrl(URL.createObjectURL(arrayBufferToBlob(videoBlob, "video/mp4")))
+
           }
         }).catch((error) => console.log(error))
       } else {
-        return < iframe src={"//www.youtube.com/embed/" + getId(videoDetails.data.watchUrl)}
-          allow='autoplay; encrypted-media'
-          allowFullScreen
-          title='video'
-        />
+        setVideoUrl("//www.youtube.com/embed/" + getId(videoDetails.data.watchUrl))
       }
     }
 
@@ -68,7 +76,7 @@ const Video = ({ resId, videoDetails }: VideoProps) => {
   return (
     <div>
       <h1>Insert Title</h1>
-      { getVideo()}
+      <ReactPlayer url={videoUrl} playing controls />
 
       <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
       {createDownloadButton()}

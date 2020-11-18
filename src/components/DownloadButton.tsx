@@ -15,8 +15,6 @@ type DownloadButtonProps = {
 const DownloadButton = ({ id, videoData }: DownloadButtonProps) => {
   const dispatch = useDispatch();
 
-
-
   function blobToArrayBuffer(blob) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
