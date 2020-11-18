@@ -8,6 +8,8 @@ import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Playlist/PlaylistPage';
 import SearchBar from './components/SearchBar/SearchBar';
+import { ThemeProvider } from '@material-ui/core/styles';
+import theme from './CustomStyles'; 
 
 const useStyles = makeStyles({
   navbar: {
@@ -21,6 +23,7 @@ const useStyles = makeStyles({
 function App() {
   const classes = useStyles();
   return (
+    <ThemeProvider theme={theme}>
     <Router>
       <SearchBar />
       <div>
@@ -37,6 +40,7 @@ function App() {
       </div>
       <TabBar />
     </Router>
+    </ThemeProvider>
   );
 }
 
