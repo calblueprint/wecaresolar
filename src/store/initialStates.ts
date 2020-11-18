@@ -16,12 +16,11 @@ export const INITIAL_HELP: HelpSlice = {
     title: 'First Bug',
     description: 'EEEE',
     options: {
-      'yes' : null, //SOMETHING,
-      'no' : null, //SOMETHING
+      yes: null, //SOMETHING,
+      no: null //SOMETHING
     }
-
   }
-}
+};
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   1: {
