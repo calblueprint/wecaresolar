@@ -34,6 +34,16 @@ export const INITIAL_HELP: HelpSlice = {
       yes: '404_ERROR_YES', //SOMETHING,
       no: '404_ERROR_NO' //SOMETHING
     }
+  },
+  'ERROR_MAP': {
+    parent: null,
+    title: 'Oh! We got a fuckton of options here! What code u got',
+    description: 'YUH',
+    options: {
+      '101': '101_ERROR',
+      '200': '200_ERROR',
+      '404': '404_ERROR'
+    }
   }
 };
 
