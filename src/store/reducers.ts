@@ -5,13 +5,12 @@ import lessonsReducer from './lessonsSlice';
 import topicsReducer from './topicsSlice';
 import helpReducer from './helpSlice';
 
-
 const store = configureStore({
   reducer: {
     resources: resourcesReducer,
     lessons: lessonsReducer,
     topics: topicsReducer,
-    troubleshoot: helpReducer,
+    troubleshoot: helpReducer
   }
 });
 

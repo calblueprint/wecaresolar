@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Playlist/PlaylistPage';
 import TopicViews from './components/TopicViews';
 import SearchBar from './components/SearchBar/SearchBar';
+import TroubleShootCard from './components/TroubleShootCard';
 
 const useStyles = makeStyles({
   navbar: {
@@ -38,7 +39,11 @@ function App() {
             render={props =>
               <PlaylistPage lessonId={props.match.params.lessonId} />
             } />
-          <Route path="/troubleshoot" component={Troubleshoot} />
+          <Route exact path="/troubleshoot" component={Troubleshoot} />
+          <Route path={"/Troubleshoot/:helpId"}
+            render={props =>
+              <TroubleShootCard helpId={props.match.params.helpId} />
+            } />
         </Switch>
       </div>
       <TabBar />

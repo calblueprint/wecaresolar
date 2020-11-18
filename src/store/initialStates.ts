@@ -16,8 +16,8 @@ export const INITIAL_HELP: HelpSlice = {
     title: 'Ah shi, stuff broken!',
     description: 'Have you tried turning on and back off again',
     options: {
-      'yes': '404_ERROR_YES', //SOMETHING,
-      'no': '404_ERROR_NO' //SOMETHING
+      yes: '404_ERROR_YES', //SOMETHING,
+      no: '404_ERROR_NO' //SOMETHING
     }
   },
   '404_ERROR_YES': {
@@ -31,10 +31,10 @@ export const INITIAL_HELP: HelpSlice = {
     title: 'Well maybe you should try fixing things first huh...',
     description: 'Have you fixed it?',
     options: {
-      'yes': '404_ERROR_YES', //SOMETHING,
-      'no': '404_ERROR_NO' //SOMETHING
+      yes: '404_ERROR_YES', //SOMETHING,
+      no: '404_ERROR_NO' //SOMETHING
     }
-  },
+  }
 };
 
 export const INITIAL_RESOURCES: ResourcesSlice = {

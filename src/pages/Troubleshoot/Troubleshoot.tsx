@@ -3,13 +3,12 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import TroubleShootCard from '../../components/TroubleShootCard';
 
-function TroubleShoot() {
-  const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
-  const [count, setCount] = useState(0);
+function TroubleShoot({ match }) {
+  console.log("HELLO", match.url)
+
   return (<div>
     Troubleshoot
-    <TroubleShootCard help={troubleshoot["404_ERROR"]} />
-
+    <TroubleShootCard helpId={"404_ERROR"} />
   </div>);
 }
 
