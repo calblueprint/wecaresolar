@@ -11,15 +11,30 @@ import { TopicsSlice } from './topicsSlice';
 import { HelpSlice } from './helpSlice';
 
 export const INITIAL_HELP: HelpSlice = {
-  '404_ERROR_YES': {
+  '404_ERROR': {
     parent: null,
-    title: 'First Bug',
-    description: 'EEEE',
+    title: 'Ah shi, stuff broken!',
+    description: 'Have you tried turning on and back off again',
     options: {
-      yes: null, //SOMETHING,
-      no: null //SOMETHING
+      'yes': '404_ERROR_YES', //SOMETHING,
+      'no': '404_ERROR_NO' //SOMETHING
     }
-  }
+  },
+  '404_ERROR_YES': {
+    parent: '404_ERROR',
+    title: 'You monkey, why did you turn it back off?',
+    description: 'Try turning it back on, maybe then things will worky worky',
+    options: {}
+  },
+  '404_ERROR_NO': {
+    parent: '404_ERROR',
+    title: 'Well maybe you should try fixing things first huh...',
+    description: 'Have you fixed it?',
+    options: {
+      'yes': '404_ERROR_YES', //SOMETHING,
+      'no': '404_ERROR_NO' //SOMETHING
+    }
+  },
 };
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
