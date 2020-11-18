@@ -6,6 +6,7 @@ import { videoStore } from '../index'
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
 import { setResourceIsCached } from '../store/resourcesSlice';
+import { blobToArrayBuffer } from './Video/VideoFunctions'
 
 type DownloadButtonProps = {
   id: number,
@@ -14,17 +15,6 @@ type DownloadButtonProps = {
 
 const DownloadButton = ({ id, videoData }: DownloadButtonProps) => {
   const dispatch = useDispatch();
-
-  function blobToArrayBuffer(blob) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.addEventListener('loadend', (e) => {
-        resolve(reader.result);
-      });
-      reader.addEventListener('error', reject);
-      reader.readAsArrayBuffer(blob);
-    });
-  }
 
   async function downloadVideo(resId, videoStore, videoData) {
     let downloadUrl = videoData.downloadUrl

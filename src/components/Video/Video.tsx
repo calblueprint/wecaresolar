@@ -1,29 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import DownloadButton from './DownloadButton';
-import FavoriteButton from './Favorites/FavoriteButton';
-import Label from './Label'
+import DownloadButton from '../DownloadButton';
+import FavoriteButton from '../Favorites/FavoriteButton';
+import Label from '../Label'
 import { get } from 'idb-keyval';
-import { videoStore } from '../index'
-import { Resource, VideoData, isVideo } from '../store/resourcesSlice'
-import { makeStyles, createStyles } from "@material-ui/core/styles"
+import { videoStore } from '../../index'
+import { Resource, VideoData, isVideo } from '../../store/resourcesSlice'
 import ReactPlayer from 'react-player'
-
+import { withStyles } from '@material-ui/core/styles';
+import { styles } from './VideoStyles';
+import { getId, arrayBufferToBlob } from './VideoFunctions'
 
 type VideoProps = {
   resId: number,
   videoDetails: Resource,
   videoData: VideoData
+  classes: any;
+
 }
 
-const styles = makeStyles(() => createStyles({
-  labelList: {
-    display: "flex",
-    flexDirection: "row",
-
-  }
-}))
-
-const Video = ({ resId, videoDetails, videoData }: VideoProps) => {
+const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
 
   const [videoUrl, setVideoUrl] = useState(
     videoData.watchUrl
@@ -32,19 +27,6 @@ const Video = ({ resId, videoDetails, videoData }: VideoProps) => {
   useEffect(() => { refreshVideoUrl() },
     [videoDetails.isCached],
   );
-
-  const classes = styles();
-
-  function getId(url) {
-    console.log("HELLO")
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
-  }
-
-  function arrayBufferToBlob(buffer, type) {
-    return new Blob([buffer], { type: type });
-  }
 
   function createDownloadButton() {
     if (isVideo(videoDetails.data)) {
@@ -70,21 +52,22 @@ const Video = ({ resId, videoDetails, videoData }: VideoProps) => {
         setVideoUrl("//www.youtube.com/embed/" + getId(videoDetails.data.watchUrl))
       }
     }
-
   }
 
   return (
-    <div>
+    <div className={classes.thing}>
       <h1>Insert Title</h1>
-      <ReactPlayer url={videoUrl} playing controls />
-
-      <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
-      {createDownloadButton()}
       <div className={classes.labelList}>
         {videoDetails.tags.map(tag => <Label title={tag} />)}
       </div>
+      <ReactPlayer url={videoUrl} playing controls />
+      <div>
+        <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
+        {createDownloadButton()}
+      </div>
+      <h2> HLLELOO</h2>
     </div>
   )
 }
 
-export default Video;
+export default withStyles(styles)(Video);

@@ -7,7 +7,8 @@ type LabelProps = {
 
 const styles = makeStyles(() => createStyles({
   label: {
-    padding: "1%"
+    padding: "10%",
+    // backgroundColor: "#104983",
   }
 }))
 

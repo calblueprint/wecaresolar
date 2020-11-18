@@ -5,7 +5,7 @@ import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
-import Video from '../../components/Video'
+import Video from '../../components/Video/Video'
 import { isVideo } from '../../store/resourcesSlice'
 
 type GuidesProps = {
