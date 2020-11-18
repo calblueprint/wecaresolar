@@ -17,7 +17,8 @@ export type Help = {
 export const helpSlice = createSlice({
   name: 'troubleshooting',
   initialState: INITIAL_HELP,
+  reducers: {
+  }
 });
 
-export const { setLessonIsFinished } = helpSlice.actions;
 export default helpSlice.reducer;
