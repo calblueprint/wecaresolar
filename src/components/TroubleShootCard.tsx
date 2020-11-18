@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { Help } from '../store/helpSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducers';
@@ -18,7 +18,7 @@ const TroubleShootCard = () => {
             return <button onClick={() => setError(help.options[option])}>{option}</button>
           }
         })}
-        <button onClick={() => setError(help.parent)}>Back</button>
+        {help.parent ? <button onClick={() => setError(help.parent)}>Back</button> : <span />}
       </div>
     )
   }
