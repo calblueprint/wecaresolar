@@ -29,7 +29,15 @@ export type ArticleData = {
   fileSize: number;
   preview: string;
 };
+export type VideoArticle = VideoData | ArticleData;
 
+export const isVideo = (tbd: VideoArticle): tbd is VideoData => {
+  if (tbd as VideoData) {
+    return true;
+  } else {
+    return false;
+  }
+};
 export const resourcesSlice = createSlice({
   name: 'resources',
   initialState: INITIAL_RESOURCES,
