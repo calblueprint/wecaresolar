@@ -13,7 +13,6 @@ import {
   Theme,
   makeStyles
 } from '@material-ui/core/styles';
-import SearchList from './SearchList';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -60,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 type SearchProps = {
   back: boolean; // In future, pass in returning function
-}
+};
 
 const SearchAppBar = ({ back }: SearchProps) => {
   const classes = useStyles();
@@ -110,7 +109,7 @@ const SearchAppBar = ({ back }: SearchProps) => {
             onClick={() => setPlaylist(!playlist)}
           />
         </div>}
-        
+
       </AppBar>
       {query && <SearchList video={video} article={article} playlist={playlist} query={query} />}
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store/reducers';
-import PreviewCard from './PreviewCard';
+import { RootState } from '../../store/reducers';
+import PreviewCard from '../Cards/PreviewCard';
 
 type PlaylistPageProps = {
   lessonId: number,

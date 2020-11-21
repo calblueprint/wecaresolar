@@ -1,5 +1,5 @@
 import React from 'react';
-import { Lesson } from '../store/lessonsSlice';
+import { Lesson } from '../../store/lessonsSlice';
 import Card from '@material-ui/core/Card';
 
 type PlaylistCardProps = {

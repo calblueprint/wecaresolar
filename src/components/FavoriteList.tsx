@@ -5,7 +5,6 @@ import { RootState } from '../store/reducers';
 
 function FavoriteList() {
   const favResources = useSelector((state: RootState) => state.resources);
-  console.log(favResources);
 
   return (
     <div>
