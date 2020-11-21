@@ -40,6 +40,7 @@ const PlaylistCard = (props: PlaylistCardProps) => {
 };
 
 const favoritedResource: Resource = {
+  id: 40,
   type: 'Article',
   title: 'here is a descriptive title',
   tags: ['Help what other topics are there'],
