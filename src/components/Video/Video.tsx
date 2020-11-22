@@ -10,6 +10,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './VideoStyles';
 import { getId, arrayBufferToBlob } from './VideoFunctions'
 
+import { useDispatch } from 'react-redux';
+import { setResourceIsCached } from '../../store/resourcesSlice';
 type VideoProps = {
   resId: number,
   videoDetails: Resource,
@@ -19,6 +21,7 @@ type VideoProps = {
 }
 
 const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
+  const dispatch = useDispatch();
 
   const [videoUrl, setVideoUrl] = useState(
     videoData.watchUrl
@@ -42,12 +45,17 @@ const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
     if (isVideo(videoDetails.data)) {
       if (videoDetails.isCached) {
         get(resId, videoStore).then(videoBlob => {
-          console.log(videoBlob)
           if (videoBlob !== undefined) {
             setVideoUrl(URL.createObjectURL(arrayBufferToBlob(videoBlob, "video/mp4")))
-
+          } else {
+            console.log("Error in loading cached video - missing video entry");
+            dispatch(setResourceIsCached({
+              id: resId,
+              isCached: false,
+            }));
           }
-        }).catch((error) => console.log(error))
+        }).catch((error) => console.log("Failed to download the video." +
+          "Please make sure that you are not in private browsing mode, and that you have enough space in your video storage"))
       } else {
         setVideoUrl("//www.youtube.com/embed/" + getId(videoDetails.data.watchUrl))
       }
@@ -56,16 +64,18 @@ const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
 
   return (
     <div className={classes.thing}>
-      <h1>Insert Title</h1>
       <div className={classes.labelList}>
         {videoDetails.tags.map(tag => <Label title={tag} />)}
       </div>
+      <div>
+        <h1>{videoDetails.title}</h1>
+        <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
+      </div>
       <ReactPlayer url={videoUrl} playing controls />
       <div>
-        <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
         {createDownloadButton()}
       </div>
-      <h2> HLLELOO</h2>
+      <h2> temporary padding </h2>
     </div>
   )
 }

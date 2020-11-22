@@ -27,8 +27,8 @@ function Guides(props: GuidesProps) {
   }
   return (
     <div>
-      <h1>Playlists</h1>
-      <div className={classes.playlistScroll}>
+      {/* <h1>Playlists</h1> */}
+      {/* <div className={classes.playlistScroll}>
         {Object.keys(lessons).map((key: any) => (
           <Link to={`${props.match.url}/${key}`}>
             <div className={classes.playlistCard}>
@@ -36,7 +36,7 @@ function Guides(props: GuidesProps) {
             </div>
           </Link>
         ))}
-      </div>
+      </div> */}
       <div>
         {playvideo(1)}
       </div>
