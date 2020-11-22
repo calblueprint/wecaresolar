@@ -26,7 +26,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCached: false,
     isFavorited: true
   },
-  23: {
+  2: {
     type: 'Article',
     title: 'TROUBLED FETAL',
     tags: ['Fetal Doppler', 'Troubleshooting'],
@@ -39,7 +39,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCached: false, // QUESTION: allow caching text resources?
     isFavorited: true
   },
-  25: {
+  3: {
     type: 'Article',
     title: 'Doppler 101',
     tags: ['Fetal Doppler', 'Setup'],
@@ -211,15 +211,15 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
 
 export const INITIAL_LESSONS: LessonsSlice = {
   1: {
-    title: 'irure proident et magna enim',
+    title: 'Irure proident et magna enim',
     description:
       'Mollit cupidatat et eiusmod adipisicing ullamco voluptate duis laborum excepteur cillum eu aute.',
-    objectives: ['dolore qui culpa', 'dolor ad aliquip'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [8, 4],
     isFinished: false
   },
   2: {
-    title: 'minim aliquip ut non cillum',
+    title: 'Minim aliquip ut non cillum',
     description:
       'Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.',
     objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
@@ -227,14 +227,14 @@ export const INITIAL_LESSONS: LessonsSlice = {
     isFinished: true
   },
   3: {
-    title: 'nulla veniam aute qui laborum',
+    title: 'Nulla veniam aute qui laborum',
     description: 'Sunt in ut in veniam.',
-    objectives: ['aliqua aute do'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [5, 9, 10],
     isFinished: false
   },
   4: {
-    title: 'mollit laborum elit id irure',
+    title: 'Mollit laborum elit id irure',
     description:
       'Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.',
     objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
@@ -242,7 +242,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     isFinished: true
   },
   5: {
-    title: 'fugiat in ullamco velit incididunt',
+    title: 'Fugiat in ullamco velit incididunt',
     description: 'Irure ullamco veniam labore nisi veniam.',
     objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [6, 9, 8, 1, 4],

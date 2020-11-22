@@ -1,58 +1,58 @@
+import React from 'react';
 import { createMuiTheme, Theme } from '@material-ui/core/styles';
-import { Palette } from '@material-ui/core/styles/createPalette';
 
 declare module '@material-ui/core/styles/createPalette' {
   interface Palette {
     //main colors
     black: Palette['primary'];
-    white?: Palette['primary'];
-    brown?: Palette['primary'];
+    white: Palette['primary'];
+    brown: Palette['primary'];
     yellow: Palette['primary'];
-    accent1?: Palette['primary'];
-    accent2?: Palette['primary'];
-    accent3?: Palette['primary'];
+    accent1: Palette['primary'];
+    accent2: Palette['primary'];
+    accent3: Palette['primary'];
     //troubleshooting buttons
-    tshootyes?: Palette['primary'];
-    tshootno?: Palette['primary'];
+    tshootyes: Palette['primary'];
+    tshootno: Palette['primary'];
     //appliances
-    main?: Palette['primary'];
-    general?: Palette['primary'];
-    suitcase?: Palette['primary'];
-    lights?: Palette['primary'];
-    fetaldoppler?: Palette['primary'];
-    headlamp?: Palette['primary'];
-    charger?: Palette['primary'];
-    phonecharger?: Palette['primary'];
-    thermometer?: Palette['primary'];
+    main: Palette['primary'];
+    general: Palette['primary'];
+    suitcase: Palette['primary'];
+    lights: Palette['primary'];
+    fetaldoppler: Palette['primary'];
+    headlamp: Palette['primary'];
+    charger: Palette['primary'];
+    phonecharger: Palette['primary'];
+    thermometer: Palette['primary'];
   }
   interface PaletteOptions {
     //main colors
     black: PaletteOptions['primary'];
-    white?: PaletteOptions['primary'];
-    brown?: PaletteOptions['primary'];
+    white: PaletteOptions['primary'];
+    brown: PaletteOptions['primary'];
     yellow: PaletteOptions['primary'];
-    accent1?: PaletteOptions['primary'];
-    accent2?: PaletteOptions['primary'];
-    accent3?: PaletteOptions['primary'];
+    accent1: PaletteOptions['primary'];
+    accent2: PaletteOptions['primary'];
+    accent3: PaletteOptions['primary'];
     //troubleshooting buttons
-    tshootyes?: PaletteOptions['primary'];
-    tshootno?: PaletteOptions['primary'];
+    tshootyes: PaletteOptions['primary'];
+    tshootno: PaletteOptions['primary'];
     //applicances
-    main?: PaletteOptions['primary'];
-    general?: PaletteOptions['primary'];
-    suitcase?: PaletteOptions['primary'];
-    lights?: PaletteOptions['primary'];
-    fetaldoppler?: PaletteOptions['primary'];
-    headlamp?: PaletteOptions['primary'];
-    charger?: PaletteOptions['primary'];
-    phonecharger?: PaletteOptions['primary'];
-    thermometer?: PaletteOptions['primary'];
+    main: PaletteOptions['primary'];
+    general: PaletteOptions['primary'];
+    suitcase: PaletteOptions['primary'];
+    lights: PaletteOptions['primary'];
+    fetaldoppler: PaletteOptions['primary'];
+    headlamp: PaletteOptions['primary'];
+    charger: PaletteOptions['primary'];
+    phonecharger: PaletteOptions['primary'];
+    thermometer: PaletteOptions['primary'];
   }
 }
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ['"Source Sans Pro"', 'sans-serif'].join(',')
+    fontFamily: ['"Source Sans Pro'].join(',')
   },
   palette: {
     black: {
@@ -115,6 +115,10 @@ const theme = createMuiTheme({
     phonecharger: {
       main: '#E4CDC7',
       dark: '#BD9084'
+    },
+    thermometer: {
+      main: '#E4CFCA',
+      dark: '#BC8273'
     }
   }
 });
