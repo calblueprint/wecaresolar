@@ -222,13 +222,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     title: 'minim aliquip ut non cillum',
     description:
       'Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.',
-    objectives: [
-      'irure proident non',
-      'veniam reprehenderit nostrud',
-      'aute ipsum est',
-      'Lorem voluptate in',
-      'sunt laboris exercitation'
-    ],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [4],
     isFinished: true
   },
@@ -243,20 +237,14 @@ export const INITIAL_LESSONS: LessonsSlice = {
     title: 'mollit laborum elit id irure',
     description:
       'Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.',
-    objectives: [
-      'quis do incididunt',
-      'est cupidatat aliquip',
-      'proident do non',
-      'id nostrud qui',
-      'irure ex ipsum'
-    ],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [1, 2, 3, 7, 6],
     isFinished: true
   },
   5: {
     title: 'fugiat in ullamco velit incididunt',
     description: 'Irure ullamco veniam labore nisi veniam.',
-    objectives: ['ea minim voluptate', 'magna commodo enim'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [6, 9, 8, 1, 4],
     isFinished: false
   },
@@ -264,7 +252,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     title: 'et in tempor dolore aliqua',
     description:
       'Laborum qui cupidatat commodo dolore sunt non Lorem cupidatat velit magna aliqua aliqua ut.',
-    objectives: ['incididunt magna incididunt', 'qui sit sint'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [5],
     isFinished: false
   }

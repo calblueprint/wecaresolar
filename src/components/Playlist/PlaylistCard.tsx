@@ -1,21 +1,41 @@
 import React from 'react';
 import { Lesson } from '../../store/lessonsSlice';
 import Card from '@material-ui/core/Card';
+import { withStyles } from '@material-ui/core/styles';
+import { styles } from './PlaylistStyles';
 
-type PlaylistCardProps = {
+interface PlaylistCardProps {
   lesson: Lesson,
+  classes: any
 }
 
-const PlaylistCard = ({ lesson }: PlaylistCardProps) => {
+interface TagProps {
+  tag: string,
+  classes: any
+}
 
+
+const PlaylistCard = (props: PlaylistCardProps) => {
+  const { classes } = props;
+  const lesson = props.lesson;
   return (
-    <Card>
-      <h3>{lesson.title}</h3>
-      <h5>{} Article(s)</h5>
-      <h5>{} Video(s)</h5>
+    <Card className={classes.card}>
+      <h3 className={classes.title} style={{ textDecoration: 'none' }}>{lesson.title}</h3>
+      <div>
+        {lesson.objectives.map(tag => <Tag classes={classes} tag={tag}/>)}
+      </div>
       <p>{lesson.description}</p>
     </Card>
   );
 }
 
-export default PlaylistCard;
+const Tag = (props: TagProps) => {
+  const { classes } = props;
+
+  return (
+  <div className={classes.lightsTag}>{props.tag}</div>
+  );
+}
+
+export default withStyles(styles)(PlaylistCard);
+
