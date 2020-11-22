@@ -1,23 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import DownloadButton from '../DownloadButton';
+import DownloadButton from './DownloadButton';
 import FavoriteButton from '../Favorites/FavoriteButton';
 import Label from '../Label'
 import { get } from 'idb-keyval';
-import { videoStore } from '../../index'
+import { videoStore, platform } from '../../index'
 import { Resource, VideoData, isVideo } from '../../store/resourcesSlice'
 import ReactPlayer from 'react-player'
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './VideoStyles';
 import { getId, arrayBufferToBlob } from './VideoFunctions'
-
 import { useDispatch } from 'react-redux';
 import { setResourceIsCached } from '../../store/resourcesSlice';
+
 type VideoProps = {
   resId: number,
   videoDetails: Resource,
   videoData: VideoData
   classes: any;
-
 }
 
 const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
@@ -46,7 +45,10 @@ const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
       if (videoDetails.isCached) {
         get(resId, videoStore).then(videoBlob => {
           if (videoBlob !== undefined) {
-            setVideoUrl(URL.createObjectURL(arrayBufferToBlob(videoBlob, "video/mp4")))
+            if (platform != "Android") {
+              videoBlob = arrayBufferToBlob(videoBlob, "video/mp4")
+            }
+            setVideoUrl(URL.createObjectURL(videoBlob))
           } else {
             console.log("Error in loading cached video - missing video entry");
             dispatch(setResourceIsCached({

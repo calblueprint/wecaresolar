@@ -1,12 +1,12 @@
 import React from 'react';
 import { set } from 'idb-keyval';
 import GetAppIcon from '@material-ui/icons/GetApp';
-import { VideoData } from '../store/resourcesSlice'
-import { videoStore } from '../index'
+import { VideoData } from '../../store/resourcesSlice'
+import { videoStore, platform } from '../../index'
 import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
-import { setResourceIsCached } from '../store/resourcesSlice';
-import { blobToArrayBuffer } from './Video/VideoFunctions'
+import { setResourceIsCached } from '../../store/resourcesSlice';
+import { blobToArrayBuffer } from './VideoFunctions'
 
 type DownloadButtonProps = {
   id: number,
@@ -20,9 +20,12 @@ const DownloadButton = ({ id, videoData }: DownloadButtonProps) => {
     let downloadUrl = videoData.downloadUrl
     if (downloadUrl) {
       let blob = await fetch(downloadUrl).then(res => res.blob())
-      let arrayBuffer = await blobToArrayBuffer(blob)
-
-      set(resId, arrayBuffer, videoStore).then(() => console.log(arrayBuffer))
+      let arraybuffer;
+      if (platform != "Android") {
+        arraybuffer = await blobToArrayBuffer(blob)
+        blob = arraybuffer;
+      }
+      set(resId, blob, videoStore).then(() => console.log(blob))
         .then(() => dispatch(setResourceIsCached({
           id: resId,
           isCached: true,
