@@ -18,12 +18,12 @@ const TroubleShootCard = ({ helpId }: TroubleShootProps) => {
         {Object.keys(options).map((option) => {
           if (option == "error_code") {
           } else {
-            console.log('/Troubleshoot/' + options[option])
             return <Link to={'/Troubleshoot/' + options[option]}><button>{option}</button></Link>
           }
         })}
-        {options['parent'] ? <Link to={'/Troubleshoot/' + options['parent']}>Back</Link> : <span />}
-      </div>
+        {help['parent'] ? <Link to={'/Troubleshoot/' + help['parent']}><button>Back</button></Link> : <span />
+        }
+      </div >
     )
   }
   return (
