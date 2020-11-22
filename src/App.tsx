@@ -37,10 +37,14 @@ function App() {
             } />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/guides" component={Guides} />
-          <Route path={"/guides/:lessonId"}
+          <Route path={"/guides/lesson/:lessonId"}
             render={props =>
               <PlaylistPage lessonId={props.match.params.lessonId} />
             } />
+          <Route path={"/guides/topic/:topicId"}
+            render={props =>
+              <TopicViews topicId={props.match.params.topicId}/>
+            }/>
           <Route path="/troubleshoot" component={Troubleshoot} />
         </Switch>
       </div>

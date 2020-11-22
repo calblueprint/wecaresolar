@@ -12,7 +12,7 @@ interface TopicViewProps {
 function TopicViews( { topicId }: TopicViewProps) {
   const currentTopic = useSelector((state: RootState) => state.topics[topicId]);
   const name = currentTopic.name;
-
+  console.log('the', topicId)
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
       .filter(
