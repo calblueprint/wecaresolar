@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Offline } from 'react-detect-offline';
 import AppBar from '@material-ui/core/AppBar';
+import Chip from '@material-ui/core/Chip';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import BackIcon from '@material-ui/icons/ArrowBackIos';
@@ -10,6 +11,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchBarStyles';
 import { useHistory } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
+import SearchList from './SearchList';
 
 type SearchProps = {
   classes: any;
@@ -17,8 +19,13 @@ type SearchProps = {
 
 const SearchAppBar = (props: SearchProps) => {
   const { classes } = props;
-  const history = useHistory(); 
+  const history = useHistory();
   const location = useLocation();
+
+  const [query, setQuery] = useState('');
+  const [video, setVideo] = useState(false);
+  const [article, setArticle] = useState(false);
+  const [playlist, setPlaylist] = useState(false);
 
   const hideBackButton = ["/Guides", "/Troubleshoot", "/Favorites", "/Suitcase"].includes(location.pathname); 
 
@@ -38,13 +45,37 @@ const SearchAppBar = (props: SearchProps) => {
                 input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(event) => setQuery(event.target.value)}
             />
           </div>
           <Offline>
             <WifiIcon />
           </Offline>
         </Toolbar>
+        {query && (
+          <div className={classes.buttons}>
+            <Chip label="Video" clickable onClick={() => setVideo(!video)} />
+            <Chip
+              label="Article"
+              clickable
+              onClick={() => setArticle(!article)}
+            />
+            <Chip
+              label="Playlist"
+              clickable
+              onClick={() => setPlaylist(!playlist)}
+            />
+          </div>
+        )}
       </AppBar>
+      {query && (
+        <SearchList
+          video={video}
+          article={article}
+          playlist={playlist}
+          query={query}
+        />
+      )}
     </div>
   );
 };

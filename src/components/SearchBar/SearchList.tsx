@@ -1,9 +1,9 @@
 import React from 'react';
 import Fuse from 'fuse.js';
 import { useSelector } from 'react-redux';
-import { Resource } from '../store/resourcesSlice';
-import PreviewCard from './PreviewCard';
-import { RootState } from '../store/reducers';
+import { Resource } from '../../store/resourcesSlice';
+import PreviewCard from '../PreviewCard';
+import { RootState } from '../../store/reducers';
 
 
 function SearchList(props) {

@@ -28,6 +28,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   23: {
+    id: 23,
     type: 'Article',
     title: 'TROUBLED FETAL',
     tags: ['Fetal Doppler', 'Troubleshooting'],
@@ -41,6 +42,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   25: {
+    id: 25,
     type: 'Article',
     title: 'Doppler 101',
     tags: ['Fetal Doppler', 'Setup'],
@@ -54,6 +56,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   27: {
+    id: 27,
     type: 'Video',
     title: 'How to Batter Up Charger',
     tags: ['Battery Charger', 'Set Up'],
@@ -69,6 +72,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   31: {
+    id: 31,
     type: 'Article',
     title: 'COMBUSTED BATTERIES',
     tags: ['Battery Charger', 'Troubleshooting'],
@@ -82,6 +86,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   35: {
+    id: 35,
     type: 'Video',
     title: 'Doppler Video Fix',
     tags: ['Fetal Doppler', 'Troubleshooting'],
@@ -95,6 +100,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true
   },
   42: {
+    id: 42,
     type: 'Article',
     title: 'Doppler Article',
     tags: ['Fetal Doppler'],
