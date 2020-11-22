@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './PlaylistStyles';
-import FILE from '../../assets/icons/file.svg';
-import YOUTUBE from '../../assets/icons/youtube.svg';
 
 interface PlaylistCardProps {
   lesson: Lesson;
@@ -31,9 +29,9 @@ const PlaylistCard = (props: PlaylistCardProps) => {
 
   return (
     <Card className={classes.card}>
-      <h3 className={classes.title} style={{ textDecoration: 'none' }}>
+      <h2 className={classes.title}>
         {lesson.title}
-      </h3>
+      </h2>
       <div className={classes.spread}>
         <div className={classes.column}>
           {lesson.objectives.map((tag) => (
