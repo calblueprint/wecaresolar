@@ -83,38 +83,38 @@ const theme  = createMuiTheme({
         main: "#B99291",
       },
       //applicances 
-        main: {
-          main: '#F6DBB7',
-          dark: '4F2A1D'
-        },
-        general: { 
-          main: '#F7F4F3',
-          dark: '#231F20'
-        }, 
-        suitcase: {
-          main: '#9FB8D8', 
-          dark: '#2A5375'
-        }, 
-        lights: {
-          main: '#FCEBD5',
-          dark: '#DBB079'
-        }, 
-        fetaldoppler: {
-          main: '#777CA6',
-          dark: '#4B5288'
-        },
-        headlamp: {
-          main: '#D49BA9',
-          dark: '#C0677D'
-        },
-        charger: {
-          main: '#DBE2E7',
-          dark: '#4D6A6D'
-        },
-        phonecharger: {
-          main: '#E4CDC7',
-          dark: '#BD9084'
-        },
+      main: {
+        main: '#F6DBB7',
+        dark: '4F2A1D'
+      },
+      general: { 
+        main: '#F7F4F3',
+        dark: '#231F20'
+      }, 
+      suitcase: {
+        main: '#9FB8D8', 
+        dark: '#2A5375'
+      }, 
+      lights: {
+        main: '#FCEBD5',
+        dark: '#DBB079'
+      }, 
+      fetaldoppler: {
+        main: '#777CA6',
+        dark: '#4B5288'
+      },
+      headlamp: {
+        main: '#D49BA9',
+        dark: '#C0677D'
+      },
+      charger: {
+        main: '#DBE2E7',
+        dark: '#4D6A6D'
+      },
+      phonecharger: {
+        main: '#E4CDC7',
+        dark: '#BD9084'
+      },
     }
 })
 
