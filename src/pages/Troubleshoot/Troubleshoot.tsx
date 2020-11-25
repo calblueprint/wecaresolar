@@ -8,7 +8,6 @@ function TroubleShoot({ match }) {
 
   return (
     <div>
-      <h1>placeholder padding</h1>
       <h1>Troubleshoot</h1>
       <TroubleShootCard helpId={"404_ERROR"} />
     </div>);
