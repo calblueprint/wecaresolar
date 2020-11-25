@@ -1,19 +1,16 @@
 import { createStyles, Theme, fade } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
-    overrides: {
-      AppBar: {
-        color: {
-          default: theme.palette.background.default,
-          background: theme.palette.background.default
-        }
-      }
+    bar: {
+      color: theme.palette.background.default,
+      backgroundColor: theme.palette.background.default,
+      boxShadow: 'none'
     },
     root: {
       flexGrow: 1,
       width: '100%',
       top: 0,
-      margin: 100,
+ 
       color: theme.palette.background.default,
       backgroundColor: theme.palette.background.default
     },
@@ -22,7 +19,7 @@ export const styles = (theme: Theme) =>
       borderRadius: 9,
       backgroundColor: theme.palette.yellow.main,
       width: '100%',
-      margin: '12px 24px',
+      margin: '12px 24px'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),

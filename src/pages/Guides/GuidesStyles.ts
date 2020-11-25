@@ -2,7 +2,7 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     root: {
-      paddingLeft: 27,
+      paddingLeft: 27
     },
     header: {
       display: 'flex',
@@ -25,5 +25,9 @@ export const styles = (theme: Theme) =>
     },
     title: {
       fontSize: 24
+    },
+    bottomPad: {
+      paddingBottom: 100
     }
+
   });
