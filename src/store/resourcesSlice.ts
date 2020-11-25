@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { INITIAL_RESOURCES } from './initialStates';
+// import { INITIAL_RESOURCES } from './initialStates';
 import { RootState } from './reducers';
 import { refreshValues } from './reduxUtils';
 
@@ -54,7 +54,8 @@ type ResourceIsFavoritedPayload = {
 
 export const resourcesSlice = createSlice({
   name: 'resources',
-  initialState: INITIAL_RESOURCES,
+  // initialState: INITIAL_RESOURCES,
+  initialState: {},
   reducers: {
     refreshResources(state, action: PayloadAction<ResourcesSlice>) {
       refreshValues(state, action.payload, DEFAULT_FIELDS);

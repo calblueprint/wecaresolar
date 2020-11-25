@@ -1,5 +1,5 @@
 import { db } from '../index';
-import store from './reducers';
+import { store } from './reducers';
 import { refreshResources } from './resourcesSlice';
 import { refreshLessons } from './lessonsSlice';
 import { onFetchResult } from './metadataSlice';
@@ -20,7 +20,6 @@ const loadCollection = async (
     const querySnapshot = await db.collection(collectionName).get();
     const docs = {};
     querySnapshot.forEach(doc => {
-      console.log(doc.id, '=>', doc.data());
       docs[doc.id] = postprocess(doc.data());
     });
     store.dispatch(updateActionCreator(docs));
@@ -33,7 +32,7 @@ const loadCollection = async (
   }
 };
 
-export const loadInitialState = async () => {
+export const loadInitialState = async (): Promise<FetchStatus> => {
   const loadedResources: FetchStatus = await loadCollection(
     'resources',
     refreshResources
@@ -62,4 +61,6 @@ export const loadInitialState = async () => {
   console.log(`Loaded resources: ${loadedResources}`);
   console.log(`Loaded lessons: ${loadedLessons}`);
   console.log(`Overall fetch status: ${overallStatus}`);
+
+  return overallStatus;
 };

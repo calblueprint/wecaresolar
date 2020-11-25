@@ -21,7 +21,7 @@ function Guides(props: GuidesProps) {
       <h1>Playlists</h1>
       <div className={classes.playlistScroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link to={`${props.match.url}/${key}`}>
+          <Link key={key} to={`${props.match.url}/${key}`}>
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>

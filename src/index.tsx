@@ -48,7 +48,6 @@ ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <App />
-        <button onClick={() => loadInitialState()}>LOAD INITIAL STATE</button>
       </PersistGate>
     </Provider>
   </React.StrictMode>,

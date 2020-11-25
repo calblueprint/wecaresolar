@@ -1,5 +1,5 @@
 import React from 'react';
-import { Offline } from 'react-detect-offline';
+import { Online, Offline } from 'react-detect-offline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
@@ -10,6 +10,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchBarStyles';
 import { useHistory } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
+import RefreshButton from '../RefreshButton';
+import { loadInitialState } from '../../store/loadInitialState';
 
 type SearchProps = {
   classes: any;
@@ -40,6 +42,9 @@ const SearchAppBar = (props: SearchProps) => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          <Online>
+            <RefreshButton fetch={() => loadInitialState()} />
+          </Online>
           <Offline>
             <WifiIcon />
           </Offline>
