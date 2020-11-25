@@ -1,7 +1,7 @@
 import { db } from '../index';
 import store from './reducers';
-import { updateResources } from './resourcesSlice';
-import { updateLessons } from './lessonsSlice';
+import { refreshResources } from './resourcesSlice';
+import { refreshLessons } from './lessonsSlice';
 import { onFetchResult } from './metadataSlice';
 import { ActionCreator } from 'redux';
 
@@ -32,13 +32,14 @@ const loadCollection = async (
 };
 
 export const loadInitialState = async () => {
-  const loadedResources: FetchStatus = await loadCollection("resources", updateResources);
+  const loadedResources: FetchStatus = await loadCollection("resources", refreshResources);
 
   // Lessons should not be loaded unless resources were loaded successfully
   // (otherwise they might refer to resource IDs that don't exist locally)
   const loadedLessons: FetchStatus = (loadedResources === FetchStatus.Failure ? FetchStatus.Failure :
-    await loadCollection("lessons", updateLessons, (lesson) => {
+    await loadCollection("lessons", refreshLessons, (lesson) => {
       // Convert resource IDs on each lesson to their string representations
+      // before storing in Redux.
       return {
         ...lesson,
         resourceIDs: lesson.resourceIDs.map(resourceID => resourceID.id),

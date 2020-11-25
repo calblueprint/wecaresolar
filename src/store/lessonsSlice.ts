@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { INITIAL_LESSONS } from './initialStates';
-import { updateValues } from './reduxUtils';
+import { refreshValues } from './reduxUtils';
 
 export type LessonsSlice = {
   [key: string]: Lesson;
@@ -18,19 +18,24 @@ const DEFAULT_FIELDS = {
   isFinished: false,
 };
 
+type LessonIsFinishedPayload = {
+  id: string;
+  isFinished: boolean;
+}
+
 export const lessonsSlice = createSlice({
   name: 'lessons',
   initialState: INITIAL_LESSONS,
   reducers: {
-    updateLessons(state, action) {
-      updateValues(state, action.payload, DEFAULT_FIELDS);
+    refreshLessons(state, action: PayloadAction<LessonsSlice>) {
+      refreshValues(state, action.payload, DEFAULT_FIELDS);
     },
-    setLessonIsFinished(state, action) {
+    setLessonIsFinished(state, action: PayloadAction<LessonIsFinishedPayload>) {
       const { id, isFinished } = action.payload;
       state[id].isFinished = isFinished;
-    }
+    },
   }
 });
 
-export const { updateLessons, setLessonIsFinished } = lessonsSlice.actions;
+export const { refreshLessons, setLessonIsFinished } = lessonsSlice.actions;
 export default lessonsSlice.reducer;
