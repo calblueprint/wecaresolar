@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 
 import resourcesReducer from './resourcesSlice';
 import lessonsReducer from './lessonsSlice';
+import topicsReducer from './topicsSlice';
 import metadataReducer from './metadataSlice';
 
 const persistedReducer = persistReducer(
@@ -11,6 +12,7 @@ const persistedReducer = persistReducer(
   combineReducers({
     resources: resourcesReducer,
     lessons: lessonsReducer,
+    topics: topicsReducer,
     metadata: metadataReducer
   })
 );
