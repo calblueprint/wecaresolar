@@ -4,7 +4,8 @@ import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import store from './store/reducers';
+import { store, persistor } from './store/reducers';
+import { PersistGate } from 'redux-persist/integration/react'
 
 import firebase from 'firebase/app';
 import 'firebase/messaging';
@@ -45,8 +46,10 @@ loadInitialState();
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
-      <button onClick={() => loadInitialState()}>LOAD INITIAL STATE</button>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+        <button onClick={() => loadInitialState()}>LOAD INITIAL STATE</button>
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
