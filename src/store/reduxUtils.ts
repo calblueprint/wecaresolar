@@ -2,10 +2,10 @@ import { merge } from 'lodash';
 
 export const refreshValues = (state, newVals, defaultFields = {}) => {
   /**
-   * Refreshes the values in a specified slice of the Redux store by deep merging
-   * the old state (`state`) and the new one (`newVals`). This means any entries that
-   * didn't exist previously get added, and entries that already existed get updated
-   * (but not completely overwritten).
+   * Refreshes the values in a specified slice of the Redux store by updating
+   * the old state (`state`) with the new one (`newVals`). This means any entries that
+   * didn't exist previously get added, any entries that already existed get updated
+   * (but not completely overwritten), and any entries that don't exist on `newVals` get removed.
    *
    * THIS FUNCTION SHOULD ONLY BE CALLED INSIDE OF `createSlice`!!!
    * It mutates `state` directly, which only works if Immer is enabled because we
@@ -23,6 +23,12 @@ export const refreshValues = (state, newVals, defaultFields = {}) => {
       };
     } else {
       state[id] = merge(state[id], data);
+    }
+  }
+
+  for (const id of Object.keys(state)) {
+    if (!(id in newVals)) {
+      delete state[id];
     }
   }
 };
