@@ -6,7 +6,7 @@ import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 
 
 interface FavoriteButtonProps {
-  id: number;
+  id: string;
   isFavorited: boolean;
 }
 

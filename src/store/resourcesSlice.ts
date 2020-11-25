@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { INITIAL_RESOURCES } from './initialStates';
 import { RootState } from './reducers';
+import { updateValues } from './reduxUtils';
 
 export type ResourcesSlice = {
-  [key: number]: Resource;
+  [key: string]: Resource;
 };
 
 export type Resource = {
@@ -30,10 +31,19 @@ export type ArticleData = {
   preview: string;
 };
 
+const DEFAULT_FIELDS = {
+  isCached: false,
+  isFavorited: false,
+  isFinished: false,
+};
+
 export const resourcesSlice = createSlice({
   name: 'resources',
   initialState: INITIAL_RESOURCES,
   reducers: {
+    updateResources(state, action) {
+      updateValues(state, action.payload, DEFAULT_FIELDS);
+    },
     setResourceIsFinished(state, action) {
       const { id, isFinished } = action.payload;
       state[id].isFinished = isFinished;
@@ -59,6 +69,7 @@ export const selectFavoritedResources = (state: RootState) =>
     }, {});
 
 export const {
+  updateResources,
   setResourceIsFinished,
   setResourceIsCached,
   setResourceIsFavorited

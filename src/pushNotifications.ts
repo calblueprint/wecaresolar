@@ -18,33 +18,23 @@
  * upon receiving a push.
  */
 
-import firebase from 'firebase/app';
-import 'firebase/messaging';
+import { messaging } from './index';
 
 const VAPID_KEY =
   'BPAT4hTb8W38zuy-EeGDA9kaGdjWgyBitHYVcy38kPPfB_ladS7pxzksyUgXKEMevOj0_fWuXzgjiTpjGaS6MpQ';
 
-firebase.initializeApp({
-  apiKey: 'AIzaSyARYFXy3DySHolS6t8fL0UsgfyTky_eTXA',
-  authDomain: 'we-care-solar-c3e5f.firebaseapp.com',
-  databaseURL: 'https://we-care-solar-c3e5f.firebaseio.com',
-  projectId: 'we-care-solar-c3e5f',
-  storageBucket: 'we-care-solar-c3e5f.appspot.com',
-  messagingSenderId: '963041613875',
-  appId: '1:963041613875:web:96e9b6562a9a7c4cd76b46',
-  measurementId: 'G-N48ZSWDGHL'
-});
-const messaging = firebase.messaging();
-
-// Called when a notification is received while the app is in the foreground,
-// or the user clicks on a notification that was sent while in the background
-messaging.onMessage((payload) => {
-  console.log('[firebase-messaging-sw.js] Received message in app ', payload);
-});
+export const initializePushNotifications = () => {
+  // Called when a notification is received while the app is in the foreground,
+  // or the user clicks on a notification that was sent while in the background
+  messaging.onMessage((payload) => {
+    console.log('[firebase-messaging-sw.js] Received message in app ', payload);
+  });
+  retrievePushToken();
+}
 
 // Retrieves the push token for the current user's device.
 // If no token exists, will request push permission first, then automatically call this function again.
-export const retrievePushToken = () => {
+const retrievePushToken = () => {
   console.log('Attempting to retrieve push token...');
   messaging
     .getToken({ vapidKey: VAPID_KEY })

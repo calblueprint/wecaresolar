@@ -9,7 +9,7 @@ import { styles } from './PreviewCardStyles';
 
 interface PreviewCardProps {
     resource: Resource,
-    resourceID: number
+    resourceID: string
     classes: any
 }
 

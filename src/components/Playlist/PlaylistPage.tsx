@@ -21,7 +21,7 @@ const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
         {currentLesson.objectives.map((item) => <li>item</li>)}
       </ul>
       <h3>Content</h3>
-      {currentLesson.resourceIds.map((id) => {
+      {currentLesson.resourceIDs.map((id) => {
         if (id in resources) {
           return < PreviewCard resource={resources[id]} resourceID={id} />
         } else {
