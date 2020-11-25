@@ -26,11 +26,11 @@ const VAPID_KEY =
 export const initializePushNotifications = () => {
   // Called when a notification is received while the app is in the foreground,
   // or the user clicks on a notification that was sent while in the background
-  messaging.onMessage((payload) => {
+  messaging.onMessage(payload => {
     console.log('[firebase-messaging-sw.js] Received message in app ', payload);
   });
   retrievePushToken();
-}
+};
 
 // Retrieves the push token for the current user's device.
 // If no token exists, will request push permission first, then automatically call this function again.
@@ -38,7 +38,7 @@ const retrievePushToken = () => {
   console.log('Attempting to retrieve push token...');
   messaging
     .getToken({ vapidKey: VAPID_KEY })
-    .then((currentToken) => {
+    .then(currentToken => {
       if (currentToken) {
         console.log('Token exists:', currentToken);
         sendTokenToServer(currentToken);
@@ -52,7 +52,7 @@ const retrievePushToken = () => {
         setTokenSentToServer(false);
       }
     })
-    .catch((err) => {
+    .catch(err => {
       console.log('An error occurred while retrieving token. ', err);
       setTokenSentToServer(false);
     });
@@ -68,7 +68,7 @@ const requestPushPermission = () => {
       'Previously denied push permissions. Cannot send notifications!'
     );
   } else {
-    Notification.requestPermission().then((permission) => {
+    Notification.requestPermission().then(permission => {
       if (permission === 'granted') {
         console.log('Notification permission granted.');
         retrievePushToken();
@@ -82,7 +82,7 @@ const requestPushPermission = () => {
 // Send the registration token your application server, so that it can:
 // - send messages back to this app
 // - subscribe/unsubscribe the token from topics
-const sendTokenToServer = (currentToken) => {
+const sendTokenToServer = currentToken => {
   if (!isTokenSentToServer()) {
     console.log('Sending token to server...');
     // TODO: save this to the user in firebase. For now, we're just storing it locally
@@ -99,6 +99,6 @@ const sendTokenToServer = (currentToken) => {
 const isTokenSentToServer = () => {
   return window.localStorage.getItem('pushTokenSentToServer') === '1';
 };
-const setTokenSentToServer = (sent) => {
+const setTokenSentToServer = sent => {
   window.localStorage.setItem('pushTokenSentToServer', sent ? '1' : '0');
 };

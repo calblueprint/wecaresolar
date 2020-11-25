@@ -34,7 +34,7 @@ export type ArticleData = {
 const DEFAULT_FIELDS = {
   isCached: false,
   isFavorited: false,
-  isFinished: false,
+  isFinished: false
 };
 
 type ResourceIsFinishedPayload = {
@@ -59,7 +59,10 @@ export const resourcesSlice = createSlice({
     refreshResources(state, action: PayloadAction<ResourcesSlice>) {
       refreshValues(state, action.payload, DEFAULT_FIELDS);
     },
-    setResourceIsFinished(state, action: PayloadAction<ResourceIsFinishedPayload>) {
+    setResourceIsFinished(
+      state,
+      action: PayloadAction<ResourceIsFinishedPayload>
+    ) {
       const { id, isFinished } = action.payload;
       state[id].isFinished = isFinished;
     },
@@ -67,7 +70,10 @@ export const resourcesSlice = createSlice({
       const { id, isCached } = action.payload;
       state[id].isCached = isCached;
     },
-    setResourceIsFavorited(state, action: PayloadAction<ResourceIsFavoritedPayload>) {
+    setResourceIsFavorited(
+      state,
+      action: PayloadAction<ResourceIsFavoritedPayload>
+    ) {
       const { id, isFavorited } = action.payload;
       state[id].isFavorited = isFavorited;
     }
@@ -76,7 +82,7 @@ export const resourcesSlice = createSlice({
 
 export const selectFavoritedResources = (state: RootState) =>
   Object.keys(state.resources)
-    .filter((id) => state.resources[id].isFavorited)
+    .filter(id => state.resources[id].isFavorited)
     .reduce<ResourcesSlice>((res, key) => {
       res[key] = state.resources[key];
       return res;

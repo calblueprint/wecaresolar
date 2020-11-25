@@ -15,13 +15,13 @@ export type Lesson = {
 };
 
 const DEFAULT_FIELDS = {
-  isFinished: false,
+  isFinished: false
 };
 
 type LessonIsFinishedPayload = {
   id: string;
   isFinished: boolean;
-}
+};
 
 export const lessonsSlice = createSlice({
   name: 'lessons',
@@ -33,7 +33,7 @@ export const lessonsSlice = createSlice({
     setLessonIsFinished(state, action: PayloadAction<LessonIsFinishedPayload>) {
       const { id, isFinished } = action.payload;
       state[id].isFinished = isFinished;
-    },
+    }
   }
 });
 
