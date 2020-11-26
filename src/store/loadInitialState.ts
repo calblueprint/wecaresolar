@@ -7,10 +7,22 @@ import { onFetchResult } from './metadataSlice';
 import { ActionCreator } from 'redux';
 
 export enum FetchStatus {
-  SuccessFromServer = 0,
-  SuccessFromCache,
-  Failure
+  SuccessFromServer = 'SUCCESS_FROM_SERVER',
+  SuccessFromCache = 'SUCCESS_FROM_CACHE',
+  Failure = 'FAILURE'
 }
+
+const fetchStatusToNum: Record<FetchStatus, number> = {
+  [FetchStatus.SuccessFromServer]: 0,
+  [FetchStatus.SuccessFromCache]: 1,
+  [FetchStatus.Failure]: 2
+};
+
+const numToFetchStatus: Record<number, FetchStatus> = {
+  0: FetchStatus.SuccessFromServer,
+  1: FetchStatus.SuccessFromCache,
+  2: FetchStatus.Failure
+};
 
 /**
  * Helper function to retrieve all the contents of a collection in Cloud Firestore.
@@ -81,11 +93,14 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   // Overall status is the *most pessimistic possible status* from all of the attempted requests.
   // For example, if 4 requests succeeded from server but 1 was retrieved from cache, overallStatus is "SuccessFromCache".
   // If even one of the requests failed, overallStatus is "Failure".
-  const overallStatus: FetchStatus = Math.min(
+
+  const statusNums: number[] = [
     loadedResources,
     loadedLessons,
     loadedTopics
-  );
+  ].map(status => fetchStatusToNum[status]);
+  const overallStatus: FetchStatus = numToFetchStatus[Math.min(...statusNums)];
+
   store.dispatch(onFetchResult(overallStatus));
 
   console.log(`Loaded resources: ${loadedResources}`);
