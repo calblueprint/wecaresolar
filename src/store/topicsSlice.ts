@@ -1,5 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { INITIAL_TOPICS } from './initialStates';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// import { INITIAL_TOPICS } from './initialStates';
+import { refreshValues } from './reduxUtils';
 
 export type TopicsSlice = {
   [key: number]: Topic;
@@ -11,10 +12,18 @@ export type Topic = {
   imageUrl: string;
 };
 
+const DEFAULT_FIELDS = {};
+
 export const topicsSlice = createSlice({
   name: 'topics',
-  initialState: INITIAL_TOPICS,
-  reducers: {}
+  // initialState: INITIAL_TOPICS,
+  initialState: {},
+  reducers: {
+    refreshTopics(state, action: PayloadAction<TopicsSlice>) {
+      refreshValues(state, action.payload, DEFAULT_FIELDS);
+    }
+  }
 });
 
+export const { refreshTopics } = topicsSlice.actions;
 export default topicsSlice.reducer;

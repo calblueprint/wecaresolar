@@ -2,6 +2,7 @@ import { db } from '../index';
 import { store } from './reducers';
 import { refreshResources } from './resourcesSlice';
 import { refreshLessons } from './lessonsSlice';
+import { refreshTopics } from './topicsSlice';
 import { onFetchResult } from './metadataSlice';
 import { ActionCreator } from 'redux';
 
@@ -13,11 +14,11 @@ export enum FetchStatus {
 
 /**
  * Helper function to retrieve all the contents of a collection in Cloud Firestore.
- * 
+ *
  * @param collectionName        - The name of the collection in Cloud Firestore
  * @param updateActionCreator   - Action creator for the desired Redux action to dispatch once data is received
  * @param postprocess           - (Optional) Postprocessing function for each individual document in the collection
- * 
+ *
  * @returns A FetchStatus value indicating whether the request succeeded (from the server or cache) or failed.
  */
 const loadCollection = async (
@@ -43,11 +44,11 @@ const loadCollection = async (
 
 /**
  * Loads the initial state from Cloud Firestore and stores it into Redux.
- * 
+ *
  * Currently, this includes:
  * - Lessons (TODO change to Playlists!!!!! pls)
  * - Resources
- * 
+ *
  * @returns A FetchStatus value indicating whether the request succeeded (from the server or cache) or failed.
  * IMPORTANT: Since we're loading multiple things here, this is the most pessimistic value – e.g. if all
  * but one of the requests succeeds, we still have to consider it a failure.
@@ -72,14 +73,24 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
           };
         });
 
+  const loadedTopics: FetchStatus = await loadCollection(
+    'topics',
+    refreshTopics
+  );
+
   // Overall status is the *most pessimistic possible status* from all of the attempted requests.
   // For example, if 4 requests succeeded from server but 1 was retrieved from cache, overallStatus is "SuccessFromCache".
   // If even one of the requests failed, overallStatus is "Failure".
-  const overallStatus: FetchStatus = Math.min(loadedResources, loadedLessons);
+  const overallStatus: FetchStatus = Math.min(
+    loadedResources,
+    loadedLessons,
+    loadedTopics
+  );
   store.dispatch(onFetchResult(overallStatus));
 
   console.log(`Loaded resources: ${loadedResources}`);
   console.log(`Loaded lessons: ${loadedLessons}`);
+  console.log(`Loaded topics: ${loadedTopics}`);
   console.log(`Overall fetch status: ${overallStatus}`);
 
   return overallStatus;
