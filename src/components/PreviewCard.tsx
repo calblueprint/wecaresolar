@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
 interface PlaylistCardProps {
   resource: Resource;
-  resourceID: number;
+  resourceID: string;
 }
 
 const PlaylistCard = (props: PlaylistCardProps) => {
