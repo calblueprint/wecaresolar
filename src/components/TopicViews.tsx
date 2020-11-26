@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import PreviewCard from './PreviewCard';
+import PreviewCard from './Cards/PreviewCard';
 import { RootState } from '../store/reducers';
 import { ResourcesSlice } from '../store/resourcesSlice';
 import TopicHeader from './TopicHeader';

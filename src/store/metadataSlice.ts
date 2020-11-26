@@ -6,10 +6,10 @@ export type MetadataSlice = {
   lastRefreshStatus: FetchStatus;
 };
 
-const INITIAL_METADATA: MetadataSlice = {
+const INITIAL_METADATA = {
   lastServerRefreshTime: 0,
-  lastRefreshStatus: 1
-};
+  lastRefreshStatus: 'FAILURE',
+}
 
 export const metadataSlice = createSlice({
   name: 'metadata',
