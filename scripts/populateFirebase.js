@@ -106,7 +106,7 @@ const processLessons = (record) => {
   const title = record.get('Title');
   const description = record.get('Description');
   const objectives = record.get('Objectives').split('\n').map(objective => objective.substring(2))
-  const resourceIDs = record.get('Resource Titles');
+  const resourceIDs = record.get('Resource Titles').map(title => db.collection('resources').doc(title));
   return {
     title,
     description,
