@@ -15,6 +15,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-router-dom": "^5.1.6",
     "firebase": "^8.0.0",
+    "fuse.js": "^6.4.3",
     "react": "^16.13.1",
     "react-detect-offline": "^2.4.0",
     "react-dom": "^16.13.1",
