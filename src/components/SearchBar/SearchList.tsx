@@ -21,9 +21,11 @@ function SearchList(props) {
   }
   const fuse = new Fuse(resources, options);
   const results = fuse.search(props.query);
+
   return (
-    <div>
-      {results.map((resource: any) => {
+    <div style={{paddingTop: 100}}>
+      {results.length <= 0 && <div>No Results Found</div>}
+      {results.length > 0 && results.map((resource: any) => {
         return <PreviewCard resource={resource.item} resourceID={resource.item.id} /> 
       })}
     </div>
