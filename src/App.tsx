@@ -38,7 +38,10 @@ import PlaylistCard from './components/PlaylistCard';
 import { favoritedResource } from './components/PlaylistCard';
 
 
+<<<<<<< .merge_file_pZpCCK
 >>>>>>> .merge_file_43S2hq
+=======
+>>>>>>> .merge_file_vpB3ej
 
 function App() {
   const classes = useStyles();
