@@ -38,7 +38,8 @@ export const INITIAL_HELP: HelpSlice = {
 };
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
-  1: {
+  17: {
+    title: 'How to use the Fetal Doppler',
     type: 'Video',
     title: 'irure nisi enim Lorem non',
     tags: ['mollit'],
@@ -95,7 +96,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCached: false, // QUESTION: allow caching text resources?
     isFavorited: true
   },
-  31: {
+  23: {
+    title: 'Bruh Moment',
     type: 'Article',
     title: 'COMBUSTED BATTERIES',
     tags: ['Battery Charger', 'Troubleshooting'],

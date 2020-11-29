@@ -7,10 +7,11 @@ export type ResourcesSlice = {
 };
 
 export type Resource = {
+  title: string;
   type: string;
   title: string;
   tags: string[];
-  data: VideoData | ArticleData;
+  data: VideoData | ArticleData | any;
   isFinished: boolean;
   isCached: boolean;
   isFavorited: boolean;

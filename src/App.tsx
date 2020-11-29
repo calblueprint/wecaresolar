@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< .merge_file_N5SDHd
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Favorites from './pages/Favorites/Favorites';
 import Guides from './pages/Guides/Guides';
@@ -21,11 +22,29 @@ const useStyles = makeStyles({
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
   }
 });
+=======
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Favorites from './pages/Favorites';
+import Guides from './pages/Guides';
+import Suitcase from './pages/Suitcase';
+import Troubleshoot from './pages/Troubleshoot';
+import TabBar from './components/TabBar'
+import PlaylistCard from './components/PlaylistCard';
+import { favoritedResource } from './components/PlaylistCard';
+
+
+>>>>>>> .merge_file_43S2hq
 
 function App() {
   const classes = useStyles();
 
   return (
+<<<<<<< .merge_file_N5SDHd
     <ThemeProvider theme={theme}>
       <Router>
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -59,6 +78,28 @@ function App() {
         <TabBar />
       </Router>
     </ThemeProvider>
+=======
+    <Router>
+      <PlaylistCard />
+      <div>
+        <Switch>
+          <Route path="/suitcase">
+            <Suitcase />
+          </Route>
+          <Route path="/favorites">
+            <Favorites />
+          </Route>
+          <Route path="/guides">
+            <Guides />
+          </Route>
+          <Route path="/troubleshoot">
+            <Troubleshoot />
+          </Route>
+        </Switch>
+      </div>
+      <TabBar />
+    </Router>
+>>>>>>> .merge_file_43S2hq
   );
 }
 
