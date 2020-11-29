@@ -29,5 +29,4 @@ export const styles = (theme: Theme) =>
     bottomPad: {
       paddingBottom: 100
     }
-
   });
