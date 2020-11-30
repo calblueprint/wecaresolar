@@ -1,9 +1,8 @@
 import { SignalCellularNullTwoTone } from '@material-ui/icons';
 import React from 'react';
 import { ImageMapper, ImageMapperProps, Area, Map} from 'react-image-mapper2';
-import UserManual from "../Images/zoomed.jpg";
-
-var URL = "https://uc691fdfeef65b60eb7fb90adb3a.previews.dropboxusercontent.com/p/thumb/AA9GHu1AwFDMbmRdBDbgqn3dVT-DZ-QLbleObwjS8WboCpyZLDRfvDOlJrXDLQ07A17v8W8cqcnh07kKRkCsfIWxBAmmeRZW9AGH2sqSjJKRNd9EygWoYEWu0wPdhwWs2Iddz6Bpq6diRu0omwFSYOqi8MSwBi1wQiV2G_jja6ZbOeNzhkdmLP67dPiYKvZgMR9AMJzzepsyUtUlAeP3U_frv2uedYDIk2xJ-ja71SsVrCoF3Yz3PkZ7PI1lXvv66mi7Y8gdQdQLTzcnasN5uwoxD0R2F2z-HFF1qJSIpr6UsJwsGDGUSzBedsuM6sGyVCh88xLs23UmMFFt0WhQqiVOSflR7t7TR_EGzNsO7F9v0vd8xR5Vti9Xi_73KMfQ8OE/p.png?fv_content=true&size_mode=5"; 
+import Lights from "../Images/zoomed.jpg";
+import Suitcase from "../Images/Suitcase.jpg"; 
 
 type MyState = { imgURLS: string[], imgINDEX: number, mapOfArea: Map};
 
@@ -11,28 +10,41 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
   constructor(props) {
     super(props); 
 
-    const emptyCoords = null; 
     const blue = "#6BADE8"; 
-    const radius = 10;
+    const radius = 7.5;
 
     this.state={
-      imgURLS: ["https://uc691fdfeef65b60eb7fb90adb3a.previews.dropboxusercontent.com/p/thumb/AA9GHu1AwFDMbmRdBDbgqn3dVT-DZ-QLbleObwjS8WboCpyZLDRfvDOlJrXDLQ07A17v8W8cqcnh07kKRkCsfIWxBAmmeRZW9AGH2sqSjJKRNd9EygWoYEWu0wPdhwWs2Iddz6Bpq6diRu0omwFSYOqi8MSwBi1wQiV2G_jja6ZbOeNzhkdmLP67dPiYKvZgMR9AMJzzepsyUtUlAeP3U_frv2uedYDIk2xJ-ja71SsVrCoF3Yz3PkZ7PI1lXvv66mi7Y8gdQdQLTzcnasN5uwoxD0R2F2z-HFF1qJSIpr6UsJwsGDGUSzBedsuM6sGyVCh88xLs23UmMFFt0WhQqiVOSflR7t7TR_EGzNsO7F9v0vd8xR5Vti9Xi_73KMfQ8OE/p.png?fv_content=true&size_mode=5", 
-                UserManual], 
+      imgURLS: [Suitcase, 
+                Lights], 
       imgINDEX: 0, 
-      mapOfArea: {name: 'Suitcase', areas: [{ name: 'user manual', shape: 'circle', coords: [100, 230, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { name: 'fetal', shape: 'circle', coords: [100, 100, radius], preFillColor: blue, strokeColor: blue }]}
+      //I hate this. I'm so sorry. 
+      mapOfArea: {name: 'Suitcase', areas: [{ id: 1, name: 'lights (left)', shape: 'circle', coords: [150, 60, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 2, name: 'installation sticker', shape: 'circle', coords: [105, 80, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 3, name: 'quick guide', shape: 'circle', coords: [100, 230, radius], preFillColor: blue, strokeColor: blue },
+                                            { id: 4, name: 'fetal doppler', shape: 'circle', coords: [195, 75, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 5, name: 'main power switch', shape: 'circle', coords: [205, 150, radius], preFillColor: blue, strokeColor: blue },
+                                            { id: 6, name: 'headlamps', shape: 'circle', coords: [230, 215, radius], preFillColor: blue, strokeColor: blue },
+                                            { id: 7, name: 'thermometer', shape: 'circle', coords: [265, 265, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 8, name: 'phone pocket', shape: 'circle', coords: [275, 210, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 9, name: 'battery charger', shape: 'circle', coords: [330, 230, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 10, name: '12v sockets', shape: 'circle', coords: [335, 160, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 11, name: 'USB sockets', shape: 'circle', coords: [260, 170, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 12, name: 'light buttons', shape: 'circle', coords: [315, 100, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 13, name: 'side panel', shape: 'circle', coords: [365, 80, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 14, name: 'display screen', shape: 'circle', coords: [240, 90, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 15, name: 'display control buttons', shape: 'circle', coords: [280, 130, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 16, name: 'lights (right)', shape: 'circle', coords: [440, 180, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 17, name: 'light expansion box', shape: 'circle', coords: [420, 280, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { id: 18, name: 'main battery', shape: 'circle', coords: [270, 60, radius], preFillColor: blue, strokeColor: blue }]}
     }
   }
 
-  // getInitialState() {
-	// 	return { hoveredArea: null, moveMsg: null };
-  // }
-  
   enterArea(map) {
-    console.log(map.name);
+    console.log(map);
 		this.setState({
-      imgINDEX: 1,
-    });
+      imgINDEX: 1, //replace with `map.id` later when have all images  
+      mapOfArea: {name: 'Suitcase', areas: []},
+      });
   }
         render() { 
           return  <div>
@@ -40,8 +52,8 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
               active
               src={this.state.imgURLS[this.state.imgINDEX]}
               width={500}
+              height={333}
               map={this.state.mapOfArea}
-              // onLoad={() => this.getInitialState()} //bug: on initial load, buttons don't pop up
               onClick={(map) => this.enterArea(map)} 
            />
       </div>
@@ -49,7 +61,3 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
 }
 
 export default SuitcaseAnimation; 
-
-
-//cannot do state inside functional components
-//can use hooks in functional components
