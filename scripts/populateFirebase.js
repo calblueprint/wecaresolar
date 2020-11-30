@@ -13,6 +13,7 @@ firebase.initializeApp({
   measurementId: 'G-N48ZSWDGHL'
 });
 const db = firebase.firestore();
+const auth = firebase.auth();
 
 // Make sure your Airtable API key is available in the .env file with the following contents:
 // AIRTABLE_API_KEY=<your key here>
@@ -59,7 +60,7 @@ const airtableDidChange = (tableName) => {
         // - Is old and has been modified since the last upload (whether or not it is published)
         if ((lastUploadTime == 'Invalid Date' && record.get('Published')) 
             || lastModifiedTime - lastUploadTime > GRACE_PERIOD * 1000) {
-          console.log("Detected Change:", lastUploadTime, lastModifiedTime, lastModifiedTime - lastUploadTime);
+          console.log(`Detected Change in ${tableName}:`, lastUploadTime, lastModifiedTime, lastModifiedTime - lastUploadTime);
           resolve(true);
         }
       });
@@ -242,10 +243,44 @@ const checkAndUpdate = async (tableName, collectionName, processFn) => {
     console.log(`(SUCCESS) Done making all changes to ${collectionName}!!`);
   }
   else {
-    console.log(`No recent changes to ${collectionName}. Skipping update.`);
+    console.log(`No recent changes to ${tableName}. Skipping update.`);
   }
 }
 
-checkAndUpdate('Resources', 'resources', processResources);
-checkAndUpdate('Playlists', 'lessons', processLessons);
-checkAndUpdate('Topics', 'topics', processTopics);
+(async () => {
+  try {
+    // Make sure the user has admin permissions before making changes to Firestore.
+    // NOTE: this requirement is implemented as a strict rule in Firestore (Cloud Firestore > Rules tab),
+    // so writes will be automatically denied if the user isn't an admin.
+    // The checks in this script are just for convenience so that we don't output a bunch of confusing errors.
+    const [email, password] = [process.env.FIREBASE_EMAIL, process.env.FIREBASE_PASSWORD];
+    await auth.signInWithEmailAndPassword(email, password);
+    const token = auth.currentUser.uid;
+    const response = await db.collection('users').doc(token).get();
+    if (!response.exists) {
+      console.error(`The user ${email} does not have an entry in the 'users' collection of Firestore.`
+        + " They must be added as an Admin in order to make edits.");
+    }
+    else if (!response.data().isAdmin) {
+      console.error(`The user ${email} exists but is not authorized to make edits to Firestore.`);
+    }
+    else {
+      console.log(`Signed in successfully as ${email}. Checking for changes...`);
+
+      // Sync the following Airtable tables with their collections in Firestore
+      await Promise.all([
+        checkAndUpdate('Resources', 'resources', processResources),
+        checkAndUpdate('Playlists', 'lessons', processLessons),
+        checkAndUpdate('Topics', 'topics', processTopics),
+      ]);
+    }
+  }
+  catch (error) {
+    console.error("An error occurred while logging in:", error);
+    return;
+  }
+  finally {
+    process.exit();
+  }
+})();
+
