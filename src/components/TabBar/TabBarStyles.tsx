@@ -8,4 +8,4 @@ export const styles = (theme: Theme) =>
             bottom: 0,
         }
     }
-    );
+);
