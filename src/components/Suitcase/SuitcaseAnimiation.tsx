@@ -20,7 +20,7 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
       //I hate this. I'm so sorry. help me find a better way. 
       mapOfArea: {name: 'Suitcase', areas: [{ _id: '1', name: 'lights (left)', shape: 'circle', coords: [150, 60, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '2', name: 'installation sticker', shape: 'circle', coords: [105, 80, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '3', name: 'quick gu_ide', shape: 'circle', coords: [100, 230, radius], preFillColor: blue, strokeColor: blue },
+                                            { _id: '3', name: 'quick guide', shape: 'circle', coords: [100, 230, radius], preFillColor: blue, strokeColor: blue },
                                             { _id: '4', name: 'fetal doppler', shape: 'circle', coords: [195, 75, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '5', name: 'main power switch', shape: 'circle', coords: [205, 150, radius], preFillColor: blue, strokeColor: blue },
                                             { _id: '6', name: 'headlamps', shape: 'circle', coords: [230, 215, radius], preFillColor: blue, strokeColor: blue },
@@ -30,7 +30,7 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
                                             { _id: '10', name: '12v sockets', shape: 'circle', coords: [335, 160, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '11', name: 'USB sockets', shape: 'circle', coords: [260, 170, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '12', name: 'light buttons', shape: 'circle', coords: [315, 100, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '13', name: 's_ide panel', shape: 'circle', coords: [365, 80, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '13', name: 'side panel', shape: 'circle', coords: [365, 80, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '14', name: 'display screen', shape: 'circle', coords: [240, 90, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '15', name: 'display control buttons', shape: 'circle', coords: [280, 130, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '16', name: 'lights (right)', shape: 'circle', coords: [440, 180, radius], preFillColor: blue, strokeColor: blue }, 
