@@ -39,8 +39,8 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
     }
   }
 
-  enterArea(map) {
-    console.log(map);
+  enterArea(area) {
+    console.log(area);
 		this.setState({
       imgINDEX: 1, //replace with `map.id` later when have all images  
       mapOfArea: {name: 'Suitcase', areas: []},
@@ -54,7 +54,7 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
               width={500}
               height={333}
               map={this.state.mapOfArea}
-              onClick={(map) => this.enterArea(map)} 
+              onClick={(area) => this.enterArea(area)} 
            />
       </div>
     }
