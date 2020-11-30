@@ -1,6 +1,5 @@
-import { SignalCellularNullTwoTone } from '@material-ui/icons';
 import React from 'react';
-import { ImageMapper, ImageMapperProps, Area, Map} from 'react-image-mapper2';
+import { ImageMapper, Map} from 'react-image-mapper2';
 import Lights from "../Images/zoomed.jpg";
 import Suitcase from "../Images/Suitcase.jpg"; 
 
@@ -17,7 +16,7 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
       imgURLS: [Suitcase, 
                 Lights], 
       imgINDEX: 0, 
-      //I hate this. I'm so sorry. 
+      //I hate this. I'm so sorry. help me find a better way. 
       mapOfArea: {name: 'Suitcase', areas: [{ id: 1, name: 'lights (left)', shape: 'circle', coords: [150, 60, radius], preFillColor: blue, strokeColor: blue }, 
                                             { id: 2, name: 'installation sticker', shape: 'circle', coords: [105, 80, radius], preFillColor: blue, strokeColor: blue }, 
                                             { id: 3, name: 'quick guide', shape: 'circle', coords: [100, 230, radius], preFillColor: blue, strokeColor: blue },
