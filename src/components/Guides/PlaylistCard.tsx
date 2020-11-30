@@ -1,4 +1,5 @@
 import React from 'react';
+import Tag from './Tag';
 import { Lesson } from '../../store/lessonsSlice';
 import Card from '@material-ui/core/Card';
 import { useSelector } from 'react-redux';
@@ -8,11 +9,6 @@ import { styles } from './PlaylistStyles';
 
 interface PlaylistCardProps {
   lesson: Lesson;
-  classes: any;
-}
-
-interface TagProps {
-  tag: string;
   classes: any;
 }
 
@@ -51,19 +47,6 @@ const PlaylistCard = (props: PlaylistCardProps) => {
       </div>
     </Card>
   );
-};
-
-const Tag = (props: TagProps) => {
-  const { classes } = props;
-  const category =
-    props.tag === 'Lights'
-      ? classes.lights
-      : props.tag === 'Rechargable Headlamps'
-      ? classes.headlamps
-      : props.tag === 'Suitcase'
-      ? classes.suitcase
-      : classes.defaultTag;
-  return <div className={`${classes.tag} ${category}`}>{props.tag}</div>;
 };
 
 export default withStyles(styles)(PlaylistCard);
