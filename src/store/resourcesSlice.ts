@@ -14,6 +14,7 @@ export type Resource = {
   isFinished: boolean;
   isCached: boolean;
   isFavorited: boolean;
+  isCompleted: boolean;
 };
 
 export type VideoData = {
@@ -53,6 +54,10 @@ export const resourcesSlice = createSlice({
     setResourceIsFavorited(state, action) {
       const { id, isFavorited } = action.payload;
       state[id].isFavorited = isFavorited;
+    },
+    setResourceIsCompleted(state, action) {
+      const { id, isCompleted } = action.payload;
+      state[id].isCompleted = isCompleted;
     }
   }
 });
@@ -69,6 +74,7 @@ export const selectFavoritedResources = (state: RootState) =>
 export const {
   setResourceIsFinished,
   setResourceIsCached,
-  setResourceIsFavorited
+  setResourceIsFavorited,
+  setResourceIsCompleted
 } = resourcesSlice.actions;
 export default resourcesSlice.reducer;
