@@ -5,6 +5,8 @@ import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
+import Video from '../../components/Video/Video'
+import { isVideo } from '../../store/resourcesSlice'
 
 type GuidesProps = {
   classes: any;
@@ -14,8 +16,15 @@ type GuidesProps = {
 
 function Guides(props: GuidesProps) {
   const lessons = useSelector((state: RootState) => state.lessons);
-  const { classes } = props;
+  const resources = useSelector((state: RootState) => state.resources);
 
+  const { classes } = props;
+  function playvideo(index) {
+    let resource = resources[index]
+    if (isVideo(resource.data)) {
+      return <Video resId={index} videoDetails={resource} videoData={resource.data} />
+    }
+  }
   return (
     <div>
       <h1>Playlists</h1>
@@ -27,6 +36,9 @@ function Guides(props: GuidesProps) {
             </div>
           </Link>
         ))}
+      </div>
+      <div>
+        {playvideo(1)}
       </div>
     </div>
 
