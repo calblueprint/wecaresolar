@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaylistCard from '../../components/Playlist/PlaylistCard';
-import TopicCard from '../../components/Topics/TopicCard';
+import TopicCard from '../../components/Cards/TopicCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
@@ -19,19 +19,26 @@ function Guides(props: GuidesProps) {
   const { classes } = props;
 
   return (
-    <div>
-      <h1>Playlists</h1>
-      <div className={classes.playlistScroll}>
+    <div className={classes.root}>
+      <div className={classes.header}>
+        <div className={classes.title}>Playlists</div>
+        <a>See All</a>
+      </div>
+      <div className={classes.scroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link to={`${props.match.url}/lesson/${key}`}>
-            <div className={classes.playlistCard}>
-              <PlaylistCard lesson={lessons[key]} />
-            </div>
-          </Link>
+          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
+          <div className={classes.playlistCard}>
+            <PlaylistCard lesson={lessons[key]} />
+          </div>
+        </Link>
         ))}
       </div>
-      <h1>Topics</h1>
-      <div className={classes.topicScroll}>
+      
+      <div className={classes.header}>
+        <div className={classes.title}>Topics</div>
+        <a>See All</a>
+      </div>
+      <div className={classes.scroll}>
         {Object.keys(topics).map((key: any) => (
           <Link to={`${props.match.url}/topic/${key}`}>
             <div className={classes.topicCard}>
@@ -41,7 +48,6 @@ function Guides(props: GuidesProps) {
         ))}
       </div>
     </div>
-  )
+        )}
 
-}
 export default withStyles(styles)(Guides);
