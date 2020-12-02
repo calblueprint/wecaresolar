@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { INITIAL_LESSONS } from './initialStates';
 
 export type LessonsSlice = {
-  [key: number]: Lesson;
+  [key: string]: Lesson;
 };
 
 export type Lesson = {

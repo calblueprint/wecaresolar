@@ -8,11 +8,60 @@ import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
+import { HelpSlice } from './helpSlice';
+
+export const INITIAL_HELP: HelpSlice = {
+  'Root' : {
+    parent: null,
+    title: "What's wrong?",
+    description: '',
+    options: {
+      'An appliance is not functioning.': '404_ERROR',
+      'Appliance socket is not working.': '404_ERROR',
+      'Lights turn out in the middle of the night.': '404_ERROR',
+      'Lights turn off earlier than they used to.': '404_ERROR',
+      '1 or more lights do not work.': '404_ERROR',
+      'No appliances or lights work.': '404_ERROR'
+    }
+  },
+  'Errors': {
+    parent: 'Initial',
+    title: 'Do you see an error code?',
+    description: '',
+    options: {
+      yes: '404_ERROR'
+    }
+  },
+  '404_ERROR': {
+    parent: null,
+    title: 'Ah shi, stuff broken!',
+    description: 'Have you tried turning on and back off again',
+    options: {
+      yes: '404_ERROR_YES', //SOMETHING,
+      no: '404_ERROR_NO' //SOMETHING
+    }
+  },
+  '404_ERROR_YES': {
+    parent: '404_ERROR',
+    title: 'You monkey, why did you turn it back off?',
+    description: 'Try turning it back on, maybe then things will worky worky',
+    options: {}
+  },
+  '404_ERROR_NO': {
+    parent: '404_ERROR',
+    title: 'Well maybe you should try fixing things first huh...',
+    description: 'Have you fixed it?',
+    options: {
+      yes: '404_ERROR_YES', //SOMETHING,
+      no: '404_ERROR_NO' //SOMETHING
+    }
+  }
+};
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
-  1: {
+  17: {
+    title: 'How to use the Fetal Doppler',
     type: 'Video',
-    title: 'irure nisi enim Lorem non',
     tags: ['mollit'],
     data: {
       preview:
@@ -67,9 +116,9 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCached: false, // QUESTION: allow caching text resources?
     isFavorited: true
   },
-  31: {
+  23: {
+    title: 'Bruh Moment',
     type: 'Article',
-    title: 'COMBUSTED BATTERIES',
     tags: ['Battery Charger', 'Troubleshooting'],
     data: {
       preview: 'this is an article preview ....',

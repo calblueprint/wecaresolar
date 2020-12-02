@@ -1,6 +1,6 @@
 import React from 'react';
-import PlaylistCard from '../../components/Guides/PlaylistCard';
-import ResourceCard from '../../components/Guides/ResourceCard'
+import PlaylistCard from '../../components/Playlist/PlaylistCard';
+import ResourceCard from '../../components/Playlist/ResourceCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';

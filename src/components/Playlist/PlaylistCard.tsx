@@ -17,11 +17,10 @@ const PlaylistCard = (props: PlaylistCardProps) => {
   const lesson = props.lesson;
 
   const resources = useSelector((state: RootState) => state.resources);
-  const countMedia = (media: string) =>
-    lesson.resourceIds.filter((id) => resources[id].type == media).length;
-
-  const numVideos = countMedia('Video');
-  const numArticles = countMedia('Article');
+  //const countMedia = (media: string) => lesson.resourceIds.filter((id) => resources[id].type == media).length;
+  console.log("COME BACK TO THIS AFTER FIREBASE/AIRTABLE PR MERGED")
+  const numVideos = 2; //countMedia('Video');
+  const numArticles =  2; //countMedia('Article');
 
   return (
     <Card className={classes.card}>
