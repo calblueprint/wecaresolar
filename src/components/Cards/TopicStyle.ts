@@ -1,6 +1,6 @@
 import { createStyles, Theme } from '@material-ui/core/styles';
 
-export const styles = (theme: Theme ) =>
+export const styles = (theme: Theme) =>
   createStyles({
     card: {
       position: 'relative',
@@ -8,7 +8,8 @@ export const styles = (theme: Theme ) =>
       height: 91,
       marginRight: 5,
       borderRadius: 10,
-      boxShadow: '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+      boxShadow:
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
       backgroundColor: '#F7F9FA'
     },
     title: {
