@@ -1,7 +1,16 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/reducers';
+import TroubleShootCard from '../../components/Troubleshoot/TroubleShootCard';
 
-export default class TroubleShoot extends Component {
-  render() {
-    return <div>Troubleshoot</div>;
-  }
+function TroubleShoot({ match }) {
+  console.log("HELLO", match.url)
+
+  return (
+    <div>
+      <h1>Troubleshoot</h1>
+      <TroubleShootCard helpId={"404_ERROR"} />
+    </div>);
 }
+
+export default TroubleShoot;

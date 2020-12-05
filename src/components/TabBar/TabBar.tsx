@@ -2,19 +2,20 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import DescriptionRoundedIcon from '@material-ui/icons/DescriptionRounded';
-import HelpRoundedIcon from '@material-ui/icons/HelpRounded';
-import WorkRoundedIcon from '@material-ui/icons/WorkRounded';
+import favorites from './../../components/TabBar/icons/favorites.png';
+import manuals from './../../components/TabBar/icons/manuals.png';
+import settings from './../../components/TabBar/icons/settings.png';
+import suitcase from './../../components/TabBar/icons/suitcase.png';
+import troubleshoot from './../../components/TabBar/icons/troubleshoot.png';
 import { Link } from 'react-router-dom';
 import { styles } from './TabBarStyles';
 
 type TabProps = {
   classes: any;
-}
+};
 
 const TabBar = (props: TabProps) => {
-  const { classes } = props; 
+  const { classes } = props;
   const [value, setValue] = React.useState(0);
 
   return (
@@ -29,29 +30,40 @@ const TabBar = (props: TabProps) => {
       <BottomNavigationAction
         component={Link}
         to="/Guides"
-        label="Guides"
-        icon={<DescriptionRoundedIcon />}
-      />
-      <BottomNavigationAction
-        component={Link}
-        to="/Suitcase"
-        label="Suitcase"
-        icon={<WorkRoundedIcon />}
+        label="Manuals"
+        icon={<img src={manuals} />}
+        className={classes.text}
       />
       <BottomNavigationAction
         component={Link}
         to="/Favorites"
         label="Favorites"
-        icon={<FavoriteIcon />}
+        icon={<img src={favorites} />}
+        className={classes.text}
+      />
+      <BottomNavigationAction
+        component={Link}
+        to="/Suitcase"
+        label="Suitcase"
+        icon={<img src={suitcase} />}
+        className={classes.text}
       />
       <BottomNavigationAction
         component={Link}
         to="/Troubleshoot"
         label="Troubleshoot"
-        icon={<HelpRoundedIcon />}
+        icon={<img src={troubleshoot} />}
+        className={classes.text}
+      />
+      <BottomNavigationAction
+        component={Link}
+        to="/Troubleshoot"
+        label="Settings"
+        icon={<img src={settings} />}
+        className={classes.text}
       />
     </BottomNavigation>
   );
-}
+};
 
 export default withStyles(styles)(TabBar);

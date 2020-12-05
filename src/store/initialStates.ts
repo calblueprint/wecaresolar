@@ -8,6 +8,34 @@ import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
+import { HelpSlice } from './helpSlice';
+
+export const INITIAL_HELP: HelpSlice = {
+  '404_ERROR': {
+    parent: null,
+    title: 'Ah shi, stuff broken!',
+    description: 'Have you tried turning on and back off again',
+    options: {
+      yes: '404_ERROR_YES', //SOMETHING,
+      no: '404_ERROR_NO' //SOMETHING
+    }
+  },
+  '404_ERROR_YES': {
+    parent: '404_ERROR',
+    title: 'You monkey, why did you turn it back off?',
+    description: 'Try turning it back on, maybe then things will worky worky',
+    options: {}
+  },
+  '404_ERROR_NO': {
+    parent: '404_ERROR',
+    title: 'Well maybe you should try fixing things first huh...',
+    description: 'Have you fixed it?',
+    options: {
+      yes: '404_ERROR_YES', //SOMETHING,
+      no: '404_ERROR_NO' //SOMETHING
+    }
+  }
+};
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   1: {
@@ -28,7 +56,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true,
     isCompleted: false
   },
-  23: {
+  2: {
     type: 'Article',
     title: 'TROUBLED FETAL',
     tags: ['Fetal Doppler', 'Troubleshooting'],
@@ -42,7 +70,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isFavorited: true,
     isCompleted: true
   },
-  25: {
+  3: {
     type: 'Article',
     title: 'Doppler 101',
     tags: ['Fetal Doppler', 'Setup'],
@@ -226,52 +254,40 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
 
 export const INITIAL_LESSONS: LessonsSlice = {
   1: {
-    title: 'irure proident et magna enim',
+    title: 'Irure proident et magna enim',
     description:
       'Mollit cupidatat et eiusmod adipisicing ullamco voluptate duis laborum excepteur cillum eu aute.',
-    objectives: ['dolore qui culpa', 'dolor ad aliquip'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [8, 4],
     isFinished: false
   },
   2: {
-    title: 'minim aliquip ut non cillum',
+    title: 'Minim aliquip ut non cillum',
     description:
       'Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.',
-    objectives: [
-      'irure proident non',
-      'veniam reprehenderit nostrud',
-      'aute ipsum est',
-      'Lorem voluptate in',
-      'sunt laboris exercitation'
-    ],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [4],
     isFinished: true
   },
   3: {
-    title: 'nulla veniam aute qui laborum',
+    title: 'Nulla veniam aute qui laborum',
     description: 'Sunt in ut in veniam.',
-    objectives: ['aliqua aute do'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [5, 9, 10],
     isFinished: false
   },
   4: {
-    title: 'mollit laborum elit id irure',
+    title: 'Mollit laborum elit id irure',
     description:
       'Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.',
-    objectives: [
-      'quis do incididunt',
-      'est cupidatat aliquip',
-      'proident do non',
-      'id nostrud qui',
-      'irure ex ipsum'
-    ],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [1, 2, 3, 7, 6],
     isFinished: true
   },
   5: {
-    title: 'fugiat in ullamco velit incididunt',
+    title: 'Fugiat in ullamco velit incididunt',
     description: 'Irure ullamco veniam labore nisi veniam.',
-    objectives: ['ea minim voluptate', 'magna commodo enim'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [6, 9, 8, 1, 4],
     isFinished: false
   },
@@ -279,7 +295,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     title: 'et in tempor dolore aliqua',
     description:
       'Laborum qui cupidatat commodo dolore sunt non Lorem cupidatat velit magna aliqua aliqua ut.',
-    objectives: ['incididunt magna incididunt', 'qui sit sint'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [5],
     isFinished: false
   }
