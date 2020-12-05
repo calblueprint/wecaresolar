@@ -24,7 +24,7 @@ const SearchAppBar = (props: SearchProps) => {
 
   return (
     <div className={classes.root}>
-      <AppBar>
+      <AppBar className={classes.bar}>
         <Toolbar>
           {!hideBackButton && <BackIcon onClick={() => history.goBack()} />}
           <div className={classes.search}>

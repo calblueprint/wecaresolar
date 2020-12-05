@@ -1,5 +1,6 @@
 import React from 'react';
-import PlaylistCard from '../../components/Playlist/PlaylistCard';
+import PlaylistCard from '../../components/Guides/PlaylistCard';
+import ResourceCard from '../../components/Guides/ResourceCard'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
@@ -17,6 +18,8 @@ type GuidesProps = {
 function Guides(props: GuidesProps) {
   const lessons = useSelector((state: RootState) => state.lessons);
   const resources = useSelector((state: RootState) => state.resources);
+  const articles = Object.keys(resources).filter((id) => resources[id].type == 'Article');
+  const videos = Object.keys(resources).filter((id) => resources[id].type == 'Video');
 
   const { classes } = props;
   function playvideo(index) {
@@ -30,7 +33,7 @@ function Guides(props: GuidesProps) {
       {/* <h1>Playlists</h1> */}
       {/* <div className={classes.playlistScroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link to={`${props.match.url}/${key}`}>
+          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>
@@ -41,7 +44,10 @@ function Guides(props: GuidesProps) {
 
     </div>
 
-  )
+  );
 
 }
+
+
+
 export default withStyles(styles)(Guides);
