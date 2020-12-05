@@ -20,8 +20,6 @@ function Guides(props: GuidesProps) {
   const resources = useSelector((state: RootState) => state.resources);
   const articles = Object.keys(resources).filter((id) => resources[id].type == 'Article');
   const videos = Object.keys(resources).filter((id) => resources[id].type == 'Video');
-  const { classes } = props;
-
 
   const { classes } = props;
   function playvideo(index) {
