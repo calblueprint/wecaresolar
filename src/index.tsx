@@ -7,6 +7,9 @@ import { Provider } from 'react-redux';
 import store from './store/reducers';
 
 import { retrievePushToken } from './pushNotifications';
+import { Store } from 'idb-keyval';
+
+export const videoStore = new Store("Resources", "VideoStore");
 
 ReactDOM.render(
   <React.StrictMode>
