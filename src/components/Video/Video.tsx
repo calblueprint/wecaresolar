@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DownloadButton from './DownloadButton';
 import FavoriteButton from '../Favorites/FavoriteButton';
-import Label from '../Label'
+import Tag from '../Guides/Tag';
 import { get } from 'idb-keyval';
 import { videoStore, platform } from '../../index'
 import { Resource, VideoData, isVideo } from '../../store/resourcesSlice'
@@ -75,7 +75,7 @@ const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
     <div className={classes.page}>
       <div className={classes.nonVideo}>
         <div className={classes.labelList}>
-          {videoDetails.tags.map(tag => <p>{tag}</p>)}
+          {videoDetails.tags.map(tag => <Tag classes={classes} tag={tag} />)}
         </div>
         <div className={classes.header}>
           <h1 className={classes.title}>{videoDetails.title}</h1>
