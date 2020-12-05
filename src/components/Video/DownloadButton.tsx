@@ -7,13 +7,17 @@ import Button from '@material-ui/core/Button';
 import { useDispatch } from 'react-redux';
 import { setResourceIsCached } from '../../store/resourcesSlice';
 import { blobToArrayBuffer } from './VideoFunctions'
+import { withStyles } from '@material-ui/core/styles';
+import { styles } from './VideoStyles';
 
 type DownloadButtonProps = {
   id: number,
   videoData: VideoData,
+  classes: any;
+
 }
 
-const DownloadButton = ({ id, videoData }: DownloadButtonProps) => {
+const DownloadButton = ({ id, videoData, classes }: DownloadButtonProps) => {
   const dispatch = useDispatch();
 
   async function downloadVideo(resId, videoStore, videoData) {
@@ -35,11 +39,11 @@ const DownloadButton = ({ id, videoData }: DownloadButtonProps) => {
   }
 
   return (
-    <Button variant="contained" color="primary" onClick={() => downloadVideo(id, videoStore, videoData)}>
+    <button className={`${classes.filledButton} ${classes.button}`} onClick={() => downloadVideo(id, videoStore, videoData)}>
       Download
-      <GetAppIcon />
-    </Button>
+      <GetAppIcon style={{ color: "black" }} />
+    </button>
   );
 }
 
-export default DownloadButton;
+export default withStyles(styles)(DownloadButton);

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setResourceIsFavorited } from '../../store/resourcesSlice';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
+import theme from './../../CustomStyles';
 
 interface FavoriteButtonProps {
   id: number;
@@ -11,20 +12,20 @@ interface FavoriteButtonProps {
 
 function FavoriteButton(props: FavoriteButtonProps) {
   const dispatch = useDispatch();
+  function changeFav() {
+    dispatch(
+      setResourceIsFavorited({
+        id: props.id,
+        isFavorited: !props.isFavorited
+      })
+    )
+  }
   return (
     <div>
-      <button
-        onClick={() =>
-          dispatch(
-            setResourceIsFavorited({
-              id: props.id,
-              isFavorited: !props.isFavorited
-            })
-          )
-        }
-      >
-        {props.isFavorited ? <BookmarkIcon /> : <BookmarkBorderIcon />}
-      </button>
+      {props.isFavorited ?
+        <BookmarkIcon style={{ color: theme.palette.white.main }} onClick={changeFav} /> :
+        <BookmarkBorderIcon style={{ color: theme.palette.white.main }} onClick={changeFav} />}
+
     </div>
   );
 }

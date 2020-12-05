@@ -12,7 +12,7 @@ import { TopicsSlice } from './topicsSlice';
 export const INITIAL_RESOURCES: ResourcesSlice = {
   1: {
     type: 'Video',
-    title: 'irure nisi enim Lorem non',
+    title: 'irure nisnon',
     tags: ['mollit'],
     data: {
       preview:

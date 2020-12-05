@@ -37,9 +37,8 @@ function Guides(props: GuidesProps) {
           </Link>
         ))}
       </div> */}
-      <div>
-        {playvideo(1)}
-      </div>
+      {playvideo(1)}
+
     </div>
 
   )

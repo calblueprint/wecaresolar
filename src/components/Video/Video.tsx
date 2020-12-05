@@ -33,9 +33,16 @@ const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
   function createDownloadButton() {
     if (isVideo(videoDetails.data)) {
       if (!videoDetails.isCached) {
-        return <DownloadButton id={resId} videoData={videoDetails.data} />
+        return (
+          <div className={classes.buttons}>
+            <div className={`${classes.outlineButton} ${classes.button} ${classes.noDownload}`}>Not downloaded</div>
+            <DownloadButton id={resId} videoData={videoDetails.data} /></div>)
       } else {
-        return <p>Already Downloaded</p>;
+        return (
+          <div className={classes.buttons}>
+            <div className={`${classes.outlineButton} ${classes.button} ${classes.Download}`}>Downloaded</div>
+            <DownloadButton id={resId} videoData={videoDetails.data} />
+          </div>);
       }
     }
   }
@@ -65,19 +72,20 @@ const Video = ({ resId, videoDetails, videoData, classes }: VideoProps) => {
   }
 
   return (
-    <div className={classes.thing}>
-      <div className={classes.labelList}>
-        {videoDetails.tags.map(tag => <Label title={tag} />)}
+    <div className={classes.page}>
+      <div className={classes.nonVideo}>
+        <div className={classes.labelList}>
+          {videoDetails.tags.map(tag => <p>{tag}</p>)}
+        </div>
+        <div className={classes.header}>
+          <h1 className={classes.title}>{videoDetails.title}</h1>
+          <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
+        </div>
       </div>
-      <div>
-        <h1>{videoDetails.title}</h1>
-        <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
-      </div>
-      <ReactPlayer url={videoUrl} playing controls />
-      <div>
+      <ReactPlayer url={videoUrl} playing controls width="100%" />
+      <div className={classes.nonVideo}>
         {createDownloadButton()}
       </div>
-      <h2> temporary padding </h2>
     </div>
   )
 }
