@@ -56,26 +56,6 @@ function App() {
         </div>
         <TabBar />
       </Router>
-    <Router>
-      <div className={classes.root}>
-        <Route component={SearchBar} />
-        <Switch>
-          <Route exact path="/suitcase" component={Suitcase} />
-          <Route path={"/suitcase/:topicId"}
-            render={props =>
-              <TopicViews topicId={props.match.params.topicId} />
-            } />
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/guides" component={Guides} />
-          <Route path={"/guides/:lessonId"}
-            render={props =>
-              <PlaylistPage lessonId={props.match.params.lessonId} />
-            } />
-          <Route path="/troubleshoot" component={Troubleshoot} />
-        </Switch>
-      </div>
-      <TabBar />
-    </Router>
     </ThemeProvider>
   );
 }
