@@ -3,6 +3,7 @@ import TopicCard from '../../components/TopicCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
+import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimiation'; 
 
 function Suitcase({ match }) {
   const topics = useSelector((state: RootState) => state.topics);
@@ -14,6 +15,9 @@ function Suitcase({ match }) {
           <TopicCard topic={topics[key]} />
         </Link>
       ))}
+      <div>
+        <SuitcaseAnimation />
+      </div>
     </div>
   );
 }
