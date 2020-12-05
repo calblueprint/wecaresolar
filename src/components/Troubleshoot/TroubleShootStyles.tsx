@@ -6,31 +6,30 @@ export const styles = (theme: Theme) =>
       backgroundColor: theme.palette.background.default
     },
     header: {
-      display: "flex",
+      display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      color: theme.palette.accent2.main,
+      color: theme.palette.accent2.main
     },
     card: {
       margin: '10%',
-      position: "relative",
+      position: 'relative',
       width: '100%',
-      bottom: 0,
-
+      bottom: 0
     },
     button: {
       borderRadius: '18px',
       marginRight: '1%',
       paddingRight: '2%',
       paddingLeft: '2%',
-      borderStyle: 'none',
+      borderStyle: 'none'
     },
     optionContainer: {
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'stretch',
-      width: 400,
+      width: 400
     },
     optionImage: {
       height: 88,
@@ -48,7 +47,7 @@ export const styles = (theme: Theme) =>
     optionText: {
       height: 55,
       width: 119,
-      padding: "12px 12px 0px 12px",
+      padding: '12px 12px 0px 12px',
       backgroundColor: 'white',
       borderRadius: '0px 0px 10px 10px',
       fontSize: 12,
@@ -57,12 +56,11 @@ export const styles = (theme: Theme) =>
       color: theme.palette.brown.main
     },
     yes: {
-      backgroundColor: theme.palette.tshootyes.main,
+      backgroundColor: theme.palette.tshootyes.main
       // color: theme.palette.white.main,
     },
     no: {
-      backgroundColor: theme.palette.tshootno.main,
+      backgroundColor: theme.palette.tshootno.main
       // color: theme.palette.white.main,
     }
-  }
-  );
+  });

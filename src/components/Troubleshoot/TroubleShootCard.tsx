@@ -16,7 +16,7 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
   const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
   const help = troubleshoot[helpId];
   const root = helpId === 'Root';
-  console.log(helpId)
+
   const createRootOptions = (options) => {
     return (
       <div className={classes.optionContainer}>
@@ -41,8 +41,7 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
     return (
       <div>
         {Object.keys(options).map((option) => {
-          if (option == 'error_code') {
-          } else {
+          if (option != 'error_code')  {
             let buttonType = `${classes.button}`;
             if (option == 'yes') {
               buttonType = `${classes.button} ${classes.yes}`;
