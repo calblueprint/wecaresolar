@@ -11,6 +11,27 @@ import { TopicsSlice } from './topicsSlice';
 import { HelpSlice } from './helpSlice';
 
 export const INITIAL_HELP: HelpSlice = {
+  Root: {
+    parent: null,
+    title: "What's wrong?",
+    description: '',
+    options: {
+      'An appliance is not functioning.': '404_ERROR',
+      'Appliance socket is not working.': '404_ERROR',
+      'Lights turn out in the middle of the night.': '404_ERROR',
+      'Lights turn off earlier than they used to.': '404_ERROR',
+      '1 or more lights do not work.': '404_ERROR',
+      'No appliances or lights work.': '404_ERROR'
+    }
+  },
+  Errors: {
+    parent: 'Initial',
+    title: 'Do you see an error code?',
+    description: '',
+    options: {
+      yes: '404_ERROR'
+    }
+  },
   '404_ERROR': {
     parent: null,
     title: 'Ah shi, stuff broken!',

@@ -14,6 +14,11 @@ export const styles = (theme: Theme) =>
       color: theme.palette.background.default,
       backgroundColor: theme.palette.background.default
     },
+    row: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between'
+    },
     search: {
       position: 'relative',
       borderRadius: 9,
