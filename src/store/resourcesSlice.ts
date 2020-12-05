@@ -14,6 +14,7 @@ export type Resource = {
   isFinished: boolean;
   isCached: boolean;
   isFavorited: boolean;
+  isCompleted: boolean;
 };
 
 export type VideoData = {
@@ -29,7 +30,15 @@ export type ArticleData = {
   fileSize: number;
   preview: string;
 };
+export type VideoArticle = VideoData | ArticleData;
 
+export const isVideo = (tbd: VideoArticle): tbd is VideoData => {
+  if (tbd as VideoData) {
+    return true;
+  } else {
+    return false;
+  }
+};
 export const resourcesSlice = createSlice({
   name: 'resources',
   initialState: INITIAL_RESOURCES,
@@ -45,6 +54,10 @@ export const resourcesSlice = createSlice({
     setResourceIsFavorited(state, action) {
       const { id, isFavorited } = action.payload;
       state[id].isFavorited = isFavorited;
+    },
+    setResourceIsCompleted(state, action) {
+      const { id, isCompleted } = action.payload;
+      state[id].isCompleted = isCompleted;
     }
   }
 });
@@ -61,6 +74,7 @@ export const selectFavoritedResources = (state: RootState) =>
 export const {
   setResourceIsFinished,
   setResourceIsCached,
-  setResourceIsFavorited
+  setResourceIsFavorited,
+  setResourceIsCompleted
 } = resourcesSlice.actions;
 export default resourcesSlice.reducer;
