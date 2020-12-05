@@ -8,8 +8,7 @@ export const styles = (theme: Theme) =>
       margin: 30
     },
     list: {
-      width: 300,
-      height: 500
+      width: 300
     },
     fullList: {
       width: 'auto'
