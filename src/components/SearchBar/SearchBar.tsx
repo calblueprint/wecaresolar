@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import { Offline } from 'react-detect-offline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,15 +12,16 @@ import { useHistory } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 import RefreshButton from '../RefreshButton';
 import { loadInitialState } from '../../store/loadInitialState';
+import SettingsDrawer from './SettingsDrawer';
 import SearchList from './SearchList';
 
 type SearchProps = {
   classes: any;
-}
+};
 
 const SearchAppBar = (props: SearchProps) => {
   const { classes } = props;
-  const history = useHistory(); 
+  const history = useHistory();
   const location = useLocation();
 
   const [query, setQuery] = useState('');
@@ -28,7 +29,12 @@ const SearchAppBar = (props: SearchProps) => {
   const [article, setArticle] = useState(false);
   const [playlist, setPlaylist] = useState(false);
 
-  const hideBackButton = ["/Guides", "/Troubleshoot", "/Favorites", "/Suitcase"].includes(location.pathname); 
+  const hideBackButton = [
+    '/Guides',
+    '/Troubleshoot',
+    '/Favorites',
+    '/Suitcase'
+  ].includes(location.pathname);
 
   return (
     <div className={classes.root}>
@@ -53,6 +59,7 @@ const SearchAppBar = (props: SearchProps) => {
           <Offline>
             <WifiIcon />
           </Offline>
+          <SettingsDrawer />
         </Toolbar>
       </AppBar>
       {query && (
