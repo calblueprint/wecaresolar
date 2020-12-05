@@ -5,7 +5,8 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { store, persistor } from './store/reducers';
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from 'redux-persist/integration/react';
+import { Store } from 'idb-keyval';
 
 import firebase from 'firebase/app';
 import 'firebase/messaging';
@@ -42,6 +43,9 @@ db.enablePersistence()
 
 initializePushNotifications();
 loadInitialState();
+
+// Set up IndexedDB store for caching videos
+export const videoStore = new Store("Resources", "VideoStore");
 
 ReactDOM.render(
   <React.StrictMode>

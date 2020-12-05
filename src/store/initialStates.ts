@@ -8,6 +8,34 @@ import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
+import { HelpSlice } from './helpSlice';
+
+export const INITIAL_HELP: HelpSlice = {
+  '404_ERROR': {
+    parent: null,
+    title: 'Ah shi, stuff broken!',
+    description: 'Have you tried turning on and back off again',
+    options: {
+      yes: '404_ERROR_YES', //SOMETHING,
+      no: '404_ERROR_NO' //SOMETHING
+    }
+  },
+  '404_ERROR_YES': {
+    parent: '404_ERROR',
+    title: 'You monkey, why did you turn it back off?',
+    description: 'Try turning it back on, maybe then things will worky worky',
+    options: {}
+  },
+  '404_ERROR_NO': {
+    parent: '404_ERROR',
+    title: 'Well maybe you should try fixing things first huh...',
+    description: 'Have you fixed it?',
+    options: {
+      yes: '404_ERROR_YES', //SOMETHING,
+      no: '404_ERROR_NO' //SOMETHING
+    }
+  }
+};
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   '1': {
@@ -19,12 +47,14 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
         'Ad do officia tempor occaecat laboris non magna ea sint deserunt mollit.',
       fileSize: 27790,
       duration: 1536,
-      watchUrl: 'https://youtube.com/api',
-      downloadUrl: 'https://aws.link/'
+      watchUrl: 'https://www.youtube.com/watch?v=oMCKWkvGLLA',
+      downloadUrl:
+        'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/68af8796-4a00-44c4-8e3e-b006d358bafe/1_v3SolarSuitcase_InstallationPlanning_%285%29.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201118%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201118T063037Z&X-Amz-Expires=86400&X-Amz-Signature=062bad74e216cd1ea00586ba6fa8ea86ab830da005844cfd3d596dcf2e87e329&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%221_v3SolarSuitcase_InstallationPlanning_%285%29.mp4%22'
     },
     isFinished: true,
     isCached: false,
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   '23': {
     type: 'Article',
@@ -37,7 +67,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: true
   },
   '25': {
     type: 'Article',
@@ -50,7 +81,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   '27': {
     type: 'Video',
@@ -63,9 +95,10 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       fileSize: 13050, // File size in bytes
       duration: 67 // Video duration in seconds
     },
-    isFinished: false, // QUESTION: once viewed, or manually mark finished?
-    isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFinished: false,
+    isCached: false,
+    isFavorited: true,
+    isCompleted: false
   },
   '31': {
     type: 'Article',
@@ -78,7 +111,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   '35': {
     type: 'Video',
@@ -91,7 +125,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: true
   },
   '42': {
     type: 'Article',
@@ -106,7 +141,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: false,
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   '4': {
     type: 'Video',
@@ -122,7 +158,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false
   },
   '5': {
     type: 'Video',
@@ -138,7 +175,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: false,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false
   },
   '6': {
     type: 'Article',
@@ -151,7 +189,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: true
   },
   '7': {
     type: 'Article',
@@ -164,7 +203,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false
   },
   '8': {
     type: 'Article',
@@ -178,7 +218,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: true
   },
   '9': {
     type: 'Article',
@@ -192,7 +233,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false
   },
   '10': {
     type: 'Article',
@@ -205,7 +247,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: false,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: true
   }
 };
 

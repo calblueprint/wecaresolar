@@ -6,6 +6,7 @@ import resourcesReducer from './resourcesSlice';
 import lessonsReducer from './lessonsSlice';
 import topicsReducer from './topicsSlice';
 import metadataReducer from './metadataSlice';
+import helpReducer from './helpSlice';
 
 const persistedReducer = persistReducer(
   { key: 'root', storage },
@@ -13,8 +14,9 @@ const persistedReducer = persistReducer(
     resources: resourcesReducer,
     lessons: lessonsReducer,
     topics: topicsReducer,
-    metadata: metadataReducer
-  })
+    metadata: metadataReducer,
+    troubleshoot: helpReducer
+  }),
 );
 
 export const store = configureStore({
