@@ -47,14 +47,16 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
         'Ad do officia tempor occaecat laboris non magna ea sint deserunt mollit.',
       fileSize: 27790,
       duration: 1536,
-      watchUrl: 'https://youtube.com/api',
-      downloadUrl: 'https://aws.link/'
+      watchUrl: 'https://www.youtube.com/watch?v=oMCKWkvGLLA',
+      downloadUrl:
+        'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/68af8796-4a00-44c4-8e3e-b006d358bafe/1_v3SolarSuitcase_InstallationPlanning_%285%29.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201118%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201118T063037Z&X-Amz-Expires=86400&X-Amz-Signature=062bad74e216cd1ea00586ba6fa8ea86ab830da005844cfd3d596dcf2e87e329&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%221_v3SolarSuitcase_InstallationPlanning_%285%29.mp4%22'
     },
     isFinished: true,
     isCached: false,
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
-  23: {
+  2: {
     type: 'Article',
     title: 'TROUBLED FETAL',
     tags: ['Fetal Doppler', 'Troubleshooting'],
@@ -65,9 +67,10 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: true
   },
-  25: {
+  3: {
     type: 'Article',
     title: 'Doppler 101',
     tags: ['Fetal Doppler', 'Setup'],
@@ -78,7 +81,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   27: {
     type: 'Video',
@@ -91,9 +95,10 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       fileSize: 13050, // File size in bytes
       duration: 67 // Video duration in seconds
     },
-    isFinished: false, // QUESTION: once viewed, or manually mark finished?
-    isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFinished: false,
+    isCached: false,
+    isFavorited: true,
+    isCompleted: false
   },
   31: {
     type: 'Article',
@@ -106,7 +111,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   35: {
     type: 'Video',
@@ -119,7 +125,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: true
   },
   42: {
     type: 'Article',
@@ -134,7 +141,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: false,
-    isFavorited: true
+    isFavorited: true,
+    isCompleted: false
   },
   4: {
     type: 'Video',
@@ -150,7 +158,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false
   },
   5: {
     type: 'Video',
@@ -166,7 +175,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: false,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false
   },
   6: {
     type: 'Article',
@@ -179,7 +189,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: true
   },
   7: {
     type: 'Article',
@@ -192,7 +203,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false
   },
   8: {
     type: 'Article',
@@ -206,7 +218,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: true
   },
   9: {
     type: 'Article',
@@ -220,7 +233,8 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: false,
     isCached: true,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: false
   },
   10: {
     type: 'Article',
@@ -233,58 +247,47 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     },
     isFinished: true,
     isCached: false,
-    isFavorited: false
+    isFavorited: false,
+    isCompleted: true
   }
 };
 
 export const INITIAL_LESSONS: LessonsSlice = {
   1: {
-    title: 'irure proident et magna enim',
+    title: 'Irure proident et magna enim',
     description:
       'Mollit cupidatat et eiusmod adipisicing ullamco voluptate duis laborum excepteur cillum eu aute.',
-    objectives: ['dolore qui culpa', 'dolor ad aliquip'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [8, 4],
     isFinished: false
   },
   2: {
-    title: 'minim aliquip ut non cillum',
+    title: 'Minim aliquip ut non cillum',
     description:
       'Voluptate officia do nostrud sint ipsum esse reprehenderit sunt consectetur eiusmod.',
-    objectives: [
-      'irure proident non',
-      'veniam reprehenderit nostrud',
-      'aute ipsum est',
-      'Lorem voluptate in',
-      'sunt laboris exercitation'
-    ],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [4],
     isFinished: true
   },
   3: {
-    title: 'nulla veniam aute qui laborum',
+    title: 'Nulla veniam aute qui laborum',
     description: 'Sunt in ut in veniam.',
-    objectives: ['aliqua aute do'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [5, 9, 10],
     isFinished: false
   },
   4: {
-    title: 'mollit laborum elit id irure',
+    title: 'Mollit laborum elit id irure',
     description:
       'Proident proident dolore aliquip quis do ad qui tempor tempor enim aute quis laboris officia.',
-    objectives: [
-      'quis do incididunt',
-      'est cupidatat aliquip',
-      'proident do non',
-      'id nostrud qui',
-      'irure ex ipsum'
-    ],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [1, 2, 3, 7, 6],
     isFinished: true
   },
   5: {
-    title: 'fugiat in ullamco velit incididunt',
+    title: 'Fugiat in ullamco velit incididunt',
     description: 'Irure ullamco veniam labore nisi veniam.',
-    objectives: ['ea minim voluptate', 'magna commodo enim'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [6, 9, 8, 1, 4],
     isFinished: false
   },
@@ -292,7 +295,7 @@ export const INITIAL_LESSONS: LessonsSlice = {
     title: 'et in tempor dolore aliqua',
     description:
       'Laborum qui cupidatat commodo dolore sunt non Lorem cupidatat velit magna aliqua aliqua ut.',
-    objectives: ['incididunt magna incididunt', 'qui sit sint'],
+    objectives: ['Lights', 'Rechargable Headlamps', 'Suitcase'],
     resourceIds: [5],
     isFinished: false
   }
