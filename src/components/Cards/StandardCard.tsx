@@ -1,18 +1,18 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { styles } from './SearchStyles';
+import { styles } from '../SearchBar/SearchStyles';
 import { Resource } from '../../store/resourcesSlice';
 import Card from '@material-ui/core/Card';
 import FavoriteButton from '../Favorites/FavoriteButton';
 
 
-interface SearchCardProps {
+interface StandardCardProps {
   resource: Resource;
   resourceID: number;
   classes: any;
 }
 
-const SearchCard = (props: SearchCardProps) => {
+const StandardCard = (props: StandardCardProps) => {
   const { classes } = props;
   return (
     <Card className={classes.searchCard}>
@@ -32,4 +32,4 @@ const SearchCard = (props: SearchCardProps) => {
   );
 };
 
-export default withStyles(styles)(SearchCard);
+export default withStyles(styles)(StandardCard);
