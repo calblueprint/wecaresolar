@@ -6,6 +6,12 @@ export const styles = (theme: Theme) =>
             position: 'fixed',
             width: '100%',
             bottom: 0,
+        },
+        text: {
+            font: 'Roboto',
+            color: '#4F2A1D',
+            fontSize: '12px',
+            fontWeight: 700
         }
     }
     );
