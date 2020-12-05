@@ -34,17 +34,22 @@ function getMobileOperatingSystem() {
 
   // Windows Phone must come first because its UA also contains "Android"
   if (/windows phone/i.test(userAgent)) {
+    alert("WINDOWS")
     return "Windows";
   }
 
   if (/android/i.test(userAgent)) {
+    alert("ADJRPDO")
+
     return "Android";
   }
 
   // iOS detection from: http://stackoverflow.com/a/9039885/177710
   if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+    alert("OOS")
+
     return "iOS";
   }
-
+  alert("asdf")
   return "unknown";
 }
