@@ -22,12 +22,6 @@ function Guides(props: GuidesProps) {
   const videos = Object.keys(resources).filter((id) => resources[id].type == 'Video');
 
   const { classes } = props;
-  function playvideo(index) {
-    let resource = resources[index]
-    if (isVideo(resource.data)) {
-      return <Video resId={index} videoDetails={resource} videoData={resource.data} />
-    }
-  }
   return (
     <div className={classes.root}>
       <div className={classes.header}>
@@ -36,7 +30,7 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
+          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>
@@ -50,8 +44,8 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {articles.map((key: any) => (
-          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
-              <ResourceCard resource={resources[key]} />
+          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+            <ResourceCard resource={resources[key]} />
           </Link>
         ))}
       </div>
@@ -62,16 +56,13 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {videos.map((key: any) => (
-          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
-              <ResourceCard resource={resources[key]} />
+          <Link style={{ textDecoration: 'none' }}
+            to={`${props.match.url}/videos/${key}`}>
+            <ResourceCard resource={resources[key]} />
           </Link>
         ))}
       </div>
       <div className={classes.bottomPad}></div>
-
-      <div>
-        {playvideo(1)}
-      </div>
 
     </div>
 
