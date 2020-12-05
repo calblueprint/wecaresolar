@@ -19,11 +19,11 @@ type DrawerProps = {
 const SettingsDrawer = (props: DrawerProps) => {
   const { classes } = props; 
   const [state, setState] = React.useState({
-    right: false,
+    bottom: false,
   });
 
   const toggleDrawer = (open: boolean) => () => {
-    setState({"right": open });
+    setState({"bottom": open });
   };
 
   const list = () => (
@@ -48,7 +48,7 @@ const SettingsDrawer = (props: DrawerProps) => {
     <div>
         <React.Fragment>
           <Button onClick={toggleDrawer(true)}> <SettingsIcon/></Button>
-          <Drawer anchor={"right"} open={state["right"]} onClose={toggleDrawer(false)}>
+          <Drawer anchor={"bottom"} open={state["bottom"]} onClose={toggleDrawer(false)}>
             {list()}
           </Drawer>
         </React.Fragment>
