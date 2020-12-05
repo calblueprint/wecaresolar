@@ -4,7 +4,7 @@ import { RootState } from '../../store/reducers';
 import PreviewCard from '../Cards/PreviewCard';
 
 type PlaylistPageProps = {
-  lessonId: number,
+  lessonId: string,
 }
 
 const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {

@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 
 interface SearchCardProps {
   resource: Resource;
-  resourceID: number;
+  resourceID: string;
   classes: any;
 }
 

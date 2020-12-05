@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { refreshValues } from './reduxUtils';
 
 export type TopicsSlice = {
-  [key: number]: Topic;
+  [key: string]: Topic;
 };
 
 export type Topic = {

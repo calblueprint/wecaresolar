@@ -70,7 +70,7 @@ function Guides(props: GuidesProps) {
       <div className={classes.bottomPad}></div>
 
       <div>
-        {playvideo(1)}
+        {playvideo('Advanced Diagnostic Screen')}
       </div>
 
     </div>

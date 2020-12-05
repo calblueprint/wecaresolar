@@ -9,7 +9,7 @@ import { setResourceIsCached } from '../store/resourcesSlice';
 import { blobToArrayBuffer } from './Video/VideoFunctions'
 
 type DownloadButtonProps = {
-  id: number,
+  id: string,
   videoData: VideoData,
 }
 

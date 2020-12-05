@@ -11,7 +11,7 @@ import { styles } from './VideoStyles';
 import { getId, arrayBufferToBlob } from './VideoFunctions'
 
 type VideoProps = {
-  resId: number,
+  resId: string,
   videoDetails: Resource,
   videoData: VideoData
   classes: any;

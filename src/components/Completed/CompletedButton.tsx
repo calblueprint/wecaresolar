@@ -5,7 +5,7 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 interface CompletedButtonProps {
-    id: number;
+    id: string;
     isCompleted: boolean;
 }
 

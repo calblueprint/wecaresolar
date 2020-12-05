@@ -66,10 +66,12 @@ const loadCollection = async (
  * but one of the requests succeeds, we still have to consider it a failure.
  */
 export const loadInitialState = async (): Promise<FetchStatus> => {
-  const loadedResources: FetchStatus = await loadCollection(
-    'resources',
-    refreshResources
-  );
+  const loadedResources: FetchStatus = await loadCollection('resources', refreshResources, resource => {
+    return {
+      ...resource,
+      tags: resource.tags.map(tag => tag.id)
+    }
+  });
 
   // Lessons should not be loaded unless resources were loaded successfully
   // (otherwise they might refer to resource IDs that don't exist locally)

@@ -6,7 +6,7 @@ import { ResourcesSlice } from '../store/resourcesSlice';
 import TopicHeader from './TopicHeader';
 
 interface TopicViewProps {
-  topicId: number, 
+  topicId: string, 
 }
 
 function TopicViews( { topicId }: TopicViewProps) {
