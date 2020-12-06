@@ -15,7 +15,6 @@ import theme from './CustomStyles';
 
 const useStyles = makeStyles({
   root: {
-    color: theme.palette.background.default,
     backgroundColor: theme.palette.background.default
   }
 });
@@ -26,7 +25,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div className={classes.root} style={{ display: 'flex', flexDirection: 'column' }}>
           <div>
             <Route component={SearchBar} />
           </div>
