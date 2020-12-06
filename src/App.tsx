@@ -4,11 +4,9 @@ import Favorites from './pages/Favorites/Favorites';
 import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
-import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Guides/PlaylistPage';
 import TopicViews from './components/TopicViews';
-import SearchBar from './components/SearchBar/SearchBar';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
@@ -26,10 +24,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <div>
-            <Route component={SearchBar} />
-          </div>
+        <div style={{ display: 'flex', flexDirection: 'column', width: "100%" }}>
           <div>
             <Switch>
               <Route exact path="/suitcase" component={Suitcase} />
@@ -56,11 +51,7 @@ function App() {
               />
             </Switch>
           </div>
-          <div>
-            <TabBar />
-          </div>
         </div>
-        <TabBar />
       </Router>
     </ThemeProvider>
   );

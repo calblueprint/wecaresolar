@@ -6,6 +6,8 @@ import { RootState } from '../../store/reducers';
 import { styles } from './TroubleShootStyles';
 import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import TabBar from '../../components/TabBar/TabBar';
 
 type TroubleShootProps = {
   helpId: string;
@@ -67,21 +69,25 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
             <Button className={`${classes.button}`}>Back</Button>
           </Link>
         ) : (
-          <span />
-        )}
+            <span />
+          )}
       </div>
     );
   };
   return (
-    <div className={classes.card}>
-      <div className={classes.header}>
-        <HelpOutlineIcon />
-        <p style={{ paddingLeft: '5px' }}>Troubleshooting</p>
+    <div>
+      <SearchBar />
+      <div className={classes.card}>
+        <div className={classes.header}>
+          <HelpOutlineIcon />
+          <p style={{ paddingLeft: '5px' }}>Troubleshooting</p>
+        </div>
+        <h3>{help.title}</h3>
+        <p>{help.description}</p>
+        {root && createRootOptions(help.options)}
+        {!root && createOptions(help.options)}
       </div>
-      <h3>{help.title}</h3>
-      <p>{help.description}</p>
-      {root && createRootOptions(help.options)}
-      {!root && createOptions(help.options)}
+      <TabBar />
     </div>
   );
 };

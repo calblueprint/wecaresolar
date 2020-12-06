@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import TopicCard from '../../components/TopicCard';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/reducers';
-import { Link } from 'react-router-dom';
-import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimiation'; 
+import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimiation';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import TabBar from '../../components/TabBar/TabBar';
 
 function Suitcase({ match }) {
 
   return (
     <div>
-      <h1>BUFFER</h1>
+      <SearchBar />
       <div>
-        <SuitcaseAnimation match={match}/>
+        <SuitcaseAnimation match={match} />
       </div>
+      <TabBar />
+
     </div>
   );
 }

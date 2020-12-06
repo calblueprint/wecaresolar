@@ -12,6 +12,8 @@ import {
   MenuItem,
   Input,
 } from "@material-ui/core";
+import SearchBar from '../../components/SearchBar/SearchBar';
+import TabBar from '../../components/TabBar/TabBar';
 
 function Favorites({ match, classes }) {
   const favResources = useSelector(selectFavoritedResources);
@@ -42,6 +44,7 @@ function Favorites({ match, classes }) {
 
   return (
     <div className={classes.page}>
+      <SearchBar />
       <div className={classes.header}>
         <div className={classes.title}>Favorites</div>
         <div className={classes.filters}>
@@ -79,7 +82,9 @@ function Favorites({ match, classes }) {
       {
         Object.keys(favResources).map(filteredFavResources)
       }
+      <TabBar />
     </div >
+
   );
 }
 

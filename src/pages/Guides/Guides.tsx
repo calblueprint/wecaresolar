@@ -8,6 +8,8 @@ import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
 import Video from '../../components/Video/Video'
 import { isVideo } from '../../store/resourcesSlice'
+import SearchBar from '../../components/SearchBar/SearchBar';
+import TabBar from '../../components/TabBar/TabBar';
 
 type GuidesProps = {
   classes: any;
@@ -30,49 +32,48 @@ function Guides(props: GuidesProps) {
   }
   return (
     <div className={classes.root}>
-      <div className={classes.header}>
-        <div className={classes.title}>Playlists</div>
-        <a>See all</a>
-      </div>
-      <div className={classes.scroll}>
-        {Object.keys(lessons).map((key: any) => (
-          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
-            <div className={classes.playlistCard}>
-              <PlaylistCard lesson={lessons[key]} />
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      <div className={classes.header}>
-        <div className={classes.title}>Articles</div>
-        <a>See all</a>
-      </div>
-      <div className={classes.scroll}>
-        {articles.map((key: any) => (
-          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
-              <ResourceCard resource={resources[key]} />
-          </Link>
-        ))}
-      </div>
-
-      <div className={classes.header}>
-        <div className={classes.title}>Videos</div>
-        <a>See all</a>
-      </div>
-      <div className={classes.scroll}>
-        {videos.map((key: any) => (
-          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
-              <ResourceCard resource={resources[key]} />
-          </Link>
-        ))}
-      </div>
-      <div className={classes.bottomPad}></div>
-
+      <SearchBar />
       <div>
-        {playvideo(1)}
-      </div>
+        <div className={classes.header}>
+          <div className={classes.title}>Playlists</div>
+          <a>See all</a>
+        </div>
+        <div className={classes.scroll}>
+          {Object.keys(lessons).map((key: any) => (
+            <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+              <div className={classes.playlistCard}>
+                <PlaylistCard lesson={lessons[key]} />
+              </div>
+            </Link>
+          ))}
+        </div>
 
+        <div className={classes.header}>
+          <div className={classes.title}>Articles</div>
+          <a>See all</a>
+        </div>
+        <div className={classes.scroll}>
+          {articles.map((key: any) => (
+            <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+              <ResourceCard resource={resources[key]} />
+            </Link>
+          ))}
+        </div>
+
+        <div className={classes.header}>
+          <div className={classes.title}>Videos</div>
+          <a>See all</a>
+        </div>
+        <div className={classes.scroll}>
+          {videos.map((key: any) => (
+            <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+              <ResourceCard resource={resources[key]} />
+            </Link>
+          ))}
+        </div>
+        <div className={classes.bottomPad}></div>
+      </div>
+      <TabBar />
     </div>
 
   );

@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import PreviewCard from '../Cards/PreviewCard';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import TabBar from '../../components/TabBar/TabBar';
 
 type PlaylistPageProps = {
   lessonId: number,
@@ -13,6 +15,7 @@ const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
   const currentLesson = lessons[lessonId]
   return (
     <div>
+      <SearchBar />
       <h1>{currentLesson.title}</h1>
       <h3>Description</h3>
       <p>{currentLesson.description}</p>
@@ -28,6 +31,7 @@ const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
           return <span />
         }
       })}
+      <TabBar />
     </div>
   );
 }

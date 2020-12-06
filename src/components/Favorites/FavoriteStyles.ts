@@ -9,10 +9,11 @@ export const styles = (theme: Theme) =>
     },
     page: {
       marginTop: '25%',
-      margin: '3%',
+      margin: '5%',
       overflow: 'scroll',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      width: "100%"
     },
     header: {
       display: 'flex',

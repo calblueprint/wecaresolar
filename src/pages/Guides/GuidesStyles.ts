@@ -2,7 +2,13 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     root: {
-      paddingLeft: 27
+      marginTop: '15%',
+      margin: '3%',
+      overflow: 'scroll',
+      display: 'flex',
+      flexDirection: 'column',
+      width: "100%",
+      height: "100%"
     },
     header: {
       display: 'flex',
