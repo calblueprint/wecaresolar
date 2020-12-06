@@ -6,18 +6,16 @@ import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
 import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
-import PlaylistPage from './components/Playlist/PlaylistPage';
+import PlaylistPage from './components/Guides/PlaylistPage';
 import TopicViews from './components/TopicViews';
 import SearchBar from './components/SearchBar/SearchBar';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles'; 
 
 const useStyles = makeStyles({
-  navbar: {
-    position: 'fixed',
-    width: '100%',
-    zIndex: 100,
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+  root: {
+    color: theme.palette.background.default,
+    backgroundColor: theme.palette.background.default,
   }
 });
 
@@ -27,7 +25,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
     <Router>
-      <div>
+      <div className={classes.root}>
         <Route component={SearchBar} />
         <Switch>
           <Route exact path="/suitcase" component={Suitcase} />

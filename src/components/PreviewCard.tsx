@@ -50,7 +50,8 @@ const favoritedResource: Resource = {
   },
   isFinished: false, // QUESTION: once viewed, or manually mark finished?
   isCached: false, // QUESTION: allow caching text resources?
-  isFavorited: true
+  isFavorited: true,
+  isCompleted: true
 };
 
 PlaylistCard.defaultProps = favoritedResource;
