@@ -16,7 +16,6 @@ import theme from './CustomStyles';
 
 const useStyles = makeStyles({
   root: {
-    color: theme.palette.background.default,
     backgroundColor: theme.palette.background.default
   }
 });
@@ -27,33 +26,43 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div className={classes.root}>
-          <Route component={SearchBar} />
-          <Switch>
-            <Route exact path="/suitcase" component={Suitcase} />
-            {/* <Route path={"/suitcase/:topicId"}
-              render={props =>
-                <TopicViews topicId={props.match.params.topicId} />
-              } /> */}
-            <Route exact path="/favorites" component={Favorites} />
-
-            <Route exact path="/guides" component={Guides} />
-            <Route path={"/guides/videos/:videoId"}
-              render={props =>
-                <Video resId={props.match.params.videoId} />
-              } />
-            <Route path={"/guides/:lessonId"}
-              render={props =>
-                <PlaylistPage lessonId={props.match.params.lessonId} />
-              } />
-
-            <Route exact path="/troubleshoot" component={Troubleshoot} />
-            <Route path={"/Troubleshoot/:helpId"}
-              render={props =>
-                <TroubleShootCard helpId={props.match.params.helpId} />
-              } />
-          </Switch>
-          <TabBar />
+        <div className={classes.root} style={{ display: 'flex', flexDirection: 'column' }}>
+          <div>
+            <Route component={SearchBar} />
+          </div>
+          <div>
+            <Switch>
+              <Route exact path="/suitcase" component={Suitcase} />
+              <Route
+                path={'/suitcase/:topicId'}
+                render={(props) => (
+                  <TopicViews topicId={props.match.params.topicId} />
+                )}
+              />
+              <Route exact path="/favorites" component={Favorites} />
+              <Route exact path="/guides" component={Guides} />
+              <Route path={"/guides/videos/:videoId"}
+                render={props =>
+                  <Video resId={props.match.params.videoId} />
+                } />
+              <Route
+                path={'/guides/:lessonId'}
+                render={(props) => (
+                  <PlaylistPage lessonId={props.match.params.lessonId} />
+                )}
+              />
+              <Route exact path="/troubleshoot" component={Troubleshoot} />
+              <Route
+                path={'/Troubleshoot/:helpId'}
+                render={(props) => (
+                  <TroubleShootCard helpId={props.match.params.helpId} />
+                )}
+              />
+            </Switch>
+          </div>
+          <div>
+            <TabBar />
+          </div>
         </div>
       </Router>
     </ThemeProvider>
