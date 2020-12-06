@@ -11,8 +11,8 @@ export const styles = (theme: Theme) =>
       marginTop: '25%',
       margin: '3%',
       overflow: 'scroll',
-      display: "flex",
-      flexDirection: "column"
+      display: 'flex',
+      flexDirection: 'column'
     },
     header: {
       display: 'flex',
@@ -27,10 +27,10 @@ export const styles = (theme: Theme) =>
       color: theme.palette.brown.main
     },
     filters: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "space-around",
-      justifyContent: "center"
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'space-around',
+      justifyContent: 'center'
     },
     link: {
       textDecoration: 'none',
@@ -39,7 +39,7 @@ export const styles = (theme: Theme) =>
     formControl: {
       minWidth: 100,
       maxWidth: 200,
-      margin: "5%",
+      margin: '5%'
     },
     select: {
       fontSize: '.9rem',
