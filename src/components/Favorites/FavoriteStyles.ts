@@ -6,7 +6,5 @@ export const styles = (theme: Theme) =>
       color: theme.palette.brown.main,
       backgroundColor: 'Transparent',
       border: 'none'
-
     }
-  }
-);
+  });
