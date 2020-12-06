@@ -8,11 +8,10 @@ import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
-import FetalImage from '../components/Images/fetaldopplerTopic.jpg'; 
-import LightsImage from '../components/Images/lightsTopic.jpg'; 
-import HeadlampImage from '../components/Images/headlampTopic.jpg'; 
+import FetalImage from '../components/Images/fetaldopplerTopic.jpg';
+import LightsImage from '../components/Images/lightsTopic.jpg';
+import HeadlampImage from '../components/Images/headlampTopic.jpg';
 import PhoneImage from '../components/Images/phoneTopic.jpg';
-
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   1: {
@@ -297,7 +296,7 @@ export const INITIAL_TOPICS: TopicsSlice = {
     name: 'Rechargeable Headlamps',
     description: 'These are rechargeable headlamps.',
     imageUrl: HeadlampImage
-  }, 
+  },
   8: {
     name: 'Phone Charger',
     description: 'This is the phone charger.',
