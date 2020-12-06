@@ -8,7 +8,7 @@ export const styles = (theme: Theme) =>
       border: 'none'
     },
     page: {
-      marginTop: '10%',
+      marginTop: '15%',
       margin: '3%',
       overflow: 'scroll'
     },
