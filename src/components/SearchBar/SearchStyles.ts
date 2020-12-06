@@ -50,7 +50,31 @@ export const styles = (theme: Theme) =>
       width: '100%',
       flexGrow: 1
     },
-    backButton: {
-      color: theme.palette.brown.main
+    searchList: {
+      color: theme.palette.brown.main,
+      padding: 24,
+      paddingTop: 50
+    },
+    searchCard: {
+      borderRadius: 10,
+      marginBottom: 12,
+      padding: 24,
+      backgroundColor: 'white',
+      boxShadow:
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
+    },
+    searchTitle: {
+      fontSize: 14,
+      fontWeight: 'bold',
+      marginBottom: 0
+    },
+    searchType: {
+      marginTop: 0,
+      fontWeight: 'normal',
+      fontSize: 12,
+      color: theme.palette.grey[400]
+    },
+    searchBody: {
+      fontSize: 12
     }
   });
