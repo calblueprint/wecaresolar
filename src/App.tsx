@@ -31,10 +31,10 @@ function App() {
           <Route component={SearchBar} />
           <Switch>
             <Route exact path="/suitcase" component={Suitcase} />
-            <Route path={"/suitcase/:topicId"}
+            {/* <Route path={"/suitcase/:topicId"}
               render={props =>
                 <TopicViews topicId={props.match.params.topicId} />
-              } />
+              } /> */}
             <Route exact path="/favorites" component={Favorites} />
 
             <Route exact path="/guides" component={Guides} />

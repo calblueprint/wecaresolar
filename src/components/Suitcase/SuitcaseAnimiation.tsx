@@ -1,12 +1,16 @@
 import React from 'react';
-import { ImageMapper, Area, Map} from 'react-image-mapper2';
-import Lights from "../Images/zoomed.jpg";
+import { ImageMapper, Map} from 'react-image-mapper2';
+import AnimationCard from "./AnimationCard"; 
 import Suitcase from "../Images/Suitcase.jpg"; 
+import FetalDoppler from "../Images/fetaldoppler.jpg";
+import HeadLamp from "../Images/headlamps.jpg";
+import PhoneCharger from "../Images/phonecharger.jpg";
+import Lights from "../Images/lights.jpg"; 
 
-type MyState = { imgURLS: string[], imgINDEX: number, mapOfArea: Map};
+type MyState = { clicked: boolean, resourceKey: number, imgURLS: string[], imgINDEX: number, mapOfArea: Map};
 
 
-class SuitcaseAnimation extends React.Component<{}, MyState> {
+class SuitcaseAnimation extends React.Component<{match}, MyState> {
   constructor(props) {
     super(props); 
 
@@ -14,9 +18,10 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
     const radius = 7.5;
 
     this.state={
-      imgURLS: [Suitcase, 
-                Lights], 
+      clicked: false, 
+      imgURLS: [Suitcase, " ", " ", " ", FetalDoppler, " ", HeadLamp, " ", PhoneCharger, " ", " ", " ", " ", " ", " ", " ", Lights, " ", " "],
       imgINDEX: 0, 
+      resourceKey: 0, 
       //I hate this. I'm so sorry. help me find a better way. 
       mapOfArea: {name: 'Suitcase', areas: [{ _id: '1', name: 'lights (left)', shape: 'circle', coords: [150, 60, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '2', name: 'installation sticker', shape: 'circle', coords: [105, 80, radius], preFillColor: blue, strokeColor: blue }, 
@@ -41,15 +46,18 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
 
   enterArea(area) {
     console.log(area);
-    // var index = area._id; 
+    var index = area._id; 
 		this.setState({
-      imgINDEX: 1, //replace with Number(index) later when have all images  
+      clicked: true,
+      resourceKey: area._id, 
+      imgINDEX: Number(index),
       mapOfArea: {name: 'Suitcase', areas: []},
       });
   }
+
         render() { 
           return  <div>
-          <ImageMapper
+          <ImageMapper //initial load 
               active
               src={this.state.imgURLS[this.state.imgINDEX]}
               width={500}
@@ -57,6 +65,15 @@ class SuitcaseAnimation extends React.Component<{}, MyState> {
               map={this.state.mapOfArea}
               onClick={(area) => this.enterArea(area)} 
            />
+          
+          {this.state.clicked ? //area clicked 
+          <ImageMapper
+              active
+              src={this.state.imgURLS[this.state.imgINDEX]}
+              map={this.state.mapOfArea}
+           />
+          && 
+          <AnimationCard resourceId={this.state.resourceKey} match={this.props.match}/> : null}
       </div>
     }
 }
