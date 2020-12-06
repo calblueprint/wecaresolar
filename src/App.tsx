@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Guides/PlaylistPage';
 import TopicViews from './components/TopicViews';
 import SearchBar from './components/SearchBar/SearchBar';
+import Video from './components/Video/Video';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
@@ -40,6 +41,10 @@ function App() {
               />
               <Route exact path="/favorites" component={Favorites} />
               <Route exact path="/guides" component={Guides} />
+              <Route path={"/guides/videos/:videoId"}
+                render={props =>
+                  <Video resId={props.match.params.videoId} />
+                } />
               <Route
                 path={'/guides/:lessonId'}
                 render={(props) => (
@@ -59,7 +64,6 @@ function App() {
             <TabBar />
           </div>
         </div>
-        <TabBar />
       </Router>
     </ThemeProvider>
   );
