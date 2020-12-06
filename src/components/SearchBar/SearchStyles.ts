@@ -2,7 +2,7 @@ import { createStyles, Theme, fade } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     bar: {
-      color: theme.palette.background.default,
+      color: theme.palette.brown.main,
       backgroundColor: theme.palette.background.default,
       boxShadow: 'none'
     },
@@ -24,7 +24,7 @@ export const styles = (theme: Theme) =>
       borderRadius: 9,
       backgroundColor: theme.palette.yellow.main,
       width: '100%',
-      margin: '12px 24px'
+      margin: '0px 12px'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),

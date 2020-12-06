@@ -4,6 +4,7 @@ import Favorites from './pages/Favorites/Favorites';
 import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
+import Settings from './pages/Settings/Settings';
 import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Guides/PlaylistPage';
@@ -16,6 +17,7 @@ import theme from './CustomStyles';
 
 const useStyles = makeStyles({
   root: {
+    color: theme.palette.brown.main,
     backgroundColor: theme.palette.background.default
   }
 });
@@ -58,6 +60,7 @@ function App() {
                   <TroubleShootCard helpId={props.match.params.helpId} />
                 )}
               />
+              <Route exact path="/settings" component={Settings} />
             </Switch>
           </div>
           <div>

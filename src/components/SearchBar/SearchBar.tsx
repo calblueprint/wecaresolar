@@ -8,7 +8,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import WifiIcon from '@material-ui/icons/WifiOff';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
-import SettingsDrawer from './SettingsDrawer';
 import { useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import SearchList from './SearchList';
@@ -56,7 +55,6 @@ const SearchAppBar = (props: SearchProps) => {
           <Offline>
             <WifiIcon />
           </Offline>
-          <SettingsDrawer />
         </Toolbar>
       </AppBar>
       {query && (
