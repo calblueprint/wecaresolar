@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { RootState } from '../../store/reducers';
 import StandardCard from '../../components/Cards/StandardCard';
 import { selectFavoritedResources } from '../../store/resourcesSlice';
 import { withStyles } from "@material-ui/core/styles";
@@ -9,12 +10,15 @@ import {
   FormControl,
   Select,
   MenuItem,
+  Input,
 } from "@material-ui/core";
 
 function Favorites({ match, classes }) {
   const favResources = useSelector(selectFavoritedResources);
+  const topics = useSelector((state: RootState) => state.topics);
+  const allTopics: string[] = Object.keys(topics).map(topic => topics[topic].name)
   const [resType, setresType] = useState('All');
-  const [Topic, setTopic] = useState('');
+  const [currTopics, setTopic] = useState([]);
 
   const handleResChange = (event) => {
     setresType(event.target.value);
@@ -24,11 +28,14 @@ function Favorites({ match, classes }) {
   };
 
   function filteredFavResources(resource: any) {
-    if (resType === 'All' || favResources[resource].type === resType) {
-      return (<Link style={{ textDecoration: 'none', margin: '1%' }} to={`resources/${resource}`}>
-        <StandardCard key={resource} resource={favResources[resource]} resourceID={resource} />
-      </Link>)
-    } else {
+    if (currTopics.length == 0 || currTopics.map(topic => favResources[resource].tags.includes(topic)).includes(true)) {
+      if (resType === 'All' || favResources[resource].type === resType) {
+        return (<Link className={classes.link} to={`resources/${resource}`}>
+          <StandardCard key={resource} resource={favResources[resource]} resourceID={resource} />
+        </Link>)
+      }
+    }
+    else {
       return <span />
     }
   }
@@ -37,19 +44,40 @@ function Favorites({ match, classes }) {
     <div className={classes.page}>
       <div className={classes.header}>
         <div className={classes.title}>Favorites</div>
-        <FormControl >
-          <Select value={resType}
-            disableUnderline
-            className={classes.select}
-            classes={{ root: classes.root, selectMenu: classes.selectMenu, icon: classes.icon }}
-            onChange={handleResChange}>
-            <MenuItem value={'All'}>All</MenuItem>
-            <MenuItem value={'Video'}>Videos</MenuItem>
-            <MenuItem value={'Article'}>Articles</MenuItem>
-          </Select>
-        </FormControl>
+        <div className={classes.filters}>
+          <FormControl className={classes.formControl}>
+            <Select
+              multiple
+              value={currTopics}
+              onChange={handleTopicChange}
+              input={<Input />}
+              disableUnderline
+              className={classes.select}
+              classes={{ selectMenu: classes.selectMenu, icon: classes.icon }}
+            >
+              {Object.keys(topics).map((key) => (
+                <MenuItem key={key} value={topics[key].name} >
+                  {topics[key].name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <Select value={resType}
+              disableUnderline
+              className={classes.select}
+              classes={{ selectMenu: classes.selectMenu, icon: classes.icon }}
+              onChange={handleResChange}>
+              <MenuItem value={'All'}>All</MenuItem>
+              <MenuItem value={'Video'}>Videos</MenuItem>
+              <MenuItem value={'Article'}>Articles</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
-      {Object.keys(favResources).map(filteredFavResources)
+
+      {
+        Object.keys(favResources).map(filteredFavResources)
       }
     </div >
   );
