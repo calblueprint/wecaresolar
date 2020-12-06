@@ -8,9 +8,8 @@ export const styles = (theme: Theme) =>
       width: '100%',
       flexDirection: 'column',
       overflow: "scroll",
-      paddingTop: "10%",
-      paddingBottom: "10%"
-
+      paddingTop: "20%",
+      paddingBottom: "20%",
     },
     nonVideo: {
       padding: '5%',
