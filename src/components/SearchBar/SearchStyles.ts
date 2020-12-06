@@ -53,5 +53,4 @@ export const styles = (theme: Theme) =>
     backButton: {
       color: theme.palette.brown.main
     }
-
   });
