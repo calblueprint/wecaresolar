@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../store/reducers';
+import React from 'react';
 import TroubleShootCard from '../../components/Troubleshoot/TroubleShootCard';
 
 function TroubleShoot({ match }) {
-  console.log("HELLO", match.url)
-
   return (
     <div>
       <h1>Troubleshoot</h1>
-      <TroubleShootCard helpId={"404_ERROR"} />
-    </div>);
+      <TroubleShootCard helpId={"Root"} />
+    </div>
+  );
 }
 
 export default TroubleShoot;

@@ -44,7 +44,6 @@ const Video = ({ resId, classes }: VideoProps) => {
         return (
           <div className={classes.buttons}>
             <div className={`${classes.outlineButton} ${classes.button} ${classes.Download}`}>Downloaded</div>
-            <DownloadButton id={resId} videoData={videoDetails.data} />
           </div>);
       }
     }

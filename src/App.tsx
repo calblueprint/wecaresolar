@@ -17,7 +17,7 @@ import theme from './CustomStyles';
 const useStyles = makeStyles({
   root: {
     color: theme.palette.background.default,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.default
   }
 });
 
