@@ -9,6 +9,10 @@ import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
 import { HelpSlice } from './helpSlice';
+import FetalImage from '../components/Images/fetaldopplerTopic.jpg';
+import LightsImage from '../components/Images/lightsTopic.jpg';
+import HeadlampImage from '../components/Images/headlampTopic.jpg';
+import PhoneImage from '../components/Images/phoneTopic.jpg';
 
 export const INITIAL_HELP: HelpSlice = {
   Root: {
@@ -57,10 +61,6 @@ export const INITIAL_HELP: HelpSlice = {
     }
   }
 };
-import FetalImage from '../components/Images/fetaldopplerTopic.jpg';
-import LightsImage from '../components/Images/lightsTopic.jpg';
-import HeadlampImage from '../components/Images/headlampTopic.jpg';
-import PhoneImage from '../components/Images/phoneTopic.jpg';
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   1: {
