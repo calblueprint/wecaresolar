@@ -150,7 +150,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCompleted: true
   },
   42: {
-    type: 'Article',
+    type: 'Video',
     title: 'Doppler Article',
     tags: ['Fetal Doppler'],
     data: {

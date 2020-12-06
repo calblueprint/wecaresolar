@@ -77,5 +77,4 @@ export const styles = (theme: Theme) =>
     searchBody: {
       fontSize: 12
     }
-
   });
