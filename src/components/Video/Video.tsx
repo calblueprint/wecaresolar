@@ -1,50 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import DownloadButton from './DownloadButton';
-import FavoriteButton from '../Favorites/FavoriteButton';
-import Tag from '../Guides/Tag';
+import FavoriteButton from '../CardComponents/FavoriteButton';
+import Tag from '../CardComponents/Tag';
 import { get } from 'idb-keyval';
-import { videoStore } from '../../index'
-import { Resource, VideoData, isVideo } from '../../store/resourcesSlice'
-import ReactPlayer from 'react-player'
+import { videoStore } from '../../index';
+import { Resource, VideoData, isVideo } from '../../store/resourcesSlice';
+import ReactPlayer from 'react-player';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './VideoStyles';
-import { getId, arrayBufferToBlob } from './VideoFunctions'
+import { getId, arrayBufferToBlob } from './VideoFunctions';
 import { useDispatch } from 'react-redux';
 import { setResourceIsCached } from '../../store/resourcesSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 
 type VideoProps = {
-  resId: number,
-  classes: any,
-}
+  resId: number;
+  classes: any;
+};
 
 const Video = ({ resId, classes }: VideoProps) => {
   const resources = useSelector((state: RootState) => state.resources);
   const dispatch = useDispatch();
-  const videoDetails = resources[resId]
-  const videoData = videoDetails.data as VideoData
+  const videoDetails = resources[resId];
+  const videoData = videoDetails.data as VideoData;
 
-  const [videoUrl, setVideoUrl] = useState(
-    videoData.watchUrl
-  );
+  const [videoUrl, setVideoUrl] = useState(videoData.watchUrl);
 
-  useEffect(() => { refreshVideoUrl() },
-    [videoDetails.isCached],
-  );
+  useEffect(() => {
+    refreshVideoUrl();
+  }, [videoDetails.isCached]);
 
   function createDownloadButton() {
     if (isVideo(videoDetails.data)) {
       if (!videoDetails.isCached) {
         return (
           <div className={classes.buttons}>
-            <div className={`${classes.outlineButton} ${classes.button} ${classes.noDownload}`}>Not downloaded</div>
-            <DownloadButton id={resId} videoData={videoDetails.data} /></div>)
+            <div
+              className={`${classes.outlineButton} ${classes.button} ${classes.noDownload}`}
+            >
+              Not downloaded
+            </div>
+            <DownloadButton id={resId} videoData={videoDetails.data} />
+          </div>
+        );
       } else {
         return (
           <div className={classes.buttons}>
-            <div className={`${classes.outlineButton} ${classes.button} ${classes.Download}`}>Downloaded</div>
-          </div>);
+            <div
+              className={`${classes.outlineButton} ${classes.button} ${classes.Download}`}
+            >
+              Downloaded
+            </div>
+          </div>
+        );
       }
     }
   }
@@ -52,20 +61,31 @@ const Video = ({ resId, classes }: VideoProps) => {
   function refreshVideoUrl() {
     if (isVideo(videoDetails.data)) {
       if (videoDetails.isCached) {
-        get(resId, videoStore).then(videoBlob => {
-          if (videoBlob !== undefined) {
-            setVideoUrl(URL.createObjectURL(arrayBufferToBlob(videoBlob, "video/mp4")))
-          } else {
-            dispatch(setResourceIsCached({
-              id: resId,
-              isCached: false,
-            }));
-          }
-        }).catch((error) => console.log("Failed to download the video." +
-          "Please make sure that you are not in private browsing mode, and that you have enough space in your video storage"))
-
+        get(resId, videoStore)
+          .then((videoBlob) => {
+            if (videoBlob !== undefined) {
+              setVideoUrl(
+                URL.createObjectURL(arrayBufferToBlob(videoBlob, 'video/mp4'))
+              );
+            } else {
+              dispatch(
+                setResourceIsCached({
+                  id: resId,
+                  isCached: false
+                })
+              );
+            }
+          })
+          .catch((error) =>
+            console.log(
+              'Failed to download the video.' +
+                'Please make sure that you are not in private browsing mode, and that you have enough space in your video storage'
+            )
+          );
       } else {
-        setVideoUrl("//www.youtube.com/embed/" + getId(videoDetails.data.watchUrl))
+        setVideoUrl(
+          '//www.youtube.com/embed/' + getId(videoDetails.data.watchUrl)
+        );
       }
     }
   }
@@ -74,7 +94,9 @@ const Video = ({ resId, classes }: VideoProps) => {
     <div className={classes.page}>
       <div className={classes.nonVideo}>
         <div className={classes.labelList}>
-          {videoDetails.tags.map(tag => <Tag classes={classes} tag={tag} />)}
+          {videoDetails.tags.map((tag) => (
+            <Tag classes={classes} tag={tag} />
+          ))}
         </div>
         <div className={classes.header}>
           <h1 className={classes.title}>{videoDetails.title}</h1>
@@ -82,11 +104,9 @@ const Video = ({ resId, classes }: VideoProps) => {
         </div>
       </div>
       <ReactPlayer url={videoUrl} playing controls width="100%" />
-      <div className={classes.nonVideo}>
-        {createDownloadButton()}
-      </div>
+      <div className={classes.nonVideo}>{createDownloadButton()}</div>
     </div>
-  )
-}
+  );
+};
 
 export default withStyles(styles)(Video);

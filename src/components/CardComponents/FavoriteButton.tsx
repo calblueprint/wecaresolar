@@ -21,13 +21,21 @@ function FavoriteButton(props: FavoriteButtonProps) {
         id: props.id,
         isFavorited: !props.isFavorited
       })
-    )
+    );
   }
   return (
     <div>
-      {props.isFavorited ?
-        <BookmarkIcon style={{ color: theme.palette.white.main }} onClick={changeFav} /> :
-        <BookmarkBorderIcon style={{ color: theme.palette.white.main }} onClick={changeFav} />}
+      {props.isFavorited ? (
+        <BookmarkIcon
+          style={{ color: theme.palette.black.main }}
+          onClick={changeFav}
+        />
+      ) : (
+        <BookmarkBorderIcon
+          style={{ color: theme.palette.black.main }}
+          onClick={changeFav}
+        />
+      )}
     </div>
   );
 }

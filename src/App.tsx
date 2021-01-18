@@ -8,7 +8,7 @@ import Settings from './pages/Settings/Settings';
 import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Guides/PlaylistPage';
-import TopicViews from './components/TopicViews';
+import TopicViews from './components/Topics/TopicViews';
 import SearchBar from './components/SearchBar/SearchBar';
 import Video from './components/Video/Video';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
@@ -28,7 +28,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div className={classes.root} style={{ display: 'flex', flexDirection: 'column' }}>
+        <div
+          className={classes.root}
+          style={{ display: 'flex', flexDirection: 'column' }}
+        >
           <div>
             <Route component={SearchBar} />
           </div>
@@ -43,10 +46,10 @@ function App() {
               />
               <Route exact path="/favorites" component={Favorites} />
               <Route exact path="/guides" component={Guides} />
-              <Route path={"/guides/videos/:videoId"}
-                render={props =>
-                  <Video resId={props.match.params.videoId} />
-                } />
+              <Route
+                path={'/guides/videos/:videoId'}
+                render={(props) => <Video resId={props.match.params.videoId} />}
+              />
               <Route
                 path={'/guides/:lessonId'}
                 render={(props) => (
