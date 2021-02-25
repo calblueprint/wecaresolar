@@ -55,13 +55,13 @@ const TabBar = (props: TabProps) => {
         icon={<img src={troubleshoot} />}
         className={classes.text}
       />
-      {/* <BottomNavigationAction
+      <BottomNavigationAction
         component={Link}
-        to="/Troubleshoot"
+        to="/Settings"
         label="Settings"
         icon={<img src={settings} />}
         className={classes.text}
-      /> */}
+      />
     </BottomNavigation>
   );
 };

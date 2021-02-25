@@ -55,11 +55,7 @@ type ResourceIsFavoritedPayload = {
 };
 
 export const isVideo = (tbd: VideoArticle): tbd is VideoData => {
-  if (tbd as VideoData) {
-    return true;
-  } else {
-    return false;
-  }
+  return (tbd as VideoData).watchUrl !== undefined;
 };
 export const resourcesSlice = createSlice({
   name: 'resources',

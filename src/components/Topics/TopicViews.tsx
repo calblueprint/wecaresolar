@@ -1,15 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PreviewCard from './Cards/PreviewCard';
-import { RootState } from '../store/reducers';
-import { ResourcesSlice } from '../store/resourcesSlice';
+import StandardCard from '../Cards/StandardCard';
+import { RootState } from '../../store/reducers';
+import { ResourcesSlice } from '../../store/resourcesSlice';
 import TopicHeader from './TopicHeader';
 
 interface TopicViewProps {
-  topicId: string, 
+  topicId: string;
 }
 
-function TopicViews( { topicId }: TopicViewProps) {
+function TopicViews({ topicId }: TopicViewProps) {
   const currentTopic = useSelector((state: RootState) => state.topics[topicId]);
   const name = currentTopic.name;
 
@@ -17,11 +18,11 @@ function TopicViews( { topicId }: TopicViewProps) {
     Object.keys(state.resources as ResourcesSlice)
       .filter(
         (id) =>
-          state.resources[(id)].tags.includes(name, 0) &&
-          !state.resources[(id)].tags.includes('Troubleshooting', 0))
+          state.resources[id].tags.includes(name, 0) &&
+          !state.resources[id].tags.includes('Troubleshooting', 0)
+      )
       .reduce<ResourcesSlice>((res, key) => {
-        res[key] =
-          state.resources[key];
+        res[key] = state.resources[key];
         return res;
       }, {});
 
@@ -30,10 +31,10 @@ function TopicViews( { topicId }: TopicViewProps) {
       .filter(
         (id) =>
           state.resources[id].tags.includes(name, 0) &&
-          state.resources[id].tags.includes('Troubleshooting', 0))
+          state.resources[id].tags.includes('Troubleshooting', 0)
+      )
       .reduce<ResourcesSlice>((res, key) => {
-        res[key] =
-          state.resources[key];
+        res[key] = state.resources[key];
         return res;
       }, {});
 
@@ -47,15 +48,16 @@ function TopicViews( { topicId }: TopicViewProps) {
     backgroundSize: 'cover'
   };
 
-  const countMedia = (obj, media: string) => Object.keys(obj).filter((id) => obj[id].type == media).length
-
+  const countMedia = (obj, media: string) =>
+    Object.keys(obj).filter((id) => obj[id].type == media).length;
 
   const articleCount =
-    countMedia(guideResources, 'Article') + countMedia(troubleshootingResources, 'Article');
+    countMedia(guideResources, 'Article') +
+    countMedia(troubleshootingResources, 'Article');
 
   const videoCount =
-    countMedia(guideResources, 'Video') + countMedia(troubleshootingResources, 'Video');
-
+    countMedia(guideResources, 'Video') +
+    countMedia(troubleshootingResources, 'Video');
 
   return (
     <div>
@@ -68,13 +70,19 @@ function TopicViews( { topicId }: TopicViewProps) {
       </div>
       <div>
         {Object.keys(guideResources).map((resource: any) => (
-          <PreviewCard resource={guideResources[resource]} resourceID={resource} />
+          <StandardCard
+            resource={guideResources[resource]}
+            resourceID={resource}
+          />
         ))}
       </div>
       <div>
         <h2>Facing Issues?</h2>
         {Object.keys(troubleshootingResources).map((resource: any) => (
-          <PreviewCard resource={troubleshootingResources[resource]} resourceID={resource} />
+          <StandardCard
+            resource={troubleshootingResources[resource]}
+            resourceID={resource}
+          />
         ))}
       </div>
     </div>

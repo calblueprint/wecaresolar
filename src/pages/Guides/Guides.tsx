@@ -6,8 +6,6 @@ import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
-import Video from '../../components/Video/Video'
-import { isVideo } from '../../store/resourcesSlice'
 
 type GuidesProps = {
   classes: any;
@@ -22,12 +20,6 @@ function Guides(props: GuidesProps) {
   const videos = Object.keys(resources).filter((id) => resources[id].type == 'Video');
 
   const { classes } = props;
-  function playvideo(index) {
-    let resource = resources[index]
-    if (isVideo(resource.data)) {
-      return <Video resId={index} videoDetails={resource} videoData={resource.data} />
-    }
-  }
   return (
     <div className={classes.root}>
       <div className={classes.header}>
@@ -50,8 +42,8 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {articles.map((key: any) => (
-          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
-              <ResourceCard resource={resources[key]} />
+          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+            <ResourceCard resource={resources[key]} />
           </Link>
         ))}
       </div>
@@ -62,16 +54,13 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {videos.map((key: any) => (
-          <Link style={{textDecoration: 'none'}} to={`${props.match.url}/${key}`}>
-              <ResourceCard resource={resources[key]} />
+          <Link style={{ textDecoration: 'none' }}
+            to={`${props.match.url}/videos/${key}`}>
+            <ResourceCard resource={resources[key]} />
           </Link>
         ))}
       </div>
       <div className={classes.bottomPad}></div>
-
-      <div>
-        {playvideo('Advanced Diagnostic Screen')}
-      </div>
 
     </div>
 

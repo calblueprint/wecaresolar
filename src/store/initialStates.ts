@@ -9,6 +9,10 @@ import { ResourcesSlice } from './resourcesSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
 import { HelpSlice } from './helpSlice';
+import FetalImage from '../components/Images/fetaldopplerTopic.jpg';
+import LightsImage from '../components/Images/lightsTopic.jpg';
+import HeadlampImage from '../components/Images/headlampTopic.jpg';
+import PhoneImage from '../components/Images/phoneTopic.jpg';
 
 export const INITIAL_HELP: HelpSlice = {
   Root: {
@@ -70,7 +74,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
       duration: 1536,
       watchUrl: 'https://www.youtube.com/watch?v=oMCKWkvGLLA',
       downloadUrl:
-        'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/68af8796-4a00-44c4-8e3e-b006d358bafe/1_v3SolarSuitcase_InstallationPlanning_%285%29.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201118%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201118T063037Z&X-Amz-Expires=86400&X-Amz-Signature=062bad74e216cd1ea00586ba6fa8ea86ab830da005844cfd3d596dcf2e87e329&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%221_v3SolarSuitcase_InstallationPlanning_%285%29.mp4%22'
+        'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/028e79a0-3532-427b-be11-292e8f363ea1/1_v3SolarSuitcase_InstallationPlanning_%284%29.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201205%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201205T210159Z&X-Amz-Expires=86400&X-Amz-Signature=82bd1835a6bc8ba47ceb050aaf8e3a31336b2d4a837d72e47aaf17741c4a4c4a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%221_v3SolarSuitcase_InstallationPlanning_%284%29.mp4%22'
     },
     isFinished: true,
     isCached: false,
@@ -344,11 +348,10 @@ export const INITIAL_USER: UserSlice = {
 };
 
 export const INITIAL_TOPICS: TopicsSlice = {
-  '12': {
+  '4': {
     name: 'Fetal Doppler',
-    description: 'This is the Fetal Doppler topic.',
-    imageUrl:
-      'https://uce72b88e033b1894a6bd4a6893b.previews.dropboxusercontent.com/p/thumb/AA-VALtZ50Wlxc8KjAP_HrFUjfRQGn3XDl23bB8fKh0L_vWoVs0of8hzmp_3jpjSnCjBSD6pJvCH2fiDJ1_OjG7nBJ-0so-dUFgm0HlYzF1tyEPftOMkuHfJUiCuVzuth-jWJenQB5TUWTfX1xaG7NXAbuM7aZl48yKSsJC3tssAxPqcN3onDGxwTgCGDCNppvIX5mGaX9A4XhfpIFLpJidwRke8tgW0xEML4Cf2nJjMIezUpOWBIA-PCd96m4v6jtbNHzm-8k5uFr3xw8vIrfvIVpzvSY7STDl17Sks7ZO9778UEp0elfzQUXQnBYRzYiQnHyVfr0FHd32YvomNjvm7D2WjOJwgmcddPpBZoW5sEFqT04mJHHnLG7kg9JbnfAlV3HLQ6Vmru6Je_iMN-VWoEp3xfjfZzyuPJlsJJyunzg/p.png?fv_content=true&size_mode=5'
+    description: 'This is the Fetal Doppler.',
+    imageUrl: FetalImage
   },
   '13': {
     name: 'Cables',
@@ -373,5 +376,20 @@ export const INITIAL_TOPICS: TopicsSlice = {
     description: 'This is the Side Panel topic.',
     imageUrl:
       'https://uc0c740200565870274c27d46209.previews.dropboxusercontent.com/p/thumb/AA_toy33QFKPzXMtbIm7i0Qzz5e2TCYa5li3CgZjPP3axud979VEWbi5a2-x3yl3WkAhjBl2oARIX00E1FtcPdpwaVBkdTJDz1Px7PvnbG7vxWi_KEvuBqy1EqIGl7JJIU3yPJboLXpMQBRBEnJB2ta96qgdXloh1mKAxPwK_RJPQ3FH1iV1DE6VgwfIqjGZcSl5OQmjswp1w9XPr6Qb48E3rBAwhO61jzHp0zjfFYyT7I9G8VDwd53qOoYke7G3BnwQSXfFXq2cQImaWyUgotwZLH6TEMDkdrOgNgbDDTodDPQvJUUilIaszoZwH_y7bd1T0oqq-gzHNZLaUiNyMEUjEU7J3c1eu3nCD8D3R6rfzctZPeWGr66qDpbvTfRv2gmCdgpLLcBvsxnOhOElC7puq-671vSkbA-sEicTPvJOcQ/p.jpeg?fv_content=true&size_mode=5'
+  },
+  '6': {
+    name: 'Rechargeable Headlamps',
+    description: 'These are rechargeable headlamps.',
+    imageUrl: HeadlampImage
+  },
+  '8': {
+    name: 'Phone Charger',
+    description: 'This is the phone charger.',
+    imageUrl: PhoneImage
+  },
+  '16': {
+    name: 'Lights',
+    description: 'These are LIGHTS.',
+    imageUrl: LightsImage
   }
 };

@@ -14,6 +14,7 @@ export const styles = (theme: Theme) =>
     card: {
       margin: '10%',
       position: "relative",
+      height: '100vh',
       width: '100%',
       bottom: 0,
 

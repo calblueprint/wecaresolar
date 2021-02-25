@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import PreviewCard from '../Cards/PreviewCard';
+import StandardCard from '../Cards/StandardCard';
 
 type PlaylistPageProps = {
   lessonId: string,
@@ -10,7 +10,7 @@ type PlaylistPageProps = {
 const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
   const lessons = useSelector((state: RootState) => state.lessons);
   const resources = useSelector((state: RootState) => state.resources);
-  const currentLesson = lessons[lessonId]
+  const currentLesson = lessons[lessonId];
   return (
     <div>
       <h1>{currentLesson.title}</h1>
@@ -18,18 +18,20 @@ const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
       <p>{currentLesson.description}</p>
       <h3>You Will Learn</h3>
       <ul>
-        {currentLesson.objectives.map((item) => <li>item</li>)}
+        {currentLesson.objectives.map((item) => (
+          <li>item</li>
+        ))}
       </ul>
       <h3>Content</h3>
       {currentLesson.resourceIDs.map((id) => {
         if (id in resources) {
-          return < PreviewCard resource={resources[id]} resourceID={id} />
+          return <StandardCard resource={resources[id]} resourceID={id} />;
         } else {
-          return <span />
+          return <span />;
         }
       })}
     </div>
   );
-}
+};
 
 export default PlaylistPage;

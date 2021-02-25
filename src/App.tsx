@@ -5,18 +5,20 @@ import Favorites from './pages/Favorites/Favorites';
 import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
+import Settings from './pages/Settings/Settings';
 import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Guides/PlaylistPage';
-import TopicViews from './components/TopicViews';
+import TopicViews from './components/Topics/TopicViews';
 import SearchBar from './components/SearchBar/SearchBar';
+import Video from './components/Video/Video';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
 
 const useStyles = makeStyles({
   root: {
-    color: theme.palette.background.default,
+    color: theme.palette.brown.main,
     backgroundColor: theme.palette.background.default
   }
 });
@@ -27,7 +29,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div
+          className={classes.root}
+          style={{ display: 'flex', flexDirection: 'column' }}
+        >
           <div>
             <Route component={SearchBar} />
           </div>
@@ -43,6 +48,10 @@ function App() {
               <Route exact path="/favorites" component={Favorites} />
               <Route exact path="/guides" component={Guides} />
               <Route
+                path={'/guides/videos/:videoId'}
+                render={(props) => <Video resId={props.match.params.videoId} />}
+              />
+              <Route
                 path={'/guides/:lessonId'}
                 render={(props) => (
                   <PlaylistPage lessonId={props.match.params.lessonId} />
@@ -55,13 +64,13 @@ function App() {
                   <TroubleShootCard helpId={props.match.params.helpId} />
                 )}
               />
+              <Route exact path="/settings" component={Settings} />
             </Switch>
           </div>
           <div>
             <TabBar />
           </div>
         </div>
-        <TabBar />
       </Router>
     </ThemeProvider>
   );
