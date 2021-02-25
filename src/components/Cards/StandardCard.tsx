@@ -8,7 +8,7 @@ import CompletedButton from '../CardComponents/CompletedButton';
 
 interface StandardCardProps {
   resource: Resource;
-  resourceID: number;
+  resourceID: string;
   classes: any;
 }
 

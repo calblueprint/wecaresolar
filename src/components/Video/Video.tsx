@@ -16,8 +16,6 @@ import { RootState } from '../../store/reducers';
 
 type VideoProps = {
   resId: string,
-  videoDetails: Resource,
-  videoData: VideoData
   classes: any;
 };
 

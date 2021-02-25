@@ -7,7 +7,7 @@ import HeadLamp from "../Images/headlamps.jpg";
 import PhoneCharger from "../Images/phonecharger.jpg";
 import Lights from "../Images/lights.jpg"; 
 
-type MyState = { clicked: boolean, resourceKey: number, imgURLS: string[], imgINDEX: number, mapOfArea: Map};
+type MyState = { clicked: boolean, resourceKey: string, imgURLS: string[], imgINDEX: number, mapOfArea: Map};
 
 
 class SuitcaseAnimation extends React.Component<{match}, MyState> {
@@ -21,7 +21,7 @@ class SuitcaseAnimation extends React.Component<{match}, MyState> {
       clicked: false, 
       imgURLS: [Suitcase, " ", " ", " ", FetalDoppler, " ", HeadLamp, " ", PhoneCharger, " ", " ", " ", " ", " ", " ", " ", Lights, " ", " "],
       imgINDEX: 0, 
-      resourceKey: 0, 
+      resourceKey: '0', 
       //I hate this. I'm so sorry. help me find a better way. 
       mapOfArea: {name: 'Suitcase', areas: [{ _id: '1', name: 'lights (left)', shape: 'circle', coords: [150, 60, radius], preFillColor: blue, strokeColor: blue }, 
                                             { _id: '2', name: 'installation sticker', shape: 'circle', coords: [105, 80, radius], preFillColor: blue, strokeColor: blue }, 

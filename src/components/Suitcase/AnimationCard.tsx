@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 type AnimationProps = {
     classes: any;
-    resourceId: number; 
+    resourceId: string; 
     match 
   }
 

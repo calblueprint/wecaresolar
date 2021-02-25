@@ -387,7 +387,7 @@ export const INITIAL_TOPICS: TopicsSlice = {
     description: 'This is the phone charger.',
     imageUrl: PhoneImage
   },
-  '16': {
+  '99': {
     name: 'Lights',
     description: 'These are LIGHTS.',
     imageUrl: LightsImage

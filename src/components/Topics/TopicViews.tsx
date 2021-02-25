@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import PreviewCard from './Cards/PreviewCard';
 import StandardCard from '../Cards/StandardCard';
 import { RootState } from '../../store/reducers';
 import { ResourcesSlice } from '../../store/resourcesSlice';
