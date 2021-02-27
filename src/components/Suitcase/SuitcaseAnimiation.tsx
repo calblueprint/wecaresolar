@@ -7,7 +7,16 @@ import HeadLamp from "../Images/headlamps.jpg";
 import PhoneCharger from "../Images/phonecharger.jpg";
 import Lights from "../Images/lights.jpg"; 
 
-type MyState = { clicked: boolean, resourceKey: number, imgURLS: string[], imgINDEX: number, mapOfArea: Map};
+type MyState = {
+  clicked: boolean, 
+  resourceKey: number, 
+  imgURLS: string[], 
+  imgINDEX: number, 
+  mapOfArea: Map, 
+  height: number, 
+  width: number
+};
+
 
 
 class SuitcaseAnimation extends React.Component<{match}, MyState> {
@@ -15,32 +24,36 @@ class SuitcaseAnimation extends React.Component<{match}, MyState> {
     super(props); 
 
     const blue = "#6BADE8"; 
-    const radius = 7.5;
+    const radius = window.innerHeight * .013;
+    const height =  window.innerHeight * .6; 
+    const width = window.innerWidth; 
 
-    this.state={
+    this.state={ 
       clicked: false, 
       imgURLS: [Suitcase, " ", " ", " ", FetalDoppler, " ", HeadLamp, " ", PhoneCharger, " ", " ", " ", " ", " ", " ", " ", Lights, " ", " "],
       imgINDEX: 0, 
       resourceKey: 0, 
+      height: height,
+      width: width,
       //I hate this. I'm so sorry. help me find a better way. 
-      mapOfArea: {name: 'Suitcase', areas: [{ _id: '1', name: 'lights (left)', shape: 'circle', coords: [150, 60, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '2', name: 'installation sticker', shape: 'circle', coords: [105, 80, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '3', name: 'quick guide', shape: 'circle', coords: [100, 230, radius], preFillColor: blue, strokeColor: blue },
-                                            { _id: '4', name: 'fetal doppler', shape: 'circle', coords: [195, 75, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '5', name: 'main power switch', shape: 'circle', coords: [205, 150, radius], preFillColor: blue, strokeColor: blue },
-                                            { _id: '6', name: 'headlamps', shape: 'circle', coords: [230, 215, radius], preFillColor: blue, strokeColor: blue },
-                                            { _id: '7', name: 'thermometer', shape: 'circle', coords: [265, 265, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '8', name: 'phone pocket', shape: 'circle', coords: [275, 210, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '9', name: 'battery charger', shape: 'circle', coords: [330, 230, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '10', name: '12v sockets', shape: 'circle', coords: [335, 160, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '11', name: 'USB sockets', shape: 'circle', coords: [260, 170, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '12', name: 'light buttons', shape: 'circle', coords: [315, 100, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '13', name: 'side panel', shape: 'circle', coords: [365, 80, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '14', name: 'display screen', shape: 'circle', coords: [240, 90, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '15', name: 'display control buttons', shape: 'circle', coords: [280, 130, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '16', name: 'lights (right)', shape: 'circle', coords: [440, 180, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '17', name: 'light expansion box', shape: 'circle', coords: [420, 280, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '18', name: 'main battery', shape: 'circle', coords: [270, 60, radius], preFillColor: blue, strokeColor: blue }]}
+      mapOfArea: {name: 'Suitcase', areas: [{ _id: '1', name: 'lights (left)', shape: 'circle', coords: [.26 * width, .18 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '2', name: 'installation sticker', shape: 'circle', coords: [.2 * width, .28 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '3', name: 'quick guide', shape: 'circle', coords: [.2 * width, .7 * height, radius], preFillColor: blue, strokeColor: blue },
+                                            { _id: '4', name: 'fetal doppler', shape: 'circle', coords: [.39 * width, .22 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '5', name: 'main power switch', shape: 'circle', coords: [.41 * width, .46 * height, radius], preFillColor: blue, strokeColor: blue },
+                                            { _id: '6', name: 'headlamps', shape: 'circle', coords: [.46 * width, .68 * height, radius], preFillColor: blue, strokeColor: blue },
+                                            { _id: '7', name: 'thermometer', shape: 'circle', coords: [.52 * width, .77 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '8', name: 'phone pocket', shape: 'circle', coords: [.55 * width, .63 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '9', name: 'battery charger', shape: 'circle', coords: [.66 * width, .67 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '10', name: '12v sockets', shape: 'circle', coords: [.67 * width, .48 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '11', name: 'USB sockets', shape: 'circle', coords: [.49 * width, .44 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '12', name: 'light buttons', shape: 'circle', coords: [.64 * width, .32 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '13', name: 'side panel', shape: 'circle', coords: [.73 * width, .23 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '14', name: 'display screen', shape: 'circle', coords: [.48 * width, .27 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '15', name: 'display control buttons', shape: 'circle', coords: [.56 * width, .38 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '16', name: 'lights (right)', shape: 'circle', coords: [.88 * width, .51 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '17', name: 'light expansion box', shape: 'circle', coords: [.83 * width, .78 * height, radius], preFillColor: blue, strokeColor: blue }, 
+                                            { _id: '18', name: 'main battery', shape: 'circle', coords: [.55 * width, .17 * height, radius], preFillColor: blue, strokeColor: blue }]}
     }
   }
 
@@ -55,17 +68,17 @@ class SuitcaseAnimation extends React.Component<{match}, MyState> {
       });
   }
 
+
         render() { 
           return  <div>
           <ImageMapper //initial load 
               active
               src={this.state.imgURLS[this.state.imgINDEX]}
-              width={500}
-              height={333}
+              width= {this.state.width}
+              height={this.state.height}
               map={this.state.mapOfArea}
               onClick={(area) => this.enterArea(area)} 
            />
-          
           {this.state.clicked ? //area clicked 
           <ImageMapper
               active
