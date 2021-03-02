@@ -24,6 +24,8 @@ export const styles = (theme: Theme) =>
     title: {
       fontSize: '1.5rem',
       fontWeight: 700,
+      marginTop: '2%',
+      marginLeft:'2%',
       color: theme.palette.brown.main
     },
     filters: {
@@ -32,6 +34,19 @@ export const styles = (theme: Theme) =>
       alignItems: 'space-around',
       justifyContent: 'center'
     },
+
+    playlistCard: {
+        marginLeft:'4%',
+    }, 
+
+    articlesCard: {
+        marginLeft:'4%',
+    }, 
+
+    videoCard:{
+        marginLeft:'4%',
+    }, 
+
     link: {
       textDecoration: 'none',
       margin: '1%'

@@ -34,7 +34,7 @@ function SeeAll(props: SeeAllProps) {
       return ( 
         <div className={classes.root}>
         <div className={classes.header}>
-          <div className={classes.title}> Playlists</div>
+        <div className={classes.title}> Playlists</div>
         </div>
         <div className={classes.scroll}>
           {Object.keys(lessons).map((key: any) => (
@@ -57,7 +57,9 @@ function SeeAll(props: SeeAllProps) {
           <div className={classes.scroll}>
           {articles.map((key: any) => (
             <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+              <div className={classes.articlesCard}>
               <ResourceCard resource={resources[key]} />
+              </div>
             </Link>
           ))}
         </div>
@@ -69,12 +71,14 @@ function SeeAll(props: SeeAllProps) {
       return ( 
         <div> 
           <div className={classes.header}>
-          <div className={classes.title}>Articles</div>
+          <div className={classes.title}>Videos</div>
           </div>
           <div className={classes.scroll}>
           {articles.map((key: any) => (
             <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+              <div className={classes.videoCard}> 
               <ResourceCard resource={resources[key]} />
+              </div>
             </Link>
           ))}
         </div>
