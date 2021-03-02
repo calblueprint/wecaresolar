@@ -14,6 +14,9 @@ import Video from './components/Video/Video';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
+import { useSelector } from 'react-redux'; 
+import { RootState } from './store/reducers';
+import SeeAll from './components/SeeAll';
 
 const useStyles = makeStyles({
   root: {
@@ -37,6 +40,12 @@ function App() {
           </div>
           <div>
             <Switch>
+              //path through the paramenter 
+              <Route exact path="/all/:type" render={(props)=> (
+                <SeeAll typeofres={props.match.params.type} />
+              )} /> 
+
+
               <Route exact path="/suitcase" component={Suitcase} />
               <Route
                 path={'/suitcase/:topicId'}
@@ -44,6 +53,7 @@ function App() {
                   <TopicViews topicId={props.match.params.topicId} />
                 )}
               />
+
               <Route exact path="/favorites" component={Favorites} />
               <Route exact path="/guides" component={Guides} />
               <Route

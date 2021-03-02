@@ -3,7 +3,7 @@ import PlaylistCard from '../../components/Guides/PlaylistCard';
 import ResourceCard from '../../components/Guides/ResourceCard'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import { Link } from 'react-router-dom';
+import { Link, Route, Router, BrowserRouter  } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
 
@@ -18,13 +18,17 @@ function Guides(props: GuidesProps) {
   const resources = useSelector((state: RootState) => state.resources);
   const articles = Object.keys(resources).filter((id) => resources[id].type == 'Article');
   const videos = Object.keys(resources).filter((id) => resources[id].type == 'Video');
+  //or
 
   const { classes } = props;
+
   return (
     <div className={classes.root}>
       <div className={classes.header}>
         <div className={classes.title}>Playlists</div>
-        <a>See all</a>
+        <div className={classes.list}>
+        <Link  to={{pathname: '/all/playlists'}} >See all</Link>
+        </div>
       </div>
       <div className={classes.scroll}>
         {Object.keys(lessons).map((key: any) => (
@@ -38,7 +42,9 @@ function Guides(props: GuidesProps) {
 
       <div className={classes.header}>
         <div className={classes.title}>Articles</div>
-        <a>See all</a>
+        <div className={classes.list}>
+          <Link  to={{pathname: '/all/articles'}} >See all</Link>
+        </div>
       </div>
       <div className={classes.scroll}>
         {articles.map((key: any) => (
@@ -50,7 +56,9 @@ function Guides(props: GuidesProps) {
 
       <div className={classes.header}>
         <div className={classes.title}>Videos</div>
-        <a>See all</a>
+        <div className={classes.list}>
+        <Link  to={{pathname: '/all/videos'}} >See all</Link>
+        </div>
       </div>
       <div className={classes.scroll}>
         {videos.map((key: any) => (
@@ -61,13 +69,8 @@ function Guides(props: GuidesProps) {
         ))}
       </div>
       <div className={classes.bottomPad}></div>
-
     </div>
-
   );
-
 }
-
-
 
 export default withStyles(styles)(Guides);

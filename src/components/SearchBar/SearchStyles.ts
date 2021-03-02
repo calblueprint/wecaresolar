@@ -78,6 +78,7 @@ export const styles = (theme: Theme) =>
     //   fontSize: 12
     // },
     backButton: {
-      color: 'black'
+      color: 'black',
+      cursor: 'pointer',
     }
   });

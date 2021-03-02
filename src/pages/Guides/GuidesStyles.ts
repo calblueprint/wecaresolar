@@ -2,7 +2,8 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     root: {
-      paddingLeft: 27
+      paddingLeft: 27,
+      paddingTop: 32,
     },
     header: {
       display: 'flex',
@@ -24,9 +25,15 @@ export const styles = (theme: Theme) =>
       width: '300px'
     },
     title: {
-      fontSize: 24
+      fontSize: 24,
+      paddingTop: 32,
     },
     bottomPad: {
       paddingBottom: 100
+    },
+    list:{ 
+    //change styling later on
+      paddingRight: 700,
+      paddingTop: 24, 
     }
   });
