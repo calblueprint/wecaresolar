@@ -13,7 +13,7 @@ import { styles } from '../pages/SeeAll/SeeAllStyles';
 type SeeAllProps = {
   classes: any;
   match;
-  typeofres
+  typeofres;
 } 
 
 //fnction to return the list of playlists/articles/videos based on string type 
@@ -29,8 +29,8 @@ function SeeAll(props: SeeAllProps) {
   const {classes} = props;
 
 
-  function filterType(type:string){
-    if (type == "Playlists"){ 
+  function filterType(type:string): JSX.Element {
+    if (type == "playlists"){ 
       return ( 
         <div className={classes.root}>
         <div className={classes.header}>
@@ -48,7 +48,7 @@ function SeeAll(props: SeeAllProps) {
         </div>
       )
     }
-    if (type == "Articles"){ 
+    if (type == "articles"){ 
       return ( 
         <div> 
           <div className={classes.header}>
@@ -65,7 +65,7 @@ function SeeAll(props: SeeAllProps) {
       )
     } 
 
-    if (type == "Videos"){ 
+    if (type == "videos"){ 
       return ( 
         <div> 
           <div className={classes.header}>
@@ -81,10 +81,9 @@ function SeeAll(props: SeeAllProps) {
       </div>
       )
     } 
+    return <span />;
   }
-
   return filterType(props.typeofres);
 }
-
 
 export default withStyles(styles)(SeeAll); 

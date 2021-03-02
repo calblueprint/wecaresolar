@@ -42,8 +42,29 @@ function App() {
             <Switch>
               //path through the paramenter 
               <Route exact path="/all/:type" render={(props)=> (
-                <SeeAll typeofres={props.match.params.type} />
+                <SeeAll match={props.match} typeofres={props.match.params.type} />
               )} /> 
+              
+              <Route
+                path={'/all/playlists/:lessonId'}
+                render={(props) => (
+                  <PlaylistPage lessonId={props.match.params.lessonId} />
+                )}
+              />
+              
+              <Route
+                path={'/all/articles/:lessonId'}
+                render={(props) => (
+                  <PlaylistPage lessonId={props.match.params.lessonId} />
+                )}
+              />
+              
+              <Route
+                path={'/all/videos/:videoId'}
+                render={(props) => (
+                  <Video resId={props.match.params.videoId} />
+                )}
+              />
 
 
               <Route exact path="/suitcase" component={Suitcase} />

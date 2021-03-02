@@ -79,6 +79,6 @@ export const styles = (theme: Theme) =>
     // },
     backButton: {
       color: 'black',
-      cursor: 'pointer',
+      cursor: 'pointer'
     }
   });

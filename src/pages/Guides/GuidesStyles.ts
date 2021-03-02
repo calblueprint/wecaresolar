@@ -3,7 +3,7 @@ export const styles = (theme: Theme) =>
   createStyles({
     root: {
       paddingLeft: 27,
-      paddingTop: 32,
+      paddingTop: 32
     },
     header: {
       display: 'flex',
@@ -26,14 +26,14 @@ export const styles = (theme: Theme) =>
     },
     title: {
       fontSize: 24,
-      paddingTop: 32,
+      paddingTop: 32
     },
     bottomPad: {
       paddingBottom: 100
     },
-    list:{ 
-    //change styling later on
+    list: {
+      //change styling later on
       paddingRight: 700,
-      paddingTop: 24, 
+      paddingTop: 24
     }
   });
