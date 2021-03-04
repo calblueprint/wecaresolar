@@ -7,6 +7,7 @@ import HeadLamp from "../Images/headlamps.jpg";
 import PhoneCharger from "../Images/phonecharger.jpg";
 import Lights from "../Images/lights.jpg"; 
 
+
 type MyState = {
   clicked: boolean, 
   resourceKey: number, 
@@ -17,9 +18,9 @@ type MyState = {
   width: number
 };
 
+//
 
-
-class SuitcaseAnimation extends React.Component<{match}, MyState> {
+class oldcode extends React.Component<{match}, MyState> {
   constructor(props) {
     super(props); 
 
@@ -27,6 +28,7 @@ class SuitcaseAnimation extends React.Component<{match}, MyState> {
     const radius = window.innerHeight * .013;
     const height =  window.innerHeight * .6; 
     const width = window.innerWidth; 
+
 
     this.state={ 
       clicked: false, 
@@ -56,9 +58,35 @@ class SuitcaseAnimation extends React.Component<{match}, MyState> {
                                             { _id: '18', name: 'main battery', shape: 'circle', coords: [.55 * width, .17 * height, radius], preFillColor: blue, strokeColor: blue }]}
     }
   }
+  
+
+  zoomImage(xCord, yCord) {
+    const elem = document.elementFromPoint(xCord, yCord);
+    const height = this.state.height; 
+    const width = this.state.width; 
+    const aspect_ratio = width / height; 
+    console.log('height:', height, 'width', width, 'aspect ratio', aspect_ratio, 'elem', elem); 
+
+    // set crop size
+    const crop_width = width / 5; 
+    const crop_height = height / 5; 
+    console.log('aspect ratio maintained?', crop_width / crop_height, 'actual', aspect_ratio)
+
+    // select crop area 
+    
+
+    // upscale crop area 
+    const scaleX = width / crop_width * width; 
+    const scaleY = height / crop_height * height; 
+    
+  }
 
   enterArea(area) {
-    console.log(area);
+    console.log(area.center[0], area.center[1]);
+
+    this.zoomImage(area.center[0], area.center[1]); 
+
+
     var index = area._id; 
 		this.setState({
       clicked: true,
@@ -68,16 +96,18 @@ class SuitcaseAnimation extends React.Component<{match}, MyState> {
       });
   }
 
-
         render() { 
+          const image = new Image();
+          image.src = Suitcase;
           return  <div>
           <ImageMapper //initial load 
               active
-              src={this.state.imgURLS[this.state.imgINDEX]}
+              src={image.src}
               width= {this.state.width}
               height={this.state.height}
               map={this.state.mapOfArea}
-              onClick={(area) => this.enterArea(area)} 
+              onClick={(area) => this.enterArea(area)}
+              //update enterArea function to calculate the new scaling 
            />
           {this.state.clicked ? //area clicked 
           <ImageMapper
@@ -91,4 +121,4 @@ class SuitcaseAnimation extends React.Component<{match}, MyState> {
     }
 }
 
-export default SuitcaseAnimation; 
+export default oldcode; 

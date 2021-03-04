@@ -3,7 +3,7 @@ import TopicCard from '../../components/TopicCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
-import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimiation'; 
+import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimation'; 
 
 function Suitcase({ match }) {
 

@@ -20,7 +20,7 @@ function AnimationCard(props : AnimationProps) {
     return (
       <div>
           <Card className={classes.card}>
-            <img src={currentTopic.imageUrl}  width={150} height={130} />
+            <img src={currentTopic.imageUrl}  width={window.innerWidth * .4} height={window.innerHeight * .25} />
             <div className={classes.rightSide}>
                 <h2> {currentTopic.name} </h2>
                 <text>{currentTopic.description}</text>

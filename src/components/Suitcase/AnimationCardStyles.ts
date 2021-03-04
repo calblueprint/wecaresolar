@@ -6,7 +6,7 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'row',
       width: '500px',
-      paddingTop: 15, 
+      paddingTop: 15,
       borderRadius: '10px 10px 0px 0px',
       border: 'none'
     },
@@ -25,10 +25,10 @@ export const styles = (theme: Theme) =>
       backgroundColor: theme.palette.brown.main,
       color: theme.palette.white.main,
       margin: 10,
-      padding: 10, 
+      padding: 10,
       border: 'none',
       boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
     },
     help: {
       borderRadius: 8,
@@ -37,9 +37,9 @@ export const styles = (theme: Theme) =>
       backgroundColor: theme.palette.white.main,
       color: theme.palette.brown.main,
       margin: 10,
-      padding: 10, 
-      border: 'none', 
+      padding: 10,
+      border: 'none',
       boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
     }
   });
