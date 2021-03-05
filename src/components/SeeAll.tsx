@@ -7,6 +7,7 @@ import PlaylistCard from './Guides/PlaylistCard';
 import ResourceCard from './Guides/ResourceCard'; 
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from '../pages/SeeAll/SeeAllStyles'; 
+import StandardCard from './Cards/StandardCard';
 
 
 

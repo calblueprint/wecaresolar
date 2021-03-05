@@ -33,7 +33,6 @@ export const styles = (theme: Theme) =>
     },
     list: {
       //change styling later on
-      paddingRight: 200,
-      paddingTop: 24
+      paddingTop: 32
     }
   });
