@@ -51,8 +51,8 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     function zoomIn(x, y) {
         const zoomWidth = image.width / 3; 
         const zoomHeight = image.height / 3; 
-        const top_x = zoomWidth; 
-        const top_y = zoomHeight; 
+        const top_x = x - zoomWidth / 2; 
+        const top_y = y - zoomHeight / 2; 
         setSx(top_x); 
         setSy(top_y); 
         setSWidth(zoomWidth); 
@@ -72,7 +72,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
     return (
         <div>
-            <button onClick={() => zoomIn(475, 475)}> ZOOM IN </button>
+            <button onClick={() => zoomIn(350, 200)}> ZOOM IN </button>
             <button onClick={() => zoomOut()}>ZOOM OUT </button>
             <canvas 
                 ref={canvasRef}
