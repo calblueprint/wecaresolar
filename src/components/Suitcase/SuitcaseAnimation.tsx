@@ -32,10 +32,9 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
     /* Hook triggers on changes to source image values. 
         Drawing Image: 
-            1. Retrieve a drawing context from our context reference. 
-            2. Create a context for drawing. 
-            3. Clear Canvas before drawing new image. 
-            4. drawImage takes in (image,     <-- ImageData object 
+            1. Set context ref type to '2D' and create a context object for drawing. 
+            2. Clear context before drawing new image. 
+            3. drawImage takes in (image,     <-- ImageData object 
                     sx, sy, sWidth, sHeight   <-- Starting context, selects starting coordinate & scaling dimensions (Optional)
                     dx, dy, dWidth, dHeight)  <-- Destination context, used to scale source to destination. 
     */ 
