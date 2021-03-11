@@ -75,16 +75,6 @@ function App() {
 
               <Route exact path="/favorites" component={Favorites} />
               <Route exact path="/guides" component={Guides} />
-              <Route
-                path={'/guides/videos/:videoId'}
-                render={(props) => <Video resId={props.match.params.videoId} />}
-              />
-              <Route
-                path={'/guides/:lessonId'}
-                render={(props) => (
-                  <PlaylistPage lessonId={props.match.params.lessonId} />
-                )}
-              />
               <Route exact path="/troubleshoot" component={Troubleshoot} />
               <Route
                 path={'/Troubleshoot/:helpId'}
