@@ -32,7 +32,7 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/playlists/${key}`}>
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>
@@ -43,12 +43,12 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <div className={classes.title}>Articles</div>
         <div className={classes.list}>
-          <Link  to={{pathname: 'Guides/Articles'}} >See all</Link>
+          <Link  to= {{pathname: 'Guides/Articles'}} >See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
         {articles.map((key: any) => (
-          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
+          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/articles/${key}`}> 
             <ResourceCard resource={resources[key]} />
           </Link>
         ))}
@@ -63,7 +63,7 @@ function Guides(props: GuidesProps) {
       <div className={classes.scroll}>
         {videos.map((key: any) => (
           <Link style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/videos/${key}`}>
+          to={`${props.match.url}/videos/${key}`}>
             <ResourceCard resource={resources[key]} />
           </Link>
         ))}
