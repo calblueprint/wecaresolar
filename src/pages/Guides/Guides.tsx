@@ -32,7 +32,7 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/playlists/${key}`}>
+          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/Playlists/${key}`}>
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>
@@ -48,7 +48,7 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {articles.map((key: any) => (
-          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/articles/${key}`}> 
+          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/Articles/${key}`}> 
             <ResourceCard resource={resources[key]} />
           </Link>
         ))}
@@ -63,7 +63,7 @@ function Guides(props: GuidesProps) {
       <div className={classes.scroll}>
         {videos.map((key: any) => (
           <Link style={{ textDecoration: 'none' }}
-          to={`${props.match.url}/videos/${key}`}>
+          to={`${props.match.url}/Videos/${key}`}>
             <ResourceCard resource={resources[key]} />
           </Link>
         ))}
