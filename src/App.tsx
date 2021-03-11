@@ -14,8 +14,6 @@ import Video from './components/Video/Video';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
-import { useSelector } from 'react-redux'; 
-import { RootState } from './store/reducers';
 import SeeAll from './components/SeeAll';
 
 const useStyles = makeStyles({
@@ -41,26 +39,26 @@ function App() {
           <div>
             <Switch>
               //path through the paramenter 
-              <Route exact path="/all/:type" render={(props)=> (
+              <Route exact path="/Guides/:type" render={(props)=> (
                 <SeeAll match={props.match} typeofres={props.match.params.type} />
               )} /> 
               
               <Route
-                path={'/all/playlists/:lessonId'}
+                path={'/Guides/Playlists/:lessonId'}
                 render={(props) => (
                   <PlaylistPage lessonId={props.match.params.lessonId} />
                 )}
               />
               
               <Route
-                path={'/all/articles/:lessonId'}
+                path={'/Guides/Articles/:lessonId'}
                 render={(props) => (
                   <PlaylistPage lessonId={props.match.params.lessonId} />
                 )}
               />
               
               <Route
-                path={'/all/videos/:videoId'}
+                path={'/Guides/Videos/:videoId'}
                 render={(props) => (
                   <Video resId={props.match.params.videoId} />
                 )}

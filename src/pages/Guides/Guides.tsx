@@ -27,7 +27,7 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <div className={classes.title}>Playlists</div>
         <div className={classes.list}>
-        <Link  to={{pathname: '/all/playlists'}} >See all</Link>
+        <Link  to={{pathname: 'Guides/Playlists'}} >See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
@@ -43,7 +43,7 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <div className={classes.title}>Articles</div>
         <div className={classes.list}>
-          <Link  to={{pathname: '/all/articles'}} >See all</Link>
+          <Link  to={{pathname: 'Guides/Articles'}} >See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
@@ -57,7 +57,7 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <div className={classes.title}>Videos</div>
         <div className={classes.list}>
-        <Link  to={{pathname: '/all/videos'}} >See all</Link>
+        <Link  to={{pathname: 'Guides/Videos'}} >See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>

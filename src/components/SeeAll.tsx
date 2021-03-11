@@ -31,7 +31,7 @@ function SeeAll(props: SeeAllProps) {
 
 
   function filterType(type:string): JSX.Element {
-    if (type == "playlists"){ 
+    if (type == "Playlists"){ 
       return ( 
         <div className={classes.root}>
         <div className={classes.header}>
@@ -49,7 +49,7 @@ function SeeAll(props: SeeAllProps) {
         </div>
       )
     }
-    if (type == "articles"){ 
+    if (type == "Articles"){ 
       return ( 
         <div> 
           <div className={classes.header}>
@@ -68,7 +68,7 @@ function SeeAll(props: SeeAllProps) {
       )
     } 
 
-    if (type == "videos"){ 
+    if (type == "Videos"){ 
       return ( 
         <div> 
           <div className={classes.header}>
