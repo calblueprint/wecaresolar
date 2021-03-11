@@ -59,7 +59,7 @@ function SeeAll(props: SeeAllProps) {
           {articles.map((key: any) => (
             <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
               <div className={classes.articlesCard}>
-              <ResourceCard resource={resources[key]} />
+              <StandardCard resource={resources[key]} resourceID={key} />;
               </div>
             </Link>
           ))}
