@@ -1,81 +1,85 @@
-import React from 'react';
-import { ImageMapper, Map} from 'react-image-mapper2';
-import AnimationCard from "./AnimationCard"; 
+import React, { useEffect, useRef, useState } from 'react';
 import Suitcase from "../Images/Suitcase.jpg"; 
-import FetalDoppler from "../Images/fetaldoppler.jpg";
-import HeadLamp from "../Images/headlamps.jpg";
-import PhoneCharger from "../Images/phonecharger.jpg";
-import Lights from "../Images/lights.jpg"; 
 
-type MyState = { clicked: boolean, resourceKey: number, imgURLS: string[], imgINDEX: number, mapOfArea: Map};
-
-
-class SuitcaseAnimation extends React.Component<{match}, MyState> {
-  constructor(props) {
-    super(props); 
-
-    const blue = "#6BADE8"; 
-    const radius = 7.5;
-
-    this.state={
-      clicked: false, 
-      imgURLS: [Suitcase, " ", " ", " ", FetalDoppler, " ", HeadLamp, " ", PhoneCharger, " ", " ", " ", " ", " ", " ", " ", Lights, " ", " "],
-      imgINDEX: 0, 
-      resourceKey: 0, 
-      //I hate this. I'm so sorry. help me find a better way. 
-      mapOfArea: {name: 'Suitcase', areas: [{ _id: '1', name: 'lights (left)', shape: 'circle', coords: [150, 60, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '2', name: 'installation sticker', shape: 'circle', coords: [105, 80, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '3', name: 'quick guide', shape: 'circle', coords: [100, 230, radius], preFillColor: blue, strokeColor: blue },
-                                            { _id: '4', name: 'fetal doppler', shape: 'circle', coords: [195, 75, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '5', name: 'main power switch', shape: 'circle', coords: [205, 150, radius], preFillColor: blue, strokeColor: blue },
-                                            { _id: '6', name: 'headlamps', shape: 'circle', coords: [230, 215, radius], preFillColor: blue, strokeColor: blue },
-                                            { _id: '7', name: 'thermometer', shape: 'circle', coords: [265, 265, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '8', name: 'phone pocket', shape: 'circle', coords: [275, 210, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '9', name: 'battery charger', shape: 'circle', coords: [330, 230, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '10', name: '12v sockets', shape: 'circle', coords: [335, 160, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '11', name: 'USB sockets', shape: 'circle', coords: [260, 170, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '12', name: 'light buttons', shape: 'circle', coords: [315, 100, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '13', name: 'side panel', shape: 'circle', coords: [365, 80, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '14', name: 'display screen', shape: 'circle', coords: [240, 90, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '15', name: 'display control buttons', shape: 'circle', coords: [280, 130, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '16', name: 'lights (right)', shape: 'circle', coords: [440, 180, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '17', name: 'light expansion box', shape: 'circle', coords: [420, 280, radius], preFillColor: blue, strokeColor: blue }, 
-                                            { _id: '18', name: 'main battery', shape: 'circle', coords: [270, 60, radius], preFillColor: blue, strokeColor: blue }]}
-    }
-  }
-
-  enterArea(area) {
-    console.log(area);
-    var index = area._id; 
-		this.setState({
-      clicked: true,
-      resourceKey: area._id, 
-      imgINDEX: Number(index),
-      mapOfArea: {name: 'Suitcase', areas: []},
-      });
-  }
-
-        render() { 
-          return  <div>
-          <ImageMapper //initial load 
-              active
-              src={this.state.imgURLS[this.state.imgINDEX]}
-              width={500}
-              height={333}
-              map={this.state.mapOfArea}
-              onClick={(area) => this.enterArea(area)} 
-           />
-          
-          {this.state.clicked ? //area clicked 
-          <ImageMapper
-              active
-              src={this.state.imgURLS[this.state.imgINDEX]}
-              map={this.state.mapOfArea}
-           />
-          && 
-          <AnimationCard resourceId={this.state.resourceKey} match={this.props.match}/> : null}
-      </div>
-    }
+type SuitcaseProps = {
+    match 
 }
 
+const SuitcaseAnimation = (props: SuitcaseProps) => {
+    const [clicked, setClicked] = useState(false); //use for zoom in/out later
+
+    /* Create an ImageData object */ 
+    const image = new Image(); 
+    image.src = Suitcase;
+
+    /* Set dimensions of interactive map: 
+        cWidth, cHeight: canvas dimensions; set to user's window dimensions 
+        sWidth, sHeight: scaling dimensions; set to dimensions of source image 
+        sx, sy: starting coordinates of drawn image
+    */ 
+    const cWidth = window.innerWidth; 
+    const cHeight = window.innerHeight; 
+    const [sWidth, setSWidth] = useState(image.width); 
+    const [sHeight, setSHeight] = useState(image.height); 
+    const [sx, setSx] = useState(0);
+    const [sy, setSy] = useState(0);
+
+    /* Create a reference to null Canvas object. 
+        Then, create a context reference for drawing on Canvas. 
+    */ 
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
+    const canvasCtxRef = React.useRef<CanvasRenderingContext2D | null>(null);
+
+    /* Hook triggers on changes to source image values. 
+        Drawing Image: 
+            1. Set context ref type to '2D' and create a context object for drawing. 
+            2. Clear context before drawing new image. 
+            3. drawImage takes in (image,     <-- ImageData object 
+                    sx, sy, sWidth, sHeight   <-- Starting context, selects starting coordinate & scaling dimensions (Optional)
+                    dx, dy, dWidth, dHeight)  <-- Destination context, used to scale source to destination. 
+    */ 
+    useEffect(() => {
+        if (canvasRef.current) {
+            canvasCtxRef.current = canvasRef.current.getContext("2d");
+            const ctx = canvasCtxRef.current;
+            ctx!.clearRect(0, 0, cWidth, cHeight); 
+            ctx!.drawImage(image, sx, sy, sWidth, sHeight, 0, 0, cWidth, cHeight); 
+        }
+    }, [image]); 
+    
+    /* Sets new sx, sy, sWidth, sHeight values based on input x and y */ 
+    function zoomIn(x, y) {
+        const zoomWidth = image.width / 3; 
+        const zoomHeight = image.height / 3; 
+        const top_x = x - zoomWidth / 2; 
+        const top_y = y - zoomHeight / 2; 
+        setSx(top_x); 
+        setSy(top_y); 
+        setSWidth(zoomWidth); 
+        setSHeight(zoomHeight); 
+    }
+
+    /* Resets sx, sy, sWidth, sHeight to original values */ 
+    function zoomOut() {
+        setSx(0); 
+        setSy(0); 
+        setSWidth(image.width); 
+        setSHeight(image.height); 
+    }
+
+    // console.log("xcord:", top_x, "ycord:", top_y, "zoomW:", zoomWidth, "zoomH:", zoomHeight)
+    // console.log("image w:", image.width, "image h:", image.height, "canvas w:", eWidth, "canvas h:", eHeight); 
+
+    return (
+        <div>
+            <button onClick={() => zoomIn(350, 200)}> ZOOM IN </button>
+            <button onClick={() => zoomOut()}>ZOOM OUT </button>
+            <canvas 
+                ref={canvasRef}
+                width={cWidth}
+                height={cHeight}
+            ></canvas>
+        </div>
+    )
+}
 export default SuitcaseAnimation; 
