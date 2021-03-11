@@ -5,7 +5,7 @@ export const styles = (theme: Theme) =>
     navbar: {
       position: 'fixed',
       width: '100%',
-      bottom: 0
+      bottom: 0,
     },
     text: {
       font: 'Roboto',
