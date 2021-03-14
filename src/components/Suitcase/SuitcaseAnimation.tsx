@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Suitcase from "../Images/Suitcase.jpg"; 
+import { styles } from '../../pages/Suitcase/SuitcaseStyles'; 
+import Suitcase from '../Images/Suitcase.jpg'; 
+import AnimationCard from './AnimationCard'; 
 
 type SuitcaseProps = {
+    classes: any,
     match 
 }
 
 const SuitcaseAnimation = (props: SuitcaseProps) => {
+    const { classes } = props; 
     const [clicked, setClicked] = useState(false); //use for zoom in/out later
 
     /* Create an ImageData object */ 
@@ -17,8 +21,8 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
         sWidth, sHeight: scaling dimensions; set to dimensions of source image 
         sx, sy: starting coordinates of drawn image
     */ 
-    const cWidth = window.innerWidth; 
-    const cHeight = window.innerHeight; 
+    const [cWidth, setCWidth] = useState(window.innerWidth); 
+    const [cHeight, setCHeight] = useState(window.screen.height); 
     const [sWidth, setSWidth] = useState(image.width); 
     const [sHeight, setSHeight] = useState(image.height); 
     const [sx, setSx] = useState(0);
@@ -57,6 +61,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
         setSy(top_y); 
         setSWidth(zoomWidth); 
         setSHeight(zoomHeight); 
+        setCHeight(0.7 * cHeight); 
     }
 
     /* Resets sx, sy, sWidth, sHeight to original values */ 
@@ -65,6 +70,18 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
         setSy(0); 
         setSWidth(image.width); 
         setSHeight(image.height); 
+        setCHeight(window.screen.height);
+    }
+
+    /* Handles onClick changes */ 
+    function click(s, x, y) {
+        if (s == 'in') {
+            setClicked(true); 
+            zoomIn(x, y); 
+        } else {
+            setClicked(false); 
+            zoomOut(); 
+        }
     }
 
     // console.log("xcord:", top_x, "ycord:", top_y, "zoomW:", zoomWidth, "zoomH:", zoomHeight)
@@ -72,14 +89,17 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
     return (
         <div>
-            <button onClick={() => zoomIn(350, 200)}> ZOOM IN </button>
-            <button onClick={() => zoomOut()}>ZOOM OUT </button>
-            <canvas 
+            <button onClick={() => click('in', 400, 175)}> ZOOM IN </button>
+            <button onClick={() => click('out', 0, 0)}>  ZOOM OUT </button>
+            <canvas
                 ref={canvasRef}
                 width={cWidth}
-                height={cHeight}
-            ></canvas>
-        </div>
+                height={cHeight}>
+                </canvas>
+            <div className={classes.card}>
+                {clicked ? <AnimationCard exit={click} resourceId={4} match={props.match}> </AnimationCard> : null}
+            </div>
+        </div> 
     )
 }
 export default SuitcaseAnimation; 
