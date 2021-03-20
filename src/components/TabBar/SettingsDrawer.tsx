@@ -10,60 +10,32 @@ import ListItemText from '@material-ui/core/ListItemText';
 import BugReportIcon from '@material-ui/icons/BugReport';
 import MailIcon from '@material-ui/icons/Mail';
 import SettingsIcon from '@material-ui/icons/Settings';
-import { styles } from './SettingsDrawerStyles';
+import { styles } from '../TabBar/SettingsDrawerStyles';
 
 type DrawerProps = {
-  classes: any;
-};
+  classes: any; 
+}
 
 const SettingsDrawer = (props: DrawerProps) => {
-  const { classes } = props;
-  const [state, setState] = React.useState({
-    bottom: false
-  });
-
-  const toggleDrawer = (open: boolean) => () => {
-    setState({ bottom: open });
-  };
-
-  const list = () => (
-    <div>
-      <h2 className={classes.title}> We Care Solar</h2>
-      <Divider />
-      <List className={classes.list}>
-        {['Report An Incident', 'Report a Bug', 'Settings'].map(
-          (text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index === 0 ? <MailIcon /> : null}
-                {index === 1 ? <BugReportIcon /> : null}
-                {index === 2 ? <SettingsIcon /> : null}{' '}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          )
-        )}
+  const { classes } = props; 
+  
+  return (
+    <div className={classes.container}>
+       
+      <h1>Settings</h1>
+      <List className={classes.list}> 
+        {['Report An Incident', 'Report a Bug', 'Settings'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>
+                {index === 0 ? <MailIcon /> : null } 
+                {index === 1 ? <BugReportIcon/>: null }
+                {index === 2 ? <SettingsIcon/> : null } </ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
       </List>
     </div>
   );
-
-  return (
-    <div>
-      <React.Fragment>
-        <Button onClick={toggleDrawer(true)}>
-          {' '}
-          <SettingsIcon />
-        </Button>
-        <Drawer
-          anchor={'bottom'}
-          open={state['bottom']}
-          onClose={toggleDrawer(false)}
-        >
-          {list()}
-        </Drawer>
-      </React.Fragment>
-    </div>
-  );
-};
+}
 
 export default withStyles(styles)(SettingsDrawer);
