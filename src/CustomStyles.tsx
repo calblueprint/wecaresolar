@@ -7,6 +7,7 @@ declare module '@material-ui/core/styles/createPalette' {
     black: Palette['primary'];
     white: Palette['primary'];
     brown: Palette['primary'];
+    wcsgrey: Palette['primary'];
     yellow: Palette['primary'];
     accent1: Palette['primary'];
     accent2: Palette['primary'];
@@ -30,6 +31,7 @@ declare module '@material-ui/core/styles/createPalette' {
     black: PaletteOptions['primary'];
     white: PaletteOptions['primary'];
     brown: PaletteOptions['primary'];
+    wcsgrey: PaletteOptions['primary'];
     yellow: PaletteOptions['primary'];
     accent1: PaletteOptions['primary'];
     accent2: PaletteOptions['primary'];
@@ -66,6 +68,9 @@ const theme = createMuiTheme({
     },
     yellow: {
       main: '#F6DBB7'
+    },
+    wcsgrey:{
+      main: '#E1E1E1'
     },
     accent1: {
       main: '#F6DBB7'
