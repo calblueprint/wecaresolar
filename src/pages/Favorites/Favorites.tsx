@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from '../../components/CardComponents/FavoriteStyles';
 import { Link } from 'react-router-dom';
 import { FormControl, Select, MenuItem, Input } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 function Favorites({ match, classes }) {
   const favResources = useSelector(selectFavoritedResources);
@@ -14,7 +15,7 @@ function Favorites({ match, classes }) {
   const allTopics: string[] = Object.keys(topics).map(
     (topic) => topics[topic].name
   );
-  const [resType, setresType] = useState('All');
+  const [resType, setresType] = useState("All");
   const [currTopics, setTopic] = useState([]);
 
   const handleResChange = (event) => {
@@ -49,18 +50,22 @@ function Favorites({ match, classes }) {
 
   return (
     <div className={classes.page}>
-      <div className={classes.header}>
-        <div className={classes.title}>Favorites</div>
-        <div className={classes.filters}>
-          <FormControl className={classes.formControl}>
+      <div className={classes.title}>Favorites</div>
+      <div className={classes.filters}>
+        <div className={classes.filterLabel}>Topics</div>
+        <FormControl className={classes.formControl}>
             <Select
               multiple
               value={currTopics}
               onChange={handleTopicChange}
-              input={<Input />}
+              // input={<Input />}
               disableUnderline
+              displayEmpty
+              // renderValue={value => 'All'}
+              IconComponent={() => (<ExpandMoreIcon />)}
               className={classes.select}
               classes={{ selectMenu: classes.selectMenu, icon: classes.icon }}
+              MenuProps={{ classes: { paper: classes.dropdownStyle }}}
             >
               {Object.keys(topics).map((key) => (
                 <MenuItem key={key} value={topics[key].name}>
@@ -68,23 +73,22 @@ function Favorites({ match, classes }) {
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <Select
-              value={resType}
-              disableUnderline
-              className={classes.select}
-              classes={{ selectMenu: classes.selectMenu, icon: classes.icon }}
-              onChange={handleResChange}
-            >
-              <MenuItem value={'All'}>All</MenuItem>
-              <MenuItem value={'Video'}>Videos</MenuItem>
-              <MenuItem value={'Article'}>Articles</MenuItem>
-            </Select>
-          </FormControl>
-        </div>
+        </FormControl>
+        <div className={classes.filterLabel}>Types</div>
+        <FormControl className={classes.formControl}>
+          <Select
+            value={resType}
+            disableUnderline
+            className={classes.select}
+            classes={{ selectMenu: classes.selectMenu, icon: classes.icon }}
+            onChange={handleResChange}
+          >
+            <MenuItem value={'All'}>All</MenuItem>
+            <MenuItem value={'Video'}>Videos</MenuItem>
+            <MenuItem value={'Article'}>Articles</MenuItem>
+          </Select>
+        </FormControl>
       </div>
-
       {Object.keys(favResources).map(filteredFavResources)}
     </div>
   );
