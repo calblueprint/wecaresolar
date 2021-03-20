@@ -9,8 +9,7 @@ export const styles = (theme: Theme) =>
     },
     title: {
       color: 'green',
-      padding: 10,
-
+      padding: 10
     },
     list: {
       width: 300
