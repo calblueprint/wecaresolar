@@ -4,7 +4,7 @@ export const styles = (theme: Theme) =>
     bar: {
       color: theme.palette.brown.main,
       backgroundColor: theme.palette.background.default,
-      boxShadow: 'none',
+      boxShadow: 'none'
     },
     root: {
       flexGrow: 1,
@@ -25,7 +25,7 @@ export const styles = (theme: Theme) =>
       backgroundColor: theme.palette.wcsgrey.main,
       width: '100%',
       margin: '0px 12px',
-      boxShadow: '-2px 4px 23px 0px rgba(2, 2, 2, 0.0685)',
+      boxShadow: '-2px 4px 23px 0px rgba(2, 2, 2, 0.0685)'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),

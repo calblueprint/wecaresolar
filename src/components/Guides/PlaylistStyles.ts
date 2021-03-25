@@ -36,6 +36,5 @@ export const styles = (theme: Theme) =>
     spread: {
       display: 'flex',
       justifyContent: 'space-between'
-    },
-
+    }
   });
