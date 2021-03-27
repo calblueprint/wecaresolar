@@ -127,6 +127,10 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const origHeight = image.height; 
     const zoomWidth = origWidth / 3;
     const zoomHeight = origHeight / 3;
+  
+    console.log(zoomWidth, zoomHeight)
+
+    //incWidth & incHeight approach zoomWidth & zoomHeight
 
     //calculate width increments for each frame 
     const wRatio = zoomWidth / origWidth; //goal ratio 
@@ -141,10 +145,12 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const incHeight = origHeight * hIncrement; 
 
     //set new start coordinate 
-    const top_x = x - incWidth / 2;
-    const top_y = y - incHeight / 2;
+    const top_x = x - incWidth / 4;
+    const top_y = y - incHeight / 4;
     
     console.log('orig_x', x, 'orig_y', y)
+    console.log('newX:', top_x, 'newY', top_y)
+    console.log('incWidth:', incWidth, 'incHeight:', incHeight)
 
     setClipDims({
       x: top_x,
