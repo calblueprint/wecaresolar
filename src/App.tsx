@@ -18,8 +18,8 @@ import SeeAll from './components/SeeAll';
 
 const useStyles = makeStyles({
   root: {
-    color: theme.palette.brown.main,
-    backgroundColor: theme.palette.background.default
+    color: theme.palette.black.main,
+    backgroundColor: theme.palette.background.default,
   }
 });
 

@@ -2,14 +2,17 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => 
     createStyles({
+      title: {
+        padding: '30px'
+      },
       card: {
         display: 'flex',
         borderRadius: '20px 20px 0px 0px',
-        fontSize: '1.3rem',
+        fontSize: '18px',
         fontWeight: 400,
         backgroundColor: '#E5E5E5', 
         position: 'absolute', 
-        bottom: '%'
+        bottom: '10%'
       },
       img: {
         objectFit: 'cover', 
@@ -32,7 +35,7 @@ export const styles = (theme: Theme) =>
         justifyContent: 'space-between'
       },
       manualsButton: {
-        fontSize: '1.5rem',
+        fontSize: '20px',
         fontWeight: 600,
         color: theme.palette.white.main,
         backgroundColor: theme.palette.black.main,
@@ -44,7 +47,7 @@ export const styles = (theme: Theme) =>
         borderRadius: '1rem',
       },
       helpButton: {
-        fontSize: '1.5rem',
+        fontSize: '20px',
         fontWeight: 600,
         color: theme.palette.black.main,
         backgroundColor: theme.palette.white.main,

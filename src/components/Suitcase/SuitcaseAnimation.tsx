@@ -1,7 +1,5 @@
+import { Typography } from '@material-ui/core';
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { styles } from '../../pages/Suitcase/SuitcaseStyles';
-import { RootState } from '../../store/reducers';
 import Suitcase from '../Images/Suitcase.jpg';
 import AnimationCard from './AnimationCard';
 
@@ -19,7 +17,7 @@ interface ClipDimensions {
 
 type SuitcaseTopics = Array<[string, number, number]>;
 
-const MAX_WIDTH = 3000;
+const MAX_WIDTH = 900;
 const SUITCASE_TOPICS: SuitcaseTopics = [
   ['Lights (Left)', 0.23, 0.2],
   ['Installation Sticker', 0.2, 0.45],
@@ -37,7 +35,7 @@ const SUITCASE_TOPICS: SuitcaseTopics = [
   ['Thermometer', 0.57, 0.8], 
   ['Rechargeable Battery Charger', 0.65, 0.7], 
   ['12v Sockets', 0.66, 0.48], 
-  ['Lights (Right)', 0.85, 0.5],
+  ['Lights (Right)', 0.85, 0.6],
   ['Light Expansion Box', 0.8, 0.8]
 ];
 
@@ -121,7 +119,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const timeNow = Date.now(); 
     const timePassed = timeNow - startTime; 
     const progress = timePassed / totalTime;
-    const easing = easeOut(progress); 
+    const easing = easeIn(progress); 
 
     console.log('timePassed:', timePassed, 'progress:', progress)
 
@@ -160,12 +158,13 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     }
   }
 
-  function easeOut(progress) {
+  function easeIn(progress) {
     return Math.pow(--progress, 5) + 1;
   }
 
   /* Resets clip dimensions to original values */
   function zoomOut() {
+    setClicked(false)
     setClipDims({
       x: 0,
       y: 0,
@@ -174,15 +173,6 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     });
   }
 
-  /* Handles onClick changes */
-  function handleClick(s, x, y) {
-    if (s == 'in') {
-      setClicked(true);
-    } else {
-      setClicked(false);
-      zoomOut();
-    }
-  }
 
   function onCanvasClick(x, y) {
     const canvas = document.getElementById('canvas');
@@ -211,7 +201,6 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
       if (selectedTopics.length) {
         // console.log('Selected topic:', selectedTopics[0][1]);
-        
         const xCord = selectedTopics[0][1] * cWidth; 
         const yCord = selectedTopics[0][2] * cHeight; 
 
@@ -219,15 +208,13 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
           startTime = Date.now()
           animate(timestamp, xCord, yCord, 1000)
         })
-        handleClick('in', xCord * cWidth, yCord * cHeight) 
+        setClicked(true)
       }
     }
   }
 
   return (
     <div>
-      <button onClick={() => handleClick('in', 400, 175)}> ZOOM IN </button>
-      <button onClick={() => handleClick('out', 0, 0)}> ZOOM OUT </button>
       <canvas
           id="canvas"
           ref={canvasRef}
@@ -236,7 +223,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
           onClick={(e) => onCanvasClick(e.clientX, e.clientY)}
         ></canvas>
       <div className={classes.card}>
-        {clicked ? (<AnimationCard exit={handleClick} resourceId={4} match={props.match}> </AnimationCard>) : null}
+        {clicked ? (<AnimationCard exit={zoomOut} resourceId={4} match={props.match}> </AnimationCard>) : null}
       </div>
     </div>
   );
