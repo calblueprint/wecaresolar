@@ -2,9 +2,6 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) => 
     createStyles({
-      title: {
-        padding: '30px'
-      },
       card: {
         display: 'flex',
         borderRadius: '20px 20px 0px 0px',
@@ -12,7 +9,7 @@ export const styles = (theme: Theme) =>
         fontWeight: 400,
         backgroundColor: '#E5E5E5', 
         position: 'absolute', 
-        bottom: '10%'
+        bottom: '0%'
       },
       img: {
         objectFit: 'cover', 

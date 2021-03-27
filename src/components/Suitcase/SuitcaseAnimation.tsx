@@ -17,7 +17,7 @@ interface ClipDimensions {
 
 type SuitcaseTopics = Array<[string, number, number]>;
 
-const MAX_WIDTH = 900;
+const MAX_WIDTH = 800;
 const SUITCASE_TOPICS: SuitcaseTopics = [
   ['Lights (Left)', 0.23, 0.2],
   ['Installation Sticker', 0.2, 0.45],
@@ -97,8 +97,8 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     */
   useEffect(() => {
     if (canvasRef.current) {
-      // console.log(`Updating with canvas dims: ${cWidth}, ${cHeight}`);
-      // console.log(image.width, image.height);
+      // console.log(`Updating with canvas dims: width: ${cWidth}, height: ${cHeight}`);
+      // console.log('image width', image.width, 'image height', image.height);
       canvasCtxRef.current = canvasRef.current.getContext('2d');
       const ctx = canvasCtxRef.current;
       if (!ctx) return;
@@ -106,7 +106,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       ctx.clearRect(0, 0, cWidth, cHeight);
       ctx.globalAlpha = 1;
       ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
-      // ctx.strokeRect(1, 1, cWidth - 2, cHeight - 2); //why this? 
+      ctx.strokeRect(1, 1, cWidth - 2, cHeight - 2); //THIS
       if (clicked == false) {
         drawDots(ctx, dotWidth * 3, '#6BADE8', 0.3);
         drawDots(ctx, dotWidth, '#6BADE8', 1);
@@ -121,12 +121,12 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const progress = timePassed / totalTime;
     const easing = easeIn(progress); 
 
-    console.log('timePassed:', timePassed, 'progress:', progress)
+    // console.log('timePassed:', timePassed, 'progress:', progress)
 
-    const origWidth = cWidth; 
-    const origHeight = cHeight; 
-    const zoomWidth = cWidth / 3;
-    const zoomHeight = cHeight / 3;
+    const origWidth = image.width; 
+    const origHeight = image.height; 
+    const zoomWidth = origWidth / 3;
+    const zoomHeight = origHeight / 3;
 
     //calculate width increments for each frame 
     const wRatio = zoomWidth / origWidth; //goal ratio 
@@ -143,6 +143,8 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     //set new start coordinate 
     const top_x = x - incWidth / 2;
     const top_y = y - incHeight / 2;
+    
+    console.log('orig_x', x, 'orig_y', y)
 
     setClipDims({
       x: top_x,
@@ -180,6 +182,8 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       const { top, left, width, height } = canvas.getBoundingClientRect();
       const localX = x - left;
       const localY = y - top;
+
+      console.log('localX:', localX, 'localY:', localY)
 
       const relX = (x - left) / width;
       const relY = (y - top) / height;
