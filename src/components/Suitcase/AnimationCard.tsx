@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
 
-
 type AnimationProps = {
     classes: any, 
     resourceId: number, 
@@ -17,7 +16,6 @@ type AnimationProps = {
 function AnimationCard(props : AnimationProps) {
     const { classes } = props; 
     const currentTopic = useSelector((state: RootState) => state.topics[props.resourceId]) //retrieves topic object
-
 
     return (
         <div> 
@@ -38,6 +36,5 @@ function AnimationCard(props : AnimationProps) {
         </div>
     )
 }
-
 
 export default withStyles(styles)(AnimationCard); 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimation';
 import { styles } from './SuitcaseStyles'; 
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/reducers'; 
+import { ControlPointDuplicateRounded } from '@material-ui/icons';
 
 function Suitcase({ match }) {
   return (
