@@ -77,6 +77,8 @@ function TopicViews({ topicId }: TopicViewProps) {
           <StandardCard
             resource={guideResources[resource]}
             resourceID={resource}
+            completeCheck={false} 
+            collapsed={false}
           />
         ))}
       </div>
@@ -86,6 +88,8 @@ function TopicViews({ topicId }: TopicViewProps) {
           <StandardCard
             resource={troubleshootingResources[resource]}
             resourceID={resource}
+            completeCheck={false} 
+            collapsed={false}
           />
         ))}
       </div>

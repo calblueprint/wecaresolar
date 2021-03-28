@@ -1,11 +1,12 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { styles } from './FavoriteStyles';
+import { styles } from './CardButtonStyles';
 import { useDispatch } from 'react-redux';
 import { setResourceIsFavorited } from '../../store/resourcesSlice';
-import BookmarkIcon from '@material-ui/icons/Bookmark';
-import BookmarkBorderIcon from '@material-ui/icons/BookmarkBorder';
 import theme from './../../CustomStyles';
+import { SvgIcon } from '@material-ui/core';
+import { ReactComponent as FilledBookmark} from './filledBookmark.svg';
+import { ReactComponent as UnfilledBookmark} from './unfilledBookmark.svg';
 
 interface FavoriteButtonProps {
   id: number;
@@ -14,8 +15,10 @@ interface FavoriteButtonProps {
 }
 
 function FavoriteButton(props: FavoriteButtonProps) {
+  const { classes } = props;
   const dispatch = useDispatch();
-  function changeFav() {
+  function changeFav(event) {
+    event.preventDefault();
     dispatch(
       setResourceIsFavorited({
         id: props.id,
@@ -26,15 +29,13 @@ function FavoriteButton(props: FavoriteButtonProps) {
   return (
     <div>
       {props.isFavorited ? (
-        <BookmarkIcon
-          style={{ color: theme.palette.black.main }}
-          onClick={changeFav}
-        />
+        <SvgIcon viewBox='0 0 18 18' onClick={changeFav}>
+          <FilledBookmark className={classes.favorited} />
+        </SvgIcon>
       ) : (
-        <BookmarkBorderIcon
-          style={{ color: theme.palette.black.main }}
-          onClick={changeFav}
-        />
+        <SvgIcon viewBox='0 0 18 18' onClick={changeFav}>
+          <UnfilledBookmark className={classes.favorited} />
+        </SvgIcon>
       )}
     </div>
   );
