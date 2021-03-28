@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core';
 import React, { useEffect, useRef, useState } from 'react';
-import Suitcase from '../Images/Suitcase.jpg';
+import Suitcase from '../Images/Suitcase.png';
 import AnimationCard from './AnimationCard';
 
 type SuitcaseProps = {
