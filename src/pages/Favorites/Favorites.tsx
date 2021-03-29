@@ -4,7 +4,7 @@ import { RootState } from '../../store/reducers';
 import StandardCard from '../../components/Cards/StandardCard';
 import { selectFavoritedResources } from '../../store/resourcesSlice';
 import { withStyles } from '@material-ui/core/styles';
-import { styles } from '../../components/CardComponents/FavoriteStyles';
+import { styles } from './FavoriteStyles';
 import { Link } from 'react-router-dom';
 import { FormControl, Select, MenuItem, Input } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
