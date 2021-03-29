@@ -44,7 +44,11 @@ function TopicViews({ topicId }: TopicViewProps) {
     width: '360px',
     height: '145px',
     backgroundImage: `url(${currentTopic.imageUrl})`,
-    backgroundSize: 'cover'
+    backgroundSize: 'cover', 
+    margin: '20px'
+  };
+  const pageStyle = {
+    padding: '30px'
   };
 
   const countMedia = (obj, media: string) =>
@@ -59,7 +63,7 @@ function TopicViews({ topicId }: TopicViewProps) {
     countMedia(troubleshootingResources, 'Video');
 
   return (
-    <div>
+    <div style={pageStyle}>
       <div style={headerStyle}>
         <TopicHeader
           topicTitle={currentTopic.name}
@@ -68,10 +72,13 @@ function TopicViews({ topicId }: TopicViewProps) {
         />
       </div>
       <div>
+      <h2>Resources</h2>
         {Object.keys(guideResources).map((resource: any) => (
           <StandardCard
             resource={guideResources[resource]}
             resourceID={resource}
+            completeCheck={false} 
+            collapsed={false}
           />
         ))}
       </div>
@@ -81,6 +88,8 @@ function TopicViews({ topicId }: TopicViewProps) {
           <StandardCard
             resource={troubleshootingResources[resource]}
             resourceID={resource}
+            completeCheck={false} 
+            collapsed={false}
           />
         ))}
       </div>
