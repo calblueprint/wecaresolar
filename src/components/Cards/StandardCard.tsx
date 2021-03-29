@@ -11,7 +11,7 @@ interface StandardCardProps {
   resourceID: number;
   classes: any;
   completeCheck: boolean;
-  collapsed?: boolean;
+  collapsed: boolean;
 }
 
 const StandardCard = (props: StandardCardProps) => {
