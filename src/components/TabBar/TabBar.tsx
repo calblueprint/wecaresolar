@@ -2,13 +2,16 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import favorites from './../../components/TabBar/icons/favorites.png';
-import manuals from './../../components/TabBar/icons/manuals.png';
-import settings from './../../components/TabBar/icons/settings.png';
-import suitcase from './../../components/TabBar/icons/suitcase.png';
-import troubleshoot from './../../components/TabBar/icons/troubleshoot.png';
+import favorites from './../../components/TabBar/icons/favorites.svg';
+import manuals from './../../components/TabBar/icons/manuals.svg';
+import settings from './../../components/TabBar/icons/settings.svg';
+import suitcase from './../../components/TabBar/icons/suitcase.svg';
+import goldsuitcase from './../../components/TabBar/icons/goldsuitcase.svg';
+import troubleshoot from './../../components/TabBar/icons/troubleshoot.svg';
 import { Link } from 'react-router-dom';
 import { styles } from './TabBarStyles';
+import Fab from '@material-ui/core/Fab';
+import { Component, MouseEvent} from 'react';
 
 type TabProps = {
   classes: any;
@@ -19,50 +22,65 @@ const TabBar = (props: TabProps) => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <BottomNavigation
-      value={value}
-      onChange={(event, newValue) => {
-        setValue(newValue);
-      }}
-      showLabels
-      className={classes.navbar}
-    >
-      <BottomNavigationAction
-        component={Link}
-        to="/Guides"
-        label="Manuals"
-        icon={<img src={manuals} />}
-        className={classes.text}
-      />
-      <BottomNavigationAction
-        component={Link}
-        to="/Favorites"
-        label="Favorites"
-        icon={<img src={favorites} />}
-        className={classes.text}
-      />
-      <BottomNavigationAction
-        component={Link}
-        to="/Suitcase"
-        label="Suitcase"
-        icon={<img src={suitcase} />}
-        className={classes.text}
-      />
-      <BottomNavigationAction
-        component={Link}
-        to="/Troubleshoot"
-        label="Troubleshoot"
-        icon={<img src={troubleshoot} />}
-        className={classes.text}
-      />
-      <BottomNavigationAction
-        component={Link}
-        to="/Settings"
-        label="Settings"
-        icon={<img src={settings} />}
-        className={classes.text}
-      />
-    </BottomNavigation>
+    <div>
+      <Link to="/Suitcase">
+        <div>
+          <Fab variant='round' className={classes.suitcase}>
+            <div>
+              <div>
+                <img src={goldsuitcase} />
+              </div>
+              <div className={classes.buttontext}>
+                Suitcase
+              </div>
+            </div>
+          </Fab>
+        </div>
+      </Link>
+      <div>
+        <BottomNavigation
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+          showLabels
+          className={classes.navbar}
+        >
+          <BottomNavigationAction
+            className={classes.text}
+            component={Link}
+            to="/Guides"
+            label="Manuals"
+            icon={<img src={manuals} />}
+          />
+          <BottomNavigationAction
+            className={classes.text}
+            component={Link}
+            to="/Favorites"
+            label="Favorites"
+            icon={<img src={favorites} />}
+          />
+          <BottomNavigationAction
+            component={Link}
+            to="/Suitcase"
+          />
+          <BottomNavigationAction
+            className={classes.text}
+            component={Link}
+            to="/Troubleshoot"
+            label="Troubleshoot"
+            icon={<img src={troubleshoot} />}
+          />
+          <BottomNavigationAction
+            className={classes.text}
+            component={Link}
+            to="/Settings"
+            label="Settings"
+            icon={<img src={settings} />}
+          />
+        </BottomNavigation>
+      </div>
+    </div>
   );
 };
 
