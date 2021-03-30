@@ -14,7 +14,6 @@ export const styles = (theme: Theme) =>
       position: 'relative',
       fontFamily: theme.typography.fontFamily,
       color: theme.palette.black.main,
-      opacity: '0.5',
       fontStyle: 'normal',
       fontWeight: 'bold',
       fontSize: '12px',
@@ -29,7 +28,6 @@ export const styles = (theme: Theme) =>
       border: '2px solid #F6B350',
       position: 'fixed',
       bottom: '3.9%',
-      left: '45%',
       zIndex: 1,
       boxShadow: '1px 2.5px 3px 1px rgba(218, 207, 207, 0.5)',
       color: "#000000"
@@ -43,5 +41,20 @@ export const styles = (theme: Theme) =>
       lineHeight: '13px',
       textAlign: 'center',
       color: '#F6B350'
-    }
+    },
+    img: {
+      float:"left",
+      width:"31px",
+      height: "31px",
+    },
+    root: {
+      color: theme.palette.black.main,
+      fontFamily: theme.typography.fontFamily,
+      "&$selected": {
+        color: '#F6B350'
+      }
+    },
+    selected: {},
+
+    
   });
