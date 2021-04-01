@@ -5,53 +5,59 @@ export const styles = (theme: Theme) =>
     navbar: {
       position: 'fixed',
       width: '100%',
-      height: '10.8%',
+      height: '8vh',
       left: '0%',
       bottom: 0,
       zIndex: 0,
     },
-    text: {
+    label: {
       position: 'relative',
+      paddingTop: '7px',
       fontFamily: theme.typography.fontFamily,
-      color: theme.palette.black.main,
+      fontSize: '12px',
+      fontWeight: 'bold',
+      lineHeight: '15px',
+      textAlign: 'center'
+    },
+    suitcase: {
+      background: theme.palette.white.main,
+      height: '90px',
+      width: '90px',
+      border: '4px solid #F6B350',
+      position: 'fixed',
+      bottom: '2.5vh',
+      zIndex: 1,
+      boxShadow: '1px 2.5px 3px 1px rgba(218, 207, 207, 0.5)',
+    },
+    goldsuitcase: {
+      position: 'relative',
+      top: '12px',
+      height: '37px',
+      width: '37px',
+      alignContent: 'center',
+    },
+    buttontext: {
+      textTransform: 'capitalize',
+      position: 'relative',
+      top: '-6px',
+      fontFamily: theme.typography.fontFamily,
       fontStyle: 'normal',
       fontWeight: 'bold',
       fontSize: '12px',
-      lineHeight: '15px',
       textAlign: 'center',
+      color: '#F6B350',
     },
-    suitcase: {
-      topPadding: '16px',
-      background: theme.palette.white.main,
-      width: '74px',
-      height: '74px',
-      border: '2px solid #F6B350',
-      position: 'fixed',
-      bottom: '3.9%',
-      zIndex: 1,
-      boxShadow: '1px 2.5px 3px 1px rgba(218, 207, 207, 0.5)',
-      color: "#000000"
-    },
-    buttontext: {
-      topPadding: '5px',
-      fontFamily: theme.typography.fontFamily,
-      fontStyle: 'normal',
-      fontWeight: 'bold',
-      fontSize: '10px',
-      lineHeight: '13px',
-      textAlign: 'center',
-      color: '#F6B350'
-    },
-    img: {
+    icons: {
       float:"left",
-      width:"31px",
-      height: "31px",
+      width:"30%",
+      height: "30%",
     },
     root: {
       color: theme.palette.black.main,
-      fontFamily: theme.typography.fontFamily,
+      opacity: 0.5,
       "&$selected": {
-        color: '#F6B350'
+        color: '#F6B350',
+        opacity: 1
       }
     },
     selected: {},

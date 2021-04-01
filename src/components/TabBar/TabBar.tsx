@@ -2,15 +2,15 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import favorites from './../../components/TabBar/icons/favorites.svg';
-import manuals from './../../components/TabBar/icons/manuals.svg';
-import settings from './../../components/TabBar/icons/settings.svg';
 import goldsuitcase from './../../components/TabBar/icons/goldsuitcase.svg';
-import troubleshoot from './../../components/TabBar/icons/troubleshoot.svg';
 import { Link } from 'react-router-dom';
 import { styles } from './TabBarStyles';
 import Fab from '@material-ui/core/Fab';
-import { ReactComponent as Troubleshooticon} from './../../components/TabBar/icons/troubleshoot.svg';
+import { ReactComponent as TroubleshootIcon} from './../../components/TabBar/icons/troubleshoot.svg';
+import { ReactComponent as FavoritesIcon} from './../../components/TabBar/icons/favorites.svg';
+import { ReactComponent as ManualsIcon} from './../../components/TabBar/icons/manuals.svg';
+import { ReactComponent as SettingsIcon} from './../../components/TabBar/icons/settings.svg';
+import { ReactComponent as GoldSuitcaseIcon} from './../../components/TabBar/icons/goldsuitcase.svg';
 import { SvgIcon } from '@material-ui/core';
 
 type TabProps = {
@@ -26,15 +26,11 @@ const TabBar = (props: TabProps) => {
     <div>
       <Link to="/Suitcase">
         <div style={{display:"flex", width:"100%", justifyContent:"center",}}>
-          <Fab variant='round' className={classes.suitcase}>
-            <div>
+            <Fab variant='round' className={classes.suitcase}>
               <div>
-                <img src={goldsuitcase} />
+                <SvgIcon className={classes.goldsuitcase}><GoldSuitcaseIcon/></SvgIcon>
+                <p className={classes.buttontext}>Suitcase</p>
               </div>
-              <div className={classes.buttontext}>
-                Suitcase
-              </div>
-            </div>
           </Fab>
         </div>
       </Link>
@@ -49,21 +45,19 @@ const TabBar = (props: TabProps) => {
         >
           <BottomNavigationAction
             classes={classes}
-
             className={classes.text}
             component={Link}
             to="/Guides"
             label="Manuals"
-            icon={<img src={manuals} className={classes.img}/>}
+            icon={<SvgIcon className={classes.icons}><ManualsIcon/></SvgIcon>}
           />
           <BottomNavigationAction
             classes={classes}
-
             className={classes.text}
             component={Link}
             to="/Favorites"
             label="Favorites"
-            icon={<img src={favorites} className={classes.img}/>}
+            icon={<SvgIcon className={classes.icons}><FavoritesIcon/></SvgIcon>}
           />
           <BottomNavigationAction
             component={Link}
@@ -75,8 +69,7 @@ const TabBar = (props: TabProps) => {
             component={Link}
             to="/Troubleshoot"
             label="Troubleshoot"
-            /*icon={<img src={troubleshoot} className={classes.img}/>}*/
-            icon={<SvgIcon><Troubleshooticon/></SvgIcon>}
+            icon={<SvgIcon className={classes.icons}><TroubleshootIcon/></SvgIcon>}
           />
           <BottomNavigationAction
             classes={classes}
@@ -84,7 +77,7 @@ const TabBar = (props: TabProps) => {
             component={Link}
             to="/Settings"
             label="Settings"
-            icon={<img src={settings} className={classes.img}/>}
+            icon={<SvgIcon className={classes.icons}><SettingsIcon/></SvgIcon>}
           />
         </BottomNavigation>
       </div>
