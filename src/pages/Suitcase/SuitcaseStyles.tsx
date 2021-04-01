@@ -9,7 +9,7 @@ export const styles = (theme: Theme) =>
         fontWeight: 400,
         backgroundColor: '#E5E5E5', 
         position: 'absolute', 
-        bottom: '0%'
+        bottom: '10%'
       },
       img: {
         objectFit: 'cover', 

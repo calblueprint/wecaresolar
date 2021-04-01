@@ -47,6 +47,14 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
   const image = new Image();
   image.src = Suitcase;
 
+  // clipDims: x, y, width, and height of the currently visible portion of the suitcase
+  const [clipDims, setClipDims] = useState<ClipDimensions>({
+    x: 0,
+    y: 0,
+    width: image.width,
+    height: image.height
+  });
+
   /* Set dimensions of interactive map: 
         cWidth, cHeight: canvas dimensions; set according to user's screen width and max desired suitcase dimensions
         dotWidth: width of each clickable blue dot
@@ -55,13 +63,6 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
   const cHeight = (image.height / image.width) * cWidth;
   const dotWidth = 0.011 * cWidth;
 
-  // clipDims: x, y, width, and height of the currently visible portion of the suitcase
-  const [clipDims, setClipDims] = useState<ClipDimensions>({
-    x: 0,
-    y: 0,
-    width: image.width,
-    height: image.height
-  });
 
   /* Create a reference to null Canvas object. 
         Then, create a context reference for drawing on Canvas. 
@@ -101,15 +102,18 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       // console.log('image width', image.width, 'image height', image.height);
       canvasCtxRef.current = canvasRef.current.getContext('2d');
       const ctx = canvasCtxRef.current;
-      if (!ctx) return;
+      if (!ctx) return; 
 
       ctx.clearRect(0, 0, cWidth, cHeight);
       ctx.globalAlpha = 1;
-      ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
-      ctx.strokeRect(1, 1, cWidth - 2, cHeight - 2); //THIS
-      if (clicked == false) {
-        drawDots(ctx, dotWidth * 3, '#6BADE8', 0.3);
-        drawDots(ctx, dotWidth, '#6BADE8', 1);
+      image.onload = function() { //on first load
+        console.log('Im loading!')
+        ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
+        // ctx.strokeRect(1, 1, cWidth - 2, cHeight - 2); //THIS
+        if (clicked == false) {
+          drawDots(ctx, dotWidth * 3, '#6BADE8', 0.3);
+          drawDots(ctx, dotWidth, '#6BADE8', 1);
+        } 
       } 
     }}, [clipDims]);
 

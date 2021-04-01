@@ -13,7 +13,7 @@ function Suitcase({ match }) {
   };
 
   const labeled = {
-    width: Math.min(window.innerWidth, 800),
+    width: Math.min(window.innerWidth, 650),
     bottom: '10%', 
   }
   const suitcases = {
