@@ -23,7 +23,7 @@ export const styles = (theme: Theme) =>
       background: theme.palette.white.main,
       height: '90px',
       width: '90px',
-      border: '4px solid #F6B350',
+      border: '4px solid theme.palette.yellow.main',
       position: 'fixed',
       bottom: '2.5vh',
       zIndex: 1,
@@ -45,7 +45,7 @@ export const styles = (theme: Theme) =>
       fontWeight: 'bold',
       fontSize: '12px',
       textAlign: 'center',
-      color: '#F6B350',
+      color: theme.palette.yellow.main,
     },
     icons: {
       float:"left",
@@ -56,7 +56,7 @@ export const styles = (theme: Theme) =>
       color: theme.palette.black.main,
       opacity: 0.5,
       "&$selected": {
-        color: '#F6B350',
+        color: theme.palette.yellow.main,
         opacity: 1
       }
     },
