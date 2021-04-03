@@ -8,8 +8,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import WifiIcon from '@material-ui/icons/WifiOff';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
-import { useHistory } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+import { useLocation } from 'react-router-dom'
+import RefreshButton from '../RefreshButton';
+import { loadInitialState } from '../../store/loadInitialState';
+import SettingsDrawer from '../TabBar/SettingsDrawer';
 import SearchList from './SearchList';
 
 type SearchProps = {
@@ -52,6 +55,7 @@ const SearchAppBar = (props: SearchProps) => {
               onChange={(event) => setQuery(event.target.value)}
             />
           </div>
+          <RefreshButton fetch={() => loadInitialState()} />
           <Offline>
             <WifiIcon />
           </Offline>
