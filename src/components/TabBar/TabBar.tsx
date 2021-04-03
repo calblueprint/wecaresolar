@@ -25,7 +25,7 @@ const TabBar = (props: TabProps) => {
   return (
     <div>
       <Link to="/Suitcase">
-        <div style={{display:"flex", width:"100%", justifyContent:"center",}}>
+        <div className={classes.fabDiv}>
             <Fab variant='round' className={classes.suitcase}>
               <div>
                 <SvgIcon className={classes.goldsuitcase}><GoldSuitcaseIcon/></SvgIcon>

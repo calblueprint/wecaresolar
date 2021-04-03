@@ -23,7 +23,8 @@ export const styles = (theme: Theme) =>
       background: theme.palette.white.main,
       height: '90px',
       width: '90px',
-      border: '4px solid theme.palette.yellow.main',
+      border: '4px solid',
+      borderColor: theme.palette.yellow.main,
       position: 'fixed',
       bottom: '2.5vh',
       zIndex: 1,
@@ -61,6 +62,9 @@ export const styles = (theme: Theme) =>
       }
     },
     selected: {},
-
-    
+    fabDiv: {
+      display: "flex",
+      width: "100%",
+      justifyContent: "center"
+    }
   });
