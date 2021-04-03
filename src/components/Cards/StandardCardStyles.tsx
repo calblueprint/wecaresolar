@@ -43,7 +43,7 @@ export const styles = (theme: Theme) =>
       justifyContent: 'space-between',
       alignItems: 'flex-start',
       alignSelf: 'stretch',
-      
+
     },
     title: {
       fontSize: '1rem',
@@ -64,5 +64,9 @@ export const styles = (theme: Theme) =>
       fontSize: '0.9rem',
       lineHeight: '1.1rem',
       fontWeight: 'normal'
-    }
+    },
+    link: {
+      textDecoration: 'none',
+      margin: '1%'
+    },
   });
