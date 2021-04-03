@@ -9,6 +9,9 @@ export const styles = (theme: Theme) =>
       left: '0%',
       bottom: 0,
       zIndex: 0,
+      indicatorColor: {
+        color: theme.palette.yellow2.main
+      }
     },
     label: {
       position: 'relative',
@@ -17,14 +20,15 @@ export const styles = (theme: Theme) =>
       fontSize: '12px',
       fontWeight: 'bold',
       lineHeight: '15px',
-      textAlign: 'center'
+      textAlign: 'center',
+      letterSpacing: '0.1px'
     },
     suitcase: {
       background: theme.palette.white.main,
       height: '90px',
       width: '90px',
       border: '4px solid',
-      borderColor: theme.palette.yellow.main,
+      borderColor: theme.palette.yellow2.main,
       position: 'fixed',
       bottom: '2.5vh',
       zIndex: 1,
@@ -46,7 +50,8 @@ export const styles = (theme: Theme) =>
       fontWeight: 'bold',
       fontSize: '12px',
       textAlign: 'center',
-      color: theme.palette.yellow.main,
+      color: theme.palette.yellow2.main,
+      letterSpacing: '0.8px'
     },
     icons: {
       float:"left",
@@ -57,9 +62,9 @@ export const styles = (theme: Theme) =>
       color: theme.palette.black.main,
       opacity: 0.5,
       "&$selected": {
-        color: theme.palette.yellow.main,
+        color: theme.palette.yellow2.main,
         opacity: 1
-      }
+      },
     },
     selected: {},
     fabDiv: {

@@ -49,7 +49,7 @@ const TabBar = (props: TabProps) => {
             to="/Guides"
             label="Manuals"
             icon={<SvgIcon className={classes.icons}><ManualsIcon/></SvgIcon>}
-          />
+            />
           <BottomNavigationAction
             classes={classes}
             className={classes.text}
