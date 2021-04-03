@@ -25,7 +25,11 @@ const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
       <h3>Content</h3>
       {currentLesson.resourceIds.map((id) => {
         if (id in resources) {
-          return <StandardCard resource={resources[id]} resourceID={id} />;
+          return <StandardCard 
+            resource={resources[id]} 
+            resourceID={id} 
+            completeCheck={true} 
+            collapsed={resources[id].isCompleted}/>;
         } else {
           return <span />;
         }
