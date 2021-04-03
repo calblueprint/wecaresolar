@@ -29,7 +29,7 @@ const PlaylistCard = (props: PlaylistCardProps) => {
       <div className={classes.spread}>
         <div className={classes.column}>
           {lesson.objectives.map((tag) => (
-            <Tag classes={classes} tag={tag} />
+            <Tag tag={tag} />
           ))}
         </div>
         <div className={classes.column}>
