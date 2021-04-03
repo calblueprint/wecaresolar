@@ -17,7 +17,7 @@ function Suitcase({ match }) {
     bottom: '10%', 
   }
   const suitcases = {
-    padding: '10px'
+    paddingTop: '10px'
   }
 
   const [toggled, setToggle] = React.useState(false); 

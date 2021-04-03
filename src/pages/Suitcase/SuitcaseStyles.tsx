@@ -5,16 +5,17 @@ export const styles = (theme: Theme) =>
       card: {
         display: 'flex',
         borderRadius: '20px 20px 0px 0px',
-        fontSize: '18px',
+        height: '30%',
+        fontSize: '15px',
         fontWeight: 400,
         backgroundColor: '#E5E5E5', 
         position: 'absolute', 
-        bottom: '10%'
+        bottom: '15%'
       },
       img: {
-        objectFit: 'cover', 
+        objectFit: 'contain', 
         width: '30%', 
-        margin: '4%'
+        margin: '2%'
       },
       rightSide: {
         display: 'flex',
@@ -32,7 +33,7 @@ export const styles = (theme: Theme) =>
         justifyContent: 'space-between'
       },
       manualsButton: {
-        fontSize: '20px',
+        fontSize: '12px',
         fontWeight: 600,
         color: theme.palette.white.main,
         backgroundColor: theme.palette.black.main,
@@ -44,7 +45,7 @@ export const styles = (theme: Theme) =>
         borderRadius: '1rem',
       },
       helpButton: {
-        fontSize: '20px',
+        fontSize: '12px',
         fontWeight: 600,
         color: theme.palette.black.main,
         backgroundColor: theme.palette.white.main,
