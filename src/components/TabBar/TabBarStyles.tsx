@@ -4,7 +4,7 @@ export const styles = (theme: Theme) =>
   createStyles({
     navbar: {
       position: 'fixed',
-      width: '100%',
+      width: '100vw',
       height: '8vh',
       left: '0%',
       bottom: 0,
@@ -25,8 +25,10 @@ export const styles = (theme: Theme) =>
     },
     suitcase: {
       background: theme.palette.white.main,
-      height: '90px',
-      width: '90px',
+      height: '10vw',
+      maxHeight: '100px',
+      width: '10vw',
+      maxWidth: '100px',
       border: '4px solid',
       borderColor: theme.palette.yellow2.main,
       position: 'fixed',
@@ -37,8 +39,10 @@ export const styles = (theme: Theme) =>
     goldsuitcase: {
       position: 'relative',
       top: '12px',
-      height: '37px',
-      width: '37px',
+      height: '4vw',
+      maxHeight: '50px',
+      width: '4vw',
+      maxWidth: '50px',
       alignContent: 'center',
     },
     buttontext: {
@@ -55,8 +59,10 @@ export const styles = (theme: Theme) =>
     },
     icons: {
       float:"left",
-      width:"30%",
-      height: "30%",
+      width:"4vw",
+      maxWidth: '50px',
+      height: "4vw",
+      maxHeight: '50px'
     },
     root: {
       color: theme.palette.black.main,
