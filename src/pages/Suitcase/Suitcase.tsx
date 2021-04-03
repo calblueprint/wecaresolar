@@ -8,16 +8,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 function Suitcase({ match }) {
   const title = { //where can I style this nicer? SuitcaseStyles and App.tsx don't work 
-    paddingLeft: '30px',
+    padding: '30px',
     display: 'flex',
+    justifyContent: 'space-between'
   };
 
   const labeled = {
     width: Math.min(window.innerWidth, 650),
-    bottom: '10%', 
-  }
-  const suitcases = {
-    paddingTop: '10px'
   }
 
   const [toggled, setToggle] = React.useState(false); 
@@ -37,7 +34,7 @@ function Suitcase({ match }) {
           label="Labels"
           labelPlacement="start"/>
       </div>
-      <div style={suitcases}>
+      <div>
         {toggled? <img src={SuitcaseLabeled} style={labeled}/>
           : <SuitcaseAnimation classes={styles} match={match} />}
       </div>
