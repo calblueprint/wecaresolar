@@ -7,7 +7,7 @@ import { ReactComponent as FilledBookmark} from './filledBookmark.svg';
 import { ReactComponent as UnfilledBookmark} from './unfilledBookmark.svg';
 
 interface FavoriteButtonProps {
-  id: number;
+  id: string;
   isFavorited: boolean;
 }
 
