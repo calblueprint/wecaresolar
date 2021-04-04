@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './VideoStyles';
 
 type DownloadButtonProps = {
-  id: number,
+  id: string,
   videoData: VideoData,
   classes: any;
 }

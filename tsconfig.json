@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
@@ -20,7 +16,5 @@
     "noEmit": true,
     "jsx": "react"
   },
-  "include": [
-    "src", "src/serviceWorker.ts"
-  ]
+  "include": ["src", "src/serviceWorker.ts"]
 }

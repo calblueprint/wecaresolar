@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 interface StandardCardProps {
   resource: Resource;
-  resourceID: number;
+  resourceID: string;
   classes: any;
   completeCheck: boolean;
   collapsed: boolean;

@@ -7,7 +7,7 @@ import { ReactComponent as UncheckedButton} from './uncheckedButton.svg';
 
 
 interface CompletedButtonProps {
-    id: number;
+    id: string;
     isCompleted: boolean;
 }
 
