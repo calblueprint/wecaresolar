@@ -95,5 +95,4 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       margin: '0% 5%'
     }
-
   });

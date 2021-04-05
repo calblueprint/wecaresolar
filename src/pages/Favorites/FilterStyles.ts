@@ -1,7 +1,7 @@
-import { createStyles, Theme } from '@material-ui/core/styles'
-import { create } from 'domain'
+import { createStyles, Theme } from '@material-ui/core/styles';
+import { create } from 'domain';
 
-export const styles = (theme: Theme) => 
+export const styles = (theme: Theme) =>
   createStyles({
     dropdownButton: {
       display: 'flex',
@@ -19,11 +19,9 @@ export const styles = (theme: Theme) =>
       fontSize: '.9rem',
       fontWeight: 600,
       color: theme.palette.black.main,
-      flexGrow: 1,
+      flexGrow: 1
     },
-    headerBox: {
-      
-    },
+    headerBox: {},
     buttonLabel: {
       paddingLeft: '5%',
       fontSize: '.9rem',
@@ -34,6 +32,5 @@ export const styles = (theme: Theme) =>
     icon: {
       color: theme.palette.black.main,
       paddingLeft: '5%'
-    },
-
-  })
+    }
+  });
