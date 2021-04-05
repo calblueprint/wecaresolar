@@ -2,6 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './StandardCardStyles';
 import { Resource } from '../../store/resourcesSlice';
+import { useDispatch } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import FavoriteButton from '../CardComponents/FavoriteButton';
 import CompletedButton from '../CardComponents/CompletedButton';
@@ -19,10 +20,15 @@ const StandardCard = (props: StandardCardProps) => {
   return (
     <Card className={classes.card}>
       <div className={classes.box}>
-        {props.completeCheck ? (<div className={classes.buttonColumn}> <CompletedButton
-          id={props.resourceID}
-          isCompleted={props.resource.isCompleted}
-        /></div>) : null }
+        {props.completeCheck ? (
+          <div className={classes.buttonColumn}>
+            {' '}
+            <CompletedButton
+              id={props.resourceID}
+              isCompleted={props.resource.isCompleted}
+            />
+          </div>
+        ) : null}
         <div className={classes.contentColumn}>
           <div className={classes.titleButtonRow}>
             <div className={classes.title}>{props.resource.title}</div>
@@ -34,12 +40,11 @@ const StandardCard = (props: StandardCardProps) => {
               />
             </div>
           </div>
-          {props.collapsed ? null 
-          : (<p className={classes.body}>{props.resource.data.preview}</p>) }
-          
+          {props.collapsed ? null : (
+            <p className={classes.body}>{props.resource.data.preview}</p>
+          )}
         </div>
       </div>
-      
     </Card>
   );
 };

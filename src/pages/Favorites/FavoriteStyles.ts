@@ -18,13 +18,14 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column'
     },
-    // header: {
-    //   display: 'flex',
-    //   flexDirection: 'row',
-    //   justifyContent: 'space-between',
-    //   alignItems: 'center',
-    //   padding: '3%'
-    // }, 
+    header: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      margin: '1%',
+      height: 'fit-content'
+    },
     title: {
       fontSize: '1.8rem',
       fontWeight: 700,
@@ -79,15 +80,20 @@ export const styles = (theme: Theme) =>
     dropdownStyle: {
       // border: "1px solid black",
       backgroundColor: 'white',
-      border: "1px red",
+      border: '1px red',
       /* The Rachel */
       boxShadow: '-2px 4px 23px rgba(2, 2, 2, 0.0685)',
       borderRadius: '10px',
       fontSize: '.9rem',
       fontWeight: 600,
-      color: theme.palette.black.main,
+      color: theme.palette.black.main
       // font-style: normal,
       // font-size: 12px;
-      // line-height: 15px;  
+      // line-height: 15px;
+    },
+    dropdown: {
+      display: 'flex',
+      margin: '0% 5%'
     }
+
   });

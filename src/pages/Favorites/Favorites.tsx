@@ -8,6 +8,7 @@ import { styles } from './FavoriteStyles';
 import { Link } from 'react-router-dom';
 import { FormControl, Select, MenuItem, Input } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FilterDropdown from './FilterDropdown';
 
 function Favorites({ match, classes }) {
   const favResources = useSelector(selectFavoritedResources);
@@ -15,8 +16,16 @@ function Favorites({ match, classes }) {
   const allTopics: string[] = Object.keys(topics).map(
     (topic) => topics[topic].name
   );
-  const [resType, setresType] = useState("All");
-  const [currTopics, setTopic] = useState([]);
+  
+
+  /* begin joyce task */
+
+  // set up usestate to alter a list of topics we will filter by
+  const [currTopics, setTopic] = useState<string[]>([]);
+  const [resType, setresType] = useState<string[]>([]);
+
+
+  /* end joyce task */
 
   const handleResChange = (event) => {
     setresType(event.target.value);
@@ -32,7 +41,7 @@ function Favorites({ match, classes }) {
         .map((topic) => favResources[resource].tags.includes(topic))
         .includes(true)
     ) {
-      if (resType === 'All' || favResources[resource].type === resType) {
+      if (resType.length == 0 || resType.includes(favResources[resource].type)) {
         console.log(resource)
         return (
           <Link className={classes.link} to={`resources/${resource}`}>
@@ -51,9 +60,23 @@ function Favorites({ match, classes }) {
     }
   }
 
+  // 
   return (
     <div className={classes.page}>
-      <div className={classes.title}>Favorites</div>
+      <div className={classes.header}>
+        <div className={classes.title}>Favorites</div>
+        <div className={classes.dropdown}>
+          <FilterDropdown
+            changeTopic={setTopic} 
+            topics={allTopics}
+            changeType={setresType}
+            types={resType}>
+
+          </FilterDropdown>
+        </div>
+      </div>
+      
+      
       <div className={classes.filters}>
         <div className={classes.filterLabel}>Topics</div>
         <FormControl className={classes.formControl}>
@@ -94,7 +117,7 @@ function Favorites({ match, classes }) {
       </div>
       {Object.keys(favResources).map(filteredFavResources)}
     </div>
-  );
-}
+  )};
+
 
 export default withStyles(styles)(Favorites);
