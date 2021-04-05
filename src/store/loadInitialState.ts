@@ -36,12 +36,12 @@ const numToFetchStatus: Record<number, FetchStatus> = {
 const loadCollection = async (
   collectionName: string,
   updateActionCreator: ActionCreator<any>,
-  postprocess = doc => doc
+  postprocess = (doc) => doc
 ): Promise<FetchStatus> => {
   try {
     const querySnapshot = await db.collection(collectionName).get();
     const docs = {};
-    querySnapshot.forEach(doc => {
+    querySnapshot.forEach((doc) => {
       docs[doc.id] = postprocess(doc.data());
     });
     store.dispatch(updateActionCreator(docs));
@@ -66,24 +66,28 @@ const loadCollection = async (
  * but one of the requests succeeds, we still have to consider it a failure.
  */
 export const loadInitialState = async (): Promise<FetchStatus> => {
-  const loadedResources: FetchStatus = await loadCollection('resources', refreshResources, resource => {
-    return {
-      ...resource,
-      tags: resource.tags.map(tag => tag.id)
+  const loadedResources: FetchStatus = await loadCollection(
+    'resources',
+    refreshResources,
+    (resource) => {
+      return {
+        ...resource,
+        tags: resource.tags.map((tag) => tag.id)
+      };
     }
-  });
+  );
 
   // Lessons should not be loaded unless resources were loaded successfully
   // (otherwise they might refer to resource IDs that don't exist locally)
   const loadedLessons: FetchStatus =
     loadedResources === FetchStatus.Failure
       ? FetchStatus.Failure
-      : await loadCollection('lessons', refreshLessons, lesson => {
+      : await loadCollection('lessons', refreshLessons, (lesson) => {
           // Convert resource IDs on each lesson to their string representations
           // before storing in Redux.
           return {
             ...lesson,
-            resourceIDs: lesson.resourceIDs.map(resourceID => resourceID.id)
+            resourceIDs: lesson.resourceIDs.map((resourceID) => resourceID.id)
           };
         });
 
@@ -100,7 +104,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     loadedResources,
     loadedLessons,
     loadedTopics
-  ].map(status => fetchStatusToNum[status]);
+  ].map((status) => fetchStatusToNum[status]);
   const overallStatus: FetchStatus = numToFetchStatus[Math.min(...statusNums)];
 
   store.dispatch(onFetchResult(overallStatus));

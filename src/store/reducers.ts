@@ -16,7 +16,7 @@ const persistedReducer = persistReducer(
     topics: topicsReducer,
     metadata: metadataReducer,
     troubleshoot: helpReducer
-  }),
+  })
 );
 
 export const store = configureStore({

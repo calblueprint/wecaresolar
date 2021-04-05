@@ -8,8 +8,8 @@ export type MetadataSlice = {
 
 const INITIAL_METADATA = {
   lastServerRefreshTime: 0,
-  lastRefreshStatus: 'FAILURE',
-}
+  lastRefreshStatus: 'FAILURE'
+};
 
 export const metadataSlice = createSlice({
   name: 'metadata',
