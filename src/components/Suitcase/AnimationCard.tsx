@@ -8,14 +8,17 @@ import { Link } from 'react-router-dom';
 
 type AnimationProps = {
     classes: any, 
-    resourceId: number, 
+    topic: string, 
     exit: any, 
     match 
 }
 
 function AnimationCard(props : AnimationProps) {
     const { classes } = props; 
-    const currentTopic = useSelector((state: RootState) => state.topics[props.resourceId]) //retrieves topic object
+    const currentTopic = useSelector((state: RootState) => state.topics[props.topic]) //retrieves topic object
+
+    console.log(useSelector((state: RootState) => state.topics))
+    console.log(props.topic)
 
     return (
         <div> 
@@ -25,7 +28,7 @@ function AnimationCard(props : AnimationProps) {
                 <h2> {currentTopic.name} </h2>
                 <p> {currentTopic.description} </p>
                 <div className={classes.buttons}>
-                    <Link to={`${props.match.url}/${props.resourceId}`}>
+                    <Link to={`${props.match.url}/${props.topic}`}>
                         <button className={classes.manualsButton}> See All Manuals </button>
                     </Link> 
                         <button className={classes.helpButton}> Help </button>

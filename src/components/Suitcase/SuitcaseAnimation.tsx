@@ -41,13 +41,13 @@ const SUITCASE_TOPICS: SuitcaseTopics = [
 
 const SuitcaseAnimation = (props: SuitcaseProps) => {
   const { classes } = props;
-  const [clicked, setClicked] = useState(false); //use for zoom in/out later
+  const [clicked, setClicked] = useState(false);
 
   /* Create an ImageData object */
   const image = new Image(975, 650);
   image.src = Suitcase;
 
-  // clipDims: x, y, width, and height of the currently visible portion of the suitcase
+  /* clipDims: x, y, width, and height of the currently visible portion of the suitcase */ 
   const [clipDims, setClipDims] = useState<ClipDimensions>({
     x: 0,
     y: 0,
@@ -57,26 +57,18 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
   /* Set dimensions of interactive map: 
         cWidth, cHeight: canvas dimensions; set according to user's screen width and max desired suitcase dimensions
-        dotWidth: width of each clickable blue dot
-    */
+        dotWidth: width of each clickable blue dot */
   const cWidth = Math.min(window.innerWidth, MAX_WIDTH);
   const cHeight = (image.height / image.width) * cWidth;
   const dotWidth = 0.011 * cWidth;
 
-  console.log(cWidth, cHeight)
-
-  console.log('image width', image.width, 'image height', image.height)
-
-
   /* Create a reference to null Canvas object. 
-        Then, create a context reference for drawing on Canvas. 
-    */
+        Then, create a context reference for drawing on Canvas. */
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const canvasCtxRef = React.useRef<CanvasRenderingContext2D | null>(null);
 
   /* Helper function to draw dots for all the locations in SUITCASE_TOPICS.
-        The dots will have radius `width`, color `fillStyle` (hex), and transparency `alpha` (0-1).
-    */
+        The dots will have radius `width`, color `fillStyle` (hex), and transparency `alpha` (0-1). */
   const drawDots = (ctx, width, fillStyle, alpha) => {
     ctx.beginPath();
     for (let topic of SUITCASE_TOPICS) {
@@ -98,12 +90,10 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
             2. Clear context before drawing new image. 
             3. drawImage takes in (image,     <-- ImageData object 
                     sx, sy, sWidth, sHeight   <-- Starting context, selects starting coordinate & scaling dimensions (Optional)
-                    dx, dy, dWidth, dHeight)  <-- Destination context, used to scale source to destination. 
-    */
+                    dx, dy, dWidth, dHeight)  <-- Destination context, used to scale source to destination. */
   useEffect(() => {
     if (canvasRef.current) {
       // console.log(`Updating with canvas dims: width: ${cWidth}, height: ${cHeight}`);
-      // console.log('image width', image.width, 'image height', image.height);
       canvasCtxRef.current = canvasRef.current.getContext('2d');
       const ctx = canvasCtxRef.current;
       if (!ctx) return; 
@@ -112,7 +102,6 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       ctx.globalAlpha = 1;
       image.onload = function() { //on first load
         ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
-        // ctx.strokeRect(1, 1, cWidth - 2, cHeight - 2); //THIS
         if (clicked == false) {
           drawDots(ctx, dotWidth * 3, '#6BADE8', 0.3);
           drawDots(ctx, dotWidth, '#6BADE8', 1);
@@ -134,8 +123,6 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const origHeight = image.height; 
     const zoomWidth = origWidth / 3;
     const zoomHeight = origHeight / 3;
-  
-    // console.log(zoomWidth, zoomHeight)
 
     //incWidth & incHeight approach zoomWidth & zoomHeight
 
@@ -196,8 +183,6 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       const localX = x - left;
       const localY = y - top;
 
-      // console.log('localX:', localX, 'localY:', localY)
-
       const relX = (x - left) / width;
       const relY = (y - top) / height;
       console.log(
@@ -240,7 +225,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
           onClick={(e) => onCanvasClick(e.clientX, e.clientY)}
         ></canvas>
       <div className={classes.card}>
-        {clicked ? (<AnimationCard exit={zoomOut} resourceId={4} match={props.match}> </AnimationCard>) : null}
+        {clicked ? (<AnimationCard exit={zoomOut} topic={"Fetal Doppler"} match={props.match}> </AnimationCard>) : null}
       </div>
     </div>
   );
