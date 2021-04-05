@@ -16,32 +16,33 @@ function Favorites({ match, classes }) {
   const allTopics: string[] = Object.keys(topics).map(
     (topic) => topics[topic].name
   );
+  const allTypes : string[] = ['Articles', 'Videos']
   
 
   /* begin joyce task */
 
   // set up usestate to alter a list of topics we will filter by
-  const [currTopics, setTopic] = useState<string[]>([]);
-  const [resType, setresType] = useState<string[]>([]);
+  const [currTopics, setTopic] = useState<Set<string>>(new Set(allTopics));
+  const [resType, setresType] = useState<Set<string>>(new Set(allTypes));
 
 
   /* end joyce task */
 
-  const handleResChange = (event) => {
-    setresType(event.target.value);
-  };
-  const handleTopicChange = (event) => {
-    setTopic(event.target.value);
-  };
+  // const handleResChange = (event) => {
+  //   setresType(event.target.value);
+  // };
+  // const handleTopicChange = (event) => {
+  //   setTopic(event.target.value);
+  // };
 
   function filteredFavResources(resource: any) {
     if (
-      currTopics.length == 0 ||
-      currTopics
+      currTopics.size == 0 ||
+      Array.from(currTopics.values())
         .map((topic) => favResources[resource].tags.includes(topic))
         .includes(true)
     ) {
-      if (resType.length == 0 || resType.includes(favResources[resource].type)) {
+      if (resType.size == 0 || resType.has(favResources[resource].type)) {
         console.log(resource)
         return (
           <Link className={classes.link} to={`resources/${resource}`}>
@@ -67,17 +68,19 @@ function Favorites({ match, classes }) {
         <div className={classes.title}>Favorites</div>
         <div className={classes.dropdown}>
           <FilterDropdown
-            changeTopic={setTopic} 
             topics={allTopics}
+            currTopics={currTopics}
+            changeTopic={setTopic} 
+            types={allTypes}
+            currTypes={resType}
             changeType={setresType}
-            types={resType}>
-
+          >
           </FilterDropdown>
         </div>
       </div>
       
       
-      <div className={classes.filters}>
+      {/* <div className={classes.filters}>
         <div className={classes.filterLabel}>Topics</div>
         <FormControl className={classes.formControl}>
             <Select
@@ -114,7 +117,7 @@ function Favorites({ match, classes }) {
             <MenuItem value={'Article'}>Articles</MenuItem>
           </Select>
         </FormControl>
-      </div>
+      </div> */}
       {Object.keys(favResources).map(filteredFavResources)}
     </div>
   )};

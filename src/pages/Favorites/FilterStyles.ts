@@ -3,6 +3,12 @@ import { create } from 'domain';
 
 export const styles = (theme: Theme) =>
   createStyles({
+    // dropdown: {
+    //   display: 'block',
+    //   flexDirection: 'column',
+    //   alignItems: 'flex-end',
+    //   height: 'fit-content'
+    // },
     dropdownButton: {
       display: 'flex',
       flexDirection: 'row',
@@ -19,9 +25,9 @@ export const styles = (theme: Theme) =>
       fontSize: '.9rem',
       fontWeight: 600,
       color: theme.palette.black.main,
-      flexGrow: 1
+      flexGrow: 1,
+      cursor: 'pointer'
     },
-    headerBox: {},
     buttonLabel: {
       paddingLeft: '5%',
       fontSize: '.9rem',
@@ -32,5 +38,53 @@ export const styles = (theme: Theme) =>
     icon: {
       color: theme.palette.black.main,
       paddingLeft: '5%'
+    },
+    dropdownPopup: {
+      position: 'absolute',
+      width: 'fit-content',
+      height: 'fit-content',
+      padding: '2%',
+      /* White */
+      background: 'white',
+      /* The Rachel */
+      borderRadius: '10px'
+    },
+    headerBox: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'flex-end',
+      padding: '3%'
+    },
+    header: {
+      fontSize: '1.3rem',
+      fontWeight: 700,
+      color: theme.palette.black.main,
+    },
+    selectAll: {
+      backgroundColor: 'white',
+      border: 'none',
+      fontSize: '0.9rem',
+      fontWeight: 600,
+      color: theme.palette.black.main,
+      textDecoration: 'underline',
+      cursor: 'pointer'
+    },
+    item: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: '3%'
+    },
+    option: {
+      fontSize: '0.9rem',
+      fontWeight: 700,
+      color: theme.palette.black.main
+    },
+    lineBreak: {
+      // height: '5px',
+      // fill: '#000000',
+      margin: '2%',
     }
   });

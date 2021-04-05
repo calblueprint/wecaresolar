@@ -4,16 +4,20 @@ import { styles } from './FilterStyles';
 import { useSelector } from 'react-redux';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { ExpandMore } from '@material-ui/icons';
+import CompletedButton from '../../components/CardComponents/CompletedButton';
 
 /* Set up Props for Filter Dropdown */
 
 interface FilterDropdownProps {
   classes: any;
   title?: string;
-  changeTopic(topics: string[]): any;
   topics: string[];
-  changeType(types: string[]): any;
+  currTopics: Set<string>;
+  changeTopic(topics: Set<string>): any;
   types: string[];
+  currTypes: Set<string>;
+  changeType(types: Set<string>): any;
+
   // add in what types you can select from
   // add in a setState func to modify types
 }
@@ -22,15 +26,24 @@ interface FilterDropdownProps {
  */
 
 const FilterDropdown = (props: FilterDropdownProps) => {
-  const { classes, title, topics, types } = props;
+  const {
+    classes,
+    title,
+    topics,
+    currTopics,
+    changeTopic,
+    types,
+    currTypes,
+    changeType
+  } = props;
   // boolean to determine whehter dropdown is open or not
   const [open, setOpen] = useState(false);
-  const [selectedTopic, setSelectedTopic] = useState<boolean[]>(
-    Array(topics.length).fill(true)
-  );
-  const [selectedType, setSelectedType] = useState<boolean[]>(
-    Array(types.length).fill(true)
-  );
+  // const [selectedTopic, setSelectedTopic] = useState<boolean[]>(
+  //   Array(topics.length).fill(true)
+  // );
+  // const [selectedType, setSelectedType] = useState<boolean[]>(
+  //   Array(types.length).fill(true)
+  // );
 
   // header title? this.props.titl
 
@@ -39,16 +52,35 @@ const FilterDropdown = (props: FilterDropdownProps) => {
   // onclick for types
 
   //get the props from props
-  function handleSelect() {
-    if (selectedTopic.every((element) => element)) {
-      setSelectedTopic(Array(topics.length).fill(false));
+  function handleSelectAll(
+    currList: Set<string>,
+    allOptions: string[],
+    updateSet: (currList: Set<string>) => any
+  ) {
+    if (currList.size === allOptions.length) {
+      updateSet(new Set());
     } else {
-      setSelectedTopic(Array(topics.length).fill(true));
+      updateSet(new Set(allOptions));
+    }
+  }
+
+  function handleSelect(
+    option: string,
+    currList: Set<string>,
+    updateSet: (currList: Set<string>) => any
+  ) {
+    const updatedList = new Set(currList);
+    if (currList.has(option)) {
+      updatedList.delete(option);
+      updateSet(updatedList);
+    } else {
+      updatedList.add(option);
+      updateSet(updatedList);
     }
   }
 
   return (
-    <div>
+    <div className={classes.dropdown}>
       <div
         className={classes.dropdownButton}
         onClick={() => {
@@ -58,27 +90,65 @@ const FilterDropdown = (props: FilterDropdownProps) => {
         <div className={classes.buttonLabel}>Filter by</div>
         <ExpandMoreIcon className={classes.icon}></ExpandMoreIcon>
       </div>
-      <div className={classes.headerBox}>
-        <div className={classes.header}>Topics</div>
-        <button className={classes.selectAll} onClick={handleSelect}>
-          {selectedTopic.every((element) => element)
-            ? 'deselect all'
-            : 'select all'}
-        </button>
-        <div className={classes.select}></div>
-      </div>
-      <div className={classes.list}>
-        {topics.map((topic, index) => (
-          <div className={classes.item}>
-            <div className={classes.option}>
-              {topic}
-            </div>
-            <div className={classes.checkmark}>
-              {/* {(selectedTopic[index]) ? } */}
-            </div>
+      {open ? (
+        <div className={classes.dropdownPopup}>
+          {/* topics */}
+          <div className={classes.headerBox}>
+            <div className={classes.header}>Topics</div>
+            <button
+              className={classes.selectAll}
+              onClick={() => handleSelectAll(currTopics, topics, changeTopic)}
+            >
+              {currTopics.size === topics.length
+                ? 'Deselect all'
+                : 'Select all'}
+            </button>
           </div>
-        ))}
-      </div>
+          <div className={classes.list}>
+            {topics.map((topic) => (
+              <div className={classes.item}>
+                <div className={classes.option}>{topic}</div>
+                <div className={classes.checkmark}>
+                  <CompletedButton
+                    isCompleted={currTopics.has(topic)}
+                    handleClick={() =>
+                      handleSelect(topic, currTopics, changeTopic)
+                    }
+                  ></CompletedButton>
+                </div>
+              </div>
+            ))}
+          </div>
+          <hr className={classes.lineBreak} />
+          {/* types */}
+          <div className={classes.headerBox}>
+            <div className={classes.header}>Types</div>
+            <button
+              className={classes.selectAll}
+              onClick={() => handleSelectAll(currTypes, types, changeType)}
+            >
+              {currTypes.size === types.length
+                ? 'Deselect all'
+                : 'Select all'}
+            </button>
+          </div>
+          <div className={classes.list}>
+            {types.map((type) => (
+              <div className={classes.item}>
+                <div className={classes.option}>{type}</div>
+                <div className={classes.checkmark}>
+                  <CompletedButton
+                    isCompleted={currTypes.has(type)}
+                    handleClick={() =>
+                      handleSelect(type, currTypes, changeType)
+                    }
+                  ></CompletedButton>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 

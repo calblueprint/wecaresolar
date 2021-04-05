@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './StandardCardStyles';
 import { Resource } from '../../store/resourcesSlice';
 import { useDispatch } from 'react-redux';
+import { setResourceIsCompleted } from '../../store/resourcesSlice';
 import Card from '@material-ui/core/Card';
 import FavoriteButton from '../CardComponents/FavoriteButton';
 import CompletedButton from '../CardComponents/CompletedButton';
@@ -17,6 +18,16 @@ interface StandardCardProps {
 
 const StandardCard = (props: StandardCardProps) => {
   const { classes } = props;
+  const dispatch = useDispatch();
+    function handleOverlay(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        dispatch(
+            setResourceIsCompleted({
+                id: props.resourceID,
+                isCompleted: !props.resource.isCompleted,
+            }))
+    };
   return (
     <Card className={classes.card}>
       <div className={classes.box}>
@@ -24,8 +35,8 @@ const StandardCard = (props: StandardCardProps) => {
           <div className={classes.buttonColumn}>
             {' '}
             <CompletedButton
-              id={props.resourceID}
               isCompleted={props.resource.isCompleted}
+              handleClick={handleOverlay}
             />
           </div>
         ) : null}
