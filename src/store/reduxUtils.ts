@@ -15,7 +15,7 @@ export const refreshValues = (state, newVals, defaultFields = {}) => {
    * @param newVals       - The new values to add/update in `state`
    * @param defaultFields - (Optional) Default fields to add to any new entry before putting it in state
    */
-  for (const [id, data] of Object.entries<object>(newVals)) {
+  for (const [id, data] of Object.entries<any>(newVals)) {
     if (!(id in state)) {
       state[id] = {
         ...data,
