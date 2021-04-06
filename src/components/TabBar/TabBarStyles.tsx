@@ -2,26 +2,10 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) =>
   createStyles({
-    navbar: {
-      position: 'fixed',
-      width: '100vw',
-      height: '8vh',
-      left: '0%',
-      bottom: 0,
-      zIndex: 0,
-      indicatorColor: {
-        color: theme.palette.yellow2.main
-      }
-    },
-    label: {
-      position: 'relative',
-      paddingTop: '7px',
-      fontFamily: theme.typography.fontFamily,
-      fontSize: '12px',
-      fontWeight: 'bold',
-      lineHeight: '15px',
-      textAlign: 'center',
-      letterSpacing: '0.1px'
+    fabDiv: {
+      display: "flex",
+      width: "100%",
+      justifyContent: "center"
     },
     suitcase: {
       background: theme.palette.white.main,
@@ -39,9 +23,9 @@ export const styles = (theme: Theme) =>
     goldsuitcase: {
       position: 'relative',
       top: '12px',
-      height: '4vw',
+      height: "min(4vw, 4vh)",
       maxHeight: '50px',
-      width: '4vw',
+      width: "min(4vw, 4vh)",
       maxWidth: '50px',
       alignContent: 'center',
     },
@@ -55,27 +39,50 @@ export const styles = (theme: Theme) =>
       fontSize: '12px',
       textAlign: 'center',
       color: theme.palette.yellow2.main,
-      letterSpacing: '0.8px'
     },
-    icons: {
-      float:"left",
-      width:"4vw",
-      maxWidth: '50px',
-      height: "4vw",
-      maxHeight: '50px'
+
+    navbar: {
+      position: 'fixed',
+      width: '100vw',
+      height: '10vh',
+      minHeight: "60px",
+      left: '0%',
+      bottom: 0,
+      zIndex: 0,
+      indicatorColor: {
+        color: theme.palette.yellow2.main
+      }
     },
     root: {
+      width: "100%",
       color: theme.palette.black.main,
       opacity: 0.5,
+      padding: "1% 0% 1% 0%",
       "&$selected": {
+        width: "100%",
         color: theme.palette.yellow2.main,
-        opacity: 1
+        opacity: 1,
+        borderTop: "solid",
+        padding: "1% 0% 1% 0%",
+
       },
     },
+    label: {
+      position: 'relative',
+      paddingTop: '3%',
+      fontFamily: theme.typography.fontFamily,
+      fontSize: '12px',
+      fontWeight: 'bold',
+      textAlign: 'center',
+      letterSpacing: '0.1px'
+    },
+    icons: {
+      float: "left",
+      width: "min(4vw, 4vh)",
+      maxWidth: '50px',
+      height: "min(4vw, 4vh)",
+      maxHeight: '50px'
+    },
     selected: {},
-    fabDiv: {
-      display: "flex",
-      width: "100%",
-      justifyContent: "center"
-    }
+
   });
