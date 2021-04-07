@@ -4,11 +4,9 @@ import { Link } from 'react-router-dom';
 
 
 function Settings({ match }) {
-    console.log("HEYYYY")
   return (
-    <div>hi
-        <SettingsDrawer />
-        <div>HJDKSFGHJKL</div>
+    <div>
+      <SettingsDrawer />
     </div>
   );
 }

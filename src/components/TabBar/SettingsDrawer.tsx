@@ -13,23 +13,27 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import { styles } from '../TabBar/SettingsDrawerStyles';
 
 type DrawerProps = {
-  classes: any; 
+  classes: any;
 }
 
 const SettingsDrawer = (props: DrawerProps) => {
-  const { classes } = props; 
-  
+  const { classes } = props;
+
+  function redirectQualtrics() {
+    window.location.href = "https://wecaresolar.sjc1.qualtrics.com/jfe/form/SV_bIshtPdRTNLF3gN";
+  }
   return (
     <div className={classes.container}>
-       
+
       <h1>Settings</h1>
-      <List className={classes.list}> 
+      <List className={classes.list}>
         {['Report An Incident', 'Report a Bug', 'Settings'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>
-                {index === 0 ? <MailIcon /> : null } 
-                {index === 1 ? <BugReportIcon/>: null }
-                {index === 2 ? <SettingsIcon/> : null } </ListItemIcon>
+
+              {index === 0 ? <MailIcon /> : null}
+              {index === 1 ? <BugReportIcon /> : null}
+              {index === 2 ? <SettingsIcon /> : null} </ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}

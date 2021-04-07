@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { Redirect } from 'react-router-dom';
 import Favorites from './pages/Favorites/Favorites';
 import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';
@@ -39,25 +39,27 @@ function App() {
           </div>
           <div>
             <Switch>
-              //path through the paramenter 
-              <Route exact path="/Guides/:type" render={(props)=> (
+
+              <Route exact path="/">
+                <Redirect to="/Guides" />
+              </Route>
+
+              <Route exact path="/Guides" component={Guides} />
+              <Route exact path="/Guides/:type" render={(props) => (
                 <SeeAll match={props.match} typeofres={props.match.params.type} />
-              )} /> 
-              
+              )} />
               <Route
                 path={'/Guides/Playlists/:lessonId'}
                 render={(props) => (
                   <PlaylistPage lessonId={props.match.params.lessonId} />
                 )}
               />
-              
               <Route
                 path={'/Guides/Articles/:lessonId'}
                 render={(props) => (
                   <PlaylistPage lessonId={props.match.params.lessonId} />
                 )}
               />
-              
               <Route
                 path={'/Guides/Videos/:videoId'}
                 render={(props) => (
@@ -65,6 +67,7 @@ function App() {
                 )}
               />
 
+              <Route exact path="/favorites" component={Favorites} />
 
               <Route exact path="/suitcase" component={Suitcase} />
               <Route
@@ -74,8 +77,6 @@ function App() {
                 )}
               />
 
-              <Route exact path="/favorites" component={Favorites} />
-              <Route exact path="/guides" component={Guides} />
               <Route exact path="/troubleshoot" component={Troubleshoot} />
               <Route
                 path={'/Troubleshoot/:helpId'}
@@ -83,7 +84,9 @@ function App() {
                   <TroubleShootCard helpId={props.match.params.helpId} />
                 )}
               />
+
               <Route exact path="/settings" component={Settings} />
+
             </Switch>
           </div>
           <div>
