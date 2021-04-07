@@ -37,6 +37,7 @@ const StandardCard = (props: StandardCardProps) => {
             <CompletedButton
               isCompleted={props.resource.isCompleted}
               handleClick={handleOverlay}
+              fillColor={'#33BF68'}
             />
           </div>
         ) : null}

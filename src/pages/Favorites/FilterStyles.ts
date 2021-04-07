@@ -59,7 +59,7 @@ export const styles = (theme: Theme) =>
     header: {
       fontSize: '1.3rem',
       fontWeight: 700,
-      color: theme.palette.black.main,
+      color: theme.palette.black.main
     },
     selectAll: {
       backgroundColor: 'white',
@@ -85,6 +85,6 @@ export const styles = (theme: Theme) =>
     lineBreak: {
       // height: '5px',
       // fill: '#000000',
-      margin: '2%',
+      margin: '2%'
     }
   });

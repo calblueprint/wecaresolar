@@ -114,6 +114,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
                     handleClick={() =>
                       handleSelect(topic, currTopics, changeTopic)
                     }
+                    fillColor={'#F6B350'}
                   ></CompletedButton>
                 </div>
               </div>
@@ -142,6 +143,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
                     handleClick={() =>
                       handleSelect(type, currTypes, changeType)
                     }
+                    fillColor={'#F6B350'}
                   ></CompletedButton>
                 </div>
               </div>
