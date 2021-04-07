@@ -3,10 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './FilterStyles';
 import { useSelector } from 'react-redux';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { ExpandMore } from '@material-ui/icons';
-import CompletedButton from '../../components/CardComponents/CompletedButton';
-
-/* Set up Props for Filter Dropdown */
+import CompletedButton from '../CardComponents/CompletedButton';
 
 interface FilterDropdownProps {
   classes: any;
@@ -18,12 +15,8 @@ interface FilterDropdownProps {
   currTypes: Set<string>;
   changeType(types: Set<string>): any;
 
-  // add in what types you can select from
-  // add in a setState func to modify types
 }
 
-/* Objectives of this Dropdown:
- */
 
 const FilterDropdown = (props: FilterDropdownProps) => {
   const {
@@ -36,22 +29,9 @@ const FilterDropdown = (props: FilterDropdownProps) => {
     currTypes,
     changeType
   } = props;
-  // boolean to determine whehter dropdown is open or not
+
   const [open, setOpen] = useState(false);
-  // const [selectedTopic, setSelectedTopic] = useState<boolean[]>(
-  //   Array(topics.length).fill(true)
-  // );
-  // const [selectedType, setSelectedType] = useState<boolean[]>(
-  //   Array(types.length).fill(true)
-  // );
 
-  // header title? this.props.titl
-
-  // onclick for topics
-
-  // onclick for types
-
-  //get the props from props
   function handleSelectAll(
     currList: Set<string>,
     allOptions: string[],
@@ -115,6 +95,8 @@ const FilterDropdown = (props: FilterDropdownProps) => {
                       handleSelect(topic, currTopics, changeTopic)
                     }
                     fillColor={'#F6B350'}
+                    width={'18'}
+                    height={'18'}
                   ></CompletedButton>
                 </div>
               </div>
@@ -128,9 +110,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
               className={classes.selectAll}
               onClick={() => handleSelectAll(currTypes, types, changeType)}
             >
-              {currTypes.size === types.length
-                ? 'Deselect all'
-                : 'Select all'}
+              {currTypes.size === types.length ? 'Deselect all' : 'Select all'}
             </button>
           </div>
           <div className={classes.list}>
@@ -144,6 +124,8 @@ const FilterDropdown = (props: FilterDropdownProps) => {
                       handleSelect(type, currTypes, changeType)
                     }
                     fillColor={'#F6B350'}
+                    width={'18'}
+                    height={'18'}
                   ></CompletedButton>
                 </div>
               </div>
@@ -154,26 +136,6 @@ const FilterDropdown = (props: FilterDropdownProps) => {
     </div>
   );
 
-  /* Structure of a Dropdown */
-  /* Header wrapping */
-  /* button label (header) */
-  /* list items wrapping */
-  /* body (toggled by a boolean) */
-  /*
-    * text header
-    * map all the type of resources
-    * similar to
-    {Object.keys(topics).map((key) => (
-      <div><topic> {bool? <checkmark>: unchecked}</div>
-    ))}
-
-    * text header
-    * in the body, use an array.map to map all the topics 
-    similar to
-    {Object.keys(topics).map((key) => (
-      <div><topic> {bool? <checkmark>: unchecked}</div>
-    ))}  
-  */
 };
 
 export default withStyles(styles)(FilterDropdown);

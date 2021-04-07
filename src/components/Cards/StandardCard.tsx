@@ -38,6 +38,8 @@ const StandardCard = (props: StandardCardProps) => {
               isCompleted={props.resource.isCompleted}
               handleClick={handleOverlay}
               fillColor={'#33BF68'}
+              width={'24'}
+              height={'24'}
             />
           </div>
         ) : null}

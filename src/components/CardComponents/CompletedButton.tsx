@@ -4,6 +4,8 @@ interface CompletedButtonProps {
   isCompleted: boolean;
   handleClick(event: any): void;
   fillColor: string;
+  width: string;
+  height: string;
 }
 
 function CompletedButton(props: CompletedButtonProps) {
@@ -11,8 +13,8 @@ function CompletedButton(props: CompletedButtonProps) {
     <div>
       {props.isCompleted ? (
         <svg
-          width="24"
-          height="24"
+          width={props.width}
+          height={props.height}
           viewBox="0 0 15 15"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -27,8 +29,8 @@ function CompletedButton(props: CompletedButtonProps) {
         </svg>
       ) : (
         <svg
-          width="24"
-          height="24"
+        width={props.width}
+        height={props.height}
           viewBox="0 0 15 15"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

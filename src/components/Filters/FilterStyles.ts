@@ -82,6 +82,8 @@ export const styles = (theme: Theme) =>
       fontWeight: 700,
       color: theme.palette.black.main
     },
+    checkmark: {
+    },
     lineBreak: {
       // height: '5px',
       // fill: '#000000',
