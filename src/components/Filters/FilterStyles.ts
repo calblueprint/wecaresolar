@@ -102,5 +102,5 @@ export const styles = (theme: Theme) =>
       background: theme.palette.black.main,
       opacity: '0.45',
       overflowX: 'hidden'
-    },
+    }
   });
