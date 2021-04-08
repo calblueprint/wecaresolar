@@ -12,8 +12,7 @@ export const styles = (theme: Theme) =>
       margin: '1%'
     },
     page: {
-      marginTop: '25%',
-      margin: '3%',
+      margin: '25% 3% 15%',
       overflow: 'scroll',
       display: 'flex',
       flexDirection: 'column'

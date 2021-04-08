@@ -42,13 +42,14 @@ export const styles = (theme: Theme) =>
     },
     dropdownPopup: {
       position: 'absolute',
-      width: 'fit-content',
-      height: 'fit-content',
+      width: '12rem',
+      height: '20rem',
       marginTop: '2.5rem',
       padding: '0.5rem',
       background: 'white',
       borderRadius: '10px',
-      zindex: '2'
+      zindex: '2',
+      overflowY: 'scroll'
     },
     headerBox: {
       display: 'flex',

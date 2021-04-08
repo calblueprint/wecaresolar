@@ -14,7 +14,7 @@ function Favorites({ match, classes }) {
   const allTopics: string[] = Object.keys(topics).map(
     (topic) => topics[topic].name
   );
-  const allTypes : string[] = ['Articles', 'Videos']
+  const allTypes : string[] = ['Article', 'Video']
   
   const [currTopics, setTopic] = useState<Set<string>>(new Set(allTopics));
   const [resType, setresType] = useState<Set<string>>(new Set(allTypes));
