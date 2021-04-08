@@ -111,7 +111,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
   /* Zoom-in anmiation */
   var startTime 
-  function animate(timeStamp, x, y, xOffset, yOffset, totalTime) {
+  function animate(timeStamp, x, y, preGameClick, totalTime) {
     const timeNow = Date.now(); 
     const timePassed = timeNow - startTime; 
     const progress = timePassed / totalTime;
@@ -139,12 +139,12 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const incHeight = origHeight * hIncrement; 
 
     //set new start coordinate 
-    const top_x = x + xOffset * easing;
-    const top_y = y + yOffset * easing; 
-    
+    const top_x = x - incWidth / 2;
+    const top_y = y - incHeight / 2; 
+
     console.log('orig_x', x, 'orig_y', y)
     console.log('newX:', top_x, 'newY', top_y)
-    // console.log('incWidth:', incWidth, 'incHeight:', incHeight)
+    console.log('incWidth:', incWidth, 'incHeight:', incHeight)
 
     setClipDims({
       x: top_x,
@@ -155,7 +155,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
     if (timePassed < totalTime) { //recursively animate until desired ratio reached 
       requestAnimationFrame(function(timestamp) {
-        animate(timeStamp, x, y, xOffset, yOffset, totalTime)
+        animate(timeStamp, x, y, preGameClick, totalTime)
       })
     }
   }
@@ -203,24 +203,17 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
       if (selectedTopics.length) {
         // console.log('Selected topic:', selectedTopics[0][1]);
-        const xCord = selectedTopics[0][1] * cWidth; 
-        const yCord = selectedTopics[0][2] * cHeight; 
+        const xCord = selectedTopics[0][1] * image.width; 
+        const yCord = selectedTopics[0][2] * image.height; 
 
         requestAnimationFrame(function(timestamp) {
-          let xOffset;
-          let yOffset;
-          if ((cWidth / 2) > xCord && (cHeight / 2) > yCord) {
-            xOffset = ((cWidth / 2) - xCord) / 1000;
-            yOffset = ((cHeight / 2) - yCord) / 1000;
-          } else {
-            xOffset = (xCord - (cWidth / 2)) / 1000;
-            yOffset = (yCord - (cHeight / 2)) / 1000;
-          }
+          setClicked(true)
+          const preGameClick = true 
+          console.log(preGameClick)
 
           startTime = Date.now()
-          animate(timestamp, xCord, yCord, xOffset, yOffset, 1000)
+          animate(timestamp, xCord, yCord, preGameClick, 1000)
         })
-        setClicked(true)
       }
     }
   }

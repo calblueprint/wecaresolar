@@ -27,7 +27,7 @@ function AnimationCard(props : AnimationProps) {
             <div className={classes.rightSide}>
                 <h2> {currentTopic.name} </h2>
                 <p> {currentTopic.description} </p>
-                <div className={classes.buttons}>
+                <div className={classes.buttonsRow}>
                     <Link to={`${props.match.url}/${props.topic}`}>
                         <button className={classes.manualsButton}> See All Manuals </button>
                     </Link> 
