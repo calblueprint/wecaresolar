@@ -111,7 +111,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
   /* Zoom-in anmiation */
   var startTime 
-  function animate(timeStamp, x, y, preGameClick, totalTime) {
+  function animate(timeStamp, x, y, totalTime) {
     const timeNow = Date.now(); 
     const timePassed = timeNow - startTime; 
     const progress = timePassed / totalTime;
@@ -155,7 +155,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
     if (timePassed < totalTime) { //recursively animate until desired ratio reached 
       requestAnimationFrame(function(timestamp) {
-        animate(timeStamp, x, y, preGameClick, totalTime)
+        animate(timeStamp, x, y, totalTime)
       })
     }
   }
@@ -208,11 +208,8 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
         requestAnimationFrame(function(timestamp) {
           setClicked(true)
-          const preGameClick = true 
-          console.log(preGameClick)
-
           startTime = Date.now()
-          animate(timestamp, xCord, yCord, preGameClick, 1000)
+          animate(timestamp, xCord, yCord, 1000)
         })
       }
     }
