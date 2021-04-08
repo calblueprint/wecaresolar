@@ -17,8 +17,8 @@ function AnimationCard(props : AnimationProps) {
     const { classes } = props; 
     const currentTopic = useSelector((state: RootState) => state.topics[props.topic]) //retrieves topic object
 
-    console.log(useSelector((state: RootState) => state.topics))
-    console.log(props.topic)
+    // console.log(useSelector((state: RootState) => state.topics))
+    // console.log(props.topic)
 
     return (
         <div> 

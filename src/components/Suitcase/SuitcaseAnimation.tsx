@@ -111,7 +111,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
   /* Zoom-in anmiation */
   var startTime 
-  function animate(timeStamp, x, y, totalTime) {
+  function animate(timeStamp, x, y, xOffset, yOffset, totalTime) {
     const timeNow = Date.now(); 
     const timePassed = timeNow - startTime; 
     const progress = timePassed / totalTime;
@@ -139,11 +139,11 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const incHeight = origHeight * hIncrement; 
 
     //set new start coordinate 
-    const top_x = x - incWidth / 4;
-    const top_y = y - incHeight / 4;
+    const top_x = x + xOffset * easing;
+    const top_y = y + yOffset * easing; 
     
-    // console.log('orig_x', x, 'orig_y', y)
-    // console.log('newX:', top_x, 'newY', top_y)
+    console.log('orig_x', x, 'orig_y', y)
+    console.log('newX:', top_x, 'newY', top_y)
     // console.log('incWidth:', incWidth, 'incHeight:', incHeight)
 
     setClipDims({
@@ -155,7 +155,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
     if (timePassed < totalTime) { //recursively animate until desired ratio reached 
       requestAnimationFrame(function(timestamp) {
-        animate(timeStamp, x, y, totalTime)
+        animate(timeStamp, x, y, xOffset, yOffset, totalTime)
       })
     }
   }
@@ -185,9 +185,9 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
       const relX = (x - left) / width;
       const relY = (y - top) / height;
-      console.log(
-        `Relative coordinates: x = ${relX.toFixed(2)}, y = ${relY.toFixed(2)}`
-      );
+      // console.log(
+      //   `Relative coordinates: x = ${relX.toFixed(2)}, y = ${relY.toFixed(2)}`
+      // );
 
       const selectedTopics = SUITCASE_TOPICS.filter((topic) => {
         const [topicName, dotRelX, dotRelY] = topic;
@@ -207,8 +207,18 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
         const yCord = selectedTopics[0][2] * cHeight; 
 
         requestAnimationFrame(function(timestamp) {
+          let xOffset;
+          let yOffset;
+          if ((cWidth / 2) > xCord && (cHeight / 2) > yCord) {
+            xOffset = ((cWidth / 2) - xCord) / 1000;
+            yOffset = ((cHeight / 2) - yCord) / 1000;
+          } else {
+            xOffset = (xCord - (cWidth / 2)) / 1000;
+            yOffset = (yCord - (cHeight / 2)) / 1000;
+          }
+
           startTime = Date.now()
-          animate(timestamp, xCord, yCord, 1000)
+          animate(timestamp, xCord, yCord, xOffset, yOffset, 1000)
         })
         setClicked(true)
       }
