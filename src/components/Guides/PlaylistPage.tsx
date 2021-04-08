@@ -4,8 +4,8 @@ import { RootState } from '../../store/reducers';
 import StandardCard from '../Cards/StandardCard';
 
 type PlaylistPageProps = {
-  lessonId: number;
-};
+  lessonId: string,
+}
 
 const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
   const lessons = useSelector((state: RootState) => state.lessons);
@@ -23,9 +23,13 @@ const PlaylistPage = ({ lessonId }: PlaylistPageProps) => {
         ))}
       </ul>
       <h3>Content</h3>
-      {currentLesson.resourceIds.map((id) => {
+      {currentLesson.resourceIDs.map((id) => {
         if (id in resources) {
-          return <StandardCard resource={resources[id]} resourceID={id} />;
+          return <StandardCard 
+            resource={resources[id]} 
+            resourceID={id} 
+            completeCheck={true} 
+            collapsed={resources[id].isCompleted}/>;
         } else {
           return <span />;
         }

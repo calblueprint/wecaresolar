@@ -36,6 +36,8 @@ function SearchList(props) {
             <StandardCard
               resource={resource.item}
               resourceID={resource.item.id}
+              completeCheck={false} 
+              collapsed={false}
             />
           );
         })}

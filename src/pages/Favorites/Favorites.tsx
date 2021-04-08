@@ -32,14 +32,15 @@ function Favorites({ match, classes }) {
         .includes(true)
     ) {
       if (resType === 'All' || favResources[resource].type === resType) {
+        console.log(resource)
         return (
-          <Link className={classes.link} to={`resources/${resource}`}>
-            <StandardCard
-              key={resource}
-              resource={favResources[resource]}
-              resourceID={resource}
-            />
-          </Link>
+          <StandardCard
+            key={resource}
+            resource={favResources[resource]}
+            resourceID={resource}
+            completeCheck={false}
+            collapsed={false}
+          />
         );
       }
     } else {

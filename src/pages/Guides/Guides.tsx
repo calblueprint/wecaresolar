@@ -32,7 +32,7 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/Playlists/${key}`}>
+          <Link key={key} style={{ textDecoration: 'none' }} to={`${props.match.url}/Playlists/${key}`}>
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>
