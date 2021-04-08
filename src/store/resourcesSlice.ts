@@ -1,9 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { INITIAL_RESOURCES } from './initialStates';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+// import { INITIAL_RESOURCES } from './initialStates';
 import { RootState } from './reducers';
+import { refreshValues } from './reduxUtils';
 
 export type ResourcesSlice = {
-  [key: number]: Resource;
+  [key: string]: Resource;
 };
 
 export type Resource = {
@@ -32,22 +33,53 @@ export type ArticleData = {
 };
 export type VideoArticle = VideoData | ArticleData;
 
+const DEFAULT_FIELDS = {
+  isCached: false,
+  isFavorited: false,
+  isFinished: false
+};
+
+type ResourceIsFinishedPayload = {
+  id: string;
+  isFinished: boolean;
+};
+
+type ResourceIsCachedPayload = {
+  id: string;
+  isCached: boolean;
+};
+
+type ResourceIsFavoritedPayload = {
+  id: string;
+  isFavorited: boolean;
+};
+
 export const isVideo = (tbd: VideoArticle): tbd is VideoData => {
   return (tbd as VideoData).watchUrl !== undefined;
 };
 export const resourcesSlice = createSlice({
   name: 'resources',
-  initialState: INITIAL_RESOURCES,
+  // initialState: INITIAL_RESOURCES,
+  initialState: {},
   reducers: {
-    setResourceIsFinished(state, action) {
+    refreshResources(state, action: PayloadAction<ResourcesSlice>) {
+      refreshValues(state, action.payload, DEFAULT_FIELDS);
+    },
+    setResourceIsFinished(
+      state,
+      action: PayloadAction<ResourceIsFinishedPayload>
+    ) {
       const { id, isFinished } = action.payload;
       state[id].isFinished = isFinished;
     },
-    setResourceIsCached(state, action) {
+    setResourceIsCached(state, action: PayloadAction<ResourceIsCachedPayload>) {
       const { id, isCached } = action.payload;
       state[id].isCached = isCached;
     },
-    setResourceIsFavorited(state, action) {
+    setResourceIsFavorited(
+      state,
+      action: PayloadAction<ResourceIsFavoritedPayload>
+    ) {
       const { id, isFavorited } = action.payload;
       state[id].isFavorited = isFavorited;
     },
@@ -59,15 +91,15 @@ export const resourcesSlice = createSlice({
 });
 
 export const selectFavoritedResources = (state: RootState) =>
-  Object.keys(state.resources as ResourcesSlice)
-    .filter((id) => state.resources[(id as unknown) as number].isFavorited)
+  Object.keys(state.resources)
+    .filter((id) => state.resources[id].isFavorited)
     .reduce<ResourcesSlice>((res, key) => {
-      res[(key as unknown) as number] =
-        state.resources[(key as unknown) as number];
+      res[key] = state.resources[key];
       return res;
     }, {});
 
 export const {
+  refreshResources,
   setResourceIsFinished,
   setResourceIsCached,
   setResourceIsFavorited,

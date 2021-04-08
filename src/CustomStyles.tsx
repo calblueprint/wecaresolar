@@ -32,7 +32,7 @@ declare module '@material-ui/core/styles/createPalette' {
     white: PaletteOptions['primary'];
     brown: PaletteOptions['primary'];
     yellow: PaletteOptions['primary'];
-    yellow2: PaletteOptions['primary']
+    yellow2: PaletteOptions['primary'];
     accent1: PaletteOptions['primary'];
     accent2: PaletteOptions['primary'];
     accent3: PaletteOptions['primary'];

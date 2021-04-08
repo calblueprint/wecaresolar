@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setResourceIsFavorited } from '../../store/resourcesSlice';
 
 interface FavoriteButtonProps {
-  id: number;
+  id: string;
   isFavorited: boolean;
 }
 

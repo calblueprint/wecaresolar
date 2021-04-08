@@ -29,15 +29,13 @@ function Favorites({ match, classes }) {
       if (resType.size == 0 || resType.has(favResources[resource].type)) {
         console.log(resource)
         return (
-          <Link className={classes.link} to={`resources/${resource}`}>
-            <StandardCard
-              key={resource}
-              resource={favResources[resource]}
-              resourceID={resource}
-              completeCheck={false}
-              collapsed={false}
-            />
-          </Link>
+          <StandardCard
+            key={resource}
+            resource={favResources[resource]}
+            resourceID={resource}
+            completeCheck={false}
+            collapsed={false}
+          />
         );
       }
     } else {
