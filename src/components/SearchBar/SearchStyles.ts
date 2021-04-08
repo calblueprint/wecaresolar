@@ -80,7 +80,7 @@ export const styles = (theme: Theme) =>
     // },
     backButton: {
       color: 'black',
-      cursor: 'pointer', 
+      cursor: 'pointer',
       margin: '0px 24px'
     }
   });
