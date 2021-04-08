@@ -27,7 +27,7 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
               style={{ textDecoration: 'none' }}
             >
               <div className={classes.optionCard}>
-                <div className={classes.optionImage}> </div>
+                {/* <div className={classes.optionImage}> </div> */}
                 <div className={classes.optionText}>{option}</div>
               </div>
             </Link>

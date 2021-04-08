@@ -18,7 +18,7 @@ import SeeAll from './components/SeeAll';
 
 const useStyles = makeStyles({
   root: {
-    color: theme.palette.brown.main,
+    color: theme.palette.black.main,
     backgroundColor: theme.palette.background.default
   }
 });
@@ -34,9 +34,9 @@ function App() {
           style={{ display: 'flex', flexDirection: 'column' }}
         >
           <div>
+          <div>
             <Route component={SearchBar} />
           </div>
-          <div>
             <Switch>
               //path through the paramenter 
               <Route exact path="/Guides/:type" render={(props)=> (

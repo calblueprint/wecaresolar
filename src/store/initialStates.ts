@@ -20,12 +20,15 @@ export const INITIAL_HELP: HelpSlice = {
     title: "What's wrong?",
     description: '',
     options: {
-      'An appliance is not functioning.': '404_ERROR',
-      'Appliance socket is not working.': '404_ERROR',
+      'An appliance is not workinng': '404_ERROR',
+      'An appliance is not charging': '404_ERROR',
+      'Lights turn out earlier than they used to': '404_ERROR',
       'Lights turn out in the middle of the night.': '404_ERROR',
-      'Lights turn off earlier than they used to.': '404_ERROR',
       '1 or more lights do not work.': '404_ERROR',
-      'No appliances or lights work.': '404_ERROR'
+      'No appliances or lights work.': '404_ERROR', 
+      'The display screen is blank.': '404_ERROR', 
+      'Solar suitcase is not working' : '404_ERROR', 
+      'I see error codes' : '404_ERROR' 
     }
   },
   Errors: {

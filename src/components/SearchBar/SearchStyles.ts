@@ -24,7 +24,7 @@ export const styles = (theme: Theme) =>
       borderRadius: 9,
       backgroundColor: theme.palette.wcsgrey.main,
       width: '100%',
-      margin: '0px 12px',
+      margin: '0px 4px',
       boxShadow: '-2px 4px 23px 0px rgba(2, 2, 2, 0.0685)'
     },
     searchIcon: {
@@ -80,6 +80,7 @@ export const styles = (theme: Theme) =>
     // },
     backButton: {
       color: 'black',
-      cursor: 'pointer'
+      cursor: 'pointer', 
+      margin: '0px 24px'
     }
   });
