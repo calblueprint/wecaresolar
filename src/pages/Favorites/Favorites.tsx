@@ -65,5 +65,4 @@ function Favorites({ match, classes }) {
     </div>
   )};
 
-
 export default withStyles(styles)(Favorites);

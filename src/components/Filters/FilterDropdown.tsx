@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './FilterStyles';
-import { useSelector } from 'react-redux';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CompletedButton from '../CardComponents/CompletedButton';
 
@@ -14,14 +13,11 @@ interface FilterDropdownProps {
   types: string[];
   currTypes: Set<string>;
   changeType(types: Set<string>): any;
-
 }
-
 
 const FilterDropdown = (props: FilterDropdownProps) => {
   const {
     classes,
-    title,
     topics,
     currTopics,
     changeTopic,
@@ -61,6 +57,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
 
   return (
     <div className={classes.dropdown}>
+      {open ? <div className={classes.overlayBackground}></div> : null}
       <div
         className={classes.dropdownButton}
         onClick={() => {
@@ -135,7 +132,6 @@ const FilterDropdown = (props: FilterDropdownProps) => {
       ) : null}
     </div>
   );
-
 };
 
 export default withStyles(styles)(FilterDropdown);

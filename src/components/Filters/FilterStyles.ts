@@ -1,22 +1,21 @@
 import { createStyles, Theme } from '@material-ui/core/styles';
-import { create } from 'domain';
 
 export const styles = (theme: Theme) =>
   createStyles({
-    // dropdown: {
-    //   display: 'block',
-    //   flexDirection: 'column',
-    //   alignItems: 'flex-end',
-    //   height: 'fit-content'
-    // },
+    dropdown: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-end',
+      height: 'fit-content'
+    },
     dropdownButton: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
       padding: '3% 5% 3% 12%',
-      margin: '0% 0%',
-      width: '115px',
+      margin: '0rem',
+      width: '7rem',
       backgroundColor: 'white',
       border: '1px red',
       /* The Rachel */
@@ -26,7 +25,9 @@ export const styles = (theme: Theme) =>
       fontWeight: 600,
       color: theme.palette.black.main,
       flexGrow: 1,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      position: 'relative',
+      zindex: '3'
     },
     buttonLabel: {
       paddingLeft: '5%',
@@ -43,11 +44,11 @@ export const styles = (theme: Theme) =>
       position: 'absolute',
       width: 'fit-content',
       height: 'fit-content',
-      padding: '2%',
-      /* White */
+      marginTop: '2.5rem',
+      padding: '0.5rem',
       background: 'white',
-      /* The Rachel */
-      borderRadius: '10px'
+      borderRadius: '10px',
+      zindex: '2'
     },
     headerBox: {
       display: 'flex',
@@ -82,11 +83,24 @@ export const styles = (theme: Theme) =>
       fontWeight: 700,
       color: theme.palette.black.main
     },
-    checkmark: {
-    },
     lineBreak: {
-      // height: '5px',
-      // fill: '#000000',
+      border: 'none',
+      borderTop: '1px solid #E1E1E1',
+      overflow: 'visible',
+      textAlign: 'center',
       margin: '2%'
-    }
+    },
+    overlayBackground: {
+      height: '100%',
+      width: '100%',
+      position: 'fixed',
+      zindex: '0',
+      left: '0',
+      right: '0',
+      top: '0',
+      bottom: '0',
+      background: theme.palette.black.main,
+      opacity: '0.45',
+      overflowX: 'hidden'
+    },
   });
