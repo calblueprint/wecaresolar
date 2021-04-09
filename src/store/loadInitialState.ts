@@ -93,7 +93,13 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
 
   const loadedTopics: FetchStatus = await loadCollection(
     'topics',
-    refreshTopics
+    refreshTopics,
+    (topic) => {
+      return {
+        ...topic,
+        suitcaseCoordinates: topic.suitcaseCoordinates.split(",").map(parseFloat)
+      }
+    }
   );
 
   // Overall status is the *most pessimistic possible status* from all of the attempted requests.

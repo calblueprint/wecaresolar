@@ -1,5 +1,9 @@
-import { Typography } from '@material-ui/core';
 import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/reducers';
+import { Topic } from '../../store/topicsSlice';
+
+import { Typography } from '@material-ui/core';
 import Suitcase from '../Images/Suitcase.png';
 import AnimationCard from './AnimationCard';
 
@@ -41,7 +45,8 @@ const SUITCASE_TOPICS: SuitcaseTopics = [
 
 const SuitcaseAnimation = (props: SuitcaseProps) => {
   const { classes } = props;
-  const [clicked, setClicked] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState<Topic | undefined>(undefined);
+  const topics = useSelector((state: RootState) => state.topics);
 
   /* Create an ImageData object */
   const image = new Image(975, 650);
@@ -67,12 +72,12 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const canvasCtxRef = React.useRef<CanvasRenderingContext2D | null>(null);
 
-  /* Helper function to draw dots for all the locations in SUITCASE_TOPICS.
+  /* Helper function to draw dots for all the locations in `topics`.
         The dots will have radius `width`, color `fillStyle` (hex), and transparency `alpha` (0-1). */
   const drawDots = (ctx, width, fillStyle, alpha) => {
     ctx.beginPath();
-    for (let topic of SUITCASE_TOPICS) {
-      const [topicName, xPct, yPct] = topic;
+    for (let topic of Object.values(topics)) {
+      const [xPct, yPct] = topic.suitcaseCoordinates;
       const [x, y] = [xPct * cWidth, yPct * cHeight];
       ctx.moveTo(x, y);
       ctx.arc(x, y, width, 0, Math.PI * 2, true);
@@ -102,16 +107,32 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       ctx.globalAlpha = 1;
       image.onload = function() { //on first load
         ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
-        if (clicked == false) {
+        if (!selectedTopic) {
           drawDots(ctx, dotWidth * 3, '#6BADE8', 0.3);
           drawDots(ctx, dotWidth, '#6BADE8', 1);
         } 
       } 
     }}, [clipDims]);
 
+  useEffect(() => {
+    if (!selectedTopic) return; // TODO: zoom out
+
+    const [relX, relY] = selectedTopic.suitcaseCoordinates;
+    const xCord = relX * image.width; 
+    const yCord = relY * image.height; 
+
+    requestAnimationFrame(function(timestamp) {
+      startTime = Date.now();
+      animate(timestamp, xCord, yCord, 1000);
+    });
+  }, [selectedTopic]);
+
   /* Zoom-in anmiation */
   var startTime 
   function animate(timeStamp, x, y, totalTime) {
+    console.log(selectedTopic);
+    if (!selectedTopic) return;
+
     const timeNow = Date.now(); 
     const timePassed = timeNow - startTime; 
     const progress = timePassed / totalTime;
@@ -166,7 +187,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
   /* Resets clip dimensions to original values */
   function zoomOut() {
-    setClicked(false)
+    setSelectedTopic(undefined);
     setClipDims({
       x: 0,
       y: 0,
@@ -189,8 +210,8 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       //   `Relative coordinates: x = ${relX.toFixed(2)}, y = ${relY.toFixed(2)}`
       // );
 
-      const selectedTopics = SUITCASE_TOPICS.filter((topic) => {
-        const [topicName, dotRelX, dotRelY] = topic;
+      const selectedTopics = Object.values(topics).filter((topic) => {
+        const [dotRelX, dotRelY] = topic.suitcaseCoordinates;
         const dotX = dotRelX * cWidth;
         const dotY = dotRelY * cHeight;
 
@@ -202,15 +223,9 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       });
 
       if (selectedTopics.length) {
-        // console.log('Selected topic:', selectedTopics[0][1]);
-        const xCord = selectedTopics[0][1] * image.width; 
-        const yCord = selectedTopics[0][2] * image.height; 
-
-        requestAnimationFrame(function(timestamp) {
-          setClicked(true)
-          startTime = Date.now()
-          animate(timestamp, xCord, yCord, 1000)
-        })
+        // There shouldn't be more than one topic selected with any given click,
+        // but just in case, we'll zoom in on the first one only.
+        setSelectedTopic(selectedTopics[0]);
       }
     }
   }
@@ -225,7 +240,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
           onClick={(e) => onCanvasClick(e.clientX, e.clientY)}
         ></canvas>
       <div className={classes.card}>
-        {clicked ? (<AnimationCard exit={zoomOut} topic={"Fetal Doppler"} match={props.match}> </AnimationCard>) : null}
+        {selectedTopic && (<AnimationCard exit={zoomOut} topic={selectedTopic} match={props.match}> </AnimationCard>)}
       </div>
     </div>
   );
