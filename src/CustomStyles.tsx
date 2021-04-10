@@ -58,8 +58,34 @@ declare module '@material-ui/core/styles/createPalette' {
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ['"Source Sans Pro'].join(',')
+    fontFamily: ['"Source Sans Pro'].join(','),
+    h1: {
+      fontSize: 24,
+      fontStyle: 'bold',
+    },
+    h2: {
+      fontSize: 18,
+      fontStyle: 'bold',
+    },
+    h3: {
+      fontSize: 14,
+      fontStyle: 'bold',
+    },
+    body1: {
+      fontSize: 12,
+      fontStyle: 'regular',
+    },
+    body2: {
+      fontSize: 12,
+      fontStyle: 'bold',
+    },
+    caption: {
+      fontSize: 9,
+      fontStyle: 'semibold',
+    }
+
   },
+  spacing: [0, 6, 12, 18, 24],
   palette: {
     black: {
       main: '#333333'
@@ -73,9 +99,12 @@ const theme = createMuiTheme({
     yellow: {
       main: '#F6DBB7'
     },
+<<<<<<< HEAD
     wcsgrey:{
       main: '#E1E1E1'
     },
+=======
+>>>>>>> 539072eaca8761d78aa80866cccec384cc1decc2
     yellow2: {
       main: '#F6B350'
     },

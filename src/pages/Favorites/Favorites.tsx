@@ -4,9 +4,9 @@ import { RootState } from '../../store/reducers';
 import StandardCard from '../../components/Cards/StandardCard';
 import { selectFavoritedResources } from '../../store/resourcesSlice';
 import { withStyles } from '@material-ui/core/styles';
-import { styles } from '../../components/CardComponents/FavoriteStyles';
+import { styles } from './FavoriteStyles';
 import { Link } from 'react-router-dom';
-import { FormControl, Select, MenuItem, Input } from '@material-ui/core';
+import FilterDropdown from '../../components/Filters/FilterDropdown';
 
 function Favorites({ match, classes }) {
   const favResources = useSelector(selectFavoritedResources);
@@ -14,24 +14,23 @@ function Favorites({ match, classes }) {
   const allTopics: string[] = Object.keys(topics).map(
     (topic) => topics[topic].name
   );
-  const [resType, setresType] = useState('All');
-  const [currTopics, setTopic] = useState([]);
-
-  const handleResChange = (event) => {
-    setresType(event.target.value);
-  };
-  const handleTopicChange = (event) => {
-    setTopic(event.target.value);
-  };
+  const allTypes : string[] = ['Article', 'Video']
+  
+  const [currTopics, setTopic] = useState<Set<string>>(new Set(allTopics));
+  const [resType, setresType] = useState<Set<string>>(new Set(allTypes));
 
   function filteredFavResources(resource: any) {
     if (
-      currTopics.length == 0 ||
-      currTopics
+      currTopics.size == 0 ||
+      Array.from(currTopics.values())
         .map((topic) => favResources[resource].tags.includes(topic))
         .includes(true)
     ) {
+<<<<<<< HEAD
       if (resType === 'All' || favResources[resource].type === resType) {
+=======
+      if (resType.size == 0 || resType.has(favResources[resource].type)) {
+>>>>>>> 539072eaca8761d78aa80866cccec384cc1decc2
         console.log(resource)
         return (
           <StandardCard
@@ -47,48 +46,25 @@ function Favorites({ match, classes }) {
       return <span />;
     }
   }
-
+ 
   return (
     <div className={classes.page}>
       <div className={classes.header}>
         <div className={classes.title}>Favorites</div>
-        <div className={classes.filters}>
-          <FormControl className={classes.formControl}>
-            <Select
-              multiple
-              value={currTopics}
-              onChange={handleTopicChange}
-              input={<Input />}
-              disableUnderline
-              className={classes.select}
-              classes={{ selectMenu: classes.selectMenu, icon: classes.icon }}
-            >
-              {Object.keys(topics).map((key) => (
-                <MenuItem key={key} value={topics[key].name}>
-                  {topics[key].name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <FormControl className={classes.formControl}>
-            <Select
-              value={resType}
-              disableUnderline
-              className={classes.select}
-              classes={{ selectMenu: classes.selectMenu, icon: classes.icon }}
-              onChange={handleResChange}
-            >
-              <MenuItem value={'All'}>All</MenuItem>
-              <MenuItem value={'Video'}>Videos</MenuItem>
-              <MenuItem value={'Article'}>Articles</MenuItem>
-            </Select>
-          </FormControl>
+        <div className={classes.dropdown}>
+          <FilterDropdown
+            topics={allTopics}
+            currTopics={currTopics}
+            changeTopic={setTopic} 
+            types={allTypes}
+            currTypes={resType}
+            changeType={setresType}
+          >
+          </FilterDropdown>
         </div>
       </div>
-
       {Object.keys(favResources).map(filteredFavResources)}
     </div>
-  );
-}
+  )};
 
 export default withStyles(styles)(Favorites);
