@@ -24,6 +24,16 @@ export const styles = (theme: Theme) =>
       fontWeight: 500,
     },
 
+    header_fail: {
+      display: "flex",
+      marginLeft: '60px',
+      paddingTop: '40px',
+      flexDirection: 'row',
+      alignItems: 'center',
+      color: theme.palette.accent2.main,
+      fontWeight: 500,
+    },
+
     success_div1: {
       position: "relative",
       width: '100%', 
@@ -39,6 +49,13 @@ export const styles = (theme: Theme) =>
       height: '120px',
       backgroundColor: theme.palette.white.main, 
     }, 
+
+    fail_div1: {
+      position: "relative",
+      width: '100%', 
+      height: '600px',
+      backgroundColor: theme.palette.white.main, 
+    },
 
     card: {
       margin: '10%',

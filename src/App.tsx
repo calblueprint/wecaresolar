@@ -87,8 +87,8 @@ function App() {
                 )}
               />
               <Route exact path="/settings" component={Settings} />
-              <Route exact path="/success" component={Success} /> 
-              <Route exact path="/fail" component={Fail} /> 
+              <Route exact path="/Success" component={Success} /> 
+              <Route exact path="/Fail" component={Fail} /> 
             </Switch>
           </div>
           <div>
