@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-// import { INITIAL_RESOURCES } from './initialStates';
+import { INITIAL_RESOURCES } from './initialStates';
 import { RootState } from './reducers';
 import { refreshValues } from './reduxUtils';
 
@@ -31,6 +31,7 @@ export type ArticleData = {
   // textUrl: string;
   // fileSize: number;
   preview: string;
+  sections: string[];
 };
 export type VideoArticle = VideoData | ArticleData;
 
@@ -60,8 +61,7 @@ export const isVideo = (tbd: VideoArticle): tbd is VideoData => {
 };
 export const resourcesSlice = createSlice({
   name: 'resources',
-  // initialState: INITIAL_RESOURCES,
-  initialState: {},
+  initialState: INITIAL_RESOURCES,
   reducers: {
     refreshResources(state, action: PayloadAction<ResourcesSlice>) {
       refreshValues(state, action.payload, DEFAULT_FIELDS);

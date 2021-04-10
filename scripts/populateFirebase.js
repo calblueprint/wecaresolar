@@ -196,6 +196,7 @@ const processResources = (record) => {
   } else if (type === 'Article') {
     data = {
       preview: record.get('Preview'),
+      sections: (record.get('Section Titles') || []).map(title => db.collection('sections').doc(title)),
     };
   } else {
     console.err("WARNING: Unrecognized resource type", type);
@@ -251,12 +252,12 @@ const processTopics = (record) => {
 // Main updating logic
 // =====================================================
 
-const checkAndUpdate = async (tableName, collectionName, processFn) => {
+const checkAndUpdate = async (tableName, collectionName, processFn, force=false) => {
   /**
    * Checks if `tableName` in Airtable has changed; if so,
    * will upload all of its data to `collectionName` in Firestore.
    */
-  if (await airtableDidChange(tableName)) {
+  if (await airtableDidChange(tableName) || force) {
     const uploadTime = Date.now();
     const [data, origRecords] = await convertFromAirtable(tableName, processFn);
     const result = await uploadToFirebase(collectionName, data);
@@ -272,6 +273,8 @@ const checkAndUpdate = async (tableName, collectionName, processFn) => {
 }
 
 (async () => {
+  const force = false; // TODO: command line option
+
   try {
     // Make sure the user has admin permissions before making changes to Firestore.
     // NOTE: this requirement is implemented as a strict rule in Firestore (Cloud Firestore > Rules tab),
@@ -293,10 +296,10 @@ const checkAndUpdate = async (tableName, collectionName, processFn) => {
 
       // Sync the following Airtable tables with their collections in Firestore
       await Promise.all([
-        checkAndUpdate('Resources', 'resources', processResources),
-        checkAndUpdate('Sections', 'sections', processSections),
-        checkAndUpdate('Playlists', 'lessons', processLessons),
-        checkAndUpdate('Topics', 'topics', processTopics),
+        checkAndUpdate('Sections', 'sections', processSections, force),
+        checkAndUpdate('Resources', 'resources', processResources, force),
+        checkAndUpdate('Playlists', 'lessons', processLessons, force),
+        checkAndUpdate('Topics', 'topics', processTopics, force),
       ]);
     }
   }
