@@ -19,7 +19,7 @@ export const styles = (theme: Theme) =>
     },
     scroll: {
       display: 'flex',
-      overflow: 'scroll hidden'
+      overflow: 'scroll hidden',
     },
     playlistCard: {
       width: '300px'

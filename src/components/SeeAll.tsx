@@ -72,13 +72,13 @@ function SeeAll(props: SeeAllProps) {
       return (
         <div>
           <div className={classes.header}>
-            <div className={classes.title}>Videos</div>
+            <div className={classes.title}>All Videos</div>
           </div>
           <div className={classes.scroll}>
             {videos.map((key: any) => (
               <Link style={{ textDecoration: 'none' }} to={`${props.match.url}/${key}`}>
                 <div className={classes.videoCard}>
-                  <ResourceCard resource={resources[key]} />
+                  <ResourceCard resource={resources[key]} resourceID={key} viewAll={true}/>
                 </div>
               </Link>
             ))}

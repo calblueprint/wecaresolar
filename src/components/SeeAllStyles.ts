@@ -23,10 +23,12 @@ export const styles = (theme: Theme) =>
     },
     title: {
       fontSize: '1.5rem',
-      fontWeight: 700,
-      marginTop: '2%',
-      marginLeft: '2%',
-      color: theme.palette.brown.main
+      lineHeight: '30px',
+      fontWeight: 'bold',
+      marginTop: '71px',
+      marginLeft: '2vw',
+      color: theme.palette.black.main,
+      font: theme.typography.fontFamily
     },
     filters: {
       display: 'flex',
@@ -76,5 +78,11 @@ export const styles = (theme: Theme) =>
     },
     icon: {
       paddingRight: '1rem'
+    },
+    scroll: {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
     }
   });

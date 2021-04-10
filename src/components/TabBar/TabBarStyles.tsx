@@ -17,7 +17,7 @@ export const styles = (theme: Theme) =>
       borderColor: theme.palette.yellow2.main,
       position: 'fixed',
       bottom: '2.5vh',
-      zIndex: 1,
+      zIndex: 2,
       boxShadow: '1px 2.5px 3px 1px rgba(218, 207, 207, 0.5)',
     },
     goldsuitcase: {
@@ -48,7 +48,7 @@ export const styles = (theme: Theme) =>
       minHeight: "60px",
       left: '0%',
       bottom: 0,
-      zIndex: 0,
+      zIndex: 1,
       indicatorColor: {
         color: theme.palette.yellow2.main
       }

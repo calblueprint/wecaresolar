@@ -64,7 +64,7 @@ function Guides(props: GuidesProps) {
         {videos.map((key: any) => (
           <Link style={{ textDecoration: 'none' }}
           to={`${props.match.url}/Videos/${key}`}>
-            <ResourceCard resource={resources[key]} />
+            <ResourceCard resource={resources[key]} resourceID={key} viewAll={false}/>
           </Link>
         ))}
       </div>
