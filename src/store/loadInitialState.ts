@@ -73,7 +73,13 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     (resource) => {
       return {
         ...resource,
-        tags: resource.tags.map((tag) => tag.id)
+        tags: resource.tags.map((tag) => tag.id),
+        data: {
+          ...resource.data,
+          ...('sections' in resource.data ? {
+            sections: (resource.data.sections || []).map((section) => section.id),
+          }: {}),
+        }
       };
     }
   );

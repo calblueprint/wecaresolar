@@ -70,6 +70,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     tags: ['Fetal Doppler', 'Troubleshooting'],
     data: {
       preview: 'this is an article preview ....',
+      sections: ['section 1', 'section 2'],
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
@@ -82,6 +83,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     tags: ['Fetal Doppler', 'Setup'],
     data: {
       preview: 'this is an article preview ....',
+      sections: ['section 1', 'section 2'],
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
