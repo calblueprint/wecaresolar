@@ -209,6 +209,20 @@ const processResources = (record) => {
   };
 };
 
+const processSections = (record) => {
+  const title = record.get('Title');
+  const label = record.get('Label');
+  const imageUrl = record.get('Image URL');
+  const text = record.get('Text');
+
+  let result = {};
+  if (title) result['title'] = title;
+  if (label) result['label'] = label;
+  if (imageUrl) result['imageUrl'] = imageUrl;
+  if (text) result['text'] = text;
+  return result;
+}
+
 const processLessons = (record) => {
   const title = record.get('Title');
   const description = record.get('Description');
@@ -280,6 +294,7 @@ const checkAndUpdate = async (tableName, collectionName, processFn) => {
       // Sync the following Airtable tables with their collections in Firestore
       await Promise.all([
         checkAndUpdate('Resources', 'resources', processResources),
+        checkAndUpdate('Sections', 'sections', processSections),
         checkAndUpdate('Playlists', 'lessons', processLessons),
         checkAndUpdate('Topics', 'topics', processTopics),
       ]);

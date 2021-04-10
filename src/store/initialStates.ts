@@ -6,6 +6,7 @@
 
 import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
+import { SectionsSlice } from './sectionsSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
 import { HelpSlice } from './helpSlice';
@@ -105,6 +106,15 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCompleted: false
   },
 };
+
+export const INITIAL_SECTIONS: SectionsSlice = {
+  '1': {
+    title: 'Section title',
+    label: 'Label',
+    imageUrl: 'Image to show for this section',
+    text: 'Main content',
+  }
+}
 
 export const INITIAL_LESSONS: LessonsSlice = {
   '1': {

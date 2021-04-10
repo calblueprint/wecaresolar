@@ -1,6 +1,7 @@
 import { db } from '../index';
 import { store } from './reducers';
 import { refreshResources } from './resourcesSlice';
+import { refreshSections } from './sectionsSlice';
 import { refreshLessons } from './lessonsSlice';
 import { refreshTopics } from './topicsSlice';
 import { onFetchResult } from './metadataSlice';
@@ -77,6 +78,11 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     }
   );
 
+  const loadedSections: FetchStatus = await loadCollection(
+    'sections',
+    refreshSections
+  );
+
   // Lessons should not be loaded unless resources were loaded successfully
   // (otherwise they might refer to resource IDs that don't exist locally)
   const loadedLessons: FetchStatus =
@@ -102,6 +108,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
 
   const statusNums: number[] = [
     loadedResources,
+    loadedSections,
     loadedLessons,
     loadedTopics
   ].map((status) => fetchStatusToNum[status]);
@@ -110,6 +117,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   store.dispatch(onFetchResult(overallStatus));
 
   console.log(`Loaded resources: ${loadedResources}`);
+  console.log(`Loaded sections: ${loadedSections}`);
   console.log(`Loaded lessons: ${loadedLessons}`);
   console.log(`Loaded topics: ${loadedTopics}`);
   console.log(`Overall fetch status: ${overallStatus}`);
