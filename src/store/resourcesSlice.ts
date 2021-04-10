@@ -21,14 +21,15 @@ export type Resource = {
 export type VideoData = {
   watchUrl: string;
   downloadUrl: string;
+  imageUrl: string;
   fileSize: number;
   duration: number;
   preview: string;
 };
 
 export type ArticleData = {
-  textUrl: string;
-  fileSize: number;
+  // textUrl: string;
+  // fileSize: number;
   preview: string;
 };
 export type VideoArticle = VideoData | ArticleData;

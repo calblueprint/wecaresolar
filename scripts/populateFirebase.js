@@ -184,18 +184,28 @@ const processResources = (record) => {
   const title = record.get('Title');
   const type = record.get('Type');
   const tags = record.get('Topic Titles').map(title => db.collection('topics').doc(title));
-  const preview = record.get('Preview');
-  const watchUrl = record.get('Watch URL');
-  const downloadUrl = record.get('Download URL');
+
+  let data;
+  if (type === 'Video') {
+    data = {
+      preview: record.get('Preview'),
+      watchUrl: record.get('Watch URL'),
+      downloadUrl: record.get('Download URL'),
+      imageUrl: record.get('Image URL'),
+    };
+  } else if (type === 'Article') {
+    data = {
+      preview: record.get('Preview'),
+    };
+  } else {
+    console.err("WARNING: Unrecognized resource type", type);
+  }
+  
   return title, {
     title,
     type,
     tags,
-    data: {
-      watchUrl,
-      downloadUrl,
-      preview,
-    },
+    data,
   };
 };
 
