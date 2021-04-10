@@ -55,7 +55,7 @@ export const styles = (theme: Theme) =>
       justifyContent: 'flex-end'
     },
     thumbnail: {
-      display: "relative",
+      display: 'relative',
       width: '100%',
       height: '100%',
       zIndex: 0
@@ -63,7 +63,7 @@ export const styles = (theme: Theme) =>
     favorite: {
       position: 'absolute',
       right: '10.6px',
-      top: '10.88px',
+      top: '10.88px'
     },
     button: {
       position: 'absolute',
@@ -72,7 +72,7 @@ export const styles = (theme: Theme) =>
       right: '14px',
       bottom: '15px',
       backgroundColor: theme.palette.black.main,
-      zIndex: 1,
+      zIndex: 1
     },
     buttonText: {
       position: 'absolute',

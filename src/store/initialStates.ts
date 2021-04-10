@@ -68,7 +68,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     title: 'TROUBLED FETAL',
     tags: ['Fetal Doppler', 'Troubleshooting'],
     data: {
-      preview: 'this is an article preview ....',
+      preview: 'this is an article preview ....'
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
@@ -80,7 +80,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     title: 'Doppler 101',
     tags: ['Fetal Doppler', 'Setup'],
     data: {
-      preview: 'this is an article preview ....',
+      preview: 'this is an article preview ....'
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
@@ -103,7 +103,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCached: false,
     isFavorited: true,
     isCompleted: false
-  },
+  }
 };
 
 export const INITIAL_LESSONS: LessonsSlice = {
