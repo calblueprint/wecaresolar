@@ -99,12 +99,9 @@ const theme = createMuiTheme({
     yellow: {
       main: '#F6DBB7'
     },
-<<<<<<< HEAD
     wcsgrey:{
       main: '#E1E1E1'
     },
-=======
->>>>>>> 539072eaca8761d78aa80866cccec384cc1decc2
     yellow2: {
       main: '#F6B350'
     },

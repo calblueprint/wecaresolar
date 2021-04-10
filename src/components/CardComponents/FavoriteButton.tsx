@@ -1,15 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
-import { withStyles } from '@material-ui/core/styles';
 import { useDispatch } from 'react-redux';
 import { setResourceIsFavorited } from '../../store/resourcesSlice';
-import { SvgIcon } from '@material-ui/core';
-import { ReactComponent as FilledBookmark} from './filledBookmark.svg';
-import { ReactComponent as UnfilledBookmark} from './unfilledBookmark.svg';
-=======
-import { useDispatch } from 'react-redux';
-import { setResourceIsFavorited } from '../../store/resourcesSlice';
->>>>>>> 539072eaca8761d78aa80866cccec384cc1decc2
 
 interface FavoriteButtonProps {
   id: string;
@@ -30,15 +21,6 @@ function FavoriteButton(props: FavoriteButtonProps) {
   return (
     <div>
       {props.isFavorited ? (
-<<<<<<< HEAD
-        <SvgIcon viewBox='0 0 18 18' onClick={changeFav}>
-          <FilledBookmark />
-        </SvgIcon>
-      ) : (
-        <SvgIcon viewBox='0 0 18 18' onClick={changeFav}>
-          <UnfilledBookmark />
-        </SvgIcon>
-=======
         <svg
           width="24"
           height="24"
@@ -76,7 +58,6 @@ function FavoriteButton(props: FavoriteButtonProps) {
             stroke-linejoin="round"
           />
         </svg>
->>>>>>> 539072eaca8761d78aa80866cccec384cc1decc2
       )}
     </div>
   );

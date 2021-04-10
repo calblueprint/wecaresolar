@@ -1,10 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-<<<<<<< HEAD
-
-=======
 import { Redirect } from 'react-router-dom';
->>>>>>> 539072eaca8761d78aa80866cccec384cc1decc2
 import Favorites from './pages/Favorites/Favorites';
 import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';

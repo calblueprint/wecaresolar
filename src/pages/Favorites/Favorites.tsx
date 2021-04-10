@@ -26,11 +26,7 @@ function Favorites({ match, classes }) {
         .map((topic) => favResources[resource].tags.includes(topic))
         .includes(true)
     ) {
-<<<<<<< HEAD
-      if (resType === 'All' || favResources[resource].type === resType) {
-=======
       if (resType.size == 0 || resType.has(favResources[resource].type)) {
->>>>>>> 539072eaca8761d78aa80866cccec384cc1decc2
         console.log(resource)
         return (
           <StandardCard
