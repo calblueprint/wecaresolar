@@ -16,6 +16,9 @@ import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
 import SeeAll from './components/SeeAll';
+import Success from './components/Troubleshoot/Success';
+import Fail from './components/Troubleshoot/Fail';
+
 
 const useStyles = makeStyles({
   root: {
@@ -84,6 +87,8 @@ function App() {
                 )}
               />
               <Route exact path="/settings" component={Settings} />
+              <Route exact path="/success" component={Success} /> 
+              <Route exact path="/fail" component={Fail} /> 
             </Switch>
           </div>
           <div>

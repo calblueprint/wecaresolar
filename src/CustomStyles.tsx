@@ -16,6 +16,8 @@ declare module '@material-ui/core/styles/createPalette' {
     //troubleshooting buttons
     tshootyes: Palette['primary'];
     tshootno: Palette['primary'];
+    tshootreport: Palette['primary']; 
+    tshootrestart: Palette['primary'];  
     //appliances
     main: Palette['primary'];
     general: Palette['primary'];
@@ -71,13 +73,11 @@ const theme = createMuiTheme({
     yellow: {
       main: '#F6DBB7'
     },
-<<<<<<< HEAD
     wcsgrey:{
       main: '#E1E1E1'
-=======
+    },
     yellow2: {
       main: '#F6B350'
->>>>>>> 3e59e8e13fec9a159edf2997a1a161230b56d806
     },
     accent1: {
       main: '#F6DBB7'
@@ -90,11 +90,11 @@ const theme = createMuiTheme({
     },
     //troubleshooting buttons
     tshootyes: {
-      main: '#96B892'
+      main: '#33BF68'
     },
     tshootno: {
-      main: '#B99291'
-    },
+      main: '#E03633'
+    }, 
     //applicances
     main: {
       main: '#F6DBB7',

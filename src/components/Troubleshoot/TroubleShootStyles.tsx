@@ -14,6 +14,32 @@ export const styles = (theme: Theme) =>
       fontWeight: 500,
     },
 
+    header_sucess: {
+      display: "flex",
+      marginLeft: '60px',
+      paddingTop: '40px',
+      flexDirection: 'row',
+      alignItems: 'center',
+      color: theme.palette.tshootyes.main,
+      fontWeight: 500,
+    },
+
+    success_div1: {
+      position: "relative",
+      width: '100%', 
+      height: '220px',
+      backgroundColor: theme.palette.white.main, 
+    }, 
+
+    success_div2: {
+      paddingLeft: '60px',
+      paddingTop: '24px',
+      position: "relative",
+      width: '95%', 
+      height: '120px',
+      backgroundColor: theme.palette.white.main, 
+    }, 
+
     card: {
       margin: '10%',
       position: "relative",
@@ -28,7 +54,32 @@ export const styles = (theme: Theme) =>
       paddingRight: '2%',
       paddingLeft: '2%',
       borderStyle: 'none',
+      fontWeight: 700,
+    }, 
+
+    button_back: {
+      borderRadius: '18px',
+      marginRight: '1%',
+      paddingRight: '2%',
+      paddingLeft: '2%',
+      borderStyle: 'none',
+      fontWeight: 700,
+      backgroundColor: theme.palette.black.main, 
+      color: theme.palette.white.main,
+    }, 
+
+    button_restart: {
+      borderRadius: '18px',
+      marginRight: '1%',
+      paddingRight: '2%',
+      paddingLeft: '2%',
+      borderStyle: 'none',
+      fontWeight: 700,
+      backgroundColor: theme.palette.white.main, 
+      color: theme.palette.black.main,
+      boxShadow: '1px 1px 1px 1px rgba(218, 207, 207, 0.6)',
     },
+
     optionContainer: {
       display: 'flex',
       flexDirection: 'row',
@@ -64,11 +115,11 @@ export const styles = (theme: Theme) =>
     },
     yes: {
       backgroundColor: theme.palette.tshootyes.main,
-      // color: theme.palette.white.main,
+      color: theme.palette.white.main,
     },
     no: {
       backgroundColor: theme.palette.tshootno.main,
-      // color: theme.palette.white.main,
+      color: theme.palette.white.main,
     }
   }
   );
