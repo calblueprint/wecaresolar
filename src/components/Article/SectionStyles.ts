@@ -10,7 +10,7 @@ export const styles = (theme: Theme) =>
       width: '70vw',
       height: '50vw',
       borderColor: 'black',
-      borderStyle: 'dotted',
+      borderStyle: 'dotted'
     },
     labelBox: {
       position: 'relative',
