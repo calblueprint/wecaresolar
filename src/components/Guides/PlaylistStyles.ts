@@ -2,39 +2,56 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) =>
   createStyles({
-    title: {
-      fontSize: 18,
-      fontWeight: 700
-    },
-    card: {
+    page: {
+      margin: '25% 3% 15%',
+      overflow: 'scroll',
       display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      width: 234.18,
-      height: 176.23,
-      padding: 21,
-      marginRight: 13,
-      marginBottom: 10,
-      borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
+      flexDirection: 'column'
     },
-
+    title: {
+      color: theme.palette.black.main,
+      margin: '1rem 0rem'
+    },
+    summary: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'flex-start'
+    },
+    count: {
+      display: 'flex',
+      margin: '0.3rem 0.3rem 0.3rem 0rem'
+    },
+    countText: {
+      color: 'rgba(35, 31, 32, 0.4)'
+    },
     icon: {
       display: 'flex',
       flexDirection: 'row',
+      color: theme.palette.accent3.main,
+      marginRight: '0.3rem'
+    },
+    progressBar: {
+      display: 'flex',
       alignItems: 'center',
-      justifyContent: 'flex-end',
-      fontWeight: 700,
-      color: theme.palette.accent3.main
+      margin: '0rem 0.3rem 0.3rem 0rem'
     },
-    column: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-end'
+    description: {
+      color: theme.palette.black.main,
+      padding: '0.3rem 0rem'
     },
-    spread: {
-      display: 'flex',
-      justifyContent: 'space-between'
+    objBox: {
+      margin: '0.5rem 0rem'
+    },
+    subHeader: {
+      color: theme.palette.black.main,
+      margin: '0.3rem 0rem'
+    },
+    objList: {
+      margin: '0.3rem'
+    },
+    objective: {
+      color: theme.palette.black.main,
+      fontWeight: 600,
+      margin: '0.2rem'
     }
   });
