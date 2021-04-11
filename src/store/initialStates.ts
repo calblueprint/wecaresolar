@@ -71,6 +71,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     data: {
       preview: 'this is an article preview ....',
       sections: ['section 1', 'section 2'],
+
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
@@ -106,7 +107,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCached: false,
     isFavorited: true,
     isCompleted: false
-  },
+  }
 };
 
 export const INITIAL_SECTIONS: SectionsSlice = {
@@ -114,9 +115,9 @@ export const INITIAL_SECTIONS: SectionsSlice = {
     title: 'Section title',
     label: 'Label',
     imageUrl: 'Image to show for this section',
-    text: 'Main content',
+    text: 'Main content'
   }
-}
+};
 
 export const INITIAL_LESSONS: LessonsSlice = {
   '1': {

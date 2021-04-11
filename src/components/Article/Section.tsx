@@ -9,18 +9,20 @@ type SectionProps = {
 
 const Section = ({ section, classes}: SectionProps): typeof Section => {
     return (
-        <div className={classes.labelBox}>
-        <text className={classes.labelText}>{section.label}</text>
-        <div className={classes.title}>
-            {section.title}
+        <div className={classes.section}>
+            <div className={classes.labelBox}>
+                <text className={classes.labelText}>{section.label}</text>
+            </div>
+            <div className={classes.title}>
+                    {section.title}
+            </div>
+            <div>
+                <img className={classes.image} src ={section.imageUrl}></img>
+            </div>
+            <div>
+                <text className={classes.text}>{section.text}</text>
+            </div>
         </div>
-        <div>
-            <img className={classes.image} src={section.imageUrl}></img>
-        </div>
-        <div>
-            <text className={classes.text}>{section.text}</text>
-        </div>
-    </div>
     );
 }
 

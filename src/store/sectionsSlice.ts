@@ -19,11 +19,9 @@ export const sectionsSlice = createSlice({
   reducers: {
     refreshSections(state, action: PayloadAction<SectionsSlice>) {
       refreshValues(state, action.payload);
-    },
+    }
   }
 });
 
-export const {
-  refreshSections,
-} = sectionsSlice.actions;
+export const { refreshSections } = sectionsSlice.actions;
 export default sectionsSlice.reducer;
