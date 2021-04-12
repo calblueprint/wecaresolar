@@ -17,6 +17,7 @@ type AnimationProps = {
 
 function AnimationCard(props : AnimationProps) {
     const { classes, topic } = props;
+
     
     return (
         <div> 

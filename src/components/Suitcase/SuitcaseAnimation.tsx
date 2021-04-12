@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Topic } from '../../store/topicsSlice';
-
 import { Typography } from '@material-ui/core';
 import Suitcase from '../Images/Suitcase.png';
 import AnimationCard from './AnimationCard';
@@ -19,34 +18,11 @@ interface ClipDimensions {
   height: number;
 }
 
-type SuitcaseTopics = Array<[string, number, number]>;
-
-const MAX_WIDTH = 700;
-const SUITCASE_TOPICS: SuitcaseTopics = [
-  ['Lights (Left)', 0.23, 0.2],
-  ['Installation Sticker', 0.2, 0.45],
-  ['Quick Guide', 0.2, 0.7],
-  ['Fetal Doppler', 0.38, 0.2],
-  ['Light Buttons', 0.65, 0.33],
-  ['Display Screen', 0.48, 0.28],
-  ['Main Battery', 0.55, 0.15],
-  ['Side Panel', 0.73, 0.23],
-  ['Display Control Buttons', 0.55, 0.38],
-  ['Main Power Switch', 0.4, 0.45], 
-  ['USB Sockets', 0.5, 0.5], 
-  ['Rechargeable Headlamps', 0.45, 0.65], 
-  ['Phone Pocket', 0.55, 0.65], 
-  ['Thermometer', 0.57, 0.8], 
-  ['Rechargeable Battery Charger', 0.65, 0.7], 
-  ['12v Sockets', 0.66, 0.48], 
-  ['Lights (Right)', 0.85, 0.6],
-  ['Light Expansion Box', 0.8, 0.8]
-];
-
 const SuitcaseAnimation = (props: SuitcaseProps) => {
   const { classes } = props;
   const [selectedTopic, setSelectedTopic] = useState<Topic | undefined>(undefined);
   const topics = useSelector((state: RootState) => state.topics);
+  let id = Number.NEGATIVE_INFINITY
 
   /* Create an ImageData object */
   const image = new Image(975, 650);
@@ -63,6 +39,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
   /* Set dimensions of interactive map: 
         cWidth, cHeight: canvas dimensions; set according to user's screen width and max desired suitcase dimensions
         dotWidth: width of each clickable blue dot */
+  const MAX_WIDTH = 700;
   const cWidth = Math.min(window.innerWidth, MAX_WIDTH);
   const cHeight = (image.height / image.width) * cWidth;
   const dotWidth = 0.011 * cWidth;
@@ -89,6 +66,25 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     ctx.globalAlpha = 1; // Reset to original alpha
   };
 
+  useEffect(() => {
+    if (canvasRef.current) {
+      // console.log(`Updating with canvas dims: width: ${cWidth}, height: ${cHeight}`);
+      canvasCtxRef.current = canvasRef.current.getContext('2d');
+      const ctx = canvasCtxRef.current;
+      if (!ctx) return; 
+
+      ctx.clearRect(0, 0, cWidth, cHeight);
+      ctx.globalAlpha = 1;
+      image.onload = function() { //on first load
+        console.log("drawing image now")
+        ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
+        if (!selectedTopic) {
+          drawDots(ctx, dotWidth * 3, '#6BADE8', 0.3);
+          drawDots(ctx, dotWidth, '#6BADE8', 1);
+        } 
+      } 
+    }}, []); //runs once, not watching 
+
   /* Hook triggers on changes to source image values. 
         Drawing Image: 
             1. Set context ref type to '2D' and create a context object for drawing. 
@@ -105,32 +101,48 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
       ctx.clearRect(0, 0, cWidth, cHeight);
       ctx.globalAlpha = 1;
-      image.onload = function() { //on first load
-        ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
-        if (!selectedTopic) {
-          drawDots(ctx, dotWidth * 3, '#6BADE8', 0.3);
-          drawDots(ctx, dotWidth, '#6BADE8', 1);
-        } 
+      ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
+      if (!selectedTopic) {
+        drawDots(ctx, dotWidth * 3, '#6BADE8', 0.3);
+        drawDots(ctx, dotWidth, '#6BADE8', 1);
       } 
     }}, [clipDims]);
 
-  useEffect(() => {
-    if (!selectedTopic) return; // TODO: zoom out
+  useLayoutEffect(() => {
+    if (!selectedTopic) {
+      zoomOut()
+      console.log("we're supposed zoom out NOWWWWW")
+      console.log("useEffect selected topic" , selectedTopic)
+      return
+    }; // TODO: zoom out
 
     const [relX, relY] = selectedTopic.suitcaseCoordinates;
     const xCord = relX * image.width; 
     const yCord = relY * image.height; 
 
-    requestAnimationFrame(function(timestamp) {
+    console.log("selected topic changes (first animation frame starts)")
+
+    id = requestAnimationFrame(function(timestamp) {
       startTime = Date.now();
       animate(timestamp, xCord, yCord, 1000);
-    });
-  }, [selectedTopic]);
+    }); 
+    return () =>  {
+      if (canvasRef.current) {
+        // console.log(`Updating with canvas dims: width: ${cWidth}, height: ${cHeight}`);
+        canvasCtxRef.current = canvasRef.current.getContext('2d');
+        const ctx = canvasCtxRef.current;
+        if (ctx) {
+          ctx.clearRect(0, 0, cWidth, cHeight);
+        }; }
+        cancelAnimationFrame(id)
+      }
+  }, [selectedTopic]); //only watches for topic variable 
+
 
   /* Zoom-in anmiation */
-  var startTime 
+  let startTime 
   function animate(timeStamp, x, y, totalTime) {
-    console.log(selectedTopic);
+    // console.log(selectedTopic);
     if (!selectedTopic) return;
 
     const timeNow = Date.now(); 
@@ -163,9 +175,9 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const top_x = x - incWidth / 2;
     const top_y = y - incHeight / 2; 
 
-    console.log('orig_x', x, 'orig_y', y)
-    console.log('newX:', top_x, 'newY', top_y)
-    console.log('incWidth:', incWidth, 'incHeight:', incHeight)
+    // console.log('orig_x', x, 'orig_y', y)
+    // console.log('newX:', top_x, 'newY', top_y)
+    // console.log('incWidth:', incWidth, 'incHeight:', incHeight)
 
     setClipDims({
       x: top_x,
@@ -174,10 +186,17 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       height: incHeight
     });
 
-    if (timePassed < totalTime) { //recursively animate until desired ratio reached 
-      requestAnimationFrame(function(timestamp) {
+    console.log("selectedTopic:" , selectedTopic)
+
+    if (timePassed < totalTime && selectedTopic) { //recursively animate until desired ratio reached 
+
+      console.log("Requesting frame:", selectedTopic == undefined)
+
+      id = requestAnimationFrame(function(timestamp) { // save return value as ID 
         animate(timeStamp, x, y, totalTime)
       })
+    } else {
+      console.log("Not Requesting")
     }
   }
 
@@ -187,6 +206,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
   /* Resets clip dimensions to original values */
   function zoomOut() {
+    console.log('about to zoom out')
     setSelectedTopic(undefined);
     setClipDims({
       x: 0,
@@ -195,7 +215,6 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       height: image.height
     });
   }
-
 
   function onCanvasClick(x, y) {
     const canvas = document.getElementById('canvas');
@@ -223,6 +242,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       });
 
       if (selectedTopics.length) {
+        console.log("Topic is selected!")
         // There shouldn't be more than one topic selected with any given click,
         // but just in case, we'll zoom in on the first one only.
         setSelectedTopic(selectedTopics[0]);
