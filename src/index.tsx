@@ -41,7 +41,13 @@ db.enablePersistence()
     }
   });
 
-initializePushNotifications();
+if (firebase.messaging.isSupported()) {
+  initializePushNotifications();
+} else {
+  console.log("Warning: On a device that does not supported Firebase Messaging."
+   + "Will skip setting up push notifications.")
+}
+
 loadInitialState();
 
 // Set up IndexedDB store for caching videos
