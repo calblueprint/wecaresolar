@@ -25,7 +25,8 @@ firebase.initializeApp({
   appId: '1:963041613875:web:96e9b6562a9a7c4cd76b46',
   measurementId: 'G-N48ZSWDGHL'
 });
-export const messaging = firebase.messaging();
+export const messaging = 
+  firebase.messaging.isSupported() ? firebase.messaging() : null;
 export const db = firebase.firestore();
 
 db.enablePersistence()
