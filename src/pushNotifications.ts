@@ -26,7 +26,7 @@ const VAPID_KEY =
 export const initializePushNotifications = () => {
   // Called when a notification is received while the app is in the foreground,
   // or the user clicks on a notification that was sent while in the background
-  messaging.onMessage((payload) => {
+  messaging!.onMessage((payload) => {
     console.log('[firebase-messaging-sw.js] Received message in app ', payload);
   });
   retrievePushToken();
@@ -36,7 +36,7 @@ export const initializePushNotifications = () => {
 // If no token exists, will request push permission first, then automatically call this function again.
 const retrievePushToken = () => {
   console.log('Attempting to retrieve push token...');
-  messaging
+  messaging!
     .getToken({ vapidKey: VAPID_KEY })
     .then((currentToken) => {
       if (currentToken) {
