@@ -16,6 +16,7 @@ import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
 import SeeAll from './components/SeeAll';
+import Article from './components/Article/Article';
 
 const useStyles = makeStyles({
   root: {
@@ -54,9 +55,9 @@ function App() {
                 )}
               />
               <Route
-                path={'/Guides/Articles/:lessonId'}
+                path={'/Guides/Articles/:articleId'}
                 render={(props) => (
-                  <PlaylistPage lessonId={props.match.params.lessonId} />
+                  <Article resId={props.match.params.articleId} />
                 )}
               />
               <Route
