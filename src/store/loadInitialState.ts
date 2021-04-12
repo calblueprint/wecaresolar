@@ -97,8 +97,10 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     (topic) => {
       return {
         ...topic,
-        suitcaseCoordinates: topic.suitcaseCoordinates.split(",").map(parseFloat)
-      }
+        suitcaseCoordinates: topic.suitcaseCoordinates
+          .split(',')
+          .map(parseFloat)
+      };
     }
   );
 

@@ -4,6 +4,7 @@ import StandardCard from '../Cards/StandardCard';
 import { RootState } from '../../store/reducers';
 import { ResourcesSlice } from '../../store/resourcesSlice';
 import TopicHeader from './TopicHeader';
+import { Typography } from '@material-ui/core';
 
 interface TopicViewProps {
   topicId: string;
@@ -41,11 +42,10 @@ function TopicViews({ topicId }: TopicViewProps) {
   const troubleshootingResources = useSelector(selectTroubleshootingResources);
 
   const headerStyle = {
-    width: '360px',
-    height: '145px',
+    height: '30%',
     backgroundImage: `url(${currentTopic.imageUrl})`,
     backgroundSize: 'cover', 
-    margin: '20px'
+    margin: '20px 0px 20px 0px'
   };
   const pageStyle = {
     padding: '30px'
@@ -72,7 +72,7 @@ function TopicViews({ topicId }: TopicViewProps) {
         />
       </div>
       <div>
-      <h2>Resources</h2>
+      <Typography variant="h1"> Resources </Typography>
         {Object.keys(guideResources).map((resource: any) => (
           <StandardCard
             resource={guideResources[resource]}
@@ -83,7 +83,7 @@ function TopicViews({ topicId }: TopicViewProps) {
         ))}
       </div>
       <div>
-        <h2>Facing Issues?</h2>
+      <Typography variant="h1"> Facing Trouble? </Typography>
         {Object.keys(troubleshootingResources).map((resource: any) => (
           <StandardCard
             resource={troubleshootingResources[resource]}

@@ -6,6 +6,7 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
 import { red, green } from '@material-ui/core/colors';
+import { Typography } from '@material-ui/core';
 
 const CustomSwitch = withStyles({
   switchBase: {
@@ -32,6 +33,11 @@ function Suitcase({ match }) {
     justifyContent: 'space-between'
   };
 
+  const tap = { //where can I style this nicer? SuitcaseStyles and App.tsx don't work 
+    paddingLeft: '30px',
+    paddingRight: '30px'
+  };
+
   const labeled = {
     width: Math.min(window.innerWidth, 650),
   }
@@ -46,14 +52,17 @@ function Suitcase({ match }) {
     <div>
       <h1>BUFFER</h1>
       <div style={title}>
-        <h1> Suitcase </h1> 
+        <Typography variant="h1"> Suitcase </Typography>
         <FormControlLabel 
           control={< CustomSwitch checked={toggled} onChange={showLabels} />} 
           label="Labels"
           labelPlacement="start"/>
       </div>
+      <div style={tap}>
+        <Typography variant="body1"> Tap on a part of the Solar Suitcase </Typography>
+      </div>
       <div>
-        {toggled? <img src={SuitcaseLabeled} style={labeled}/>
+        {toggled? <img src={SuitcaseLabeled} style={labeled} />
           : <SuitcaseAnimation classes={styles} match={match} />}
       </div>
     </div>
