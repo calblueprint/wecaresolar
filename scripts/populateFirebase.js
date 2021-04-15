@@ -184,20 +184,45 @@ const processResources = (record) => {
   const title = record.get('Title');
   const type = record.get('Type');
   const tags = record.get('Topic Titles').map(title => db.collection('topics').doc(title));
-  const preview = record.get('Preview');
-  const watchUrl = record.get('Watch URL');
-  const downloadUrl = record.get('Download URL');
+
+  let data;
+  if (type === 'Video') {
+    data = {
+      preview: record.get('Preview'),
+      watchUrl: record.get('Watch URL'),
+      downloadUrl: record.get('Download URL'),
+      imageUrl: record.get('Image URL'),
+    };
+  } else if (type === 'Article') {
+    data = {
+      preview: record.get('Preview'),
+      sections: (record.get('Section Titles') || []).map(title => db.collection('sections').doc(title)),
+    };
+  } else {
+    console.err("WARNING: Unrecognized resource type", type);
+  }
+  
   return title, {
     title,
     type,
     tags,
-    data: {
-      watchUrl,
-      downloadUrl,
-      preview,
-    },
+    data,
   };
 };
+
+const processSections = (record) => {
+  const title = record.get('Title');
+  const label = record.get('Label');
+  const imageUrl = record.get('Image URL');
+  const text = record.get('Text');
+
+  let result = {};
+  if (title) result['title'] = title;
+  if (label) result['label'] = label;
+  if (imageUrl) result['imageUrl'] = imageUrl;
+  if (text) result['text'] = text;
+  return result;
+}
 
 const processLessons = (record) => {
   const title = record.get('Title');
@@ -229,12 +254,12 @@ const processTopics = (record) => {
 // Main updating logic
 // =====================================================
 
-const checkAndUpdate = async (tableName, collectionName, processFn) => {
+const checkAndUpdate = async (tableName, collectionName, processFn, force=false) => {
   /**
    * Checks if `tableName` in Airtable has changed; if so,
    * will upload all of its data to `collectionName` in Firestore.
    */
-  if (await airtableDidChange(tableName)) {
+  if (await airtableDidChange(tableName) || force) {
     const uploadTime = Date.now();
     const [data, origRecords] = await convertFromAirtable(tableName, processFn);
     const result = await uploadToFirebase(collectionName, data);
@@ -250,6 +275,8 @@ const checkAndUpdate = async (tableName, collectionName, processFn) => {
 }
 
 (async () => {
+  const force = false; // TODO: command line option
+
   try {
     // Make sure the user has admin permissions before making changes to Firestore.
     // NOTE: this requirement is implemented as a strict rule in Firestore (Cloud Firestore > Rules tab),
@@ -271,9 +298,10 @@ const checkAndUpdate = async (tableName, collectionName, processFn) => {
 
       // Sync the following Airtable tables with their collections in Firestore
       await Promise.all([
-        checkAndUpdate('Resources', 'resources', processResources),
-        checkAndUpdate('Playlists', 'lessons', processLessons),
-        checkAndUpdate('Topics', 'topics', processTopics),
+        checkAndUpdate('Sections', 'sections', processSections, force),
+        checkAndUpdate('Resources', 'resources', processResources, force),
+        checkAndUpdate('Playlists', 'lessons', processLessons, force),
+        checkAndUpdate('Topics', 'topics', processTopics, force),
       ]);
     }
   }
