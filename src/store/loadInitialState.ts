@@ -4,6 +4,7 @@ import { refreshResources } from './resourcesSlice';
 import { refreshSections } from './sectionsSlice';
 import { refreshLessons } from './lessonsSlice';
 import { refreshTopics } from './topicsSlice';
+import { refreshTroubleshooting } from './troubleshootingSlice';
 import { onFetchResult } from './metadataSlice';
 import { ActionCreator } from 'redux';
 
@@ -112,6 +113,38 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     refreshTopics
   );
 
+  // Troubleshooting data: first load and format all of the answer options,
+  // then load the questions themselves.
+
+  // (The default step to use if an answer option has no follow-up question)
+  const failureStep = await db.collection('troubleshooting').where('tag', '==', 'Failure').get();
+  const failureId = !failureStep.empty ? failureStep.docs[0].data()['id'] : -1;
+  if (failureId == -1) {
+    console.log("Warning: could not find a step with 'Failure' tag in troubleshooting collection.");
+  }
+
+  const answerOptionsQuery = await db.collection('answerOptions').get();
+  const answerOptions = {};
+  answerOptionsQuery.forEach((doc) => {
+    const data = doc.data();
+    answerOptions[doc.id] = {
+      text: data.text,
+      color: data.color,
+      followupId: data.followupQuestion ? data.followupQuestion.id : failureId,
+    };
+  });
+  const loadedTroubleshooting: FetchStatus = await loadCollection(
+    'troubleshooting',
+    refreshTroubleshooting,
+    (troubleshootingStep) => {
+      return {
+        ...troubleshootingStep,
+        sections: (troubleshootingStep.sections || []).map((section) => section.id),
+        answerOptions: (troubleshootingStep.answerOptions || []).map((answerOption) => answerOptions[answerOption.id]),
+      }
+    }
+  )
+
   // Overall status is the *most pessimistic possible status* from all of the attempted requests.
   // For example, if 4 requests succeeded from server but 1 was retrieved from cache, overallStatus is "SuccessFromCache".
   // If even one of the requests failed, overallStatus is "Failure".
@@ -120,7 +153,8 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     loadedResources,
     loadedSections,
     loadedLessons,
-    loadedTopics
+    loadedTopics,
+    loadedTroubleshooting,
   ].map((status) => fetchStatusToNum[status]);
   const overallStatus: FetchStatus = numToFetchStatus[Math.min(...statusNums)];
 
@@ -130,6 +164,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   console.log(`Loaded sections: ${loadedSections}`);
   console.log(`Loaded lessons: ${loadedLessons}`);
   console.log(`Loaded topics: ${loadedTopics}`);
+  console.log(`Loaded troubleshooting: ${loadedTroubleshooting}`);
   console.log(`Overall fetch status: ${overallStatus}`);
 
   return overallStatus;
