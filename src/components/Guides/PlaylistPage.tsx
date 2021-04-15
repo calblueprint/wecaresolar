@@ -7,6 +7,7 @@ import { RootState } from '../../store/reducers';
 import StandardCard from '../Cards/StandardCard';
 import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
 import { ReactComponent as VideoIcon } from './VideoIcon.svg';
+import ProgressBar from './ProgressBar';
 
 type PlaylistPageProps = {
   lessonId: string;
@@ -31,32 +32,6 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
     );
   };
 
-  const barStyles = {
-    width: '200px',
-    height: '5px',
-    background: 'white',
-    boxShadow: '-2px 4px 20px rgba(79, 42, 29, 0.15)',
-    borderRadius: '20px',
-    marginRight: '0.3rem'
-  };
-
-  const fillStyles = {
-    width: `${calcProgress()}%`,
-    height: '5px',
-    background: '#33BF68',
-    borderRadius: '20px'
-  };
-
-  const ProgressBar = () => {
-    return (
-      <div>
-        <div style={barStyles}>
-          <div style={fillStyles}></div>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className={classes.page}>
       <Typography variant="h1" className={classes.title}>
@@ -66,18 +41,20 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
         <div className={classes.count}>
           <InstructionIcon className={classes.icon} />
           <Typography variant="body2" className={classes.countText}>
-            {countMedia('Article')} Article(s)
+            {countMedia('Article')} Article
+            {countMedia('Article') === 1 ? null : 's'}
           </Typography>
         </div>
         <div className={classes.count}>
           <VideoIcon className={classes.icon} />
           <Typography variant="body2" className={classes.countText}>
-            {countMedia('Video')} Video(s)
+            {countMedia('Video')} Video
+            {countMedia('Video') === 1 ? null : 's'}
           </Typography>
         </div>
       </div>
       <div className={classes.progressBar}>
-        {ProgressBar()}
+        {ProgressBar(calcProgress())}
         <Typography variant="body2" className={classes.countText}>
           {calcProgress()}% Complete
         </Typography>

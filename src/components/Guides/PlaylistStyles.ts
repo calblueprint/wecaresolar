@@ -19,7 +19,7 @@ export const styles = (theme: Theme) =>
     },
     count: {
       display: 'flex',
-      margin: '0.3rem 0.3rem 0.3rem 0rem'
+      margin: '0.3rem 0.8rem 0.3rem 0rem'
     },
     countText: {
       color: 'rgba(35, 31, 32, 0.4)'
