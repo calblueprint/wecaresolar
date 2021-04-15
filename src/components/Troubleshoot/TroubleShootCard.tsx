@@ -6,6 +6,8 @@ import { RootState } from '../../store/reducers';
 import { styles } from './TroubleShootStyles';
 import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import { ROOT_ID } from '../../pages/Troubleshoot/Troubleshoot';
+import { AnswerOption } from '../../store/troubleshootingSlice';
 
 type TroubleShootProps = {
   helpId: string;
@@ -14,21 +16,21 @@ type TroubleShootProps = {
 
 const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
   const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
+  helpId = decodeURIComponent(helpId);
   const help = troubleshoot[helpId];
-  const root = helpId === 'Root';
-  console.log(helpId)
+  const root = (helpId === ROOT_ID);
   const createRootOptions = (options) => {
     return (
       <div className={classes.optionContainer}>
-        {Object.keys(options).map((option) => {
+        {Object.values<AnswerOption>(options).map((option) => {
           return (
             <Link
-              to={'/Troubleshoot/' + options[option]}
+              to={'/Troubleshoot/' + encodeURIComponent(option.followupId)}
               style={{ textDecoration: 'none' }}
             >
               <div className={classes.optionCard}>
                 <div className={classes.optionImage}> </div>
-                <div className={classes.optionText}>{option}</div>
+                <div className={classes.optionText}>{option.text}</div>
               </div>
             </Link>
           );
@@ -40,24 +42,22 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
   const createOptions = (options) => {
     return (
       <div>
-        {Object.keys(options).map((option) => {
-          if (option == 'error_code') {
-          } else {
-            let buttonType = `${classes.button}`;
-            if (option == 'yes') {
-              buttonType = `${classes.button} ${classes.yes}`;
-            } else if (option == 'no') {
-              buttonType = `${classes.button} ${classes.no}`;
-            }
-            return (
-              <Link
-                to={'/Troubleshoot/' + options[option]}
-                style={{ textDecoration: 'none' }}
-              >
-                <Button className={buttonType}>{option}</Button>
-              </Link>
-            );
+        {Object.values<AnswerOption>(options).map((option) => {
+          let buttonType = `${classes.button}`;
+          if (option.text == 'yes') {
+            buttonType = `${classes.button} ${classes.yes}`;
+          } else if (option.text == 'no') {
+            buttonType = `${classes.button} ${classes.no}`;
           }
+          console.log("Followup ID for option:", option.followupId);
+          return (
+            <Link
+              to={'/Troubleshoot/' + option.followupId}
+              style={{ textDecoration: 'none' }}
+            >
+              <Button className={buttonType}>{option.text}</Button>
+            </Link>
+          );
         })}
         {help['parent'] ? (
           <Link
@@ -78,10 +78,10 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
         <HelpOutlineIcon />
         <p style={{ paddingLeft: '5px' }}>Troubleshooting</p>
       </div>
-      <h3>{help.title}</h3>
+      <h3>{help.question}</h3>
       <p>{help.description}</p>
-      {root && createRootOptions(help.options)}
-      {!root && createOptions(help.options)}
+      {root && createRootOptions(help.answerOptions)}
+      {!root && createOptions(help.answerOptions)}
     </div>
   );
 };
