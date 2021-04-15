@@ -18,7 +18,6 @@ const auth = firebase.auth();
 // Make sure your Airtable API key is available in the .env file with the following contents:
 // AIRTABLE_API_KEY=<your key here>
 const Airtable = require('Airtable');
-const { keys } = require('idb-keyval');
 require('dotenv').config();
 Airtable.configure({
   endpointUrl: 'https://api.airtable.com',
