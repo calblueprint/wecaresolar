@@ -11,10 +11,10 @@ export const styles = (theme: Theme) =>
       justifyContent: 'space-between',
       alignItems: 'center',
       fontSize: 12,
-      fontWeight: 700,
+      fontWeight: 700
     },
     divider: {
-      paddingTop: 32,
+      paddingTop: 32
     },
     scroll: {
       display: 'flex',
@@ -22,5 +22,5 @@ export const styles = (theme: Theme) =>
     },
     playlistCard: {
       width: '300px'
-    },
+    }
   });
