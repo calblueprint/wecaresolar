@@ -65,7 +65,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     ctx.globalAlpha = 1; // Reset to original alpha
   };
 
-  /* Drawing Image: 
+  /* Drawing Image Helper Function 
         1. Set context ref type to '2D' and create a context object for drawing. 
         2. Clear context before drawing new image. 
         3. drawImage takes in (image,     <-- ImageData object 
@@ -179,12 +179,6 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       const { top, left, width, height } = canvas.getBoundingClientRect();
       const localX = x - left;
       const localY = y - top;
-
-      const relX = (x - left) / width;
-      const relY = (y - top) / height;
-      // console.log(
-      //   `Relative coordinates: x = ${relX.toFixed(2)}, y = ${relY.toFixed(2)}`
-      // );
 
       const selectedTopics = Object.values(topics).filter((topic) => {
         const [dotRelX, dotRelY] = topic.suitcaseCoordinates;

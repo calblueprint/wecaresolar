@@ -34,12 +34,8 @@ export const styles = (theme: Theme) =>
         flexDirection: 'row', 
         justifyContent: 'space-around', 
         margin: '2.0rem', 
-        fontSize: '12px',
-        fontWeight: 600, 
       },
       manualsButton: {
-        fontSize: 'inherit',
-        fontWeight: 'inherit',
         color: theme.palette.white.main,
         backgroundColor: theme.palette.black.main,
         padding: '5%',
@@ -49,8 +45,6 @@ export const styles = (theme: Theme) =>
         borderRadius: '1rem',
       },
       helpButton: {
-        fontSize: 'inherit',
-        fontWeight: 'inherit',
         color: theme.palette.black.main,
         backgroundColor: theme.palette.white.main,
         padding: '5%',
@@ -58,5 +52,15 @@ export const styles = (theme: Theme) =>
         boxShadow:
           '1px 2.5px 3px 2.5px rgba(218, 207, 207, 0.5)',
         borderRadius: '1rem',
+      }, 
+      title:  {
+        paddingLeft: '30px',
+        paddingRight: '30px',
+        display: 'flex',
+        justifyContent: 'space-between'
+      }, 
+      tap: {
+        paddingLeft: '30px',
+        paddingRight: '30px'
       }
     })

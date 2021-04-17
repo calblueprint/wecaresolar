@@ -24,9 +24,11 @@ function AnimationCard(props : AnimationProps) {
                 <Typography variant="body1"> {topic.description} </Typography>
                 <div className={classes.buttonsRow}>
                     <Link to={`${props.match.url}/${topic.name}`}>
-                        <button className={classes.manualsButton}> See All Manuals </button>
+                        <button className={classes.manualsButton}> 
+                            <Typography variant="body2"> See All Manuals </Typography> </button>
                     </Link> 
-                        <button className={classes.helpButton}> Help </button>
+                        <button className={classes.helpButton}> 
+                            <Typography variant="body2"> Help </Typography> </button>
                 </div>
             </div>
             <CancelIcon className={classes.cancel} onClick={props.exit} /> 
