@@ -25,7 +25,8 @@ firebase.initializeApp({
   appId: '1:963041613875:web:96e9b6562a9a7c4cd76b46',
   measurementId: 'G-N48ZSWDGHL'
 });
-export const messaging = firebase.messaging();
+export const messaging = 
+  firebase.messaging.isSupported() ? firebase.messaging() : null;
 export const db = firebase.firestore();
 
 db.enablePersistence()
@@ -41,7 +42,13 @@ db.enablePersistence()
     }
   });
 
-initializePushNotifications();
+if (firebase.messaging.isSupported()) {
+  initializePushNotifications();
+} else {
+  console.log("Warning: On a device that does not supported Firebase Messaging."
+   + "Will skip setting up push notifications.")
+}
+
 loadInitialState();
 
 // Set up IndexedDB store for caching videos

@@ -6,92 +6,25 @@
 
 import { LessonsSlice } from './lessonsSlice';
 import { ResourcesSlice } from './resourcesSlice';
+import { SectionsSlice } from './sectionsSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
-import { HelpSlice } from './helpSlice';
+import { TroubleshootingSlice } from './troubleshootingSlice';
 import FetalImage from '../components/Images/fetaldopplerTopic.jpg';
 import LightsImage from '../components/Images/lightsTopic.jpg';
 import HeadlampImage from '../components/Images/headlampTopic.jpg';
 import PhoneImage from '../components/Images/phoneTopic.jpg';
 
-export const INITIAL_HELP: HelpSlice = {
-  Root: {
-    parent: null,
-    title: "What's wrong?",
-    description: '',
-    options: {
-      'An appliance is not workinng': '404_ERROR',
-      'An appliance is not charging': '404_ERROR',
-      'Lights turn out earlier than they used to': '404_ERROR',
-      'Lights turn out in the middle of the night.': '404_ERROR',
-      '1 or more lights do not work.': '404_ERROR',
-      'No appliances or lights work.': '404_ERROR',
-      'The display screen is blank.': '404_ERROR',
-      'Solar suitcase is not working': '404_ERROR',
-      'I see error codes': '404_ERROR'
-    }
-  },
-  Errors: {
-    parent: 'Initial',
-    title: 'Do you see an error code?',
-    description: '',
-    options: {
-      yes: '404_ERROR'
-    }
-  },
-  '404_ERROR': {
-    parent: null,
-    title: 'Ah shi, stuff broken!',
-    description: 'Have you tried turning on and back off again',
-    options: {
-      yes: '404_ERROR_YES', //SOMETHING,
-      no: '404_ERROR_NO' //SOMETHING
-    }
-  },
-  '404_ERROR_YES': {
-    parent: '404_ERROR',
-    title: 'You monkey, why did you turn it back off?',
-    description: 'Try turning it back on, maybe then things will worky worky',
-    options: {}
-  },
-  '404_ERROR_NO': {
-    parent: '404_ERROR',
-    title: 'Well maybe you should try fixing things first huh...',
-    description: 'Have you fixed it?',
-    options: {
-      yes: '404_ERROR_YES', //SOMETHING,
-      no: '404_ERROR_NO' //SOMETHING
-    }
-  }
-};
+export const INITIAL_TROUBLESHOOTING: TroubleshootingSlice = {};
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
-  '1': {
-    type: 'Video',
-    title: 'irure nisi enim Lorem non',
-    tags: ['mollit'],
-    data: {
-      preview:
-        'Ad do officia tempor occaecat laboris non magna ea sint deserunt mollit.',
-      fileSize: 27790,
-      duration: 1536,
-      watchUrl: 'https://www.youtube.com/watch?v=oMCKWkvGLLA',
-      downloadUrl:
-        'https://s3.us-west-2.amazonaws.com/secure.notion-static.com/028e79a0-3532-427b-be11-292e8f363ea1/1_v3SolarSuitcase_InstallationPlanning_%284%29.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201205%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201205T210159Z&X-Amz-Expires=86400&X-Amz-Signature=82bd1835a6bc8ba47ceb050aaf8e3a31336b2d4a837d72e47aaf17741c4a4c4a&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%221_v3SolarSuitcase_InstallationPlanning_%284%29.mp4%22'
-    },
-    isFinished: true,
-    isCached: false,
-    isFavorited: true,
-    isCompleted: false
-  },
   '23': {
     type: 'Article',
     title: 'TROUBLED FETAL',
     tags: ['Fetal Doppler', 'Troubleshooting'],
     data: {
       preview: 'this is an article preview ....',
-      textUrl: '<cloud firestore or s3 link here>',
-      fileSize: 13050 // QUESTION: file size on text resources?
+      sections: ['section 1', 'section 2']
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
@@ -104,8 +37,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     tags: ['Fetal Doppler', 'Setup'],
     data: {
       preview: 'this is an article preview ....',
-      textUrl: '<cloud firestore or s3 link here>',
-      fileSize: 13050 // QUESTION: file size on text resources?
+      sections: ['section 1', 'section 2']
     },
     isFinished: false, // QUESTION: once viewed, or manually mark finished?
     isCached: false, // QUESTION: allow caching text resources?
@@ -119,6 +51,7 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     data: {
       preview: 'this is a video preview ....',
       watchUrl: 'https://youtube.com/watch?v=_______',
+      imageUrl: 'link to thumbnail for video',
       downloadUrl: '<s3 link here>',
       fileSize: 13050, // File size in bytes
       duration: 67 // Video duration in seconds
@@ -127,156 +60,15 @@ export const INITIAL_RESOURCES: ResourcesSlice = {
     isCached: false,
     isFavorited: true,
     isCompleted: false
-  },
-  '31': {
-    type: 'Article',
-    title: 'COMBUSTED BATTERIES',
-    tags: ['Battery Charger', 'Troubleshooting'],
-    data: {
-      preview: 'this is an article preview ....',
-      textUrl: '<cloud firestore or s3 link here>',
-      fileSize: 13050 // QUESTION: file size on text resources?
-    },
-    isFinished: false, // QUESTION: once viewed, or manually mark finished?
-    isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true,
-    isCompleted: false
-  },
-  '35': {
-    type: 'Video',
-    title: 'Doppler Video Fix',
-    tags: ['Fetal Doppler', 'Troubleshooting'],
-    data: {
-      preview: 'this is an video preview ....',
-      textUrl: '<cloud firestore or s3 link here>',
-      fileSize: 13050 // QUESTION: file size on text resources?
-    },
-    isFinished: false, // QUESTION: once viewed, or manually mark finished?
-    isCached: false, // QUESTION: allow caching text resources?
-    isFavorited: true,
-    isCompleted: true
-  },
-  '42': {
-    type: 'Article',
-    title: 'Doppler Article',
-    tags: ['Fetal Doppler'],
-    data: {
-      preview: 'Sunt quis ea sint ea aute do consequat deserunt culpa commodo.',
-      fileSize: 22435,
-      duration: 1220,
-      watchUrl: 'https://youtube.com/api',
-      downloadUrl: 'https://aws.link/'
-    },
-    isFinished: true,
-    isCached: false,
-    isFavorited: true,
-    isCompleted: false
-  },
-  '4': {
-    type: 'Video',
-    title: 'pariatur voluptate id consectetur tempor',
-    tags: ['amet', 'laborum', 'elit', 'excepteur', 'ad'],
-    data: {
-      preview:
-        'Ipsum nostrud sit sunt laborum esse excepteur amet velit ullamco ipsum.',
-      fileSize: 24583,
-      duration: 1943,
-      watchUrl: 'https://youtube.com/api',
-      downloadUrl: 'https://aws.link/'
-    },
-    isFinished: true,
-    isCached: true,
-    isFavorited: false,
-    isCompleted: false
-  },
-  '5': {
-    type: 'Video',
-    title: 'commodo eiusmod aliquip sint cillum',
-    tags: ['duis'],
-    data: {
-      preview:
-        'Exercitation pariatur aliqua ad et dolore tempor id et pariatur laborum laborum.',
-      fileSize: 22070,
-      duration: 1691,
-      watchUrl: 'https://youtube.com/api',
-      downloadUrl: 'https://aws.link/'
-    },
-    isFinished: false,
-    isCached: false,
-    isFavorited: false,
-    isCompleted: false
-  },
-  '6': {
-    type: 'Article',
-    title: 'exercitation incididunt qui velit nostrud',
-    tags: ['officia', 'minim'],
-    data: {
-      preview: 'Fugiat in velit nulla commodo mollit dolor.',
-      fileSize: 21204,
-      textUrl: 'https://aws.link/'
-    },
-    isFinished: false,
-    isCached: true,
-    isFavorited: false,
-    isCompleted: true
-  },
-  '7': {
-    type: 'Article',
-    title: 'laborum ex eiusmod eu id',
-    tags: ['anim', 'commodo', 'Lorem', 'elit'],
-    data: {
-      preview: 'Anim eu ad eu aliqua qui sit exercitation.',
-      fileSize: 15725,
-      textUrl: 'https://aws.link/'
-    },
-    isFinished: true,
-    isCached: true,
-    isFavorited: false,
-    isCompleted: false
-  },
-  '8': {
-    type: 'Article',
-    title: 'enim ut aute aute irure',
-    tags: ['aute', 'fugiat'],
-    data: {
-      preview:
-        'Lorem ea eiusmod eu labore sint do occaecat elit magna sunt veniam aute.',
-      fileSize: 27209,
-      textUrl: 'https://aws.link/'
-    },
-    isFinished: false,
-    isCached: true,
-    isFavorited: false,
-    isCompleted: true
-  },
-  '9': {
-    type: 'Article',
-    title: 'id esse amet mollit consequat',
-    tags: ['nulla'],
-    data: {
-      preview:
-        'Consequat sint sunt labore id do irure qui excepteur laborum proident incididunt incididunt cupidatat velit.',
-      fileSize: 20976,
-      textUrl: 'https://aws.link/'
-    },
-    isFinished: false,
-    isCached: true,
-    isFavorited: false,
-    isCompleted: false
-  },
-  '10': {
-    type: 'Article',
-    title: 'sit est cupidatat veniam do',
-    tags: ['et', 'consectetur'],
-    data: {
-      preview: 'Tempor irure sint ea do voluptate magna laborum ad cillum.',
-      fileSize: 28363,
-      textUrl: 'https://aws.link/'
-    },
-    isFinished: true,
-    isCached: false,
-    isFavorited: false,
-    isCompleted: true
+  }
+};
+
+export const INITIAL_SECTIONS: SectionsSlice = {
+  '1': {
+    title: 'Section title',
+    label: 'Label',
+    imageUrl: 'Image to show for this section',
+    text: 'Main content'
   }
 };
 
