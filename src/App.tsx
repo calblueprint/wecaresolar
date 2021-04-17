@@ -20,8 +20,8 @@ import Article from './components/Article/Article';
 
 const useStyles = makeStyles({
   root: {
-    color: theme.palette.brown.main,
-    backgroundColor: theme.palette.background.default
+    color: theme.palette.black.main,
+    backgroundColor: theme.palette.background.default,
   }
 });
 
