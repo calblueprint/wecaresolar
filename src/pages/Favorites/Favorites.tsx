@@ -14,8 +14,8 @@ function Favorites({ match, classes }) {
   const allTopics: string[] = Object.keys(topics).map(
     (topic) => topics[topic].name
   );
-  const allTypes : string[] = ['Article', 'Video']
-  
+  const allTypes: string[] = ['Article', 'Video'];
+
   const [currTopics, setTopic] = useState<Set<string>>(new Set(allTopics));
   const [resType, setresType] = useState<Set<string>>(new Set(allTypes));
 
@@ -27,7 +27,6 @@ function Favorites({ match, classes }) {
         .includes(true)
     ) {
       if (resType.size == 0 || resType.has(favResources[resource].type)) {
-        console.log(resource)
         return (
           <StandardCard
             key={resource}
@@ -42,7 +41,7 @@ function Favorites({ match, classes }) {
       return <span />;
     }
   }
- 
+
   return (
     <div className={classes.page}>
       <div className={classes.header}>
@@ -51,16 +50,16 @@ function Favorites({ match, classes }) {
           <FilterDropdown
             topics={allTopics}
             currTopics={currTopics}
-            changeTopic={setTopic} 
+            changeTopic={setTopic}
             types={allTypes}
             currTypes={resType}
             changeType={setresType}
-          >
-          </FilterDropdown>
+          ></FilterDropdown>
         </div>
       </div>
       {Object.keys(favResources).map(filteredFavResources)}
     </div>
-  )};
+  );
+}
 
 export default withStyles(styles)(Favorites);

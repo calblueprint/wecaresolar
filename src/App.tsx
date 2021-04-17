@@ -18,7 +18,7 @@ import WCSRoute from './WCSRoute';
 
 const useStyles = makeStyles({
   root: {
-    color: theme.palette.brown.main,
+    color: theme.palette.black.main,
     backgroundColor: theme.palette.background.default,
     height: '100vh',
     width: '100vw',

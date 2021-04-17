@@ -275,10 +275,12 @@ const processTopics = (record) => {
   const name = record.get('Title');
   const description = record.get('Description');
   const imageUrl = record.get('Image URL');
+  const suitcaseCoordinates = record.get('Suitcase coordinates')
   return {
     name,
     description,
     imageUrl,
+    suitcaseCoordinates,
   };
 }
 

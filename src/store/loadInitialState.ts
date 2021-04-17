@@ -110,7 +110,15 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
 
   const loadedTopics: FetchStatus = await loadCollection(
     'topics',
-    refreshTopics
+    refreshTopics,
+    (topic) => {
+      return {
+        ...topic,
+        suitcaseCoordinates: topic.suitcaseCoordinates
+          .split(',')
+          .map(parseFloat)
+      };
+    }
   );
 
   // Troubleshooting data: first load and format all of the answer options,
