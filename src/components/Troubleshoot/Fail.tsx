@@ -8,11 +8,10 @@ import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 
 type TroubleShootProps = {
-    classes: any;
-    helpId: string; 
+    classes: any; 
   };
 
-const Fail = ({ helpId , classes}: TroubleShootProps) => {
+const Fail = ({ classes}: TroubleShootProps) => {
     // const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
     // const help = troubleshoot[helpId];
     // console.log(helpId);

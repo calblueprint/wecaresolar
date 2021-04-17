@@ -8,17 +8,20 @@ import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { ROOT_ID } from '../../pages/Troubleshoot/Troubleshoot';
 import { AnswerOption } from '../../store/troubleshootingSlice';
+import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'; 
+import Success from './Success';
+import Fail from './Fail'; 
+
 
 type TroubleShootProps = {
   helpId: string;
-  classes: any;
+  classes: any; 
 };
 
-const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
+const TroubleShootCard = ({ helpId, classes}) => {
   const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
   helpId = decodeURIComponent(helpId);
   const help = troubleshoot[helpId];
-  const root = (helpId === ROOT_ID);
   const createRootOptions = (options) => {
     return (
       <div className={classes.optionContainer}>
@@ -71,19 +74,48 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
         )}
       </div>
     );
+  }
+  
+  if (helpId == ROOT_ID) {
+    return (
+      createRootOptions(helpId.answerOptions) 
+    )
+    }
+
+    if (help.tag == 'fail') {
+      return (
+        <Fail/>
+      )
+    }
+
+    if (help.tag == 'success') {
+      return (
+        <Success/> 
+      )
+    }
+
+    else {
+      return (
+        createOptions(helpId.answerOptions)
+      )
+    };
+     
+  // const root = (helpId === ROOT_ID);
+  // return createTroubleshootPage(helpId, help)
   };
-  return (
-    <div className={classes.card}>
-      <div className={classes.header}>
-        <HelpOutlineIcon />
-        <p style={{ paddingLeft: '5px' }}>Troubleshooting</p>
-      </div>
-      <h3>{help.question}</h3>
-      <p>{help.description}</p>
-      {root && createRootOptions(help.answerOptions)}
-      {!root && createOptions(help.answerOptions)}
-    </div>
-  );
-};
+
+//   return (
+//     <div className={classes.card}>
+//       <div className={classes.header}>
+//         <HelpOutlineIcon />
+//         <p style={{ paddingLeft: '5px' }}>Troubleshooting</p>
+//       </div>
+//       <h3>{help.question}</h3>
+//       <p>{help.description}</p>
+//       {root && createRootOptions(help.answerOptions)}
+//       {!root && createOptions(help.answerOptions)}
+//     </div>
+//   );
+// };
 
 export default withStyles(styles)(TroubleShootCard);
