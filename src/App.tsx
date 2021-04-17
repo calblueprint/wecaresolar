@@ -1,27 +1,29 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 import Favorites from './pages/Favorites/Favorites';
 import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
 import Settings from './pages/Settings/Settings';
-import TabBar from './components/TabBar/TabBar';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Guides/PlaylistPage';
 import TopicViews from './components/Topics/TopicViews';
-import SearchBar from './components/SearchBar/SearchBar';
 import Video from './components/Video/Video';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
 import SeeAll from './components/SeeAll';
 import Article from './components/Article/Article';
+import WCSRoute from './WCSRoute';
 
 const useStyles = makeStyles({
   root: {
     color: theme.palette.black.main,
     backgroundColor: theme.palette.background.default,
+    height: '100vh',
+    width: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
   }
 });
 
@@ -33,64 +35,55 @@ function App() {
       <Router>
         <div
           className={classes.root}
-          style={{ display: 'flex', flexDirection: 'column' }}
         >
-          <div>
-            <Route component={SearchBar} />
-          </div>
-          <div>
-            <Switch>
-              <Route exact path="/">
-                <Redirect to="/Guides" />
-              </Route>
+          <Switch>
+            <WCSRoute hasSearch hasTab exact path="/">
+              <Redirect to="/Guides" />
+            </WCSRoute>
 
-              <Route exact path="/guides" component={Guides} />
-              <Route exact path="/Guides/:type" render={(props) => (
-                <SeeAll match={props.match} typeofres={props.match.params.type} />
-              )} />
-              <Route
-                path={'/Guides/Playlists/:lessonId'}
-                render={(props) => (
-                  <PlaylistPage lessonId={props.match.params.lessonId} />
-                )}
-              />
-              <Route
-                path={'/Guides/Articles/:articleId'}
-                render={(props) => (
-                  <Article resId={props.match.params.articleId} />
-                )}
-              />
-              <Route
-                path={'/Guides/Videos/:videoId'}
-                render={(props) => (
-                  <Video resId={props.match.params.videoId} />
-                )}
-              />
+            <WCSRoute hasSearch hasTab exact path="/guides" component={Guides} />
+            <WCSRoute hasSearch hasTab exact path="/Guides/:type" render={(props) => (
+              <SeeAll match={props.match} typeofres={props.match.params.type} />
+            )} />
+            <WCSRoute hasSearch hasTab
+              path={'/Guides/Playlists/:lessonId'}
+              render={(props) => (
+                <PlaylistPage lessonId={props.match.params.lessonId} />
+              )}
+            />
+            <WCSRoute hasSearch hasTab
+              path={'/Guides/Articles/:articleId'}
+              render={(props) => (
+                <Article resId={props.match.params.articleId} />
+              )}
+            />
+            <WCSRoute hasSearch hasTab
+              path={'/Guides/Videos/:videoId'}
+              render={(props) => (
+                <Video resId={props.match.params.videoId} />
+              )}
+            />
 
-              <Route exact path="/favorites" component={Favorites} />
+            <WCSRoute hasSearch hasTab exact path="/favorites" component={Favorites} />
 
-              <Route exact path="/suitcase" component={Suitcase} />
-              <Route
-                path={'/suitcase/:topicId'}
-                render={(props) => (
-                  <TopicViews topicId={props.match.params.topicId} />
-                )}
-              />
+            <WCSRoute hasSearch hasTab exact path="/suitcase" component={Suitcase} />
+            <WCSRoute hasSearch hasTab
+              path={'/suitcase/:topicId'}
+              render={(props) => (
+                <TopicViews topicId={props.match.params.topicId} />
+              )}
+            />
 
-              <Route exact path="/troubleshoot" component={Troubleshoot} />
-              <Route
-                path={'/Troubleshoot/:helpId'}
-                render={(props) => (
-                  <TroubleShootCard helpId={props.match.params.helpId} />
-                )}
-              />
+            <WCSRoute hasSearch hasTab exact path="/troubleshoot" component={Troubleshoot} />
+            <WCSRoute hasSearch hasTab
+              path={'/Troubleshoot/:helpId'}
+              render={(props) => (
+                <TroubleShootCard helpId={props.match.params.helpId} />
+              )}
+            />
 
-              <Route exact path="/settings" component={Settings} />
-            </Switch>
-          </div>
-          <div>
-            <TabBar />
-          </div>
+            <WCSRoute hasSearch hasTab exact path="/settings" component={Settings} />
+          </Switch>
         </div>
       </Router>
     </ThemeProvider>

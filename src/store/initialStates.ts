@@ -15,9 +15,7 @@ import LightsImage from '../components/Images/lightsTopic.jpg';
 import HeadlampImage from '../components/Images/headlampTopic.jpg';
 import PhoneImage from '../components/Images/phoneTopic.jpg';
 
-export const INITIAL_TROUBLESHOOTING: TroubleshootingSlice = {
-  
-};
+export const INITIAL_TROUBLESHOOTING: TroubleshootingSlice = {};
 
 export const INITIAL_RESOURCES: ResourcesSlice = {
   '23': {
