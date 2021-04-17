@@ -11,7 +11,7 @@ export type AnswerOption = {
   text: string;
   color: string;
   followupId: keyof TroubleshootingSlice;
-}
+};
 
 export type TroubleshootingStep = {
   question: string;
