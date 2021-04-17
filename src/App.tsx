@@ -19,6 +19,7 @@ import SeeAll from './components/SeeAll';
 import Success from './components/Troubleshoot/Success';
 import Fail from './components/Troubleshoot/Fail';
 
+import Article from './components/Article/Article';
 
 const useStyles = makeStyles({
   root: {
@@ -57,9 +58,9 @@ function App() {
                 )}
               />
               <Route
-                path={'/Guides/Articles/:lessonId'}
+                path={'/Guides/Articles/:articleId'}
                 render={(props) => (
-                  <PlaylistPage lessonId={props.match.params.lessonId} />
+                  <Article resId={props.match.params.articleId} />
                 )}
               />
               <Route
