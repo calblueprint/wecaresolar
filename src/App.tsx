@@ -20,9 +20,10 @@ const useStyles = makeStyles({
   root: {
     color: theme.palette.brown.main,
     backgroundColor: theme.palette.background.default,
-    // height: '100vh',
+    height: '100vh',
+    width: '100vw',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   }
 });
 

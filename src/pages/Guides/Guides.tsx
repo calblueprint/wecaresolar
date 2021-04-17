@@ -3,7 +3,7 @@ import PlaylistCard from '../../components/Guides/PlaylistCard';
 import ResourceCard from '../../components/Guides/ResourceCard'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import { Link, Route, Router, BrowserRouter  } from 'react-router-dom';
+import { Link, Route, Router, BrowserRouter } from 'react-router-dom';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './GuidesStyles';
 
@@ -27,13 +27,13 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <div className={classes.title}>Playlists</div>
         <div className={classes.list}>
-        <Link  to={{pathname: 'Guides/Playlists'}} >See all</Link>
+          <Link to={{ pathname: 'Guides/Playlists' }} >See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link key={key} style={{ textDecoration: 'none' }} 
-          to={`${props.match.url}/Playlists/${key}`}>
+          <Link key={key} style={{ textDecoration: 'none' }}
+            to={`${props.match.url}/Playlists/${key}`}>
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>
@@ -44,13 +44,13 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <div className={classes.title}>Articles</div>
         <div className={classes.list}>
-          <Link  to= {{pathname: 'Guides/Articles'}} >See all</Link>
+          <Link to={{ pathname: 'Guides/Articles' }} >See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
         {articles.map((key: any) => (
-          <Link style={{ textDecoration: 'none' }} 
-          to={`${props.match.url}/Articles/${key}`}> 
+          <Link style={{ textDecoration: 'none' }}
+            to={`${props.match.url}/Articles/${key}`}>
             <ResourceCard resource={resources[key]} />
           </Link>
         ))}
@@ -59,18 +59,17 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <div className={classes.title}>Videos</div>
         <div className={classes.list}>
-        <Link  to={{pathname: 'Guides/Videos'}} >See all</Link>
+          <Link to={{ pathname: 'Guides/Videos' }} >See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
         {videos.map((key: any) => (
           <Link style={{ textDecoration: 'none' }}
-          to={`${props.match.url}/Videos/${key}`}>
+            to={`${props.match.url}/Videos/${key}`}>
             <ResourceCard resource={resources[key]} />
           </Link>
         ))}
       </div>
-      <div className={classes.bottomPad}></div>
     </div>
   );
 }
