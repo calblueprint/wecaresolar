@@ -12,7 +12,6 @@ import { useHistory } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 import RefreshButton from '../RefreshButton';
 import { loadInitialState } from '../../store/loadInitialState';
-import SettingsDrawer from '../TabBar/SettingsDrawer';
 import SearchList from './SearchList';
 
 type SearchProps = {

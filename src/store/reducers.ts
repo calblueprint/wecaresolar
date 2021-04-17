@@ -17,7 +17,7 @@ const persistedReducer = persistReducer(
     lessons: lessonsReducer,
     topics: topicsReducer,
     metadata: metadataReducer,
-    troubleshoot: troubleshootingSlice,
+    troubleshoot: troubleshootingSlice
   })
 );
 

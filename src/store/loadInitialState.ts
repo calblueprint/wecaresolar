@@ -125,10 +125,15 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   // then load the questions themselves.
 
   // (The default step to use if an answer option has no follow-up question)
-  const failureStep = await db.collection('troubleshooting').where('tag', '==', 'Failure').get();
+  const failureStep = await db
+    .collection('troubleshooting')
+    .where('tag', '==', 'Failure')
+    .get();
   const failureId = !failureStep.empty ? failureStep.docs[0].data()['id'] : -1;
   if (failureId == -1) {
-    console.log("Warning: could not find a step with 'Failure' tag in troubleshooting collection.");
+    console.log(
+      "Warning: could not find a step with 'Failure' tag in troubleshooting collection."
+    );
   }
 
   const answerOptionsQuery = await db.collection('answerOptions').get();
@@ -138,7 +143,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     answerOptions[doc.id] = {
       text: data.text,
       color: data.color,
-      followupId: data.followupQuestion ? data.followupQuestion.id : failureId,
+      followupId: data.followupQuestion ? data.followupQuestion.id : failureId
     };
   });
   const loadedTroubleshooting: FetchStatus = await loadCollection(
@@ -147,11 +152,15 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     (troubleshootingStep) => {
       return {
         ...troubleshootingStep,
-        sections: (troubleshootingStep.sections || []).map((section) => section.id),
-        answerOptions: (troubleshootingStep.answerOptions || []).map((answerOption) => answerOptions[answerOption.id]),
-      }
+        sections: (troubleshootingStep.sections || []).map(
+          (section) => section.id
+        ),
+        answerOptions: (troubleshootingStep.answerOptions || []).map(
+          (answerOption) => answerOptions[answerOption.id]
+        )
+      };
     }
-  )
+  );
 
   // Overall status is the *most pessimistic possible status* from all of the attempted requests.
   // For example, if 4 requests succeeded from server but 1 was retrieved from cache, overallStatus is "SuccessFromCache".
@@ -162,7 +171,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     loadedSections,
     loadedLessons,
     loadedTopics,
-    loadedTroubleshooting,
+    loadedTroubleshooting
   ].map((status) => fetchStatusToNum[status]);
   const overallStatus: FetchStatus = numToFetchStatus[Math.min(...statusNums)];
 
