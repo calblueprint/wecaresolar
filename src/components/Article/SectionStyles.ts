@@ -3,14 +3,15 @@ export const styles = (theme: Theme) =>
   createStyles({
     section: {
       position: 'relative',
-      top: '150px',
+      top: '30px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      width: '70vw',
-      height: '50vw',
-      borderColor: 'black',
-      borderStyle: 'dotted'
+      width: '600px',
+      height: '300px',
+      marginBottom: '36.11px',
+      backgroundColor: 'transparent',
+      boxShadow: 'none'
     },
     labelBox: {
       position: 'relative',
@@ -18,50 +19,65 @@ export const styles = (theme: Theme) =>
       height: '22.96px',
       top: 0,
       left: 0,
-      borderRadius: '4.88px',
+      borderRadius: '4.875px',
       background: 'rgba(134, 157, 176, 0.3)',
       padding: '0.812665px 5.68865px'
     },
     labelText: {
-      position: 'absolute',
-      width: '64px',
-      height: '13px',
-      color: '#2A5375',
-      fontFamily: theme.typography.fontFamily,
-      fontStyle: theme.typography.h3.fontStyle,
-      fontSize: theme.typography.h3.fontSize,
-      lineHeight: '13px',
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'center',
+      width: '75.38px',
+      height: '22.96px',
       top: '4.98px',
-      left: '25px'
+      color: theme.palette.suitcase.dark,
+      fontFamily: theme.typography.fontFamily,
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+      fontSize: '10.61px',
+      lineHeight: '13px',
+      bottomMargin: '0px',
+      bottomPadding: '0px'
     },
     title: {
-      width: '312px',
+      position: 'relative',
+      width: '60vw',
       height: '23.21px',
-      position: 'absolute',
-      fontFamily: theme.typography.fontFamily,
       fontWeight: 'bold',
       fontSize: '18px',
       lineHeight: '23px',
-      color: theme.palette.black.main,
-      top: '35.32px',
+      top: '12.36px',
       left: '0px'
+    },
+    imageDiv: {
+      display: 'flex',
+      width: '100%',
+      justifyContent: 'center'
     },
     image: {
-      position: 'absolute',
-      width: '189.68px',
-      height: '142.26px',
-      top: '70px',
-      left: '0px'
+      position: 'relative',
+      top: '20px',
+      height: '20vw',
+      //height: '142.26px',
+      borderRadius: '4px',
+      objectFit: 'contain'
     },
     text: {
-      position: 'absolute',
-      width: '312px',
+      position: 'relative',
+      width: '75vw',
       height: '19px',
-      fontFamily: theme.typography.fontFamily,
-      fontSize: '12px',
       lineHeight: '15px',
       color: theme.palette.black.main,
-      top: '230px',
+      top: '20px',
+      left: '0px'
+    },
+    textImage: {
+      position: 'relative',
+      width: '75vw',
+      height: '19px',
+      lineHeight: '15px',
+      color: theme.palette.black.main,
+      top: '40px',
       left: '0px'
     }
   });
