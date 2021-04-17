@@ -27,6 +27,6 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-end',
-      color: "#000"
+      color: '#000'
     }
   });

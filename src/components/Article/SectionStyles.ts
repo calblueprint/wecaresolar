@@ -21,7 +21,7 @@ export const styles = (theme: Theme) =>
       left: 0,
       borderRadius: '4.875px',
       background: 'rgba(134, 157, 176, 0.3)',
-      padding: '0.812665px 5.68865px',
+      padding: '0.812665px 5.68865px'
     },
     labelText: {
       position: 'relative',
@@ -50,7 +50,7 @@ export const styles = (theme: Theme) =>
       left: '0px'
     },
     imageDiv: {
-      display: 'flex', 
+      display: 'flex',
       width: '100%',
       justifyContent: 'center'
     },
