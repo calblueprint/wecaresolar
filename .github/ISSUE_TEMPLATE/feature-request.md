@@ -17,4 +17,4 @@ Provide description of what the solution should look like
 **Additional context**
 screen shots or figmas + all additional resources are welcomed
 
-@pl
+@susan-lin 

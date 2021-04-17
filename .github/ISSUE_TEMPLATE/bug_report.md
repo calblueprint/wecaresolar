@@ -42,4 +42,4 @@ Which environment(s) is this bug located in?
 **Additional information**
 Is there additional information you can provide?
 
-cc: @pl
+cc: @susan-lin
