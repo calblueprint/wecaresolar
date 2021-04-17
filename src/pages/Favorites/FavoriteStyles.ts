@@ -24,11 +24,11 @@ export const styles = (theme: Theme) =>
       alignItems: 'center',
       height: 'fit-content'
     },
-    title: {
-      fontSize: '1.8rem',
-      fontWeight: 700,
-      color: theme.palette.black.main
-    },
+    // title: {
+    //   fontSize: '1.8rem',
+    //   fontWeight: 700,
+    //   color: theme.palette.black.main
+    // },
     dropdown: {
       display: 'flex',
       margin: '0%'

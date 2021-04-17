@@ -12,7 +12,9 @@ export const styles = (theme: Theme) =>
       alignItems: 'center',
       fontSize: 12,
       fontWeight: 700,
-      color: theme.palette.brown.main
+    },
+    divider: {
+      paddingTop: 32,
     },
     scroll: {
       display: 'flex',
@@ -21,12 +23,4 @@ export const styles = (theme: Theme) =>
     playlistCard: {
       width: '300px'
     },
-    title: {
-      fontSize: 24,
-      paddingTop: 32
-    },
-    list: {
-      //change styling later on
-      paddingTop: 32
-    }
   });

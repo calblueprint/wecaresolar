@@ -1,7 +1,7 @@
 import React from 'react';
 import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimation';
-import SuitcaseLabeled from '../../components/Images/labeledSuitcase.png'; 
-import { styles } from './SuitcaseStyles'; 
+import SuitcaseLabeled from '../../components/Images/labeledSuitcase.png';
+import { styles } from './SuitcaseStyles';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
@@ -11,7 +11,7 @@ import classes from '*.module.css';
 
 const CustomSwitch = withStyles({
   switchBase: {
-    color: red[700], 
+    color: red[700],
     '&$checked': {
       color: green[600],
     },
@@ -43,27 +43,26 @@ function Suitcase({ classes, match }) {
     width: Math.min(window.innerWidth, 650),
   }
 
-  const [toggled, setToggle] = React.useState(false); 
+  const [toggled, setToggle] = React.useState(false);
 
   const showLabels = () => {
-    setToggle((prev) => !prev); 
+    setToggle((prev) => !prev);
   }
 
   return (
     <div>
-      <h1>BUFFER</h1>
       <div className={classes.title}>
         <Typography variant="h1"> Suitcase </Typography>
-        <FormControlLabel 
-          control={< CustomSwitch checked={toggled} onChange={showLabels} />} 
+        <FormControlLabel
+          control={< CustomSwitch checked={toggled} onChange={showLabels} />}
           label="Labels"
-          labelPlacement="start"/>
+          labelPlacement="start" />
       </div>
       <div className={classes.tap}>
         <Typography variant="body1"> Tap on a part of the Solar Suitcase </Typography>
       </div>
       <div>
-        {toggled? <img src={SuitcaseLabeled} style={labeled} />
+        {toggled ? <img src={SuitcaseLabeled} style={labeled} />
           : <SuitcaseAnimation classes={styles} match={match} />}
       </div>
     </div>

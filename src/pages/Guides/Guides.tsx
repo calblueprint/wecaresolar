@@ -4,7 +4,7 @@ import ResourceCard from '../../components/Guides/ResourceCard'
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link, Route, Router, BrowserRouter } from 'react-router-dom';
-import { withStyles } from "@material-ui/core/styles";
+import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './GuidesStyles';
 
 type GuidesProps = {
@@ -25,7 +25,7 @@ function Guides(props: GuidesProps) {
   return (
     <div className={classes.root}>
       <div className={classes.header}>
-        <div className={classes.title}>Playlists</div>
+        <Typography variant="h1">Playlists</Typography>
         <div className={classes.list}>
           <Link to={{ pathname: 'Guides/Playlists' }} >See all</Link>
         </div>
@@ -40,9 +40,9 @@ function Guides(props: GuidesProps) {
           </Link>
         ))}
       </div>
-
+      <div className={classes.divider} />
       <div className={classes.header}>
-        <div className={classes.title}>Articles</div>
+        <Typography variant="h1">Articles</Typography>
         <div className={classes.list}>
           <Link to={{ pathname: 'Guides/Articles' }} >See all</Link>
         </div>
@@ -55,9 +55,9 @@ function Guides(props: GuidesProps) {
           </Link>
         ))}
       </div>
-
+      <div className={classes.divider} />
       <div className={classes.header}>
-        <div className={classes.title}>Videos</div>
+        <Typography variant="h1">Videos</Typography>
         <div className={classes.list}>
           <Link to={{ pathname: 'Guides/Videos' }} >See all</Link>
         </div>
