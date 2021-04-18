@@ -14,57 +14,15 @@ export const styles = (theme: Theme) =>
       fontWeight: 500,
     },
 
-    header_sucess: {
-      display: "flex",
-      marginLeft: '60px',
-      paddingTop: '40px',
-      flexDirection: 'row',
-      alignItems: 'center',
-      color: theme.palette.tshootyes.main,
-      fontWeight: 500,
-    },
-
-    header_fail: {
-      display: "flex",
-      marginLeft: '60px',
-      paddingTop: '40px',
-      flexDirection: 'row',
-      alignItems: 'center',
-      color: theme.palette.accent2.main,
-      fontWeight: 500,
-    },
-
-    success_div1: {
-      position: "relative",
-      width: '100%', 
-      height: '220px',
-      backgroundColor: theme.palette.white.main, 
-    }, 
-
-    success_div2: {
-      paddingLeft: '60px',
-      paddingTop: '24px',
-      position: "relative",
-      width: '95%', 
-      height: '120px',
-      backgroundColor: theme.palette.white.main, 
-    }, 
-
-    fail_div1: {
-      position: "relative",
-      width: '100%', 
-      height: '600px',
-      backgroundColor: theme.palette.white.main, 
-    },
-
     card: {
-      margin: '10%',
+      margin: '5%',
       position: "relative",
       height: '100vh',
       width: '100%',
       bottom: 0,
-
     },
+
+
     button: {
       borderRadius: '18px',
       marginRight: '1%',
@@ -73,6 +31,21 @@ export const styles = (theme: Theme) =>
       borderStyle: 'none',
       fontWeight: 700,
     }, 
+
+    buttonBoxy :{
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      alignItems: 'stretch',
+      width: 400,
+      height: 60,
+      marginRight: 48,
+      marginBottom: 32,
+      borderRadius: 10,
+      boxShadow: '10px 8px 12px 8px rgba(218, 207, 207, 0.6)',
+      backgroundColor: 'white',
+    }, 
+
 
     button_back: {
       borderRadius: '18px',
@@ -97,28 +70,13 @@ export const styles = (theme: Theme) =>
       boxShadow: '1px 1px 1px 1px rgba(218, 207, 207, 0.6)',
     },
 
-    optionContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      alignItems: 'stretch',
-      width: 400,
-    },
     optionImage: {
       height: 88,
       width: 143,
       backgroundColor: theme.palette.yellow.main,
       borderRadius: '10px 10px 0px 0px'
     },
-    optionCard: {
-      height: 60,
-      marginRight: 48,
-      marginBottom: 32,
-      borderRadius: 10,
-      width: 120, 
-      boxShadow: '10px 8px 12px 8px rgba(218, 207, 207, 0.6)',
-      backgroundColor: 'white',
-    },
+
     optionText: {
       height: 60,
       width: 120,
@@ -130,6 +88,7 @@ export const styles = (theme: Theme) =>
       textDecoration: 'none',
       color: theme.palette.black.main,
     },
+
     yes: {
       backgroundColor: theme.palette.tshootyes.main,
       color: theme.palette.white.main,
@@ -140,3 +99,5 @@ export const styles = (theme: Theme) =>
     }
   }
   );
+
+  

@@ -143,13 +143,15 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     const data = doc.data();
     answerOptions[doc.id] = {
       text: data.text,
-      style: data.style || DEFAULT_STYLE,
-    }
+      style: data.style || DEFAULT_STYLE
+    };
 
     if (data.triggerUrl) {
-      answerOptions[doc.id]["triggerUrl"] = data.triggerUrl;
+      answerOptions[doc.id]['triggerUrl'] = data.triggerUrl;
     } else {
-      answerOptions[doc.id]["followupId"] = data.followupQuestion ? data.followupQuestion.id : failureId;
+      answerOptions[doc.id]['followupId'] = data.followupQuestion
+        ? data.followupQuestion.id
+        : failureId;
     }
   });
   const loadedTroubleshooting: FetchStatus = await loadCollection(

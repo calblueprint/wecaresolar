@@ -28,11 +28,26 @@ const TroubleShootCard = ({ helpId, classes}) => {
       <div>
         {Object.values<AnswerOption>(options).map((option) => {
           let buttonType = `${classes.button}`;
-          if (option.text == 'yes') {
-            buttonType = `${classes.button} ${classes.yes}`;
-          } else if (option.text == 'no') {
-            buttonType = `${classes.button} ${classes.no}`;
+
+          if (option.style == 'Boxy') {
+            buttonType = `${classes.button} ${classes.buttonBoxy}`
           }
+          
+          if (option.style == 'Green') {
+            buttonType = `${classes.button} ${classes.yes}`
+          }
+
+          if (option.style == 'Red') {
+            buttonType = `${classes.button} ${classes.no}`
+          }
+
+          if (option.style == 'Black') {
+            buttonType = `${classes.button} ${classes.button_back}`
+          } 
+
+          if (option.style == 'White') {
+            buttonType = `${classes.button} ${classes.button_restart}`
+          } 
 
           const button = <Button className={buttonType}>{option.text}</Button>;
           if (option.triggerUrl && option.triggerUrl[0] != '/') {
@@ -69,33 +84,7 @@ const TroubleShootCard = ({ helpId, classes}) => {
     );
   }
   
-  if (helpId == ROOT_ID) {
-    return (
-      createRootOptions(helpId.answerOptions) 
-    )
-    }
 
-    if (help.tag == 'fail') {
-      return (
-        <Fail/>
-      )
-    }
-
-    if (help.tag == 'success') {
-      return (
-        <Success/> 
-      )
-    }
-
-    else {
-      return (
-        createOptions(helpId.answerOptions)
-      )
-    };
-     
-  // const root = (helpId === ROOT_ID);
-  // return createTroubleshootPage(helpId, help)
-  };
   return (
     <div className={classes.card}>
       <div className={classes.header}>

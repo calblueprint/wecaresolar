@@ -14,7 +14,7 @@ export type AnswerOption = {
   // Every answer option will have one of these two
   followupId?: keyof TroubleshootingSlice;
   triggerUrl?: string;
-}
+};
 
 export type TroubleshootingStep = {
   question: string;
