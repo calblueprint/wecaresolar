@@ -30,6 +30,7 @@ export const styles = (theme: Theme) =>
       paddingLeft: '2%',
       borderStyle: 'none',
       fontWeight: 700,
+      textDecoration: 'none', 
     }, 
 
     buttonBoxy :{
@@ -37,6 +38,7 @@ export const styles = (theme: Theme) =>
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'stretch',
+      alignContent: 'center',
       width: 400,
       height: 60,
       marginRight: 48,
