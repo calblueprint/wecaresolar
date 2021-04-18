@@ -12,7 +12,7 @@ export const styles = (theme: Theme) =>
       margin: '1%'
     },
     page: {
-      margin: '25% 3% 15%',
+      padding: theme.spacing(3),
       overflow: 'scroll',
       display: 'flex',
       flexDirection: 'column'
@@ -22,14 +22,13 @@ export const styles = (theme: Theme) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      margin: '1%',
       height: 'fit-content'
     },
-    title: {
-      fontSize: '1.8rem',
-      fontWeight: 700,
-      color: theme.palette.black.main
-    },
+    // title: {
+    //   fontSize: '1.8rem',
+    //   fontWeight: 700,
+    //   color: theme.palette.black.main
+    // },
     dropdown: {
       display: 'flex',
       margin: '0%'

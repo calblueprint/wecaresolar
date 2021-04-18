@@ -26,6 +26,7 @@ export const styles = (theme: Theme) =>
     column: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'flex-end'
+      justifyContent: 'flex-end',
+      color: '#000'
     }
   });

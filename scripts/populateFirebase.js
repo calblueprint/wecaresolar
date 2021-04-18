@@ -196,7 +196,7 @@ const processResources = (record) => {
   } else if (type === 'Article') {
     data = {
       preview: record.get('Preview'),
-      sections: (record.get('Section Titles') || []).map(title => db.collection('sections').doc(title)),
+      sections: (record.get('Section IDs') || []).map(id => db.collection('sections').doc(String(id))),
     };
   } else {
     console.err("WARNING: Unrecognized resource type", type);
@@ -228,7 +228,7 @@ const processTroubleshooting = (record) => {
   const id = record.get('ID');
   const question = record.get('Question');
   const tag = record.get('Tag');
-  const description = record.get('Description');
+  const description = record.get('Description') || "";
   const sections = (record.get('Section IDs') || []).map(id => db.collection('sections').doc(String(id)));
   const answerOptions = (record.get('Answer Option IDs') || []).map(id => db.collection('answerOptions').doc(String(id)));
 
@@ -245,16 +245,18 @@ const processTroubleshooting = (record) => {
 const processAnswerOptions = (record) => {
   const id = record.get('ID');
   const text = record.get('Text');
-  const color = record.get('Color');
+  const style = record.get('Style');
 
   const followupName = record.get('Follow-up Question Name');
   const followupQuestion = followupName ? db.collection('troubleshooting').doc(followupName[0]) : "";
+  const triggerUrl = record.get('Trigger URL') || "";
 
   return {
     id,
     text,
-    color,
+    style,
     followupQuestion,
+    triggerUrl,
   }
 }
 
@@ -275,10 +277,12 @@ const processTopics = (record) => {
   const name = record.get('Title');
   const description = record.get('Description');
   const imageUrl = record.get('Image URL');
+  const suitcaseCoordinates = record.get('Suitcase coordinates')
   return {
     name,
     description,
     imageUrl,
+    suitcaseCoordinates,
   };
 }
 
