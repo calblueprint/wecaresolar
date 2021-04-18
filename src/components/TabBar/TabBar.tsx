@@ -11,6 +11,7 @@ import { ReactComponent as ManualsIcon} from './../../components/TabBar/icons/ma
 import { ReactComponent as SettingsIcon} from './../../components/TabBar/icons/settings.svg';
 import { ReactComponent as GoldSuitcaseIcon} from './../../components/TabBar/icons/suitcase.svg';
 import { SvgIcon, Typography } from '@material-ui/core';
+import { BarChart } from '@material-ui/icons';
 
 type TabProps = {
   classes: any;
@@ -21,17 +22,18 @@ const suitcase = {
 };
 
 const bar = {
-  width: window.innerWidth
+  width: '100%'
+  // width = window.innerWidth
 };
 
 const TabBar = (props: TabProps) => {
-  const width = window.innerWidth
   const { classes } = props;
   const [value, setValue] = React.useState(2);
 
   return (
-    <div>
-        <BottomNavigation
+    <div style={bar}> 
+    {/* //also does not work  ^^ */}
+      <BottomNavigation
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
@@ -82,7 +84,7 @@ const TabBar = (props: TabProps) => {
             icon={<SvgIcon><SettingsIcon/></SvgIcon>}
           />
         </BottomNavigation>
-    </div>
+      </div>
   );
 };
 
