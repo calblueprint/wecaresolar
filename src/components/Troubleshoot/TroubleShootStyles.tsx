@@ -48,22 +48,12 @@ export const styles = (theme: Theme) =>
 
 
     button_back: {
-      borderRadius: '18px',
-      marginRight: '1%',
-      paddingRight: '2%',
-      paddingLeft: '2%',
-      borderStyle: 'none',
       fontWeight: 700,
       backgroundColor: theme.palette.black.main, 
       color: theme.palette.white.main,
     }, 
 
     button_restart: {
-      borderRadius: '18px',
-      marginRight: '1%',
-      paddingRight: '2%',
-      paddingLeft: '2%',
-      borderStyle: 'none',
       fontWeight: 700,
       backgroundColor: theme.palette.white.main, 
       color: theme.palette.black.main,
@@ -100,4 +90,3 @@ export const styles = (theme: Theme) =>
   }
   );
 
-  

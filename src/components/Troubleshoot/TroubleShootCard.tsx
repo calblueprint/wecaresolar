@@ -9,8 +9,6 @@ import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { ROOT_ID } from '../../pages/Troubleshoot/Troubleshoot';
 import { AnswerOption } from '../../store/troubleshootingSlice';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'; 
-import Success from './Success';
-import Fail from './Fail'; 
 
 
 type TroubleShootProps = {
