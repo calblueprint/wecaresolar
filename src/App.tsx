@@ -13,8 +13,6 @@ import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
 import SeeAll from './components/SeeAll';
-import Success from './components/Troubleshoot/Success';
-import Fail from './components/Troubleshoot/Fail';
 
 import Article from './components/Article/Article';
 import WCSRoute from './WCSRoute';
