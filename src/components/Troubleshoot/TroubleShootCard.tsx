@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, matchPath } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
@@ -18,26 +18,6 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
   const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
   helpId = decodeURIComponent(helpId);
   const help = troubleshoot[helpId];
-  const root = (helpId === ROOT_ID);
-  const createRootOptions = (options) => {
-    return (
-      <div className={classes.optionContainer}>
-        {Object.values<AnswerOption>(options).map((option) => {
-          return (
-            <Link
-              to={'/Troubleshoot/' + encodeURIComponent(option.followupId)}
-              style={{ textDecoration: 'none' }}
-            >
-              <div className={classes.optionCard}>
-                <div className={classes.optionImage}> </div>
-                <div className={classes.optionText}>{option.text}</div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-    );
-  };
 
   const createOptions = (options) => {
     return (
@@ -49,15 +29,27 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
           } else if (option.text == 'no') {
             buttonType = `${classes.button} ${classes.no}`;
           }
-          console.log("Followup ID for option:", option.followupId);
-          return (
-            <Link
-              to={'/Troubleshoot/' + option.followupId}
-              style={{ textDecoration: 'none' }}
-            >
-              <Button className={buttonType}>{option.text}</Button>
-            </Link>
-          );
+
+          const button = <Button className={buttonType}>{option.text}</Button>;
+          if (option.triggerUrl && option.triggerUrl[0] != '/') {
+            // For redirects to external URLs
+            return (
+              <a href={option.triggerUrl} target='_blank'>
+                {button}
+              </a>
+            );
+          } else {
+            // For redirects to other pages within the app,
+            // or if we should stay in the troubleshooting flow and ask another question instead
+            return (
+              <Link
+                to={option.triggerUrl || '/Troubleshoot/' + encodeURIComponent(option.followupId || "")}
+                style={{ textDecoration: 'none' }}
+              >
+                {button}
+              </Link>
+            );
+          }
         })}
         {help['parent'] ? (
           <Link
@@ -80,8 +72,7 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
       </div>
       <h3>{help.question}</h3>
       <p>{help.description}</p>
-      {root && createRootOptions(help.answerOptions)}
-      {!root && createOptions(help.answerOptions)}
+      {createOptions(help.answerOptions)}
     </div>
   );
 };
