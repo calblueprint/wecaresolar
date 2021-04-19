@@ -6,15 +6,15 @@ import { RootState } from '../../store/reducers';
 import { styles } from './TroubleShootStyles';
 import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import { ROOT_ID } from '../../pages/Troubleshoot/Troubleshoot';
 import { AnswerOption } from '../../store/troubleshootingSlice';
+
 
 type TroubleShootProps = {
   helpId: string;
-  classes: any;
+  classes: any; 
 };
 
-const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
+const TroubleShootCard = ({ helpId, classes}) => {
   const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
   helpId = decodeURIComponent(helpId);
   const help = troubleshoot[helpId];
@@ -24,17 +24,36 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
       <div>
         {Object.values<AnswerOption>(options).map((option) => {
           let buttonType = `${classes.button}`;
-          if (option.text == 'yes') {
-            buttonType = `${classes.button} ${classes.yes}`;
-          } else if (option.text == 'no') {
-            buttonType = `${classes.button} ${classes.no}`;
+
+          if (option.style == 'Boxy') {
+            buttonType = `${classes.button} ${classes.buttonBoxy}`
+          }
+          
+          if (option.style == 'Green') {
+            buttonType = `${classes.button} ${classes.yes}`
+          }
+
+          if (option.style == 'Red') {
+            buttonType = `${classes.button} ${classes.no}`
+          }
+
+          if (option.style == 'Black') {
+            buttonType = `${classes.button} ${classes.button_back}`
+          } 
+
+          if (option.style == 'White') {
+            buttonType = `${classes.button} ${classes.button_restart}`
+          } 
+
+          if (option.imageUrl) {
+            buttonType = `${classes.button} ${classes.optionImage}`
           }
 
           const button = <Button className={buttonType}>{option.text}</Button>;
           if (option.triggerUrl && option.triggerUrl[0] != '/') {
             // For redirects to external URLs
             return (
-              <a href={option.triggerUrl} target='_blank'>
+              <a href={option.triggerUrl} target='_blank' style={{ textDecoration: 'none' }}>
                 {button}
               </a>
             );
@@ -63,7 +82,9 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
         )}
       </div>
     );
-  };
+  }
+  
+
   return (
     <div className={classes.card}>
       <div className={classes.header}>
