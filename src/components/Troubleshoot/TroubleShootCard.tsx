@@ -6,9 +6,7 @@ import { RootState } from '../../store/reducers';
 import { styles } from './TroubleShootStyles';
 import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import { ROOT_ID } from '../../pages/Troubleshoot/Troubleshoot';
 import { AnswerOption } from '../../store/troubleshootingSlice';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline'; 
 
 
 type TroubleShootProps = {
@@ -47,11 +45,15 @@ const TroubleShootCard = ({ helpId, classes}) => {
             buttonType = `${classes.button} ${classes.button_restart}`
           } 
 
+          if (option.imageUrl) {
+            buttonType = `${classes.button} ${classes.optionImage}`
+          }
+
           const button = <Button className={buttonType}>{option.text}</Button>;
           if (option.triggerUrl && option.triggerUrl[0] != '/') {
             // For redirects to external URLs
             return (
-              <a href={option.triggerUrl} target='_blank'>
+              <a href={option.triggerUrl} target='_blank' style={{ textDecoration: 'none' }}>
                 {button}
               </a>
             );

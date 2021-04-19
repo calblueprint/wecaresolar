@@ -9,7 +9,8 @@ export type TroubleshootingSlice = {
 
 export type AnswerOption = {
   text: string;
-  style: string;
+  style: string; 
+  imageUrl: string;
 
   // Every answer option will have one of these two
   followupId?: keyof TroubleshootingSlice;

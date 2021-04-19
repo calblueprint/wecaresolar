@@ -26,12 +26,12 @@ export const styles = (theme: Theme) =>
     button: {
       borderRadius: '18px',
       marginRight: '1%',
-      paddingRight: '2%',
-      paddingLeft: '2%',
+      padding: theme.spacing(1, 2, 1, 2),
       borderStyle: 'none',
       fontWeight: 700,
       textDecoration: 'none', 
     }, 
+
 
     buttonBoxy :{
       display: 'flex',
@@ -46,6 +46,9 @@ export const styles = (theme: Theme) =>
       borderRadius: 10,
       boxShadow: '10px 8px 12px 8px rgba(218, 207, 207, 0.6)',
       backgroundColor: 'white',
+      "&:hover": {
+        backgroundColor: 'white',
+    }
     }, 
 
 
@@ -53,6 +56,10 @@ export const styles = (theme: Theme) =>
       fontWeight: 700,
       backgroundColor: theme.palette.black.main, 
       color: theme.palette.white.main,
+      textDecoration: 'none', 
+      "&:hover": {
+        backgroundColor: theme.palette.black.main,
+    }
     }, 
 
     button_restart: {
@@ -60,6 +67,9 @@ export const styles = (theme: Theme) =>
       backgroundColor: theme.palette.white.main, 
       color: theme.palette.black.main,
       boxShadow: '1px 1px 1px 1px rgba(218, 207, 207, 0.6)',
+      "&:hover": {
+        backgroundColor: theme.palette.white.main,
+    }
     },
 
     optionImage: {
@@ -84,10 +94,17 @@ export const styles = (theme: Theme) =>
     yes: {
       backgroundColor: theme.palette.tshootyes.main,
       color: theme.palette.white.main,
+      "&:hover": {
+        backgroundColor: theme.palette.tshootyes.main,
+    }
     },
+
     no: {
       backgroundColor: theme.palette.tshootno.main,
       color: theme.palette.white.main,
+      "&:hover": {
+        backgroundColor: theme.palette.tshootno.main,
+    }
     }
   }
   );
