@@ -35,7 +35,7 @@ function SearchList(props) {
           return (
             <StandardCard
               resource={resource.item}
-              resourceID={resource.item.id}
+              resourceID={resource.item.title}
               completeCheck={false}
               collapsed={false}
             />

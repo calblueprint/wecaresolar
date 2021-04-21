@@ -39,7 +39,7 @@ const TabBar = (props: TabProps) => {
         }}
         showLabels
         className={classes.navbar} //adjusting width here doesn't work either
-      // style={bar} // this doesn't work
+        // style={bar} // this doesn't work
       >
         <BottomNavigationAction
           classes={classes}
@@ -80,7 +80,6 @@ const TabBar = (props: TabProps) => {
             </Fab>
           }
         />
-        <BottomNavigationAction component={Link} to="/Suitcase" />
         <BottomNavigationAction
           classes={classes}
           component={Link}
