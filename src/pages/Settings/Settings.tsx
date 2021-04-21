@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography, withStyles } from '@material-ui/core';
-import { styles } from './SettingsStyles'
+import { styles } from './SettingsStyles';
 
 function Settings({ match, classes }) {
   return (

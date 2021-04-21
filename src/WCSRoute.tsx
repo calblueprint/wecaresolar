@@ -11,7 +11,8 @@ function WCSRoute({ hasSearch, hasTab, ...rest }) {
         <Route {...rest} />
       </div>
       {hasTab ? <TabBar /> : null}
-    </div>);
-};
+    </div>
+  );
+}
 
 export default WCSRoute;

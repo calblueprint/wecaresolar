@@ -6,7 +6,7 @@ import Suitcase from '../Images/Suitcase.png';
 import AnimationCard from './AnimationCard';
 
 type SuitcaseProps = {
-  classes: any,
+  classes: any;
   match;
 };
 
@@ -19,15 +19,17 @@ interface ClipDimensions {
 
 const SuitcaseAnimation = (props: SuitcaseProps) => {
   const { classes } = props;
-  const [selectedTopic, setSelectedTopic] = useState<Topic | undefined>(undefined);
+  const [selectedTopic, setSelectedTopic] = useState<Topic | undefined>(
+    undefined
+  );
   const topics = useSelector((state: RootState) => state.topics);
-  let id = Number.NEGATIVE_INFINITY
+  let id = Number.NEGATIVE_INFINITY;
 
   /* Create an ImageData object */
   const image = new Image(975, 650);
   image.src = Suitcase;
 
-  /* clipDims: x, y, width, and height of the currently visible portion of the suitcase */ 
+  /* clipDims: x, y, width, and height of the currently visible portion of the suitcase */
   const [clipDims, setClipDims] = useState<ClipDimensions>({
     x: 0,
     y: 0,
@@ -52,7 +54,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
         The dots will have radius `width`, color `fillStyle` (hex), and transparency `alpha` (0-1). */
   const drawDots = (ctx, width, fillStyle, alpha) => {
     ctx.beginPath();
-    for (let topic of Object.values(topics)) {
+    for (const topic of Object.values(topics)) {
       const [xPct, yPct] = topic.suitcaseCoordinates;
       const [x, y] = [xPct * cWidth, yPct * cHeight];
       ctx.moveTo(x, y);
@@ -74,75 +76,88 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
   const drawCanvas = (ctx) => {
     ctx.globalAlpha = 1;
-    ctx.drawImage(image, clipDims.x, clipDims.y, clipDims.width, clipDims.height, 0, 0, cWidth, cHeight);
+    ctx.drawImage(
+      image,
+      clipDims.x,
+      clipDims.y,
+      clipDims.width,
+      clipDims.height,
+      0,
+      0,
+      cWidth,
+      cHeight
+    );
     if (!selectedTopic) {
       drawDots(ctx, dotWidth * 3, dotColor, 0.3);
       drawDots(ctx, dotWidth, dotColor, 1);
-    } 
-  }
+    }
+  };
 
   /* Hook triggers on first load */
   useEffect(() => {
     if (canvasRef.current) {
       canvasCtxRef.current = canvasRef.current.getContext('2d');
       const ctx = canvasCtxRef.current;
-      if (!ctx) return; 
+      if (!ctx) return;
       ctx.clearRect(0, 0, cWidth, cHeight);
-      image.onload = function() {
-        drawCanvas(ctx)
-      } 
-    }}, []); //runs once, not watching 
+      image.onload = function () {
+        drawCanvas(ctx);
+      };
+    }
+  }, []); //runs once, not watching
 
   /* Hook triggers on changes to source image values. */
   useEffect(() => {
     if (canvasRef.current) {
       canvasCtxRef.current = canvasRef.current.getContext('2d');
       const ctx = canvasCtxRef.current;
-      if (!ctx) return; 
+      if (!ctx) return;
       ctx.clearRect(0, 0, cWidth, cHeight);
-      drawCanvas(ctx)
-    }}, [clipDims]);
+      drawCanvas(ctx);
+    }
+  }, [clipDims]);
 
- /* If topic is unselected while zooming, useLayoutEffect stops animation from completing. 
+  /* If topic is unselected while zooming, useLayoutEffect stops animation from completing. 
     useLayoutEffect is a synchronous function, so it executes after the last animate function 
-    */ 
+    */
   useLayoutEffect(() => {
-    if (!selectedTopic) return // TODO: zoom out
+    if (!selectedTopic) return; // TODO: zoom out
     const [relX, relY] = selectedTopic.suitcaseCoordinates;
-    const xCord = relX * image.width; 
-    const yCord = relY * image.height; 
+    const xCord = relX * image.width;
+    const yCord = relY * image.height;
 
-    id = requestAnimationFrame(function(timestamp) {
+    id = requestAnimationFrame(function (timestamp) {
       startTime = Date.now();
       animate(timestamp, xCord, yCord, 1000);
-    }); 
-    return () => {cancelAnimationFrame(id)}
-  }, [selectedTopic]); //only watches for topic variable 
-
+    });
+    return () => {
+      cancelAnimationFrame(id);
+    };
+  }, [selectedTopic]); //only watches for topic variable
 
   /* Zoom-in anmiation */
-  let startTime 
+  let startTime;
   function animate(timeStamp, x, y, totalTime) {
     if (!selectedTopic) return;
 
-    const timeNow = Date.now(); 
-    const timePassed = timeNow - startTime; 
+    const timeNow = Date.now();
+    const timePassed = timeNow - startTime;
     const progress = timePassed / totalTime;
-    const easing = easeIn(progress); 
+    const easing = easeIn(progress);
 
-    const origWidth = image.width; 
-    const origHeight = image.height; 
+    const origWidth = image.width;
+    const origHeight = image.height;
     const zoomWidth = origWidth / 3;
     const zoomHeight = origHeight / 3;
 
-    //as incWidth & incHeight approach zoomWidth & zoomHeight, calculate increments for each frame 
-    const wRatio = zoomWidth / origWidth; //goal ratio 
-    const wIncrement = 1 - (1 - wRatio) * easing; //how much we want to change @ each step in given time 
-    const incWidth = origWidth * wIncrement; //eliminates time --> gives proportion of new width 
-    
+    //as incWidth & incHeight approach zoomWidth & zoomHeight, calculate increments for each frame
+    const wRatio = zoomWidth / origWidth; //goal ratio
+    const wIncrement = 1 - (1 - wRatio) * easing; //how much we want to change @ each step in given time
+    const incWidth = origWidth * wIncrement; //eliminates time --> gives proportion of new width
+
     const hRatio = zoomHeight / origHeight;
-    const hIncrement = 1 - (1 - hRatio) * easing; 
-    const incHeight = origHeight * hIncrement; 
+    const hIncrement = 1 - (1 - hRatio) * easing;
+    const incHeight = origHeight * hIncrement;
 
     setClipDims({
       x: x - incWidth / 2,
@@ -151,10 +166,11 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       height: incHeight
     });
 
-    if (timePassed < totalTime && selectedTopic) { //recursively animate until desired ratio reached 
-      id = requestAnimationFrame(function(timestamp) {
-        animate(timeStamp, x, y, totalTime)
-      })
+    if (timePassed < totalTime && selectedTopic) {
+      //recursively animate until desired ratio reached
+      id = requestAnimationFrame(function (timestamp) {
+        animate(timeStamp, x, y, totalTime);
+      });
     }
   }
 
@@ -203,14 +219,22 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
   return (
     <div>
       <canvas
-          id="canvas"
-          ref={canvasRef}
-          width={cWidth}
-          height={cHeight}
-          onClick={(e) => onCanvasClick(e.clientX, e.clientY)}
-        ></canvas>
+        id="canvas"
+        ref={canvasRef}
+        width={cWidth}
+        height={cHeight}
+        onClick={(e) => onCanvasClick(e.clientX, e.clientY)}
+      ></canvas>
       <div className={classes.card}>
-        {selectedTopic && (<AnimationCard exit={zoomOut} topic={selectedTopic} match={props.match}> </AnimationCard>)}
+        {selectedTopic && (
+          <AnimationCard
+            exit={zoomOut}
+            topic={selectedTopic}
+            match={props.match}
+          >
+            {' '}
+          </AnimationCard>
+        )}
       </div>
     </div>
   );

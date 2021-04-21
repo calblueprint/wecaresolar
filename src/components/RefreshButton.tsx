@@ -1,16 +1,15 @@
 /**
  * A general-purpose refresh button that allows the user to get the most up-to-date data from the server.
- * 
+ *
  * This component takes in a single required prop, `fetch` (a function), which can do anything
  * as long as it returns a Promise that resolves with a FetchStatus to indicate its result.
- * 
+ *
  * The component will then automatically display the status of the fetch:
  * - Default refresh icon if nothing happened
  * - Loading wheel when fetching
  * - Checkmark when fetch succeeds (switches back to refresh icon afterwards)
  * - Failed refresh icon if something goes wrong
  */
-
 
 import React, { useState } from 'react';
 import SyncIcon from '@material-ui/icons/Sync';
@@ -28,10 +27,13 @@ enum RefreshStatus {
   Default = 0,
   FetchFailed,
   Fetching,
-  FetchComplete,
+  FetchComplete
 }
 
-const RefreshButton = ({ fetch, successDisplayTime=2000 }: RefreshButtonProps) => {
+const RefreshButton = ({
+  fetch,
+  successDisplayTime = 2000
+}: RefreshButtonProps) => {
   const [status, setStatus] = useState(RefreshStatus.Default);
 
   const onFetch = async () => {
@@ -40,29 +42,26 @@ const RefreshButton = ({ fetch, successDisplayTime=2000 }: RefreshButtonProps) =
     if (result === FetchStatus.SuccessFromServer) {
       setStatus(RefreshStatus.FetchComplete);
       setTimeout(() => setStatus(RefreshStatus.Default), successDisplayTime);
-    }
-    else {
+    } else {
       setStatus(RefreshStatus.FetchFailed);
     }
-  }
+  };
 
-  return (<div style={{width: '25px'}}>
-    {(() => {
-      if (status === RefreshStatus.Default) {
-        return <SyncIcon onClick={onFetch} />;
-      }
-      else if (status === RefreshStatus.FetchFailed) {
-        return <SyncProblemIcon onClick={onFetch} />;
-      }
-      else if (status === RefreshStatus.Fetching) {
-        return <CircularProgress color="inherit" />;
-      }
-      else {
-        return <CheckIcon />;
-      }
-    })()}
-  </div>)
-}
-
+  return (
+    <div style={{ width: '25px' }}>
+      {(() => {
+        if (status === RefreshStatus.Default) {
+          return <SyncIcon onClick={onFetch} />;
+        } else if (status === RefreshStatus.FetchFailed) {
+          return <SyncProblemIcon onClick={onFetch} />;
+        } else if (status === RefreshStatus.Fetching) {
+          return <CircularProgress color="inherit" />;
+        } else {
+          return <CheckIcon />;
+        }
+      })()}
+    </div>
+  );
+};
 
 export default RefreshButton;

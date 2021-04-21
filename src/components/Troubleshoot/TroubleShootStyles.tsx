@@ -3,25 +3,24 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     background: {
-      backgroundColor: theme.palette.background.default,
+      backgroundColor: theme.palette.background.default
     },
 
     header: {
-      display: "flex",
+      display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       color: theme.palette.accent2.main,
-      fontWeight: 500,
+      fontWeight: 500
     },
 
     card: {
       margin: '5%',
-      position: "relative",
+      position: 'relative',
       height: '100vh',
       width: '100%',
-      bottom: 0,
+      bottom: 0
     },
-
 
     button: {
       borderRadius: '18px',
@@ -29,11 +28,10 @@ export const styles = (theme: Theme) =>
       padding: theme.spacing(1, 2, 1, 2),
       borderStyle: 'none',
       fontWeight: 700,
-      textDecoration: 'none', 
-    }, 
+      textDecoration: 'none'
+    },
 
-
-    buttonBoxy :{
+    buttonBoxy: {
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
@@ -46,30 +44,29 @@ export const styles = (theme: Theme) =>
       borderRadius: 10,
       boxShadow: '10px 8px 12px 8px rgba(218, 207, 207, 0.6)',
       backgroundColor: 'white',
-      "&:hover": {
-        backgroundColor: 'white',
-    }
-    }, 
-
+      '&:hover': {
+        backgroundColor: 'white'
+      }
+    },
 
     button_back: {
       fontWeight: 700,
-      backgroundColor: theme.palette.black.main, 
+      backgroundColor: theme.palette.black.main,
       color: theme.palette.white.main,
-      textDecoration: 'none', 
-      "&:hover": {
-        backgroundColor: theme.palette.black.main,
-    }
-    }, 
+      textDecoration: 'none',
+      '&:hover': {
+        backgroundColor: theme.palette.black.main
+      }
+    },
 
     button_restart: {
       fontWeight: 700,
-      backgroundColor: theme.palette.white.main, 
+      backgroundColor: theme.palette.white.main,
       color: theme.palette.black.main,
       boxShadow: '1px 1px 1px 1px rgba(218, 207, 207, 0.6)',
-      "&:hover": {
-        backgroundColor: theme.palette.white.main,
-    }
+      '&:hover': {
+        backgroundColor: theme.palette.white.main
+      }
     },
 
     optionImage: {
@@ -82,30 +79,28 @@ export const styles = (theme: Theme) =>
     optionText: {
       height: 60,
       width: 120,
-      padding: "12px 12px 0px 12px",
+      padding: '12px 12px 0px 12px',
       backgroundColor: 'white',
       borderRadius: '10px 10px 10px 10px',
       fontSize: 12,
       fontWeight: 700,
       textDecoration: 'none',
-      color: theme.palette.black.main,
+      color: theme.palette.black.main
     },
 
     yes: {
       backgroundColor: theme.palette.tshootyes.main,
       color: theme.palette.white.main,
-      "&:hover": {
-        backgroundColor: theme.palette.tshootyes.main,
-    }
+      '&:hover': {
+        backgroundColor: theme.palette.tshootyes.main
+      }
     },
 
     no: {
       backgroundColor: theme.palette.tshootno.main,
       color: theme.palette.white.main,
-      "&:hover": {
-        backgroundColor: theme.palette.tshootno.main,
+      '&:hover': {
+        backgroundColor: theme.palette.tshootno.main
+      }
     }
-    }
-  }
-  );
-
+  });

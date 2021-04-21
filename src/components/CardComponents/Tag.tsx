@@ -13,10 +13,10 @@ const Tag = (props: TagProps) => {
     props.tag === 'Lights'
       ? classes.lights
       : props.tag === 'Rechargable Headlamps'
-        ? classes.headlamps
-        : props.tag === 'Suitcase'
-          ? classes.suitcase
-          : classes.defaultTag;
+      ? classes.headlamps
+      : props.tag === 'Suitcase'
+      ? classes.suitcase
+      : classes.defaultTag;
   return <div className={`${classes.tag} ${category}`}>{props.tag}</div>;
 };
 
