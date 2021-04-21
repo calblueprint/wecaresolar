@@ -36,7 +36,7 @@ function SearchList(props) {
             <StandardCard
               resource={resource.item}
               resourceID={resource.item.id}
-              completeCheck={false} 
+              completeCheck={false}
               collapsed={false}
             />
           );

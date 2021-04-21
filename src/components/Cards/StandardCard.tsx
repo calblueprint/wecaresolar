@@ -20,16 +20,17 @@ interface StandardCardProps {
 const StandardCard = (props: StandardCardProps) => {
   const { classes } = props;
   const dispatch = useDispatch();
-    function handleOverlay(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        dispatch(
-            setResourceIsCompleted({
-                id: props.resourceID,
-                isCompleted: !props.resource.isCompleted,
-            }))
-    };
-  
+  function handleOverlay(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    dispatch(
+      setResourceIsCompleted({
+        id: props.resourceID,
+        isCompleted: !props.resource.isCompleted
+      })
+    );
+  }
+
   let url = '/Guides/';
   if (props.resource.type == 'Video') {
     url = '/Guides/Videos/' + props.resourceID;
@@ -63,8 +64,9 @@ const StandardCard = (props: StandardCardProps) => {
                 />
               </div>
             </div>
-            {props.collapsed ? null
-              : (<p className={classes.body}>{props.resource.data.preview}</p>)}
+            {props.collapsed ? null : (
+              <p className={classes.body}>{props.resource.data.preview}</p>
+            )}
           </div>
         </div>
       </Card>

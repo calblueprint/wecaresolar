@@ -6,7 +6,6 @@ interface TopicHeaderProps {
   videoCount: number;
 }
 
-
 function TopicHeader(props: TopicHeaderProps) {
   const tags = {
     paddingTop: '30px'
@@ -16,9 +15,9 @@ function TopicHeader(props: TopicHeaderProps) {
     <div>
       <h1>{props.topicTitle}</h1>
       <div style={tags}>
-      <h3>
-        {props.articleCount} Article(s) {props.videoCount} Video(s)
-      </h3>
+        <h3>
+          {props.articleCount} Article(s) {props.videoCount} Video(s)
+        </h3>
       </div>
     </div>
   );

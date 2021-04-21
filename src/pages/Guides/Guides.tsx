@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaylistCard from '../../components/Guides/PlaylistCard';
-import ResourceCard from '../../components/Guides/ResourceCard'
+import ResourceCard from '../../components/Guides/ResourceCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link, Route, Router, BrowserRouter } from 'react-router-dom';
@@ -9,15 +9,18 @@ import { styles } from './GuidesStyles';
 
 type GuidesProps = {
   classes: any;
-  match
-}
-
+  match;
+};
 
 function Guides(props: GuidesProps) {
   const lessons = useSelector((state: RootState) => state.lessons);
   const resources = useSelector((state: RootState) => state.resources);
-  const articles = Object.keys(resources).filter((id) => resources[id].type == 'Article');
-  const videos = Object.keys(resources).filter((id) => resources[id].type == 'Video');
+  const articles = Object.keys(resources).filter(
+    (id) => resources[id].type == 'Article'
+  );
+  const videos = Object.keys(resources).filter(
+    (id) => resources[id].type == 'Video'
+  );
   //or
 
   const { classes } = props;
@@ -27,13 +30,16 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Playlists</Typography>
         <div className={classes.list}>
-          <Link to={{ pathname: 'Guides/Playlists' }} >See all</Link>
+          <Link to={{ pathname: 'Guides/Playlists' }}>See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
         {Object.keys(lessons).map((key: any) => (
-          <Link key={key} style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Playlists/${key}`}>
+          <Link
+            key={key}
+            style={{ textDecoration: 'none' }}
+            to={`${props.match.url}/Playlists/${key}`}
+          >
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} />
             </div>
@@ -44,13 +50,15 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Articles</Typography>
         <div className={classes.list}>
-          <Link to={{ pathname: 'Guides/Articles' }} >See all</Link>
+          <Link to={{ pathname: 'Guides/Articles' }}>See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
         {articles.map((key: any) => (
-          <Link style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Articles/${key}`}>
+          <Link
+            style={{ textDecoration: 'none' }}
+            to={`${props.match.url}/Articles/${key}`}
+          >
             <ResourceCard resource={resources[key]} />
           </Link>
         ))}
@@ -59,13 +67,15 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Videos</Typography>
         <div className={classes.list}>
-          <Link to={{ pathname: 'Guides/Videos' }} >See all</Link>
+          <Link to={{ pathname: 'Guides/Videos' }}>See all</Link>
         </div>
       </div>
       <div className={classes.scroll}>
         {videos.map((key: any) => (
-          <Link style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Videos/${key}`}>
+          <Link
+            style={{ textDecoration: 'none' }}
+            to={`${props.match.url}/Videos/${key}`}
+          >
             <ResourceCard resource={resources[key]} />
           </Link>
         ))}

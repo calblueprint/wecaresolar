@@ -16,8 +16,8 @@ declare module '@material-ui/core/styles/createPalette' {
     //troubleshooting buttons
     tshootyes: Palette['primary'];
     tshootno: Palette['primary'];
-    tshootreport: Palette['primary']; 
-    tshootrestart: Palette['primary'];  
+    tshootreport: Palette['primary'];
+    tshootrestart: Palette['primary'];
     //appliances
     main: Palette['primary'];
     general: Palette['primary'];
@@ -58,7 +58,7 @@ declare module '@material-ui/core/styles/createPalette' {
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ['"Source Sans Pro'].join(','),
+    fontFamily: ['"Source Sans Pro'].join(',')
   },
   overrides: {
     MuiTypography: {
@@ -102,7 +102,7 @@ const theme = createMuiTheme({
     yellow: {
       main: '#F6DBB7'
     },
-    wcsgrey:{
+    wcsgrey: {
       main: '#E1E1E1'
     },
     yellow2: {
@@ -123,7 +123,7 @@ const theme = createMuiTheme({
     },
     tshootno: {
       main: '#E03633'
-    }, 
+    },
     //applicances
     main: {
       main: '#F6DBB7',
