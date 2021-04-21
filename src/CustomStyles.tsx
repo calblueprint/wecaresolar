@@ -74,6 +74,7 @@ const theme = createMuiTheme({
         fontSize: 14,
         fontWeight: 700
       },
+      //can we please change body1 to 14
       body1: {
         fontSize: 12,
         fontWeight: 400
