@@ -7,7 +7,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
 import { red, green } from '@material-ui/core/colors';
 import { Typography } from '@material-ui/core';
-import classes from '*.module.css';
 
 const CustomSwitch = withStyles({
   switchBase: {

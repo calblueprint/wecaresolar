@@ -9,78 +9,82 @@ import { ReactComponent as TroubleshootIcon} from './../../components/TabBar/ico
 import { ReactComponent as FavoritesIcon} from './../../components/TabBar/icons/favorites.svg';
 import { ReactComponent as ManualsIcon} from './../../components/TabBar/icons/manuals.svg';
 import { ReactComponent as SettingsIcon} from './../../components/TabBar/icons/settings.svg';
-import { ReactComponent as GoldSuitcaseIcon} from './../../components/TabBar/icons/goldsuitcase.svg';
-import { SvgIcon } from '@material-ui/core';
+import { ReactComponent as GoldSuitcaseIcon} from './../../components/TabBar/icons/suitcase.svg';
+import { SvgIcon, Typography } from '@material-ui/core';
+import { BarChart } from '@material-ui/icons';
 
 type TabProps = {
   classes: any;
 };
 
+const suitcase = {
+  borderTop: "none"
+};
+
+const bar = {
+  width: '100%'
+  // width = window.innerWidth
+};
 
 const TabBar = (props: TabProps) => {
   const { classes } = props;
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(2);
 
   return (
-    <div>
-      <Link to="/Suitcase">
-        <div className={classes.fabDiv}>
-            <Fab variant='round' className={classes.suitcase}>
-              <div>
-                <SvgIcon className={classes.goldsuitcase}><GoldSuitcaseIcon/></SvgIcon>
-                <p className={classes.buttontext}>Suitcase</p>
-              </div>
-          </Fab>
-        </div>
-      </Link>
-      <div>
-        <BottomNavigation
+    <div style={bar}> 
+    {/* //also does not work  ^^ */}
+      <BottomNavigation
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
           }}
           showLabels
-          className={classes.navbar}
+          className={classes.navbar} //adjusting width here doesn't work either 
+          // style={bar} // this doesn't work 
         >
           <BottomNavigationAction
             classes={classes}
-            className={classes.text}
             component={Link}
             to="/Guides"
             label="Manuals"
-            icon={<SvgIcon className={classes.icons}><ManualsIcon/></SvgIcon>}
+            icon={<SvgIcon><ManualsIcon/></SvgIcon>}
             />
           <BottomNavigationAction
             classes={classes}
-            className={classes.text}
             component={Link}
             to="/Favorites"
             label="Favorites"
-            icon={<SvgIcon className={classes.icons}><FavoritesIcon/></SvgIcon>}
-          />
-          <BottomNavigationAction
-            component={Link}
-            to="/Suitcase"
+            icon={<SvgIcon><FavoritesIcon/></SvgIcon>}
           />
           <BottomNavigationAction
             classes={classes}
-            className={classes.text}
+            style={suitcase}
+            component={Link}
+            to="/Suitcase"
+            icon={ 
+            <Fab variant='round' className={classes.fabRoot}> 
+                <div> 
+                  <SvgIcon> <GoldSuitcaseIcon/> </SvgIcon>
+                  <Typography variant="body1"> Suitcase </Typography> 
+                </div>
+            </Fab>} 
+          />
+          <BottomNavigationAction
+            classes={classes}
             component={Link}
             to="/Troubleshoot"
             label="Troubleshoot"
-            icon={<SvgIcon className={classes.icons}><TroubleshootIcon/></SvgIcon>}
+            icon={<SvgIcon><TroubleshootIcon/></SvgIcon>}
           />
           <BottomNavigationAction
             classes={classes}
-            className={classes.text}
             component={Link}
             to="/Settings"
             label="Settings"
-            icon={<SvgIcon className={classes.icons}><SettingsIcon/></SvgIcon>}
+            icon={<SvgIcon><SettingsIcon/></SvgIcon>}
           />
         </BottomNavigation>
       </div>
-    </div>
   );
 };
 
