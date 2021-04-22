@@ -10,15 +10,15 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      color: theme.palette.accent2.main,
-      fontWeight: 500
+      color: theme.palette.accent2.main
     },
 
     card: {
-      margin: '5%',
+      padding: theme.spacing(3),
+      overflow: 'scroll',
+      display: 'flex',
+      flexDirection: 'column',
       position: 'relative',
-      height: '100vh',
-      width: '100%',
       bottom: 0
     },
 
@@ -37,7 +37,7 @@ export const styles = (theme: Theme) =>
       flexWrap: 'wrap',
       alignItems: 'stretch',
       alignContent: 'center',
-      width: 400,
+      width: '100%',
       height: 60,
       marginRight: 48,
       marginBottom: 32,
