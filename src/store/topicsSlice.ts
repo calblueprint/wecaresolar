@@ -11,6 +11,7 @@ export type Topic = {
   description: string;
   imageUrl: string;
   suitcaseCoordinates: Array<number>;
+  color: string;
 };
 
 const DEFAULT_FIELDS = {};
