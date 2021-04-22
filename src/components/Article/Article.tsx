@@ -8,9 +8,9 @@ import { styles } from './ArticleStyles';
 import SectionCard from './Section';
 
 type ArticleProps = {
-  resId: string,
+  resId: string;
   classes: any;
-}
+};
 
 const Article = ({ resId, classes }: ArticleProps): typeof Article => {
     const resources = useSelector((state: RootState) => state.resources)
@@ -57,11 +57,4 @@ const Article = ({ resId, classes }: ArticleProps): typeof Article => {
             </div> 
             )
 }
-
-}
-
-export default withStyles(styles)(Article);
-
-function setState(arg0: { scrollPostion: number; }) {
-  throw new Error('Function not implemented.');
-}
+]

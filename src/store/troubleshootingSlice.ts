@@ -9,8 +9,12 @@ export type TroubleshootingSlice = {
 
 export type AnswerOption = {
   text: string;
-  color: string;
-  followupId: keyof TroubleshootingSlice;
+  style: string;
+  imageUrl: string;
+
+  // Every answer option will have one of these two
+  followupId?: keyof TroubleshootingSlice;
+  triggerUrl?: string;
 };
 
 export type TroubleshootingStep = {

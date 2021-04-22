@@ -136,15 +136,23 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     );
   }
 
+  const DEFAULT_STYLE = 'Black'; // TODO: what should the default be, and where should we store this?
   const answerOptionsQuery = await db.collection('answerOptions').get();
   const answerOptions = {};
   answerOptionsQuery.forEach((doc) => {
     const data = doc.data();
     answerOptions[doc.id] = {
       text: data.text,
-      color: data.color,
-      followupId: data.followupQuestion ? data.followupQuestion.id : failureId
+      style: data.style || DEFAULT_STYLE
     };
+
+    if (data.triggerUrl) {
+      answerOptions[doc.id]['triggerUrl'] = data.triggerUrl;
+    } else {
+      answerOptions[doc.id]['followupId'] = data.followupQuestion
+        ? data.followupQuestion.id
+        : failureId;
+    }
   });
   const loadedTroubleshooting: FetchStatus = await loadCollection(
     'troubleshooting',

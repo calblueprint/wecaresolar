@@ -6,9 +6,9 @@ import Card from '@material-ui/core/Card';
 import { Section } from '../../store/sectionsSlice';
 
 type SectionProps = {
-  section: Section,
-  classes?: any,
-}
+  section: Section;
+  classes?: any;
+};
 
 const SectionCard = ({ section, classes}: SectionProps): typeof SectionCard => {
     if (section.imageUrl == null) {
