@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
@@ -7,6 +8,7 @@ import AnimationCard from './AnimationCard';
 
 type SuitcaseProps = {
   classes: any;
+  toggle: boolean;
   match;
 };
 
@@ -216,8 +218,19 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     }
   }
 
+  const tap = {
+    paddingLeft: '30px',
+    paddingRight: '30px'
+  };
+
   return (
     <div>
+      <div style={tap}>
+        <Typography variant="body1">
+          {' '}
+          Tap on a part of the Solar Suitcase{' '}
+        </Typography>
+      </div>
       <canvas
         id="canvas"
         ref={canvasRef}

@@ -10,7 +10,7 @@ export const styles = (theme: Theme) =>
       backgroundColor: theme.palette.white.main,
       boxShadow: '0px 14px 50px 20px rgba(0,0,0,0.2)',
       position: 'absolute',
-      bottom: '10%'
+      bottom: '10vh'
     },
     img: {
       objectFit: 'contain',
@@ -20,10 +20,10 @@ export const styles = (theme: Theme) =>
     rightSide: {
       display: 'flex',
       flexDirection: 'column',
-      margin: '3.5rem 1.0rem 2.0rem 1.0rem'
+      margin: '3rem 0.5rem 0rem 0.25rem'
     },
     cancel: {
-      fontSize: 35,
+      fontSize: 30,
       padding: '1.0rem',
       right: '1%',
       position: 'absolute'
@@ -32,22 +32,26 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-around',
-      margin: '2.0rem'
+      margin: '0.75rem'
     },
     manualsButton: {
+      minWidth: 70,
+      minHeight: 45,
       color: theme.palette.white.main,
       backgroundColor: theme.palette.black.main,
       padding: '5%',
       border: 'none',
-      boxShadow: '1px 2.5px 3px 2.5px rgba(218, 207, 207, 0.5)',
+      boxShadow: '-2px 4px 20px rgba(79, 42, 29, 0.15)',
       borderRadius: '1rem'
     },
     helpButton: {
+      minWidth: 70,
+      minHeight: 45,
       color: theme.palette.black.main,
       backgroundColor: theme.palette.white.main,
       padding: '5%',
       border: 'none',
-      boxShadow: '1px 2.5px 3px 2.5px rgba(218, 207, 207, 0.5)',
+      boxShadow: '-2px 4px 20px rgba(79, 42, 29, 0.15)',
       borderRadius: '1rem'
     },
     title: {

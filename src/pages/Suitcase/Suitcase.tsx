@@ -25,18 +25,6 @@ const CustomSwitch = withStyles({
 })(Switch);
 
 function Suitcase({ classes, match }) {
-  const title = {
-    paddingLeft: '30px',
-    paddingRight: '30px',
-    display: 'flex',
-    justifyContent: 'space-between'
-  };
-
-  const tap = {
-    paddingLeft: '30px',
-    paddingRight: '30px'
-  };
-
   const labeled = {
     width: Math.min(window.innerWidth, 650)
   };
@@ -57,17 +45,11 @@ function Suitcase({ classes, match }) {
           labelPlacement="start"
         />
       </div>
-      <div className={classes.tap}>
-        <Typography variant="body1">
-          {' '}
-          Tap on a part of the Solar Suitcase{' '}
-        </Typography>
-      </div>
       <div>
         {toggled ? (
           <img src={SuitcaseLabeled} style={labeled} />
         ) : (
-          <SuitcaseAnimation classes={styles} match={match} />
+          <SuitcaseAnimation classes={styles} toggle={toggled} match={match} />
         )}
       </div>
     </div>
