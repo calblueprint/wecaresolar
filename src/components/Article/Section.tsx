@@ -41,4 +41,5 @@ const SectionCard = ({ section, classes}: SectionProps): typeof SectionCard => {
     }
 }
 
+
 export default withStyles(styles)(SectionCard);

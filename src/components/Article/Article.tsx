@@ -31,6 +31,7 @@ const Article = ({ resId, classes }: ArticleProps): typeof Article => {
     useEffect(() => {
       window.addEventListener("scroll", onScroll)
 
+
       return () => window.removeEventListener("scroll", onScroll)
     }, [])
     
