@@ -5,7 +5,7 @@ export const styles = (theme: Theme) =>
     card: {
       width: '70vw',
       backgroundColor: 'transparent',
-      boxShadow: 'none',
+      boxShadow: 'none'
     },
     labelBox: {
       display: 'flex',
@@ -20,7 +20,7 @@ export const styles = (theme: Theme) =>
       fontWeight: 'bold',
       fontSize: '10.6124px',
       lineHeight: '13px',
-      color: theme.palette.suitcase.dark,
+      color: theme.palette.suitcase.dark
     },
     title: {
       position: 'relative',
@@ -31,7 +31,7 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center',
+      alignItems: 'center'
     },
     image: {
       width: '35vw',
