@@ -56,7 +56,7 @@ const SearchAppBar = (props: SearchProps) => {
                 input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={event => setQuery(event.target.value)}
             />
           </div>
           <RefreshButton fetch={() => loadInitialState()} />

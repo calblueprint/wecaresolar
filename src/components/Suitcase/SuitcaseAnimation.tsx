@@ -74,7 +74,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
               sx, sy, sWidth, sHeight   <-- Starting context, selects starting coordinate & scaling dimensions (Optional)
               dx, dy, dWidth, dHeight)  <-- Destination context, used to scale source to destination. */
 
-  const drawCanvas = (ctx) => {
+  const drawCanvas = ctx => {
     ctx.globalAlpha = 1;
     ctx.drawImage(
       image,
@@ -100,7 +100,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       const ctx = canvasCtxRef.current;
       if (!ctx) return;
       ctx.clearRect(0, 0, cWidth, cHeight);
-      image.onload = function () {
+      image.onload = function() {
         drawCanvas(ctx);
       };
     }
@@ -126,7 +126,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     const xCord = relX * image.width;
     const yCord = relY * image.height;
 
-    id = requestAnimationFrame(function (timestamp) {
+    id = requestAnimationFrame(function(timestamp) {
       startTime = Date.now();
       animate(timestamp, xCord, yCord, 1000);
     });
@@ -168,7 +168,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
 
     if (timePassed < totalTime && selectedTopic) {
       //recursively animate until desired ratio reached
-      id = requestAnimationFrame(function (timestamp) {
+      id = requestAnimationFrame(function(timestamp) {
         animate(timeStamp, x, y, totalTime);
       });
     }
@@ -196,7 +196,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       const localX = x - left;
       const localY = y - top;
 
-      const selectedTopics = Object.values(topics).filter((topic) => {
+      const selectedTopics = Object.values(topics).filter(topic => {
         const [dotRelX, dotRelY] = topic.suitcaseCoordinates;
         const dotX = dotRelX * cWidth;
         const dotY = dotRelY * cHeight;
@@ -223,8 +223,8 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
         ref={canvasRef}
         width={cWidth}
         height={cHeight}
-        onClick={(e) => onCanvasClick(e.clientX, e.clientY)}
-      ></canvas>
+        onClick={e => onCanvasClick(e.clientX, e.clientY)}
+      />
       <div className={classes.card}>
         {selectedTopic && (
           <AnimationCard

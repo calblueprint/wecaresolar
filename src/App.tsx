@@ -52,7 +52,7 @@ function App() {
               hasTab
               exact
               path="/Guides/:type"
-              render={(props) => (
+              render={props => (
                 <SeeAll
                   match={props.match}
                   typeofres={props.match.params.type}
@@ -63,7 +63,7 @@ function App() {
               hasSearch
               hasTab
               path={'/Guides/Playlists/:lessonId'}
-              render={(props) => (
+              render={props => (
                 <PlaylistPage lessonId={props.match.params.lessonId} />
               )}
             />
@@ -71,15 +71,13 @@ function App() {
               hasSearch
               hasTab
               path={'/Guides/Articles/:articleId'}
-              render={(props) => (
-                <Article resId={props.match.params.articleId} />
-              )}
+              render={props => <Article resId={props.match.params.articleId} />}
             />
             <WCSRoute
               hasSearch
               hasTab
               path={'/Guides/Videos/:videoId'}
-              render={(props) => <Video resId={props.match.params.videoId} />}
+              render={props => <Video resId={props.match.params.videoId} />}
             />
 
             <WCSRoute
@@ -101,7 +99,7 @@ function App() {
               hasSearch
               hasTab
               path={'/suitcase/:topicId'}
-              render={(props) => (
+              render={props => (
                 <TopicViews topicId={props.match.params.topicId} />
               )}
             />
@@ -117,7 +115,7 @@ function App() {
               hasSearch
               hasTab
               path={'/Troubleshoot/:helpId'}
-              render={(props) => (
+              render={props => (
                 <TroubleShootCard helpId={props.match.params.helpId} />
               )}
             />

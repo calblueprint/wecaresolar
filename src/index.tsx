@@ -34,7 +34,7 @@ db.enablePersistence()
   .then(() => {
     console.log('[Firebase] Enabled persistence for Cloud Firestore!');
   })
-  .catch((err) => {
+  .catch(err => {
     if (err.code == 'failed-precondition') {
       console.log(
         '[Firebase] ERROR: Multiple tabs open, ' +

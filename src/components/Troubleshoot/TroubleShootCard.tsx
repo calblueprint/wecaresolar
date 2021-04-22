@@ -18,10 +18,10 @@ const TroubleShootCard = ({ helpId, classes }) => {
   helpId = decodeURIComponent(helpId);
   const help = troubleshoot[helpId];
 
-  const createOptions = (options) => {
+  const createOptions = options => {
     return (
       <div>
-        {Object.values<AnswerOption>(options).map((option) => {
+        {Object.values<AnswerOption>(options).map(option => {
           let buttonType = `${classes.button}`;
 
           if (option.style == 'Boxy') {

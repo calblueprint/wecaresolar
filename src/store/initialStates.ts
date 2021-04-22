@@ -148,6 +148,6 @@ export const INITIAL_TOPICS: TopicsSlice = {
     description: 'This is the Fetal Doppler.',
     imageUrl: FetalImage,
     suitcaseCoordinates: [0.5, 0.5],
-    color: 'Gray',
-  },
+    color: 'Gray'
+  }
 };

@@ -21,7 +21,7 @@ const DownloadButton = ({ id, videoData, classes }: DownloadButtonProps) => {
   async function downloadVideo(resId, videoStore, videoData) {
     const downloadUrl = videoData.downloadUrl;
     if (downloadUrl) {
-      const blob = await fetch(downloadUrl).then((res) => res.blob());
+      const blob = await fetch(downloadUrl).then(res => res.blob());
       const arrayBuffer = await blobToArrayBuffer(blob);
 
       set(resId, arrayBuffer, videoStore)
@@ -34,7 +34,7 @@ const DownloadButton = ({ id, videoData, classes }: DownloadButtonProps) => {
             })
           )
         )
-        .catch((error) => console.log(resId, error));
+        .catch(error => console.log(resId, error));
     }
   }
 

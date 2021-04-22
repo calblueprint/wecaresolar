@@ -12,7 +12,7 @@ function Favorites({ match, classes }) {
   const favResources = useSelector(selectFavoritedResources);
   const topics = useSelector((state: RootState) => state.topics);
   const allTopics: string[] = Object.keys(topics).map(
-    (topic) => topics[topic].name
+    topic => topics[topic].name
   );
   const allTypes: string[] = ['Article', 'Video'];
 
@@ -23,7 +23,7 @@ function Favorites({ match, classes }) {
     if (
       currTopics.size == 0 ||
       Array.from(currTopics.values())
-        .map((topic) => favResources[resource].tags.includes(topic))
+        .map(topic => favResources[resource].tags.includes(topic))
         .includes(true)
     ) {
       if (resType.size == 0 || resType.has(favResources[resource].type)) {
@@ -54,7 +54,7 @@ function Favorites({ match, classes }) {
             types={allTypes}
             currTypes={resType}
             changeType={setresType}
-          ></FilterDropdown>
+          />
         </div>
       </div>
       {Object.keys(favResources).map(filteredFavResources)}

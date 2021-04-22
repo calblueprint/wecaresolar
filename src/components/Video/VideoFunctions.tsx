@@ -11,7 +11,7 @@ export function arrayBufferToBlob(buffer, type) {
 export function blobToArrayBuffer(blob) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.addEventListener('loadend', (e) => {
+    reader.addEventListener('loadend', e => {
       resolve(reader.result);
     });
     reader.addEventListener('error', reject);

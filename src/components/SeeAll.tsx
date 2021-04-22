@@ -21,10 +21,10 @@ function SeeAll(props: SeeAllProps) {
   const resources = useSelector((state: RootState) => state.resources);
   const lessons = useSelector((state: RootState) => state.lessons);
   const articles = Object.keys(resources).filter(
-    (id) => resources[id].type == 'Article'
+    id => resources[id].type == 'Article'
   );
   const videos = Object.keys(resources).filter(
-    (id) => resources[id].type == 'Video'
+    id => resources[id].type == 'Video'
   );
 
   const { classes } = props;

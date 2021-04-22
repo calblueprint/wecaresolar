@@ -16,10 +16,10 @@ function Guides(props: GuidesProps) {
   const lessons = useSelector((state: RootState) => state.lessons);
   const resources = useSelector((state: RootState) => state.resources);
   const articles = Object.keys(resources).filter(
-    (id) => resources[id].type == 'Article'
+    id => resources[id].type == 'Article'
   );
   const videos = Object.keys(resources).filter(
-    (id) => resources[id].type == 'Video'
+    id => resources[id].type == 'Video'
   );
   //or
 
