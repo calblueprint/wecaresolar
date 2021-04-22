@@ -41,7 +41,7 @@ const SectionCard = ({
             <Typography variant="h2">{section.title}</Typography>
           </div>
           <div className={classes.imageDiv}>
-            <img className={classes.image} src={section.imageUrl}></img>
+            <img className={classes.image} src={section.imageUrl} />
           </div>
           <div className={classes.textImage}>
             <Typography variant="body1">{section.text}</Typography>
