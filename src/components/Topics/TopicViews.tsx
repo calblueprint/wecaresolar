@@ -16,9 +16,7 @@ function TopicViews({ topicId }: TopicViewProps) {
 
   const headerStyle = {
     backgroundImage: `url(${currentTopic.imageUrl})`,
-    backgroundSize: 'cover',
-    borderColor: 'black',
-    margin: '0px 0px 20px 0px'
+    backgroundSize: 'cover'
   };
   const pageStyle = {
     padding: '0px 18px'
