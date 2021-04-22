@@ -20,26 +20,19 @@ const suitcase = {
   borderTop: 'none'
 };
 
-const bar = {
-  width: '100%'
-  // width = window.innerWidth
-};
-
 const TabBar = (props: TabProps) => {
   const { classes } = props;
   const [value, setValue] = React.useState(2);
 
   return (
-    <div style={bar}>
-      {/* //also does not work  ^^ */}
+    <div>
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
         showLabels
-        className={classes.navbar} //adjusting width here doesn't work either
-        // style={bar} // this doesn't work
+        className={classes.navbar}
       >
         <BottomNavigationAction
           classes={classes}
@@ -72,8 +65,7 @@ const TabBar = (props: TabProps) => {
             <Fab variant="round" className={classes.fabRoot}>
               <div>
                 <SvgIcon>
-                  {' '}
-                  <GoldSuitcaseIcon />{' '}
+                  <GoldSuitcaseIcon />
                 </SvgIcon>
                 <Typography variant="body1"> Suitcase </Typography>
               </div>
