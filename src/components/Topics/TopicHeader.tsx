@@ -16,7 +16,10 @@ function TopicHeader(props: TopicHeaderProps) {
     <div>
       <Typography variant="h1"> {props.topicTitle} </Typography>
       <div style={tagsPadding}>
-        <Typography variant="h2"> {props.articleCount} Article(s) {props.videoCount} Video(s) </Typography>
+        <Typography variant="h2">
+          {' '}
+          {props.articleCount} Article(s) {props.videoCount} Video(s){' '}
+        </Typography>
       </div>
     </div>
   );
