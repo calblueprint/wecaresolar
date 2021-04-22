@@ -14,6 +14,16 @@ function TopicViews({ topicId }: TopicViewProps) {
   const currentTopic = useSelector((state: RootState) => state.topics[topicId]);
   const name = currentTopic.name;
 
+  const headerStyle = {
+    backgroundImage: `url(${currentTopic.imageUrl})`,
+    backgroundSize: 'cover',
+    borderColor: 'black',
+    margin: '0px 0px 20px 0px'
+  };
+  const pageStyle = {
+    padding: '0px 18px'
+  };
+
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
       .filter(
@@ -40,16 +50,6 @@ function TopicViews({ topicId }: TopicViewProps) {
 
   const guideResources = useSelector(selectTopicResources);
   const troubleshootingResources = useSelector(selectTroubleshootingResources);
-
-  const headerStyle = {
-    height: '30%',
-    backgroundImage: `url(${currentTopic.imageUrl})`,
-    backgroundSize: 'cover',
-    margin: '20px 0px 20px 0px'
-  };
-  const pageStyle = {
-    padding: '30px'
-  };
 
   const countMedia = (obj, media: string) =>
     Object.keys(obj).filter((id) => obj[id].type == media).length;
