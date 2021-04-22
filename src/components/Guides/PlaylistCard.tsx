@@ -19,7 +19,7 @@ const PlaylistCard = (props: PlaylistCardProps) => {
   const lesson = props.lesson;
 
   const resources = useSelector((state: RootState) => state.resources);
-  const countMedia = (media: string) =>
+  const countMedia = (media: string) => 
     lesson.resourceIDs.filter((id) => resources[id].type == media).length;
 
   const numVideos = countMedia('Video');
