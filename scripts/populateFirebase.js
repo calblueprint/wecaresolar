@@ -1,6 +1,10 @@
 const firebase = require('firebase');
 const _ = require('lodash');
 
+// TODO: put these defaults (for Airtable fields that aren't filled in) in a consistent place.
+// Some of the defaults are in loadInitialState.ts right now instead
+const DEFAULT_TOPIC_COLOR = "Gray";
+
 // Initialize required Firebase packages
 firebase.initializeApp({
   apiKey: 'AIzaSyARYFXy3DySHolS6t8fL0UsgfyTky_eTXA',
@@ -278,11 +282,13 @@ const processTopics = (record) => {
   const description = record.get('Description');
   const imageUrl = record.get('Image URL');
   const suitcaseCoordinates = record.get('Suitcase coordinates')
+  const color = record.get('Color') || DEFAULT_TOPIC_COLOR;
   return {
     name,
     description,
     imageUrl,
     suitcaseCoordinates,
+    color,
   };
 }
 

@@ -20,7 +20,7 @@ const ProgressBar = (progress: number) => {
   return (
     <div>
       <div style={barStyles}>
-        <div style={fillStyles}></div>
+        <div style={fillStyles} />
       </div>
     </div>
   );
