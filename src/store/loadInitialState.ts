@@ -38,12 +38,12 @@ const numToFetchStatus: Record<number, FetchStatus> = {
 const loadCollection = async (
   collectionName: string,
   updateActionCreator: ActionCreator<any>,
-  postprocess = doc => doc
+  postprocess = (doc) => doc
 ): Promise<FetchStatus> => {
   try {
     const querySnapshot = await db.collection(collectionName).get();
     const docs = {};
-    querySnapshot.forEach(doc => {
+    querySnapshot.forEach((doc) => {
       docs[doc.id] = postprocess(doc.data());
     });
     store.dispatch(updateActionCreator(docs));
@@ -71,16 +71,16 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   const loadedResources: FetchStatus = await loadCollection(
     'resources',
     refreshResources,
-    resource => {
+    (resource) => {
       return {
         ...resource,
-        tags: resource.tags.map(tag => tag.id),
+        tags: resource.tags.map((tag) => tag.id),
         data: {
           ...resource.data,
           ...('sections' in resource.data
             ? {
                 sections: (resource.data.sections || []).map(
-                  section => section.id
+                  (section) => section.id
                 )
               }
             : {})
@@ -99,19 +99,19 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   const loadedLessons: FetchStatus =
     loadedResources === FetchStatus.Failure
       ? FetchStatus.Failure
-      : await loadCollection('lessons', refreshLessons, lesson => {
+      : await loadCollection('lessons', refreshLessons, (lesson) => {
           // Convert resource IDs on each lesson to their string representations
           // before storing in Redux.
           return {
             ...lesson,
-            resourceIDs: lesson.resourceIDs.map(resourceID => resourceID.id)
+            resourceIDs: lesson.resourceIDs.map((resourceID) => resourceID.id)
           };
         });
 
   const loadedTopics: FetchStatus = await loadCollection(
     'topics',
     refreshTopics,
-    topic => {
+    (topic) => {
       return {
         ...topic,
         suitcaseCoordinates: topic.suitcaseCoordinates
@@ -139,7 +139,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   const DEFAULT_STYLE = 'Black'; // TODO: what should the default be, and where should we store this?
   const answerOptionsQuery = await db.collection('answerOptions').get();
   const answerOptions = {};
-  answerOptionsQuery.forEach(doc => {
+  answerOptionsQuery.forEach((doc) => {
     const data = doc.data();
     answerOptions[doc.id] = {
       text: data.text,
@@ -157,14 +157,14 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   const loadedTroubleshooting: FetchStatus = await loadCollection(
     'troubleshooting',
     refreshTroubleshooting,
-    troubleshootingStep => {
+    (troubleshootingStep) => {
       return {
         ...troubleshootingStep,
         sections: (troubleshootingStep.sections || []).map(
-          section => section.id
+          (section) => section.id
         ),
         answerOptions: (troubleshootingStep.answerOptions || []).map(
-          answerOption => answerOptions[answerOption.id]
+          (answerOption) => answerOptions[answerOption.id]
         )
       };
     }
@@ -180,7 +180,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     loadedLessons,
     loadedTopics,
     loadedTroubleshooting
-  ].map(status => fetchStatusToNum[status]);
+  ].map((status) => fetchStatusToNum[status]);
   const overallStatus: FetchStatus = numToFetchStatus[Math.min(...statusNums)];
 
   store.dispatch(onFetchResult(overallStatus));

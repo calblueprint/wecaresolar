@@ -17,7 +17,7 @@ function TopicViews({ topicId }: TopicViewProps) {
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
       .filter(
-        id =>
+        (id) =>
           state.resources[id].tags.includes(name, 0) &&
           !state.resources[id].tags.includes('Troubleshooting', 0)
       )
@@ -29,7 +29,7 @@ function TopicViews({ topicId }: TopicViewProps) {
   const selectTroubleshootingResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
       .filter(
-        id =>
+        (id) =>
           state.resources[id].tags.includes(name, 0) &&
           state.resources[id].tags.includes('Troubleshooting', 0)
       )
@@ -52,7 +52,7 @@ function TopicViews({ topicId }: TopicViewProps) {
   };
 
   const countMedia = (obj, media: string) =>
-    Object.keys(obj).filter(id => obj[id].type == media).length;
+    Object.keys(obj).filter((id) => obj[id].type == media).length;
 
   const articleCount =
     countMedia(guideResources, 'Article') +

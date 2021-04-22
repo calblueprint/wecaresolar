@@ -92,7 +92,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
             </button>
           </div>
           <div className={classes.list}>
-            {types.map(type => (
+            {types.map((type) => (
               <div className={classes.item}>
                 <div className={classes.option}>{type}</div>
                 <div className={classes.checkmark}>
@@ -123,7 +123,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
             </button>
           </div>
           <div className={classes.list}>
-            {topics.map(topic => (
+            {topics.map((topic) => (
               <div className={classes.item}>
                 <div className={classes.option}>{topic}</div>
                 <div className={classes.checkmark}>

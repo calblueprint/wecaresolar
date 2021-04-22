@@ -20,7 +20,7 @@ const PlaylistCard = (props: PlaylistCardProps) => {
 
   const resources = useSelector((state: RootState) => state.resources);
   const countMedia = (media: string) =>
-    lesson.resourceIDs.filter(id => resources[id].type == media).length;
+    lesson.resourceIDs.filter((id) => resources[id].type == media).length;
 
   const numVideos = countMedia('Video');
   const numArticles = countMedia('Article');
@@ -30,7 +30,7 @@ const PlaylistCard = (props: PlaylistCardProps) => {
       <h2 className={classes.title}>{lesson.title}</h2>
       <div className={classes.spread}>
         <div className={classes.column}>
-          {lesson.objectives.map(tag => (
+          {lesson.objectives.map((tag) => (
             <Tag tag={tag} />
           ))}
         </div>

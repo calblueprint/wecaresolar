@@ -37,9 +37,7 @@ const Video = ({ resId, classes }: VideoProps) => {
         return (
           <div className={classes.buttons}>
             <div
-              className={`${classes.outlineButton} ${classes.button} ${
-                classes.noDownload
-              }`}
+              className={`${classes.outlineButton} ${classes.button} ${classes.noDownload}`}
             >
               Not downloaded
             </div>
@@ -50,9 +48,7 @@ const Video = ({ resId, classes }: VideoProps) => {
         return (
           <div className={classes.buttons}>
             <div
-              className={`${classes.outlineButton} ${classes.button} ${
-                classes.Download
-              }`}
+              className={`${classes.outlineButton} ${classes.button} ${classes.Download}`}
             >
               Downloaded
             </div>
@@ -66,7 +62,7 @@ const Video = ({ resId, classes }: VideoProps) => {
     if (isVideo(videoDetails.data)) {
       if (videoDetails.isCached) {
         get(resId, videoStore)
-          .then(videoBlob => {
+          .then((videoBlob) => {
             if (videoBlob !== undefined) {
               setVideoUrl(
                 URL.createObjectURL(arrayBufferToBlob(videoBlob, 'video/mp4'))
@@ -80,7 +76,7 @@ const Video = ({ resId, classes }: VideoProps) => {
               );
             }
           })
-          .catch(error =>
+          .catch((error) =>
             console.log(
               'Failed to download the video.' +
                 'Please make sure that you are not in private browsing mode, and that you have enough space in your video storage'
@@ -98,7 +94,7 @@ const Video = ({ resId, classes }: VideoProps) => {
     <div className={classes.page}>
       <div className={classes.nonVideo}>
         <div className={classes.labelList}>
-          {videoDetails.tags.map(tag => (
+          {videoDetails.tags.map((tag) => (
             <Tag classes={classes} tag={tag} />
           ))}
         </div>

@@ -44,7 +44,7 @@ function Suitcase({ classes, match }) {
   const [toggled, setToggle] = React.useState(false);
 
   const showLabels = () => {
-    setToggle(prev => !prev);
+    setToggle((prev) => !prev);
   };
 
   return (

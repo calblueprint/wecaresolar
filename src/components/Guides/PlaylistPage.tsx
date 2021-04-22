@@ -20,11 +20,12 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
 
   const currentLesson = lessons[lessonId];
   const countMedia = (media: string) =>
-    currentLesson.resourceIDs.filter(id => resources[id].type == media).length;
+    currentLesson.resourceIDs.filter((id) => resources[id].type == media)
+      .length;
 
   const calcProgress = () => {
     const numCompleted = currentLesson.resourceIDs.filter(
-      id => resources[id].isCompleted
+      (id) => resources[id].isCompleted
     ).length;
     return Math.round(
       ((numCompleted * 1.0) / currentLesson.resourceIDs.length) * 100
@@ -66,7 +67,7 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
           You will learn:
         </Typography>
         <ol className={classes.objList}>
-          {currentLesson.objectives.map(item => (
+          {currentLesson.objectives.map((item) => (
             <Typography variant="body1">
               <li className={classes.objective}>{item}</li>
             </Typography>
@@ -76,7 +77,7 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
       <Typography variant="h3" className={classes.subHeader}>
         Content
       </Typography>
-      {currentLesson.resourceIDs.map(id => {
+      {currentLesson.resourceIDs.map((id) => {
         if (id in resources) {
           return (
             <StandardCard

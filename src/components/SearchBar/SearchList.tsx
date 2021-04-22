@@ -18,10 +18,10 @@ function SearchList(props) {
     );
   });
   if (props.video) {
-    resources = resources.filter(r => r.type == 'Video');
+    resources = resources.filter((r) => r.type == 'Video');
   }
   if (props.article) {
-    resources = resources.filter(r => r.type == 'Article');
+    resources = resources.filter((r) => r.type == 'Article');
   }
   const fuse = new Fuse(resources, options);
   const results = fuse.search(props.query);

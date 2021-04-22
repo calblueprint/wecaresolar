@@ -98,7 +98,7 @@ export const resourcesSlice = createSlice({
 
 export const selectFavoritedResources = (state: RootState) =>
   Object.keys(state.resources)
-    .filter(id => state.resources[id].isFavorited)
+    .filter((id) => state.resources[id].isFavorited)
     .reduce<ResourcesSlice>((res, key) => {
       res[key] = state.resources[key];
       return res;
