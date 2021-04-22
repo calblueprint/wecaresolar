@@ -1,5 +1,7 @@
-import { Typography } from '@material-ui/core';
 import React from 'react';
+import { Typography } from '@material-ui/core';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 
 interface TopicHeaderProps {
   topicTitle: string;
@@ -9,7 +11,8 @@ interface TopicHeaderProps {
 
 function TopicHeader(props: TopicHeaderProps) {
   const tagsPadding = {
-    paddingTop: '10vh'
+    paddingTop: '10vh',
+    paddingBottom: '10px'
   };
 
   return (
@@ -17,8 +20,10 @@ function TopicHeader(props: TopicHeaderProps) {
       <Typography variant="h1"> {props.topicTitle} </Typography>
       <div style={tagsPadding}>
         <Typography variant="h2">
-          {' '}
-          {props.articleCount} Article(s) {props.videoCount} Video(s){' '}
+          <YouTubeIcon fontSize={'small'} />
+          {props.articleCount} Article(s)
+          <InsertDriveFileOutlinedIcon fontSize={'small'} />
+          {props.videoCount} Video(s){' '}
         </Typography>
       </div>
     </div>
