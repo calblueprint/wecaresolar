@@ -1,5 +1,5 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core';
+import { CardContent, CardMedia, withStyles } from '@material-ui/core';
 import { styles } from './SectionStyles';
 import { Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
@@ -13,37 +13,29 @@ type SectionProps = {
 const SectionCard = ({ section, classes}: SectionProps): typeof SectionCard => {
     if (section.imageUrl == null) {
         return (
-            <Card className={classes.section}>
-                <div>
-                    <div className={classes.labelBox}>
-                        <text className={classes.labelText}>{section.label}</text>
+            <Card className={classes.card}>
+                <CardContent>
+                <div className={classes.labelBox}>
+                        {section.label}
                     </div>
-                    <div className={classes.title}>
-                            <Typography variant="h2">{section.title}</Typography>
-                    </div>
-                    <div className={classes.text}>
-                        <Typography variant="body1">{section.text}</Typography>
-                    </div> 
-                </div>
+                    <Typography variant="h2" className={classes.title}>{section.title}</Typography>
+                    <Typography variant="body1" className={classes.text}>{section.text}</Typography>
+                </CardContent>
             </Card>
         );
     } else {
         return (
-            <Card className={classes.section}>
-                <div>
+            <Card className={classes.card}>
+                <CardContent>
                     <div className={classes.labelBox}>
                         <text className={classes.labelText}>{section.label}</text>
                     </div>
-                    <div className={classes.title}>
-                            <Typography variant="h2">{section.title}</Typography>
-                    </div>
+                    <Typography variant="h2" className={classes.title}>{section.title}</Typography>
                     <div className={classes.imageDiv}>
-                        <img className={classes.image} src ={section.imageUrl}></img>
+                        <img src={section.imageUrl} className={classes.image}></img>
                     </div>
-                    <div className={classes.textImage}>
-                        <Typography variant="body1">{section.text}</Typography>
-                    </div> 
-                </div>
+                    <Typography variant="body1" className={classes.text}>{section.text}</Typography>
+                </CardContent>
             </Card>
         );
     }

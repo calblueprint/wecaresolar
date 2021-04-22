@@ -1,28 +1,36 @@
 import { createStyles, Theme, } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
+      fixed: {
+          position: 'fixed',
+          top: '60px',
+          width: '100vw',
+          height: '80px',
+          backgroundColor: '#FAFAFA',
+          zIndex: 1,
+      },
       title: {
           position: 'fixed',
+          width: '100vw',
           top: '75px',
-          left: '6vw',
-          fontFamily: theme.typography.fontFamily,
-          fontStyle: theme.typography.h1.fontStyle,
-          fontSize: theme.typography.h1.fontSize,
-          color: theme.palette.black.main
+          left: '6.5vw',
       },
       progressBar: {
           position: 'fixed',
-          top: '126px',
-          left: '6vw',
-          width: '75%'
+          width: '100%',
+          left: '6.5vw',
+          marginTop: '60px'
       },
       progressText: {
-
+          position: 'fixed',
+          left: '79vw',
+          marginTop: '50px',
+          opacity: '0.4'
       },
-      sectionView: {
+      sections: {
+          marginTop: '20px',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'space-between',
           alignItems: 'center'
-      }
+      },
 });
