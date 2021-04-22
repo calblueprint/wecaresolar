@@ -92,7 +92,7 @@ const theme = createMuiTheme({
   spacing: [0, 6, 12, 18, 24],
   palette: {
     black: {
-      main: '#333333'
+      main: '#020202'
     },
     white: {
       main: '#FFFFFF'

@@ -3,7 +3,9 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     root: {
-      width: '100%',
+      minWidth: 60,
+      maxWidth: '100%',
+      opacity: 0.65,
       color: theme.palette.black.main,
       padding: '0%',
       '&$selected': {
@@ -17,6 +19,8 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       color: theme.palette.black.main,
+      backgroundColor: theme.palette.white.main,
+      opacity: 0.65,
       position: 'fixed',
       bottom: '2.5vh',
       height: '10vh',
@@ -24,6 +28,8 @@ export const styles = (theme: Theme) =>
       textTransform: 'capitalize',
       '&:hover': {
         color: theme.palette.yellow2.main,
+        backgroundColor: theme.palette.white.main,
+        opacity: 1,
         border: '3px solid',
         borderColor: theme.palette.yellow2.main
       }
