@@ -13,8 +13,7 @@ type ArticleProps = {
 };
 
 const Article = ({ resId, classes }: ArticleProps): typeof Article => {
-  const resources = useSelector((state: RootState) => state.resources);
-  const article = resources[resId];
+  const article = useSelector((state: RootState) => state.resources[resId]);
   const sections = useSelector((state: RootState) => state.sections);
   const calcProgress = () => {
     return 25;

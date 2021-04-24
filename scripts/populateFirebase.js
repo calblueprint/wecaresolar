@@ -187,19 +187,19 @@ const updateAirtableTimes = (tableName, origRecords, uploadTime) => {
 const processResources = (record) => {
   const title = record.get('Title');
   const type = record.get('Type');
-  const tags = record.get('Topic Titles').map(title => db.collection('topics').doc(title));
+  const tags = (record.get('Topic Titles') || []).map(title => db.collection('topics').doc(title));
 
   let data;
   if (type === 'Video') {
     data = {
-      preview: record.get('Preview'),
-      watchUrl: record.get('Watch URL'),
-      downloadUrl: record.get('Download URL'),
-      imageUrl: record.get('Image URL'),
+      preview: record.get('Preview') || "",
+      watchUrl: record.get('Watch URL') || "",
+      downloadUrl: record.get('Download URL') || "",
+      imageUrl: record.get('Image URL') || "",
     };
   } else if (type === 'Article') {
     data = {
-      preview: record.get('Preview'),
+      preview: record.get('Preview') || "",
       sections: (record.get('Section IDs') || []).map(id => db.collection('sections').doc(String(id))),
     };
   } else {
