@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
+import CountTag from '../Count/CountTag'; 
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 
@@ -11,20 +12,18 @@ interface TopicHeaderProps {
 
 function TopicHeader(props: TopicHeaderProps) {
   const tagsPadding = {
+    display: 'flex',
     paddingTop: '10vh',
     paddingBottom: '10px'
   };
 
   return (
     <div>
+
       <Typography variant="h1"> {props.topicTitle} </Typography>
       <div style={tagsPadding}>
-        <Typography variant="h2">
-          <YouTubeIcon fontSize={'small'} />
-          {props.articleCount} Article(s)
-          <InsertDriveFileOutlinedIcon fontSize={'small'} />
-          {props.videoCount} Video(s){' '}
-        </Typography>
+        <CountTag media={'Article'} count={props.articleCount} ></CountTag>
+        <CountTag media={'Video'} count={props.videoCount} ></CountTag>
       </div>
     </div>
   );
