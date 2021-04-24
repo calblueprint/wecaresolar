@@ -1,8 +1,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import CountTag from '../Count/CountTag'; 
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import InsertDriveFileOutlinedIcon from '@material-ui/icons/InsertDriveFileOutlined';
 
 interface TopicHeaderProps {
   topicTitle: string;
