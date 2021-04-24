@@ -21,7 +21,6 @@ function Guides(props: GuidesProps) {
   const videos = Object.keys(resources).filter(
     (id) => resources[id].type == 'Video'
   );
-  //or
 
   const { classes } = props;
 

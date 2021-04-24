@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { setResourceIsCached } from '../../store/resourcesSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
+import DeleteButton from './DeleteButton';
 
 type VideoProps = {
   resId: string;
@@ -31,7 +32,7 @@ const Video = ({ resId, classes }: VideoProps) => {
     refreshVideoUrl();
   }, [videoDetails.isCached]);
 
-  function createDownloadButton() {
+  function createButtonSet() {
     if (isVideo(videoDetails.data)) {
       if (!videoDetails.isCached) {
         return (
@@ -52,6 +53,7 @@ const Video = ({ resId, classes }: VideoProps) => {
             >
               Downloaded
             </div>
+            <DeleteButton id={resId} />
           </div>
         );
       }
@@ -104,7 +106,7 @@ const Video = ({ resId, classes }: VideoProps) => {
         </div>
       </div>
       <ReactPlayer url={videoUrl} playing controls width="100%" />
-      <div className={classes.nonVideo}>{createDownloadButton()}</div>
+      <div className={classes.nonVideo}>{createButtonSet()}</div>
     </div>
   );
 };
