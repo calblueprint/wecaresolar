@@ -267,10 +267,15 @@ const processResources = (record) => {
 const processSections = (record) => {
   const title = record.get('Title');
   const label = record.get('Label');
-  const imageUrl = record.get('Image URL');
   const text = record.get('Text');
 
+  // If there is something in the "Image Upload" field, it should have priority
+  // over the "Image URL" field.
+  // (Eventually, we should transition to having all of our images uploaded directly
+  // to Airtable rather than being listed as URLs)
   const imageUpload = record.get('Image Upload');
+  const imageUrl =
+    (imageUpload ? imageUpload[0].url : record.get('Image URL')) || '';
 
   let result = {};
   if (title) result['title'] = title;
