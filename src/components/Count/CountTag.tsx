@@ -1,4 +1,3 @@
-import { Typography } from '@material-ui/core';
 import React from 'react';
 import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
 import { ReactComponent as PlaylistIcon } from './PlaylistIcon.svg';

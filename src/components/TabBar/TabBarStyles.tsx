@@ -20,11 +20,10 @@ export const styles = (theme: Theme) =>
       flexDirection: 'column',
       color: theme.palette.black.main,
       backgroundColor: theme.palette.white.main,
-      opacity: 0.65,
       position: 'fixed',
       bottom: '2.5vh',
-      height: '10vh',
-      width: '10vh',
+      height: '11vh',
+      width: '11vh',
       textTransform: 'capitalize',
       '&:hover': {
         color: theme.palette.yellow2.main,

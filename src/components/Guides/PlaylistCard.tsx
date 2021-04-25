@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './PlaylistCardStyles';
-import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
-import { ReactComponent as VideoIcon } from './VideoIcon.svg';
+import { ReactComponent as InstructionIcon } from '../Count/InstructionIcon.svg';
+import { ReactComponent as VideoIcon } from '../Count/VideoIcon.svg';
 
 interface PlaylistCardProps {
   lesson: Lesson;
