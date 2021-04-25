@@ -1,26 +1,46 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './TagsStyles';
+import { Topic } from '../../store/topicsSlice';
 
 interface TagProps {
-  tag: string;
+  name: string;
+  //tag: string; 
   classes: any;
-  color: string;
+  color: string; 
 }
 
 const Tag = (props: TagProps) => {
+  console.log(props.color)
   const { classes } = props;
-  const { color } = props;
-  // const category =
-  // props.tag === 'Lights'
-  //   ? classes.lights
-  //   : props.tag === 'Rechargable Headlamps'
-  //   ? classes.headlamps
-  //   : props.tag === 'Suitcase'
-  //   ? classes.suitcase
-  //   : classes.defaultTag;
+  let buttonType = `${classes.tag}`; 
 
-  return <div className={`${classes.tag} ${color}`}>{props.tag}</div>;
+  if (props.color == "Gray") {
+    buttonType  = `${classes.tag} ${classes.brown}`;
+  }
+
+  if (props.color == "Brown") {
+    buttonType  = `${classes.tag} ${classes.brown}`;
+  } 
+
+  if (props.color == "Red") {
+    buttonType  = `${classes.tag} ${classes.red}`;
+  } 
+
+  if (props.color == "Navy Blue") {
+    buttonType  = `${classes.tag} ${classes.navyblue}`;
+  }  
+ 
+
+  // let buttonType = `${classes.tag}`; 
+
+  // {Object.values<Topics>(colors).map((option) => {
+  // if (option.color == "Grey") {
+  //   buttonType = 
+  // 
+
+
+  return <div className={buttonType}>{props.name}</div>;
 };
 
 export default withStyles(styles)(Tag);
