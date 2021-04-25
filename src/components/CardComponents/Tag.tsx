@@ -5,20 +5,20 @@ import { styles } from './TagsStyles';
 interface TagProps {
   tag: string;
   classes: any;
-  color: string; 
+  color: string;
 }
 
 const Tag = (props: TagProps) => {
   const { classes } = props;
-  const {color} = props; 
+  const { color } = props;
   // const category =
-    // props.tag === 'Lights'
-    //   ? classes.lights
-    //   : props.tag === 'Rechargable Headlamps'
-    //   ? classes.headlamps
-    //   : props.tag === 'Suitcase'
-    //   ? classes.suitcase
-    //   : classes.defaultTag;
+  // props.tag === 'Lights'
+  //   ? classes.lights
+  //   : props.tag === 'Rechargable Headlamps'
+  //   ? classes.headlamps
+  //   : props.tag === 'Suitcase'
+  //   ? classes.suitcase
+  //   : classes.defaultTag;
 
   return <div className={`${classes.tag} ${color}`}>{props.tag}</div>;
 };

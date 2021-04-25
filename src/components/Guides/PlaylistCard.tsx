@@ -9,7 +9,7 @@ import { styles } from './PlaylistCardStyles';
 import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
 import { ReactComponent as VideoIcon } from './VideoIcon.svg';
 import { PlaylistAddSharp } from '@material-ui/icons';
-import {Topic } from '../../store/topicsSlice';
+import { Topic } from '../../store/topicsSlice';
 
 interface PlaylistCardProps {
   lesson: Lesson;
@@ -27,25 +27,25 @@ const PlaylistCard = (props: PlaylistCardProps) => {
 
   const numVideos = countMedia('Video');
   const numArticles = countMedia('Article');
-  const mySet = new Set<Topic>(); 
-  lesson.resourceIDs.map((resID) =>resources[resID].tags.map((tag) => mySet.add(topics[tag]))) 
-
+  const mySet = new Set<Topic>();
+  lesson.resourceIDs.map((resID) =>
+    resources[resID].tags.map((tag) => mySet.add(topics[tag]))
+  );
 
   return (
     <Card className={classes.card}>
       <h2 className={classes.title}>{lesson.title}</h2>
       <div className={classes.spread}>
         <div className={classes.column}>
-        {Array.from<Topic>(mySet).map((topic: Topic)=>
-          (<Tag tag={topic.name} color={topic.color}/>))}
+          {Array.from<Topic>(mySet).map((topic: Topic) => (
+            <Tag tag={topic.name} color={topic.color} />
+          ))}
 
-
-        {/* {lesson.resourceIDs.map((resID) =>(
+          {/* {lesson.resourceIDs.map((resID) =>(
           resources[resID].tags.map((topic)=>(
             <Tag tag={topic}/> 
           )) 
         ))} */}
-          
         </div>
         <div className={classes.column}>
           <div className={classes.icon}>

@@ -99,7 +99,7 @@ const Video = ({ resId, classes }: VideoProps) => {
       <div className={classes.nonVideo}>
         <div className={classes.labelList}>
           {videoDetails.tags.map((tag) => (
-            <Tag classes={classes} tag={tag} color={topics[tag].color}/>
+            <Tag classes={classes} tag={tag} color={topics[tag].color} />
           ))}
         </div>
         <div className={classes.header}>

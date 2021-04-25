@@ -28,5 +28,21 @@ export const styles = (theme: Theme) =>
     },
     defaultTag: {
       backgroundColor: '#ABABAB'
-    }
+    }, 
+
+    brown: {
+      color: theme.palette.lights.dark,
+      backgroundColor: theme.palette.lights.main 
+    }, 
+    navyblue: {
+      color: theme.palette.suitcase.dark,
+      backgroundColor: theme.palette.suitcase.main
+    }, 
+    red: {
+      color: theme.palette.headlamp.dark,
+      backgroundColor: theme.palette.headlamp.main
+
+    }, 
+    indigoblue: {
+    }, 
   });

@@ -147,7 +147,7 @@ export const INITIAL_TOPICS: TopicsSlice = {
     name: 'Fetal Doppler',
     description: 'This is the Fetal Doppler.',
     imageUrl: FetalImage,
-    suitcaseCoordinates: [0.5, 0.5], 
+    suitcaseCoordinates: [0.5, 0.5],
     color: 'Brown'
   },
   '13': {
@@ -155,7 +155,7 @@ export const INITIAL_TOPICS: TopicsSlice = {
     description: 'This is the Cables topic.',
     imageUrl:
       'https://uc4f636e4e164e5a19ed9d0c3f4a.previews.dropboxusercontent.com/p/thumb/AA_WqOqKpm1EUCKFFxR8EAgc4YPeK-y1O5qZ5h1UX9x1_G20d81bCYuzpDCoBRgqIK2-zabqhsHEk3xlJc4dhAbiJtHLX1OM9roc4ggOUtu2-4c3l0Zut7UjV52X5OZKJpHAO2iuv7kiGuMRR5fda280XaLSutHhLK4A4suwoMD5vhD1dK8xcXVWWLJ9m_dxlc4FIl0NE5tIbugQzDRRUVze4GBi6_X6OIC5oMPWYFLcjp0bKps4qr2kQ8uqKzuI6tNimQ0hOLg-LtnZ_a7o9wrux4VHEFwlpyCap9qDS80oqpLXoef0U0dPDEIMZbvLyvwKl2FRkdA_0kcc4GG3houQnoxBOsAcRFcVa86h7ViOCQbNRWndbgDAsHqPuZJHTt56CH-NBJfcAZgaW6r6BGGgTi1r4cJEjNGfjY35etNOEw/p.png?size=2048x1536&size_mode=3',
-    suitcaseCoordinates: [0.8, 0.3], 
-    color: 'Grey' 
+    suitcaseCoordinates: [0.8, 0.3],
+    color: 'Grey'
   }
 };
