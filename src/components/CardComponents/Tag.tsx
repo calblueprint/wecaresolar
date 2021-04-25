@@ -32,7 +32,7 @@ const Tag = (props: TagProps) => {
 
   if (props.color == 'Indigo Blue') {
     buttonType = `${classes.tag} ${classes.indigoblue}`;
-  } 
+  }
 
   if (props.color == 'Sky Blue') {
     buttonType = `${classes.tag} ${classes.skyblue}`;

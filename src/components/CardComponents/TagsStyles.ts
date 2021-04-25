@@ -15,9 +15,9 @@ export const styles = (theme: Theme) =>
       borderRadius: 4.87599
     },
     brown: {
-      color: theme.palette.lights.dark, 
+      color: theme.palette.lights.dark,
       backgroundColor: theme.palette.lights.main
-    }, 
+    },
     red: {
       color: theme.palette.headlamp.dark,
       backgroundColor: theme.palette.headlamp.main
@@ -29,18 +29,17 @@ export const styles = (theme: Theme) =>
     },
 
     gray: {
-      color: theme.palette.wcsgrey.dark, 
-      backgroundColor: theme.palette.wcsgrey.main,  
-    }, 
+      color: theme.palette.wcsgrey.dark,
+      backgroundColor: theme.palette.wcsgrey.main
+    },
 
     indigoblue: {
-      color: theme.palette.fetaldoppler.dark, 
-      backgroundColor: theme.palette.fetaldoppler.main,   
-    }, 
+      color: theme.palette.fetaldoppler.dark,
+      backgroundColor: theme.palette.fetaldoppler.main
+    },
 
     skyblue: {
       color: theme.palette.charger.dark,
-      backgroundColor: theme.palette.charger.main,    
-    }, 
-
+      backgroundColor: theme.palette.charger.main
+    }
   });

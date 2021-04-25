@@ -104,7 +104,7 @@ const theme = createMuiTheme({
       main: '#F6DBB7'
     },
     wcsgrey: {
-      main: '#E1E1E1', 
+      main: '#E1E1E1',
       dark: '#777777'
     },
     yellow2: {
