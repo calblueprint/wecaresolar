@@ -223,6 +223,22 @@ const updateAirtableTimes = (tableName, origRecords, uploadTime) => {
   return Promise.all(requests);
 };
 
+const getImageUrl = (record) => {
+  /**
+   * Helper function to figure out what image URL to retrieve from this record.
+   *
+   * If there is something in the "Image Upload" field, it should have priority
+   * over the "Image URL" field.
+   *
+   * (Eventually, we should transition to having all of our images uploaded directly
+   * to Airtable rather than being listed as URLs)
+   */
+  const imageUpload = record.get('Image Upload');
+  const imageUrl =
+    (imageUpload ? imageUpload[0].url : record.get('Image URL')) || '';
+  return imageUrl;
+};
+
 // =====================================================
 // Specifying desired Airtable => Firestore formats
 // =====================================================
@@ -240,7 +256,7 @@ const processResources = (record) => {
       preview: record.get('Preview') || '',
       watchUrl: record.get('Watch URL') || '',
       downloadUrl: record.get('Download URL') || '',
-      imageUrl: record.get('Image URL') || ''
+      imageUrl: getImageUrl(record) || ''
     };
   } else if (type === 'Article') {
     data = {
@@ -268,14 +284,7 @@ const processSections = (record) => {
   const title = record.get('Title');
   const label = record.get('Label');
   const text = record.get('Text');
-
-  // If there is something in the "Image Upload" field, it should have priority
-  // over the "Image URL" field.
-  // (Eventually, we should transition to having all of our images uploaded directly
-  // to Airtable rather than being listed as URLs)
-  const imageUpload = record.get('Image Upload');
-  const imageUrl =
-    (imageUpload ? imageUpload[0].url : record.get('Image URL')) || '';
+  const imageUrl = getImageUrl(record);
 
   let result = {};
   if (title) result['title'] = title;
@@ -348,7 +357,7 @@ const processLessons = (record) => {
 const processTopics = (record) => {
   const name = record.get('Title');
   const description = record.get('Description');
-  const imageUrl = record.get('Image URL');
+  const imageUrl = getImageUrl(record);
   const suitcaseCoordinates = record.get('Suitcase coordinates');
   const color = record.get('Color') || DEFAULT_TOPIC_COLOR;
   return {
