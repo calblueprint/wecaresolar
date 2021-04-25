@@ -4,43 +4,40 @@ import { styles } from './TagsStyles';
 import { Topic } from '../../store/topicsSlice';
 
 interface TagProps {
-  name: string;
-  //tag: string; 
+  tag: string;
   classes: any;
-  color: string; 
+  color: string;
 }
 
 const Tag = (props: TagProps) => {
-  console.log(props.color)
+  console.log(props.color);
   const { classes } = props;
-  let buttonType = `${classes.tag}`; 
+  let buttonType = `${classes.tag}`;
 
-  if (props.color == "Gray") {
-    buttonType  = `${classes.tag} ${classes.brown}`;
+  if (props.color == 'Gray') {
+    buttonType = `${classes.tag} ${classes.gray}`;
   }
 
-  if (props.color == "Brown") {
-    buttonType  = `${classes.tag} ${classes.brown}`;
+  if (props.color == 'Brown') {
+    buttonType = `${classes.tag} ${classes.brown}`;
+  }
+
+  if (props.color == 'Red') {
+    buttonType = `${classes.tag} ${classes.red}`;
+  }
+
+  if (props.color == 'Navy Blue') {
+    buttonType = `${classes.tag} ${classes.navyblue}`;
+  }
+
+  if (props.color == 'Indigo Blue') {
+    buttonType = `${classes.tag} ${classes.indigoblue}`;
   } 
 
-  if (props.color == "Red") {
-    buttonType  = `${classes.tag} ${classes.red}`;
-  } 
-
-  if (props.color == "Navy Blue") {
-    buttonType  = `${classes.tag} ${classes.navyblue}`;
-  }  
- 
-
-  // let buttonType = `${classes.tag}`; 
-
-  // {Object.values<Topics>(colors).map((option) => {
-  // if (option.color == "Grey") {
-  //   buttonType = 
-  // 
-
-
-  return <div className={buttonType}>{props.name}</div>;
+  if (props.color == 'Sky Blue') {
+    buttonType = `${classes.tag} ${classes.skyblue}`;
+  }
+  return <div className={buttonType}>{props.tag}</div>;
 };
 
 export default withStyles(styles)(Tag);

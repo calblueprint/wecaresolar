@@ -104,7 +104,8 @@ const theme = createMuiTheme({
       main: '#F6DBB7'
     },
     wcsgrey: {
-      main: '#E1E1E1'
+      main: '#E1E1E1', 
+      dark: '#777777'
     },
     yellow2: {
       main: '#F6B350'
@@ -135,24 +136,24 @@ const theme = createMuiTheme({
       dark: '#231F20'
     },
     suitcase: {
-      main: '#9FB8D8',
-      dark: '#2A5375'
+      main: 'rgba(134, 157, 176, 0.3)',
+      dark: 'rgba(42, 83, 117, 1)'
     },
     lights: {
-      main: '#FCEBD5',
-      dark: '#DBB079'
+      main: 'rgba(244, 189, 116, 0.3)',
+      dark: 'rgba(188, 130, 115, 1)'
     },
     fetaldoppler: {
-      main: '#777CA6',
-      dark: '#4B5288'
+      main: 'rgba(162, 167, 210, 0.35)',
+      dark: 'rgba(112, 117, 160, 1)'
     },
     headlamp: {
-      main: '#D49BA9',
-      dark: '#C0677D'
+      main: 'rgba(238, 172, 172, 0.35)',
+      dark: 'rgba(228, 98, 98, 1)'
     },
     charger: {
-      main: '#DBE2E7',
-      dark: '#4D6A6D'
+      main: 'rgba(163, 203, 238, 0.35)',
+      dark: 'rgba(107, 173, 232, 1)'
     },
     phonecharger: {
       main: '#E4CDC7',
