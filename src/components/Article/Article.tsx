@@ -1,5 +1,5 @@
 import { Typography, withStyles } from '@material-ui/core';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { isArticle } from '../../store/resourcesSlice';
@@ -13,14 +13,9 @@ type ArticleProps = {
 };
 
 const Article = ({ resId, classes }: ArticleProps): typeof Article => {
-  const article = useSelector((state: RootState) => state.resources[resId]);
+  const resources = useSelector((state: RootState) => state.resources);
+  const article = resources[resId];
   const sections = useSelector((state: RootState) => state.sections);
-  const [isDownloading, setIsDownloading] = useState(false);
-
-  useEffect(() => {
-    // Attempt to cache the article
-  }, []);
-
   const calcProgress = () => {
     return 25;
   };
