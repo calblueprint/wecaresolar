@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import CountTag from '../Count/CountTag'; 
+import theme from '../../CustomStyles';
 
 interface TopicHeaderProps {
   topicTitle: string;
@@ -11,17 +12,17 @@ interface TopicHeaderProps {
 function TopicHeader(props: TopicHeaderProps) {
   const tagsPadding = {
     display: 'flex',
-    paddingTop: '10vh',
-    paddingBottom: '10px'
+    padding: theme.spacing('10vh', 1, 1, 1)
   };
 
   return (
     <div>
-
       <Typography variant="h1"> {props.topicTitle} </Typography>
-      <div style={tagsPadding}>
-        <CountTag media={'Article'} count={props.articleCount} ></CountTag>
-        <CountTag media={'Video'} count={props.videoCount} ></CountTag>
+      <div>
+        <Typography variant="subtitle1" style={tagsPadding}>
+          <CountTag media={'Article'} count={props.articleCount} ></CountTag>
+          <CountTag media={'Video'} count={props.videoCount} ></CountTag>
+        </Typography>
       </div>
     </div>
   );

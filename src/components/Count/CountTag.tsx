@@ -18,16 +18,16 @@ const CountTag = ({media, count} : countProps) => {
   function mediaRender (text, icon) {
     return (
       <div style={tag}>
-        {icon} <Typography variant="subtitle1"> {count} {text} </Typography>
+        {icon} {count} {text}{count === 1 ? null : 's'}
       </div> 
     )
   }
 
   return (
     <div>
-      {media == 'Article'?  mediaRender('Article(s)', <InstructionIcon/>) : null} 
-      {media == 'Video'?  mediaRender('Video(s)', <VideoIcon/>) : null} 
-      {media == 'Playlist'?  mediaRender('Playlist(s)', <PlaylistIcon/>) : null} 
+      {media == 'Article'?  mediaRender('Article', <InstructionIcon/>) : null} 
+      {media == 'Video'?  mediaRender('Video', <VideoIcon/>) : null} 
+      {media == 'Playlist'?  mediaRender('Playlist', <PlaylistIcon/>) : null} 
     </div>
   )
 }

@@ -5,6 +5,7 @@ import { RootState } from '../../store/reducers';
 import { ResourcesSlice } from '../../store/resourcesSlice';
 import TopicHeader from './TopicHeader';
 import { Typography } from '@material-ui/core';
+import theme from '../../CustomStyles';
 
 interface TopicViewProps {
   topicId: string;
@@ -19,7 +20,7 @@ function TopicViews({ topicId }: TopicViewProps) {
     backgroundSize: 'cover'
   };
   const pageStyle = {
-    padding: '0px 18px'
+    padding: theme.spacing(1, 2, 1, 2)
   };
 
   const selectTopicResources = (state: RootState) =>
