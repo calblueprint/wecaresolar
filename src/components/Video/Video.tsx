@@ -14,6 +14,7 @@ import { setResourceIsCached } from '../../store/resourcesSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import DeleteButton from './DeleteButton';
+import { topicsSlice } from '../../store/topicsSlice';
 
 type VideoProps = {
   resId: string;
@@ -22,6 +23,7 @@ type VideoProps = {
 
 const Video = ({ resId, classes }: VideoProps) => {
   const resources = useSelector((state: RootState) => state.resources);
+  const topics = useSelector((state: RootState) => state.topics);
   const dispatch = useDispatch();
   const videoDetails = resources[resId];
   const videoData = videoDetails.data as VideoData;
@@ -97,7 +99,7 @@ const Video = ({ resId, classes }: VideoProps) => {
       <div className={classes.nonVideo}>
         <div className={classes.labelList}>
           {videoDetails.tags.map((tag) => (
-            <Tag classes={classes} tag={tag} />
+            <Tag classes={classes} tag={tag} color={topics[tag].color} />
           ))}
         </div>
         <div className={classes.header}>
