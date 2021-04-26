@@ -8,7 +8,7 @@ import ResourceCard from './Guides/ResourceCard';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SeeAllStyles';
 import StandardCard from './Cards/StandardCard';
-import CountTag from '../components/Count/CountTag'; 
+import CountTag from '../components/Count/CountTag';
 import { Typography } from '@material-ui/core';
 
 type SeeAllProps = {
@@ -30,8 +30,8 @@ function SeeAll(props: SeeAllProps) {
   );
 
   const countMedia = (obj) => {
-      return Object.keys(obj).length;
-  }
+    return Object.keys(obj).length;
+  };
 
   const { classes } = props;
 
@@ -40,8 +40,11 @@ function SeeAll(props: SeeAllProps) {
       return (
         <div className={classes.root}>
           <div className={classes.header}>
-            <Typography variant='h1' > All Playlists </Typography>
-            <Typography variant='body1' className={classes.countText}> <CountTag media={'Playlist'} count={countMedia(lessons)} /></Typography>
+            <Typography variant="h1"> All Playlists </Typography>
+            <Typography variant="body1" className={classes.countText}>
+              {' '}
+              <CountTag media={'Playlist'} count={countMedia(lessons)} />
+            </Typography>
           </div>
           <div className={classes.scroll}>
             {Object.keys(lessons).map((key: any) => (
@@ -62,8 +65,11 @@ function SeeAll(props: SeeAllProps) {
       return (
         <div className={classes.root}>
           <div className={classes.header}>
-            <Typography variant='h1'> All Instructions </Typography>
-            <Typography variant='body1' className={classes.countText}> <CountTag media={'Article'} count={countMedia(articles)} /></Typography>
+            <Typography variant="h1"> All Instructions </Typography>
+            <Typography variant="body1" className={classes.countText}>
+              {' '}
+              <CountTag media={'Article'} count={countMedia(articles)} />
+            </Typography>
           </div>
           <div className={classes.scroll}>
             {articles.map((key: any) => (
@@ -90,8 +96,11 @@ function SeeAll(props: SeeAllProps) {
       return (
         <div className={classes.root}>
           <div className={classes.header}>
-            <Typography variant='h1'> All Videos </Typography>
-            <Typography variant='body1' className={classes.countText}> <CountTag media={'Video'} count={countMedia(videos)} /></Typography>
+            <Typography variant="h1"> All Videos </Typography>
+            <Typography variant="body1" className={classes.countText}>
+              {' '}
+              <CountTag media={'Video'} count={countMedia(videos)} />
+            </Typography>
           </div>
           <div className={classes.scroll}>
             {videos.map((key: any) => (

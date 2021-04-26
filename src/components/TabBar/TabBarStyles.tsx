@@ -10,7 +10,7 @@ export const styles = (theme: Theme) =>
       '&$selected': {
         width: '100%',
         color: theme.palette.yellow2.main,
-        borderTop: 'solid',
+        borderTop: 'solid'
       }
     },
     fabRoot: {

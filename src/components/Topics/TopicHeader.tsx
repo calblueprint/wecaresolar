@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import CountTag from '../Count/CountTag'; 
+import CountTag from '../Count/CountTag';
 import theme from '../../CustomStyles';
 
 interface TopicHeaderProps {
@@ -20,8 +20,8 @@ function TopicHeader(props: TopicHeaderProps) {
       <Typography variant="h1"> {props.topicTitle} </Typography>
       <div>
         <Typography variant="subtitle1" style={tagsPadding}>
-          <CountTag media={'Article'} count={props.articleCount} ></CountTag>
-          <CountTag media={'Video'} count={props.videoCount} ></CountTag>
+          <CountTag media={'Article'} count={props.articleCount}></CountTag>
+          <CountTag media={'Video'} count={props.videoCount}></CountTag>
         </Typography>
       </div>
     </div>

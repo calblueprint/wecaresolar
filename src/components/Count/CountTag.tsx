@@ -5,30 +5,31 @@ import { ReactComponent as VideoIcon } from './VideoIcon.svg';
 
 interface countProps {
   media: string; //Article, Video, or Playlist
-  count: number; 
+  count: number;
 }
 
-const CountTag = ({media, count} : countProps) => {
+const CountTag = ({ media, count }: countProps) => {
   const tag = {
     display: 'flex',
     alignItems: 'center'
   };
 
-  function mediaRender (text, icon) {
+  function mediaRender(text, icon) {
     return (
       <div style={tag}>
-        {icon} {count} {text}{count === 1 ? null : 's'}
-      </div> 
-    )
+        {icon} {count} {text}
+        {count === 1 ? null : 's'}
+      </div>
+    );
   }
 
   return (
     <div>
-      {media == 'Article'?  mediaRender('Article', <InstructionIcon/>) : null} 
-      {media == 'Video'?  mediaRender('Video', <VideoIcon/>) : null} 
-      {media == 'Playlist'?  mediaRender('Playlist', <PlaylistIcon/>) : null} 
+      {media == 'Article' ? mediaRender('Article', <InstructionIcon />) : null}
+      {media == 'Video' ? mediaRender('Video', <VideoIcon />) : null}
+      {media == 'Playlist' ? mediaRender('Playlist', <PlaylistIcon />) : null}
     </div>
-  )
-}
+  );
+};
 
 export default CountTag;

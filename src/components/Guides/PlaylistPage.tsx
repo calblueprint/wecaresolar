@@ -8,7 +8,7 @@ import StandardCard from '../Cards/StandardCard';
 import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
 import { ReactComponent as VideoIcon } from './VideoIcon.svg';
 import ProgressBar from './ProgressBar';
-import CountTag from '../Count/CountTag'; 
+import CountTag from '../Count/CountTag';
 
 type PlaylistPageProps = {
   lessonId: string;
@@ -21,7 +21,8 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
 
   const currentLesson = lessons[lessonId];
   const countMedia = (media: string) =>
-    currentLesson.resourceIDs.filter((id) => resources[id].type == media).length;
+    currentLesson.resourceIDs.filter((id) => resources[id].type == media)
+      .length;
 
   const calcProgress = () => {
     const numCompleted = currentLesson.resourceIDs.filter(
@@ -40,7 +41,10 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
       <div className={classes.summary}>
         <div className={classes.count}>
           <Typography variant="body2" className={classes.countText}>
-            <CountTag media={'Article'} count={countMedia('Article')}></CountTag>
+            <CountTag
+              media={'Article'}
+              count={countMedia('Article')}
+            ></CountTag>
           </Typography>
         </div>
         <div className={classes.count}>
