@@ -8,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './PlaylistCardStyles';
 import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
 import { ReactComponent as VideoIcon } from './VideoIcon.svg';
-import { PlaylistAddSharp } from '@material-ui/icons';
 import { Topic } from '../../store/topicsSlice';
 
 interface PlaylistCardProps {
