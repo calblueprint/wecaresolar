@@ -37,15 +37,9 @@ const PlaylistCard = (props: PlaylistCardProps) => {
       <h2 className={classes.title}>{lesson.title}</h2>
       <div className={classes.spread}>
         <div className={classes.column}>
-          {Array.from<Topic>(mySet).map((topic: Topic) => (
+          {Array.from<Topic>(mySet).slice(0, 3).map((topic: Topic) => (
             <Tag tag={topic.name} color={topic.color} />
           ))}
-
-          {/* {lesson.resourceIDs.map((resID) =>(
-          resources[resID].tags.map((topic)=>(
-            <Tag tag={topic}/> 
-          )) 
-        ))} */}
         </div>
         <div className={classes.column}>
           <div className={classes.icon}>

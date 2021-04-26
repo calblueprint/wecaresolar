@@ -7,7 +7,6 @@ import { Link, Route, Router, BrowserRouter } from 'react-router-dom';
 import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './GuidesStyles';
 
-
 type GuidesProps = {
   classes: any;
   match;
@@ -30,7 +29,9 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Playlists</Typography>
         <div>
-          <Link className={classes.list} to={{ pathname: 'Guides/Playlists' }}>See all</Link>
+          <Link className={classes.list} to={{ pathname: 'Guides/Playlists' }}>
+            See all
+          </Link>
         </div>
       </div>
       <div className={classes.scroll}>
@@ -50,7 +51,9 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Articles</Typography>
         <div>
-          <Link className={classes.list} to={{ pathname: 'Guides/Articles' }}>See all</Link>
+          <Link className={classes.list} to={{ pathname: 'Guides/Articles' }}>
+            See all
+          </Link>
         </div>
       </div>
       <div className={classes.scroll}>
@@ -67,7 +70,9 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Videos</Typography>
         <div>
-          <Link className={classes.list} to={{ pathname: 'Guides/Videos' }}>See all</Link>
+          <Link className={classes.list} to={{ pathname: 'Guides/Videos' }}>
+            See all
+          </Link>
         </div>
       </div>
       <div className={classes.scroll}>

@@ -22,10 +22,10 @@ export const styles = (theme: Theme) =>
     },
     playlistCard: {
       width: '300px'
-    }, 
-    
+    },
+
     list: {
-      color: theme.palette.black.main, 
+      color: theme.palette.black.main,
       textDecoration: 'none'
-    }, 
+    }
   });
