@@ -5,7 +5,6 @@ export const styles = (theme: Theme) =>
     background: {
       backgroundColor: theme.palette.background.default
     },
-
     header: {
       display: 'flex',
       flexDirection: 'row',
@@ -31,7 +30,7 @@ export const styles = (theme: Theme) =>
       textDecoration: 'none'
     },
 
-    buttonBoxy: {
+    buttonBox: {
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
@@ -42,7 +41,8 @@ export const styles = (theme: Theme) =>
       marginRight: 48,
       marginBottom: 32,
       borderRadius: 10,
-      boxShadow: '10px 8px 12px 8px rgba(218, 207, 207, 0.6)',
+      boxShadow:
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
       backgroundColor: 'white',
       '&:hover': {
         backgroundColor: 'white'

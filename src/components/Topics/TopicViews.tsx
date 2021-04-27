@@ -5,6 +5,7 @@ import { RootState } from '../../store/reducers';
 import { ResourcesSlice } from '../../store/resourcesSlice';
 import TopicHeader from './TopicHeader';
 import { Typography } from '@material-ui/core';
+import theme from '../../CustomStyles';
 
 interface TopicViewProps {
   topicId: string;
@@ -13,6 +14,14 @@ interface TopicViewProps {
 function TopicViews({ topicId }: TopicViewProps) {
   const currentTopic = useSelector((state: RootState) => state.topics[topicId]);
   const name = currentTopic.name;
+
+  const headerStyle = {
+    backgroundImage: `url(${currentTopic.imageUrl})`,
+    backgroundSize: 'cover'
+  };
+  const pageStyle = {
+    padding: theme.spacing(1, 2, 1, 2)
+  };
 
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
@@ -41,16 +50,6 @@ function TopicViews({ topicId }: TopicViewProps) {
   const guideResources = useSelector(selectTopicResources);
   const troubleshootingResources = useSelector(selectTroubleshootingResources);
 
-  const headerStyle = {
-    height: '30%',
-    backgroundImage: `url(${currentTopic.imageUrl})`,
-    backgroundSize: 'cover',
-    margin: '20px 0px 20px 0px'
-  };
-  const pageStyle = {
-    padding: '30px'
-  };
-
   const countMedia = (obj, media: string) =>
     Object.keys(obj).filter((id) => obj[id].type == media).length;
 
@@ -72,21 +71,9 @@ function TopicViews({ topicId }: TopicViewProps) {
         />
       </div>
       <div>
-        <Typography variant="h1"> Resources </Typography>
         {Object.keys(guideResources).map((resource: any) => (
           <StandardCard
             resource={guideResources[resource]}
-            resourceID={resource}
-            completeCheck={false}
-            collapsed={false}
-          />
-        ))}
-      </div>
-      <div>
-        <Typography variant="h1"> Facing Trouble? </Typography>
-        {Object.keys(troubleshootingResources).map((resource: any) => (
-          <StandardCard
-            resource={troubleshootingResources[resource]}
             resourceID={resource}
             completeCheck={false}
             collapsed={false}
