@@ -9,8 +9,8 @@ export const styles = (theme: Theme) =>
       height: '35%',
       backgroundColor: theme.palette.white.main,
       boxShadow: '0px 14px 50px 20px rgba(0,0,0,0.2)',
-      position: 'absolute'
-      // bottom: '10vh'
+      position: 'absolute',
+      bottom: '10vh'
     },
     img: {
       objectFit: 'contain',
@@ -55,13 +55,8 @@ export const styles = (theme: Theme) =>
       borderRadius: '1rem'
     },
     title: {
-      paddingLeft: '30px',
-      paddingRight: '30px',
+      padding: theme.spacing(3),
       display: 'flex',
       justifyContent: 'space-between'
     },
-    tap: {
-      paddingLeft: '30px',
-      paddingRight: '30px'
-    }
   });
