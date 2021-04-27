@@ -32,7 +32,9 @@ const CountTag = ({ media, count }: countProps) => {
 
   return (
     <div>
-      {media == 'Article' ? mediaRender('Article', <InstructionIcon />) : null}
+      {media == 'Article'
+        ? mediaRender('Instruction', <InstructionIcon />)
+        : null}
       {media == 'Video' ? mediaRender('Video', <VideoIcon />) : null}
       {media == 'Playlist' ? mediaRender('Playlist', <PlaylistIcon />) : null}
     </div>
