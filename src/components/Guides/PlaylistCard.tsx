@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './PlaylistCardStyles';
 import { ReactComponent as InstructionIcon } from '../Count/InstructionIcon.svg';
 import { ReactComponent as VideoIcon } from '../Count/VideoIcon.svg';
+import { Topic } from '../../store/topicsSlice';
 
 interface PlaylistCardProps {
   lesson: Lesson;
@@ -19,20 +20,27 @@ const PlaylistCard = (props: PlaylistCardProps) => {
   const lesson = props.lesson;
 
   const resources = useSelector((state: RootState) => state.resources);
+  const topics = useSelector((state: RootState) => state.topics);
   const countMedia = (media: string) =>
     lesson.resourceIDs.filter((id) => resources[id].type == media).length;
 
   const numVideos = countMedia('Video');
   const numArticles = countMedia('Article');
+  const mySet = new Set<Topic>();
+  lesson.resourceIDs.map((resID) =>
+    resources[resID].tags.map((tag) => mySet.add(topics[tag]))
+  );
 
   return (
     <Card className={classes.card}>
       <h2 className={classes.title}>{lesson.title}</h2>
       <div className={classes.spread}>
         <div className={classes.column}>
-          {lesson.objectives.map((tag) => (
-            <Tag tag={tag} />
-          ))}
+          {Array.from<Topic>(mySet)
+            .slice(0, 3)
+            .map((topic: Topic) => (
+              <Tag tag={topic.name} color={topic.color} />
+            ))}
         </div>
         <div className={classes.column}>
           <div className={classes.icon}>

@@ -14,19 +14,32 @@ export const styles = (theme: Theme) =>
       height: 22.75,
       borderRadius: 4.87599
     },
-    lights: {
+    brown: {
       color: theme.palette.lights.dark,
       backgroundColor: theme.palette.lights.main
     },
-    headlamps: {
+    red: {
       color: theme.palette.headlamp.dark,
       backgroundColor: theme.palette.headlamp.main
     },
-    suitcase: {
+
+    navyblue: {
       color: theme.palette.suitcase.dark,
       backgroundColor: theme.palette.suitcase.main
     },
-    defaultTag: {
-      backgroundColor: '#ABABAB'
+
+    gray: {
+      color: theme.palette.wcsgrey.dark,
+      backgroundColor: theme.palette.wcsgrey.main
+    },
+
+    indigoblue: {
+      color: theme.palette.fetaldoppler.dark,
+      backgroundColor: theme.palette.fetaldoppler.main
+    },
+
+    skyblue: {
+      color: theme.palette.charger.dark,
+      backgroundColor: theme.palette.charger.main
     }
   });

@@ -14,18 +14,18 @@ const CountTag = ({ media, count }: countProps) => {
     alignItems: 'center'
   };
   const iconPadding = {
-    paddingLeft: 5, 
+    paddingLeft: 5,
     paddingRight: 5
   };
 
   function mediaRender(text, icon) {
     return (
       <div style={tag}>
-        {icon} 
+        {icon}
         <div style={iconPadding}>
           {count} {text}
           {count === 1 ? null : 's'}
-        </div> 
+        </div>
       </div>
     );
   }
