@@ -71,21 +71,9 @@ function TopicViews({ topicId }: TopicViewProps) {
         />
       </div>
       <div>
-        <Typography variant="h1"> Resources </Typography>
         {Object.keys(guideResources).map((resource: any) => (
           <StandardCard
             resource={guideResources[resource]}
-            resourceID={resource}
-            completeCheck={false}
-            collapsed={false}
-          />
-        ))}
-      </div>
-      <div>
-        <Typography variant="h1"> Facing Trouble? </Typography>
-        {Object.keys(troubleshootingResources).map((resource: any) => (
-          <StandardCard
-            resource={troubleshootingResources[resource]}
             resourceID={resource}
             completeCheck={false}
             collapsed={false}

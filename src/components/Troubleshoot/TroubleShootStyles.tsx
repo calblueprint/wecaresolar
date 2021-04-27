@@ -5,7 +5,6 @@ export const styles = (theme: Theme) =>
     background: {
       backgroundColor: theme.palette.background.default
     },
-
     header: {
       display: 'flex',
       flexDirection: 'row',
@@ -31,7 +30,7 @@ export const styles = (theme: Theme) =>
       textDecoration: 'none'
     },
 
-    buttonBoxy: {
+    buttonBox: {
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
