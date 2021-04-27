@@ -64,7 +64,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
           onClick={() => {
             setOpen(!open);
           }}
-        ></div>
+        />
       ) : null}
       <div
         className={classes.dropdownButton}
@@ -74,9 +74,9 @@ const FilterDropdown = (props: FilterDropdownProps) => {
       >
         <div className={classes.buttonLabel}>Filter by</div>
         {open ? (
-          <ExpandLessIcon className={classes.icon}></ExpandLessIcon>
+          <ExpandLessIcon className={classes.icon} />
         ) : (
-          <ExpandMoreIcon className={classes.icon}></ExpandMoreIcon>
+          <ExpandMoreIcon className={classes.icon} />
         )}
       </div>
       {open ? (
@@ -104,7 +104,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
                     fillColor={'#F6B350'}
                     width={'18'}
                     height={'18'}
-                  ></CompletedButton>
+                  />
                 </div>
               </div>
             ))}
@@ -135,7 +135,7 @@ const FilterDropdown = (props: FilterDropdownProps) => {
                     fillColor={'#F6B350'}
                     width={'18'}
                     height={'18'}
-                  ></CompletedButton>
+                  />
                 </div>
               </div>
             ))}

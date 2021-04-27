@@ -237,7 +237,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
         width={cWidth}
         height={cHeight}
         onClick={(e) => onCanvasClick(e.clientX, e.clientY)}
-      ></canvas>
+      />
       <div className={classes.card}>
         {selectedTopic && (
           <AnimationCard

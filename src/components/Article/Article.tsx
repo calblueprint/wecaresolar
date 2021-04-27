@@ -36,7 +36,7 @@ const Article = ({ resId, classes }: ArticleProps): typeof Article => {
         <div className={classes.sectionView}>
           {articleSections.map((key: any) => (
             <div className={classes.section}>
-              <SectionCard section={sections[key]}></SectionCard>
+              <SectionCard section={sections[key]} />
             </div>
           ))}
         </div>
