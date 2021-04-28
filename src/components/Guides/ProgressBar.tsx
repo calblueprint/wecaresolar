@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ProgressBar = (progress: number, page: string) => {
-
   const playlist = {
     width: '200px',
     height: '5px',
@@ -28,21 +27,21 @@ const ProgressBar = (progress: number, page: string) => {
   };
 
   if (page == 'playlist') {
-    return(
+    return (
       <div>
         <div style={playlist}>
           <div style={fillStyles}></div>
         </div>
       </div>
-    )
+    );
   } else if (page == 'article') {
-    return(
+    return (
       <div>
         <div style={article}>
           <div style={fillStyles}></div>
         </div>
       </div>
-    )
+    );
   }
 };
 
