@@ -2,40 +2,41 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) =>
   createStyles({
-      videoCard: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        width: '230px',
-        height: '128px',
-        borderRadius: 18,
-        boxShadow: 'box-shadow: 0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
-        marginRight: '13px',
-      },
-      thumbnail: {
-        width: '230px',
-        height: '128px',
-        objectFit: 'contain'
-      },
-      videoCardAll: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        marginBottom: '12px',
-        width: '40vw',
-        height: '23.79vw',
-        borderRadius: 18
-      },
-      thumbnailAll: {
-        width: '40vw',
-        height: '23.79vw',
-        objectFit: 'contain',
-        zIndex: 0
-      },
-      button: {
-        top: '0px',
-        zIndex: 1
-      }
+    videoCard: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      width: '230px',
+      height: '128px',
+      borderRadius: 18,
+      boxShadow:
+        'box-shadow: 0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+      marginRight: '13px'
+    },
+    thumbnail: {
+      width: '230px',
+      height: '128px',
+      objectFit: 'contain'
+    },
+    videoCardAll: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      marginBottom: '12px',
+      width: '40vw',
+      height: '23.79vw',
+      borderRadius: 18
+    },
+    thumbnailAll: {
+      width: '40vw',
+      height: '23.79vw',
+      objectFit: 'contain',
+      zIndex: 0
+    },
+    button: {
+      top: '0px',
+      zIndex: 1
+    }
     /** 
     title: {
       fontSize: 18,

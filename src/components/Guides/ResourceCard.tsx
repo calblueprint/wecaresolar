@@ -19,17 +19,17 @@ const ResourceCard = (props: ResourceCardProps): typeof ResourceCard => {
   const resource = props.resource;
   const type = resource.type;
 
-  if (type == "Article") {
+  if (type == 'Article') {
     return (
       <Card className={classes.articleCard}>
         <h3 className={classes.title}>{resource.title}</h3>
         <text className={classes.text}>{resource.data.preview}</text>
       </Card>
-    )
+    );
   } else if (isVideo(resource.data) && props.viewAll) {
     return (
       <Card className={classes.videoCardAll}>
-        <img className={classes.thumbnail} src={resource.data.imageUrl}/>
+        <img className={classes.thumbnail} src={resource.data.imageUrl} />
         <div className={classes.favorite}>
           <FavoriteButton
             id={props.resourceID}
@@ -37,25 +37,21 @@ const ResourceCard = (props: ResourceCardProps): typeof ResourceCard => {
           />
         </div>
         <div>
-          <Fab 
-              className={classes.button}
-              variant="extended">
-                <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
-                <text className={classes.buttonText}>5:43</text>
-            </Fab>
+          <Fab className={classes.button} variant="extended">
+            <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
+            <text className={classes.buttonText}>5:43</text>
+          </Fab>
         </div>
       </Card>
-    )
+    );
   } else if (isVideo(resource.data) && !props.viewAll) {
     return (
       <Card className={classes.videoCard}>
-        <img className={classes.thumbnail} src={resource.data.imageUrl}/>
+        <img className={classes.thumbnail} src={resource.data.imageUrl} />
       </Card>
-    )
+    );
   } else {
-    return(
-      console.log('Incorrect resource type')
-    )
+    return console.log('Incorrect resource type');
   }
 };
 

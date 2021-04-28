@@ -20,27 +20,29 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const resource = props.resource;
 
   if (isVideo(resource.data)) {
-      if (props.viewAll) {
-          return (
-              <Card className={classes.videoCardAll}>
-                  <img className={classes.thumbnailAll} src={resource.data.imageUrl}/>
-                  <FavoriteButton id={props.resourceID} isFavorited={resource.isFavorited}/>
-                  <Fab className={classes.button} variant='extended'>
-                      <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
-                      {resource.data.duration}
-                  </Fab>
-              </Card>
-          )
-      } else {
-          return (
-              <Card className={classes.videoCard}>
-                  <img className={classes.thumbnail} src={resource.data.imageUrl}/>
-              </Card>
-          )
-      }
+    if (props.viewAll) {
+      return (
+        <Card className={classes.videoCardAll}>
+          <img className={classes.thumbnailAll} src={resource.data.imageUrl} />
+          <FavoriteButton
+            id={props.resourceID}
+            isFavorited={resource.isFavorited}
+          />
+          <Fab className={classes.button} variant="extended">
+            <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
+            {resource.data.duration}
+          </Fab>
+        </Card>
+      );
+    } else {
+      return (
+        <Card className={classes.videoCard}>
+          <img className={classes.thumbnail} src={resource.data.imageUrl} />
+        </Card>
+      );
+    }
   }
-}
-
+};
 
 export default withStyles(styles)(VideoCard);
 

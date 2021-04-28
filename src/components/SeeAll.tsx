@@ -92,7 +92,11 @@ function SeeAll(props: SeeAllProps) {
                 to={`${props.match.url}/${key}`}
               >
                 <div className={classes.videoCard}>
-                  <VideoCard resource={resources[key]} resourceID={key} viewAll={true}/>
+                  <VideoCard
+                    resource={resources[key]}
+                    resourceID={key}
+                    viewAll={true}
+                  />
                 </div>
               </Link>
             ))}
