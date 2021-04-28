@@ -1,16 +1,8 @@
 import React from 'react';
 
-const ProgressBar = (progress: number, page: string) => {
-  const playlist = {
-    width: '200px',
-    height: '5px',
-    background: 'white',
-    boxShadow: '-2px 4px 20px rgba(79, 42, 29, 0.15)',
-    borderRadius: '20px',
-    marginRight: '0.3rem'
-  };
+const ProgressBar = (progress: number) => {
 
-  const article = {
+  const style = {
     width: '70vw',
     height: '5px',
     background: 'white',
@@ -26,23 +18,13 @@ const ProgressBar = (progress: number, page: string) => {
     borderRadius: '20px'
   };
 
-  if (page == 'playlist') {
-    return (
-      <div>
-        <div style={playlist}>
-          <div style={fillStyles}></div>
-        </div>
+  return (
+    <div>
+      <div style={style}>
+        <div style={fillStyles}></div>
       </div>
-    );
-  } else if (page == 'article') {
-    return (
-      <div>
-        <div style={article}>
-          <div style={fillStyles}></div>
-        </div>
-      </div>
-    );
-  }
+    </div>
+  );
 };
 
 export default ProgressBar;

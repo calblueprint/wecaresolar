@@ -13,9 +13,8 @@ import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
 import SeeAll from './components/SeeAll';
-
-import Article from './components/Article/Article';
 import WCSRoute from './WCSRoute';
+import Instructions from './components/Instructions/Instructions';
 
 const useStyles = makeStyles({
   root: {
@@ -70,9 +69,9 @@ function App() {
             <WCSRoute
               hasSearch
               hasTab
-              path={'/Guides/Articles/:articleId'}
+              path={'/Guides/Instructions/:articleId'}
               render={(props) => (
-                <Article resId={props.match.params.articleId} />
+                <Instructions resId={props.match.params.articleId} />
               )}
             />
             <WCSRoute

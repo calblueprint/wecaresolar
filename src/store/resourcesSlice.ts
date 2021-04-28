@@ -60,7 +60,7 @@ export const isVideo = (tbd: VideoArticle): tbd is VideoData => {
   return (tbd as VideoData).watchUrl !== undefined;
 };
 
-export const isArticle = (tbd: VideoArticle): tbd is ArticleData => {
+export const isInstruction = (tbd: VideoArticle): tbd is ArticleData => {
   return (tbd as ArticleData).sections != undefined;
 };
 

@@ -24,7 +24,7 @@ export const styles = (theme: Theme) =>
     progressText: {
       position: 'fixed',
       left: '79vw',
-      marginTop: '50px',
+      marginTop: '55px',
       opacity: '0.4'
     },
     sections: {

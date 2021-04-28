@@ -54,7 +54,7 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
         </div>
       </div>
       <div className={classes.progressBar}>
-        {ProgressBar(calcProgress(), 'playlist')}
+        {ProgressBar(calcProgress())}
         <Typography variant="body2" className={classes.countText}>
           {calcProgress()}% Complete
         </Typography>

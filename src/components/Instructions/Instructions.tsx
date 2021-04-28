@@ -2,19 +2,19 @@ import { Grid, Typography, withStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import { isArticle } from '../../store/resourcesSlice';
+import { isInstruction } from '../../store/resourcesSlice';
 import ProgressBar from '../Guides/ProgressBar';
-import { styles } from './ArticleStyles';
+import { styles } from './InstructionStyles';
 import SectionCard from './Section';
 
-type ArticleProps = {
+type InstructionProps = {
   resId: string;
   classes: any;
 };
 
-const Article = ({ resId, classes }: ArticleProps): typeof Article => {
+const Instruction = ({ resId, classes }: InstructionProps): typeof Instruction => {
   const resources = useSelector((state: RootState) => state.resources);
-  const article = resources[resId];
+  const instruction = resources[resId];
   const sections = useSelector((state: RootState) => state.sections);
 
   const [scrollTop, setScrollTop] = useState(0);
@@ -36,25 +36,25 @@ const Article = ({ resId, classes }: ArticleProps): typeof Article => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  if (isArticle(article.data)) {
-    const articleSections = article.data.sections;
+  if (isInstruction(instruction.data)) {
+    const instructionSections = instruction.data.sections;
     return (
       <div>
         <div className={classes.fixed}>
           <div className={classes.title}>
-            <Typography variant="h1">{article.title}</Typography>
+            <Typography variant="h1">{instruction.title}</Typography>
           </div>
           <div className={classes.progressBar}>
-            {ProgressBar(scrollTop, 'article')}
+            {ProgressBar(scrollTop)}
           </div>
           <div className={classes.progressText}>
             <Typography variant="h3">
-              {Math.round(scrollTop)} % <br /> Complete
+              {Math.round(scrollTop)} % Complete
             </Typography>
           </div>
         </div>
         <div className={classes.sections}>
-          {articleSections.map((key: any) => (
+          {instructionSections.map((key: any) => (
             <SectionCard section={sections[key]}></SectionCard>
           ))}
         </div>
@@ -62,4 +62,4 @@ const Article = ({ resId, classes }: ArticleProps): typeof Article => {
     );
   }
 };
-export default withStyles(styles)(Article);
+export default withStyles(styles)(Instruction);
