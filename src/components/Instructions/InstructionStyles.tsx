@@ -4,7 +4,6 @@ export const styles = (theme: Theme) =>
     fixed: {
       position: 'fixed',
       top: '60px',
-      width: '100vw',
       height: '80px',
       backgroundColor: '#FAFAFA',
       zIndex: 1
@@ -28,7 +27,7 @@ export const styles = (theme: Theme) =>
       opacity: '0.4'
     },
     sections: {
-      marginTop: '20px',
+      marginTop: '25px',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center'
