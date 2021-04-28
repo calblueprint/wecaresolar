@@ -1,60 +1,77 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, matchPath } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { styles } from './TroubleShootStyles';
 import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import { AnswerOption } from '../../store/troubleshootingSlice';
 
 type TroubleShootProps = {
   helpId: string;
   classes: any;
 };
 
-const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
+const TroubleShootCard = ({ helpId, classes }) => {
   const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
+  helpId = decodeURIComponent(helpId);
   const help = troubleshoot[helpId];
-  const root = helpId === 'Root';
-  console.log(helpId)
-  const createRootOptions = (options) => {
-    return (
-      <div className={classes.optionContainer}>
-        {Object.keys(options).map((option) => {
-          return (
-            <Link
-              to={'/Troubleshoot/' + options[option]}
-              style={{ textDecoration: 'none' }}
-            >
-              <div className={classes.optionCard}>
-                <div className={classes.optionImage}> </div>
-                <div className={classes.optionText}>{option}</div>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-    );
-  };
 
   const createOptions = (options) => {
     return (
       <div>
-        {Object.keys(options).map((option) => {
-          if (option == 'error_code') {
-          } else {
-            let buttonType = `${classes.button}`;
-            if (option == 'yes') {
-              buttonType = `${classes.button} ${classes.yes}`;
-            } else if (option == 'no') {
-              buttonType = `${classes.button} ${classes.no}`;
-            }
+        {Object.values<AnswerOption>(options).map((option) => {
+          let buttonType = `${classes.button}`;
+
+          if (option.style == 'Boxy') {
+            buttonType = `${classes.button} ${classes.buttonBoxy}`;
+          }
+
+          if (option.style == 'Green') {
+            buttonType = `${classes.button} ${classes.yes}`;
+          }
+
+          if (option.style == 'Red') {
+            buttonType = `${classes.button} ${classes.no}`;
+          }
+
+          if (option.style == 'Black') {
+            buttonType = `${classes.button} ${classes.button_back}`;
+          }
+
+          if (option.style == 'White') {
+            buttonType = `${classes.button} ${classes.button_restart}`;
+          }
+
+          if (option.imageUrl) {
+            buttonType = `${classes.button} ${classes.optionImage}`;
+          }
+
+          const button = <Button className={buttonType}>{option.text}</Button>;
+          if (option.triggerUrl && option.triggerUrl[0] != '/') {
+            // For redirects to external URLs
             return (
-              <Link
-                to={'/Troubleshoot/' + options[option]}
+              <a
+                href={option.triggerUrl}
+                target="_blank"
                 style={{ textDecoration: 'none' }}
               >
-                <Button className={buttonType}>{option}</Button>
+                {button}
+              </a>
+            );
+          } else {
+            // For redirects to other pages within the app,
+            // or if we should stay in the troubleshooting flow and ask another question instead
+            return (
+              <Link
+                to={
+                  option.triggerUrl ||
+                  '/Troubleshoot/' + encodeURIComponent(option.followupId || '')
+                }
+                style={{ textDecoration: 'none' }}
+              >
+                {button}
               </Link>
             );
           }
@@ -72,16 +89,16 @@ const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
       </div>
     );
   };
+
   return (
     <div className={classes.card}>
       <div className={classes.header}>
         <HelpOutlineIcon />
         <p style={{ paddingLeft: '5px' }}>Troubleshooting</p>
       </div>
-      <h3>{help.title}</h3>
+      <h3>{help.question}</h3>
       <p>{help.description}</p>
-      {root && createRootOptions(help.options)}
-      {!root && createOptions(help.options)}
+      {createOptions(help.answerOptions)}
     </div>
   );
 };

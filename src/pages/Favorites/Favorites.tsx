@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import StandardCard from '../../components/Cards/StandardCard';
 import { selectFavoritedResources } from '../../store/resourcesSlice';
-import { withStyles } from '@material-ui/core/styles';
+import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './FavoriteStyles';
 import { Link } from 'react-router-dom';
 import FilterDropdown from '../../components/Filters/FilterDropdown';
@@ -14,8 +14,8 @@ function Favorites({ match, classes }) {
   const allTopics: string[] = Object.keys(topics).map(
     (topic) => topics[topic].name
   );
-  const allTypes : string[] = ['Article', 'Video']
-  
+  const allTypes: string[] = ['Article', 'Video'];
+
   const [currTopics, setTopic] = useState<Set<string>>(new Set(allTopics));
   const [resType, setresType] = useState<Set<string>>(new Set(allTypes));
 
@@ -27,7 +27,6 @@ function Favorites({ match, classes }) {
         .includes(true)
     ) {
       if (resType.size == 0 || resType.has(favResources[resource].type)) {
-        console.log(resource)
         return (
           <StandardCard
             key={resource}
@@ -42,25 +41,25 @@ function Favorites({ match, classes }) {
       return <span />;
     }
   }
- 
+
   return (
     <div className={classes.page}>
       <div className={classes.header}>
-        <div className={classes.title}>Favorites</div>
+        <Typography variant="h1">Favorites</Typography>
         <div className={classes.dropdown}>
           <FilterDropdown
             topics={allTopics}
             currTopics={currTopics}
-            changeTopic={setTopic} 
+            changeTopic={setTopic}
             types={allTypes}
             currTypes={resType}
             changeType={setresType}
-          >
-          </FilterDropdown>
+          ></FilterDropdown>
         </div>
       </div>
       {Object.keys(favResources).map(filteredFavResources)}
     </div>
-  )};
+  );
+}
 
 export default withStyles(styles)(Favorites);

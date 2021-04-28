@@ -3,19 +3,21 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 import resourcesReducer from './resourcesSlice';
+import sectionsSlice from './sectionsSlice';
 import lessonsReducer from './lessonsSlice';
 import topicsReducer from './topicsSlice';
 import metadataReducer from './metadataSlice';
-import helpReducer from './helpSlice';
+import troubleshootingSlice from './troubleshootingSlice';
 
 const persistedReducer = persistReducer(
   { key: 'root', storage },
   combineReducers({
     resources: resourcesReducer,
+    sections: sectionsSlice,
     lessons: lessonsReducer,
     topics: topicsReducer,
     metadata: metadataReducer,
-    troubleshoot: helpReducer
+    troubleshoot: troubleshootingSlice
   })
 );
 

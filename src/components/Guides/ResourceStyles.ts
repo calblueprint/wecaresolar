@@ -52,43 +52,7 @@ export const styles = (theme: Theme) =>
     column: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'flex-end'
-    },
-    thumbnail: {
-      display: 'relative',
-      width: '100%',
-      height: '100%',
-      zIndex: 0
-    },
-    favorite: {
-      position: 'absolute',
-      right: '10.6px',
-      top: '10.88px'
-    },
-    button: {
-      position: 'absolute',
-      width: '74.08px',
-      height: '20px',
-      right: '14px',
-      bottom: '15px',
-      backgroundColor: theme.palette.black.main,
-      zIndex: 1
-    },
-    buttonText: {
-      position: 'absolute',
-      fontFamily: theme.typography.fontFamily,
-      fontSize: '10px',
-      color: theme.palette.white.main,
-      fontWeight: 500,
-      lineHeight: '12px',
-      right: '10px'
-    },
-    clock: {
-      position: 'absolute',
-      width: '12.31px',
-      height: '11.66px',
-      color: theme.palette.white.main,
-      left: '8px',
-      top: '3.77px'
+      justifyContent: 'flex-end',
+      color: '#000'
     }
   });

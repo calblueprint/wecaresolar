@@ -22,13 +22,14 @@ export const styles = (theme: Theme) =>
     search: {
       position: 'relative',
       borderRadius: 9,
-      backgroundColor: theme.palette.yellow.main,
+      backgroundColor: theme.palette.wcsgrey.main,
       width: '100%',
-      margin: '0px 12px'
+      margin: '0px 4px',
+      boxShadow: '-2px 4px 23px 0px rgba(2, 2, 2, 0.0685)'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),
-      color: theme.palette.brown.main,
+      color: theme.palette.black.main,
       height: '100%',
       position: 'absolute',
       pointerEvents: 'none',
@@ -37,14 +38,14 @@ export const styles = (theme: Theme) =>
       justifyContent: 'center'
     },
     inputRoot: {
-      color: theme.palette.brown.main,
+      color: theme.palette.black.main,
       fontWeight: 600,
       width: '100%'
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
-      color: theme.palette.brown.main,
-      fontWeight: 600,
+      color: theme.palette.black.main,
+      fontWeight: 500,
       // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       width: '100%',
@@ -79,6 +80,7 @@ export const styles = (theme: Theme) =>
     // },
     backButton: {
       color: 'black',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      margin: '0px 24px'
     }
   });

@@ -7,6 +7,7 @@ declare module '@material-ui/core/styles/createPalette' {
     black: Palette['primary'];
     white: Palette['primary'];
     brown: Palette['primary'];
+    wcsgrey: Palette['primary'];
     yellow: Palette['primary'];
     yellow2: Palette['primary'];
     accent1: Palette['primary'];
@@ -15,6 +16,8 @@ declare module '@material-ui/core/styles/createPalette' {
     //troubleshooting buttons
     tshootyes: Palette['primary'];
     tshootno: Palette['primary'];
+    tshootreport: Palette['primary'];
+    tshootrestart: Palette['primary'];
     //appliances
     main: Palette['primary'];
     general: Palette['primary'];
@@ -31,6 +34,7 @@ declare module '@material-ui/core/styles/createPalette' {
     black: PaletteOptions['primary'];
     white: PaletteOptions['primary'];
     brown: PaletteOptions['primary'];
+    wcsgrey: PaletteOptions['primary'];
     yellow: PaletteOptions['primary'];
     yellow2: PaletteOptions['primary'];
     accent1: PaletteOptions['primary'];
@@ -56,9 +60,39 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: ['"Source Sans Pro'].join(',')
   },
+  overrides: {
+    MuiTypography: {
+      h1: {
+        fontSize: 24,
+        fontWeight: 700
+      },
+      h2: {
+        fontSize: 18,
+        fontWeight: 700
+      },
+      h3: {
+        fontSize: 14,
+        fontWeight: 700
+      },
+      //can we please change body1 to 14
+      body1: {
+        fontSize: 12,
+        fontWeight: 400
+      },
+      body2: {
+        fontSize: 12,
+        fontWeight: 600
+      },
+      caption: {
+        fontSize: 9,
+        fontStyle: 'semibold'
+      }
+    }
+  },
+  spacing: [0, 6, 12, 18, 24],
   palette: {
     black: {
-      main: '#333333'
+      main: '#020202'
     },
     white: {
       main: '#FFFFFF'
@@ -68,6 +102,9 @@ const theme = createMuiTheme({
     },
     yellow: {
       main: '#F6DBB7'
+    },
+    wcsgrey: {
+      main: '#E1E1E1'
     },
     yellow2: {
       main: '#F6B350'
@@ -83,10 +120,10 @@ const theme = createMuiTheme({
     },
     //troubleshooting buttons
     tshootyes: {
-      main: '#96B892'
+      main: '#33BF68'
     },
     tshootno: {
-      main: '#B99291'
+      main: '#E03633'
     },
     //applicances
     main: {

@@ -25,27 +25,42 @@ firebase.initializeApp({
   appId: '1:963041613875:web:96e9b6562a9a7c4cd76b46',
   measurementId: 'G-N48ZSWDGHL'
 });
-export const messaging = firebase.messaging();
+export const messaging = firebase.messaging.isSupported()
+  ? firebase.messaging()
+  : null;
 export const db = firebase.firestore();
 
 db.enablePersistence()
   .then(() => {
-    console.log("[Firebase] Enabled persistence for Cloud Firestore!")
-  }).catch((err) => {
+    console.log('[Firebase] Enabled persistence for Cloud Firestore!');
+  })
+  .catch((err) => {
     if (err.code == 'failed-precondition') {
-      console.log("[Firebase] ERROR: Multiple tabs open, "
-        + "persistence can only be enabled in one tab at a a time.");
+      console.log(
+        '[Firebase] ERROR: Multiple tabs open, ' +
+          'persistence can only be enabled in one tab at a a time.'
+      );
     } else if (err.code == 'unimplemented') {
-      console.log("[Firebase] ERROR: The current browser does not support all of the "
-        + "features required to enable persistence");
+      console.log(
+        '[Firebase] ERROR: The current browser does not support all of the ' +
+          'features required to enable persistence'
+      );
     }
   });
 
-initializePushNotifications();
+if (firebase.messaging.isSupported()) {
+  initializePushNotifications();
+} else {
+  console.log(
+    'Warning: On a device that does not supported Firebase Messaging.' +
+      'Will skip setting up push notifications.'
+  );
+}
+
 loadInitialState();
 
 // Set up IndexedDB store for caching videos
-export const videoStore = new Store("Resources", "VideoStore");
+export const videoStore = new Store('Resources', 'VideoStore');
 
 ReactDOM.render(
   <React.StrictMode>

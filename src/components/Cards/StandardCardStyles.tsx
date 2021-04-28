@@ -14,8 +14,7 @@ export const styles = (theme: Theme) =>
       padding: 24,
       backgroundColor: theme.palette.white.main,
       boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
-
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
     },
     box: {
       display: 'flex',
@@ -28,7 +27,6 @@ export const styles = (theme: Theme) =>
       alignItems: 'flex-start',
       padding: '0px 0px',
       marginRight: '1rem'
-
     },
     contentColumn: {
       display: 'flex',
@@ -42,13 +40,12 @@ export const styles = (theme: Theme) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'flex-start',
-      alignSelf: 'stretch',
-
+      alignSelf: 'stretch'
     },
     title: {
       fontSize: '1rem',
       fontWeight: 'bold',
-      lineHeight: '1.4rem',
+      lineHeight: '1.4rem'
     },
     favorite: {
       padding: '0px 0px',
@@ -68,5 +65,5 @@ export const styles = (theme: Theme) =>
     link: {
       textDecoration: 'none',
       margin: '1%'
-    },
+    }
   });

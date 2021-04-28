@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
-import SettingsDrawer from '../../components/TabBar/SettingsDrawer';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Typography, withStyles } from '@material-ui/core';
+import { styles } from './SettingsStyles';
 
-
-function Settings({ match }) {
-    console.log("HEYYYY")
+function Settings({ match, classes }) {
   return (
-    <div>hi
-        <SettingsDrawer />
-        <div>HJDKSFGHJKL</div>
+    <div className={classes.container}>
+      <Typography variant="h1">Settings</Typography>
     </div>
   );
 }
 
-export default Settings;
+export default withStyles(styles)(Settings);
