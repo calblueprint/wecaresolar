@@ -58,4 +58,5 @@ const Article = ({ resId, classes }: ArticleProps): typeof Article => {
             </div> 
             )
 }
-]
+}
+export default withStyles(styles)(Article);
