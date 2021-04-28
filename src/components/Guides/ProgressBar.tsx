@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ProgressBar = (progress: number) => {
-
   const style = {
     width: '70vw',
     height: '5px',

@@ -12,7 +12,10 @@ type InstructionProps = {
   classes: any;
 };
 
-const Instruction = ({ resId, classes }: InstructionProps): typeof Instruction => {
+const Instruction = ({
+  resId,
+  classes
+}: InstructionProps): typeof Instruction => {
   const resources = useSelector((state: RootState) => state.resources);
   const instruction = resources[resId];
   const sections = useSelector((state: RootState) => state.sections);
@@ -44,9 +47,7 @@ const Instruction = ({ resId, classes }: InstructionProps): typeof Instruction =
           <div className={classes.title}>
             <Typography variant="h1">{instruction.title}</Typography>
           </div>
-          <div className={classes.progressBar}>
-            {ProgressBar(scrollTop)}
-          </div>
+          <div className={classes.progressBar}>{ProgressBar(scrollTop)}</div>
           <div className={classes.progressText}>
             <Typography variant="h3">
               {Math.round(scrollTop)} % Complete

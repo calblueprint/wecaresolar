@@ -51,7 +51,10 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Instructions</Typography>
         <div>
-          <Link className={classes.list} to={{ pathname: 'Guides/Instructions' }}>
+          <Link
+            className={classes.list}
+            to={{ pathname: 'Guides/Instructions' }}
+          >
             See all
           </Link>
         </div>
