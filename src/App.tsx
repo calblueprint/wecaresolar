@@ -15,6 +15,7 @@ import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
 import SeeAll from './components/SeeAll';
+import ScrollToTop from './ScrollToTop';
 import WCSRoute from './WCSRoute';
 import Instructions from './components/Instructions/Instructions';
 
@@ -38,6 +39,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
+        <ScrollToTop />
         <div className={classes.root}>
           {!didInitialLoad ? (
             <div>Loading...</div>
