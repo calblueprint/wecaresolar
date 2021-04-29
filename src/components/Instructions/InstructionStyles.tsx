@@ -4,7 +4,7 @@ export const styles = (theme: Theme) =>
     fixed: {
       position: 'fixed',
       top: '60px',
-      height: '80px',
+      height: '150px',
       backgroundColor: '#FAFAFA',
       zIndex: 1
     },
