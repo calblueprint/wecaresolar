@@ -22,7 +22,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
     if (props.viewAll) {
       return (
         <Card className={classes.videoCardAll}>
-          <img className={classes.thumbnailAll} src="https://ucd542fb5efd1eb3e500fc0c6345.previews.dropboxusercontent.com/p/thumb/ABKZCv2qA-9HcNK4jDfSV4NRfTm8mfk6hUdU00DqX_OkOuiLVC16cpqpCGqgFZZZgIUO_zbJZpagq9OeDyN-xakpN5duv9OM_EYrbn9Acuz4Ld7Qm4rluWYR--owNWLf7XooL_Qzk96TQeXX72-okTwFZTuFF6LkS__yYckuxZiPNw9lYDxnUVR_hyE_2yG8dCT_wqVYUFBEDSOmwoAnwFTEiqpb2lafnCG-enwixuzOd8drdTJDys-h7XWfRtwLQumZU6lqsNBmKgDqAeAa8M9520kIbEbLEucypAkRMSBmhro-Eg8o_UfNoguGSZsw0XBymaXv4ccsJr4BGZv4sqVdkVRQliz3KVfE7K4Kx9DlQOMi8-u0iuL1emcZx-1P1kg/p.jpeg?fv_content=true&size_mode=5"/>
+          <img className={classes.thumbnailAll} src={resource.data.imageUrl} />
           <div className={classes.favorite}>
             <FavoriteButton
               id={props.resourceID}
@@ -38,7 +38,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
     } else {
       return (
         <Card className={classes.videoCard}>
-          <img className={classes.thumbnail} src="https://ucd542fb5efd1eb3e500fc0c6345.previews.dropboxusercontent.com/p/thumb/ABKZCv2qA-9HcNK4jDfSV4NRfTm8mfk6hUdU00DqX_OkOuiLVC16cpqpCGqgFZZZgIUO_zbJZpagq9OeDyN-xakpN5duv9OM_EYrbn9Acuz4Ld7Qm4rluWYR--owNWLf7XooL_Qzk96TQeXX72-okTwFZTuFF6LkS__yYckuxZiPNw9lYDxnUVR_hyE_2yG8dCT_wqVYUFBEDSOmwoAnwFTEiqpb2lafnCG-enwixuzOd8drdTJDys-h7XWfRtwLQumZU6lqsNBmKgDqAeAa8M9520kIbEbLEucypAkRMSBmhro-Eg8o_UfNoguGSZsw0XBymaXv4ccsJr4BGZv4sqVdkVRQliz3KVfE7K4Kx9DlQOMi8-u0iuL1emcZx-1P1kg/p.jpeg?fv_content=true&size_mode=5"/>
+          <img className={classes.thumbnail} src={resource.data.imageUrl} />
         </Card>
       );
     }
@@ -46,3 +46,4 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
 };
 
 export default withStyles(styles)(VideoCard);
+

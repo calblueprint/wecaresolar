@@ -11,11 +11,11 @@ export const styles = (theme: Theme) =>
       borderRadius: 18,
       boxShadow:
         'box-shadow: 0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(2)
     },
     thumbnail: {
       width: '230px',
-      objectFit: 'fill',
+      objectFit: 'fill'
     },
     videoCardAll: {
       position: 'relative',
