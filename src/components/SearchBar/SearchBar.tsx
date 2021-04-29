@@ -8,8 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import WifiIcon from '@material-ui/icons/WifiOff';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
-import { useHistory } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation, Link } from 'react-router-dom';
 import RefreshButton from '../RefreshButton';
 import { loadInitialState } from '../../store/loadInitialState';
 import SearchList from './SearchList';
@@ -35,8 +34,18 @@ const SearchAppBar = (props: SearchProps) => {
     '/Suitcase'
   ].includes(location.pathname);
 
+  const [idle, setIdle] = useState(true);
+
   return (
     <div className={classes.root}>
+      {!idle ? (
+        <div
+          className={classes.overlayBackground}
+          onClick={() => {
+            setIdle(true);
+          }}
+        />
+      ) : null}
       <AppBar className={classes.bar}>
         <Toolbar>
           {!hideBackButton && (
@@ -45,19 +54,38 @@ const SearchAppBar = (props: SearchProps) => {
               onClick={() => history.goBack()}
             />
           )}
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
+
+          <div
+            className={classes.search}
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              setIdle(false);
+            }}
+          >
+            {/* <div className={classes.searchIcon}>
               <SearchIcon />
-            </div>
+            </div> */}
             <InputBase
-              placeholder="Search for an article or resource"
+              placeholder="Search all resources"
+              type="search"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
               }}
               inputProps={{ 'aria-label': 'search' }}
               onChange={(event) => setQuery(event.target.value)}
+              // onTouchStart={(event) => setIdle(false)}
             />
+            {idle ? (
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+            ) : (
+              <Link to="/Favorites" className={classes.searchButton}>
+                <SearchIcon className={classes.searchIconWrapped} />
+              </Link>
+            )}
           </div>
           <RefreshButton fetch={() => loadInitialState()} />
           <Offline>
