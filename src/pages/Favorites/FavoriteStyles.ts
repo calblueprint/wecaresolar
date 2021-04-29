@@ -22,15 +22,16 @@ export const styles = (theme: Theme) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      height: 'fit-content'
+      height: 'fit-content',
+      paddingBottom: theme.spacing(3)
     },
-    // title: {
-    //   fontSize: '1.8rem',
-    //   fontWeight: 700,
-    //   color: theme.palette.black.main
-    // },
     dropdown: {
       display: 'flex',
       margin: '0%'
+    },
+    message: {
+      padding: theme.spacing(2)
+      // border: '4px solid',
+      // borderColor: 'black'
     }
   });
