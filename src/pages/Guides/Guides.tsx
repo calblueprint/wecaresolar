@@ -52,7 +52,10 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Instructions</Typography>
         <div>
-          <Link className={classes.list} to={{ pathname: 'Guides/Articles' }}>
+          <Link
+            className={classes.list}
+            to={{ pathname: 'Guides/Instructions' }}
+          >
             See all
           </Link>
         </div>
@@ -61,7 +64,7 @@ function Guides(props: GuidesProps) {
         {articles.map((key: any) => (
           <Link
             style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Articles/${key}`}
+            to={`${props.match.url}/Instructions/${key}`}
           >
             <ResourceCard resource={resources[key]} />
           </Link>
