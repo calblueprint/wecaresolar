@@ -21,11 +21,11 @@ export const styles = (theme: Theme) =>
       overflow: 'scroll hidden'
     },
     playlistCard: {
-      width: '300px'
+      width: 'px'
     },
-
     list: {
       color: theme.palette.black.main,
-      textDecoration: 'none'
+      textDecoration: 'none',
+      padding: theme.spacing(3)
     }
   });

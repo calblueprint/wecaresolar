@@ -24,7 +24,8 @@ const useStyles = makeStyles({
     height: '100vh',
     width: '100vw',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    overflow: 'scroll'
   }
 });
 

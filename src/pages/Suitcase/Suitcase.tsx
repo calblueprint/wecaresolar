@@ -41,7 +41,7 @@ function Suitcase({ classes, match }) {
         <Typography variant="h1"> Suitcase </Typography>
         <FormControlLabel
           control={<CustomSwitch checked={toggled} onChange={showLabels} />}
-          label="Labels"
+          label="Show Labels"
           labelPlacement="start"
         />
       </div>
