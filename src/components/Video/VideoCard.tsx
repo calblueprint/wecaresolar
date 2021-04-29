@@ -46,4 +46,3 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
 };
 
 export default withStyles(styles)(VideoCard);
-
