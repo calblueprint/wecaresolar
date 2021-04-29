@@ -49,7 +49,7 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.divider} />
       <div className={classes.header}>
-        <Typography variant="h1">Articles</Typography>
+        <Typography variant="h1">Instructions</Typography>
         <div>
           <Link className={classes.list} to={{ pathname: 'Guides/Articles' }}>
             See all
