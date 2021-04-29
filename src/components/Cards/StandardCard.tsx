@@ -35,7 +35,7 @@ const StandardCard = (props: StandardCardProps) => {
   if (props.resource.type == 'Video') {
     url = '/Guides/Videos/' + props.resourceID;
   } else {
-    url = '/Guides/Articles/' + props.resourceID;
+    url = '/Guides/Instructions/' + props.resourceID;
   }
   return (
     <Link className={classes.link} to={url}>

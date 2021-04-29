@@ -62,7 +62,7 @@ function SeeAll(props: SeeAllProps) {
         </div>
       );
     }
-    if (type == 'Articles') {
+    if (type == 'Instructions') {
       return (
         <div className={classes.root}>
           <div className={classes.header}>
@@ -78,14 +78,14 @@ function SeeAll(props: SeeAllProps) {
                 style={{ textDecoration: 'none' }}
                 to={`${props.match.url}/${key}`}
               >
-                <div className={classes.articlesCard}>
-                  <StandardCard
-                    resource={resources[key]}
-                    resourceID={key}
-                    completeCheck={false}
-                    collapsed={false}
-                  />
-                </div>
+                {/* <div className={classes.articlesCard}> */}
+                <StandardCard
+                  resource={resources[key]}
+                  resourceID={key}
+                  completeCheck={false}
+                  collapsed={false}
+                />
+                {/* </div> */}
               </Link>
             ))}
           </div>

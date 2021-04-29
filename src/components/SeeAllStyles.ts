@@ -57,7 +57,7 @@ export const styles = (theme: Theme) =>
     scroll: {
       width: '100%',
       display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
+      flexDirection: 'column'
+      // alignItems: 'center'
     }
   });
