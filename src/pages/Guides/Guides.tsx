@@ -22,7 +22,6 @@ function Guides(props: GuidesProps) {
   const videos = Object.keys(resources).filter(
     (id) => resources[id].type == 'Video'
   );
-  //or
 
   const { classes } = props;
 
@@ -30,8 +29,10 @@ function Guides(props: GuidesProps) {
     <div className={classes.root}>
       <div className={classes.header}>
         <Typography variant="h1">Playlists</Typography>
-        <div className={classes.list}>
-          <Link to={{ pathname: 'Guides/Playlists' }}>See all</Link>
+        <div>
+          <Link className={classes.list} to={{ pathname: 'Guides/Playlists' }}>
+            See all
+          </Link>
         </div>
       </div>
       <div className={classes.scroll}>
@@ -49,9 +50,11 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.divider} />
       <div className={classes.header}>
-        <Typography variant="h1">Articles</Typography>
-        <div className={classes.list}>
-          <Link to={{ pathname: 'Guides/Articles' }}>See all</Link>
+        <Typography variant="h1">Instructions</Typography>
+        <div>
+          <Link className={classes.list} to={{ pathname: 'Guides/Articles' }}>
+            See all
+          </Link>
         </div>
       </div>
       <div className={classes.scroll}>
@@ -67,8 +70,10 @@ function Guides(props: GuidesProps) {
       <div className={classes.divider} />
       <div className={classes.header}>
         <Typography variant="h1">Videos</Typography>
-        <div className={classes.list}>
-          <Link to={{ pathname: 'Guides/Videos' }}>See all</Link>
+        <div>
+          <Link className={classes.list} to={{ pathname: 'Guides/Videos' }}>
+            See all
+          </Link>
         </div>
       </div>
       <div className={classes.scroll}>

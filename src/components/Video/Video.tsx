@@ -13,6 +13,8 @@ import { useDispatch } from 'react-redux';
 import { setResourceIsCached } from '../../store/resourcesSlice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
+import DeleteButton from './DeleteButton';
+import { topicsSlice } from '../../store/topicsSlice';
 
 type VideoProps = {
   resId: string;
@@ -21,6 +23,7 @@ type VideoProps = {
 
 const Video = ({ resId, classes }: VideoProps) => {
   const resources = useSelector((state: RootState) => state.resources);
+  const topics = useSelector((state: RootState) => state.topics);
   const dispatch = useDispatch();
   const videoDetails = resources[resId];
   const videoData = videoDetails.data as VideoData;
@@ -31,7 +34,7 @@ const Video = ({ resId, classes }: VideoProps) => {
     refreshVideoUrl();
   }, [videoDetails.isCached]);
 
-  function createDownloadButton() {
+  function createButtonSet() {
     if (isVideo(videoDetails.data)) {
       if (!videoDetails.isCached) {
         return (
@@ -52,6 +55,7 @@ const Video = ({ resId, classes }: VideoProps) => {
             >
               Downloaded
             </div>
+            <DeleteButton id={resId} />
           </div>
         );
       }
@@ -95,7 +99,7 @@ const Video = ({ resId, classes }: VideoProps) => {
       <div className={classes.nonVideo}>
         <div className={classes.labelList}>
           {videoDetails.tags.map((tag) => (
-            <Tag classes={classes} tag={tag} />
+            <Tag classes={classes} tag={tag} color={topics[tag].color} />
           ))}
         </div>
         <div className={classes.header}>
@@ -104,7 +108,7 @@ const Video = ({ resId, classes }: VideoProps) => {
         </div>
       </div>
       <ReactPlayer url={videoUrl} playing controls width="100%" />
-      <div className={classes.nonVideo}>{createDownloadButton()}</div>
+      <div className={classes.nonVideo}>{createButtonSet()}</div>
     </div>
   );
 };

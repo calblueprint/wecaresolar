@@ -54,7 +54,7 @@ function Favorites({ match, classes }) {
             types={allTypes}
             currTypes={resType}
             changeType={setresType}
-          ></FilterDropdown>
+          />
         </div>
       </div>
       {Object.keys(favResources).map(filteredFavResources)}

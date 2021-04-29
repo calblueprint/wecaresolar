@@ -2,24 +2,18 @@ import { createStyles, Theme, fade } from '@material-ui/core/styles';
 
 export const styles = (theme: Theme) =>
   createStyles({
+    root: {
+      padding: theme.spacing(1, 2, 1, 2),
+      color: theme.palette.black.main
+    },
     button: {
       color: theme.palette.brown.main,
       backgroundColor: 'Transparent',
       border: 'none'
     },
-    page: {
-      marginTop: '25%',
-      margin: '3%',
-      overflow: 'scroll',
-      display: 'flex',
-      flexDirection: 'column'
-    },
     header: {
       display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: '3%'
+      flexDirection: 'column'
     },
     title: {
       fontSize: '1.5rem',
@@ -30,25 +24,16 @@ export const styles = (theme: Theme) =>
       color: theme.palette.black.main,
       font: theme.typography.fontFamily
     },
+    countText: {
+      opacity: 0.7,
+      padding: theme.spacing(1)
+    },
     filters: {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'space-around',
       justifyContent: 'center'
     },
-
-    playlistCard: {
-      marginLeft: '4%'
-    },
-
-    articlesCard: {
-      marginLeft: '4%'
-    },
-
-    videoCard: {
-      marginLeft: '4%'
-    },
-
     link: {
       textDecoration: 'none',
       margin: '1%'
@@ -69,7 +54,6 @@ export const styles = (theme: Theme) =>
       borderRadius: '1rem'
     },
     selectMenu: {
-      // backgroundColor: 'white',
       alignSelf: 'center',
       alignItems: 'center',
       '&:focus': {
