@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from './store/reducers';
 import Favorites from './pages/Favorites/Favorites';
 import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';
@@ -29,15 +31,21 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
+  const didInitialLoad = useSelector(
+    (state: RootState) => state.metadata.didInitialLoad
+  );
 
   return (
     <ThemeProvider theme={theme}>
       <Router>
         <div className={classes.root}>
-          <Switch>
-            <WCSRoute hasSearch hasTab exact path="/">
-              <Redirect to="/Guides" />
-            </WCSRoute>
+          {!didInitialLoad ? (
+            <div>Loading...</div>
+          ) : (
+            <Switch>
+              <WCSRoute hasSearch hasTab exact path="/">
+                <Redirect to="/Guides" />
+              </WCSRoute>
 
             <WCSRoute
               hasSearch
@@ -81,54 +89,55 @@ function App() {
               render={(props) => <Video resId={props.match.params.videoId} />}
             />
 
-            <WCSRoute
-              hasSearch
-              hasTab
-              exact
-              path="/favorites"
-              component={Favorites}
-            />
+              <WCSRoute
+                hasSearch
+                hasTab
+                exact
+                path="/favorites"
+                component={Favorites}
+              />
 
-            <WCSRoute
-              hasSearch
-              hasTab
-              exact
-              path="/suitcase"
-              component={Suitcase}
-            />
-            <WCSRoute
-              hasSearch
-              hasTab
-              path={'/suitcase/:topicId'}
-              render={(props) => (
-                <TopicViews topicId={props.match.params.topicId} />
-              )}
-            />
+              <WCSRoute
+                hasSearch
+                hasTab
+                exact
+                path="/suitcase"
+                component={Suitcase}
+              />
+              <WCSRoute
+                hasSearch
+                hasTab
+                path={'/suitcase/:topicId'}
+                render={(props) => (
+                  <TopicViews topicId={props.match.params.topicId} />
+                )}
+              />
 
-            <WCSRoute
-              hasSearch
-              hasTab
-              exact
-              path="/troubleshoot"
-              component={Troubleshoot}
-            />
-            <WCSRoute
-              hasSearch
-              hasTab
-              path={'/Troubleshoot/:helpId'}
-              render={(props) => (
-                <TroubleShootCard helpId={props.match.params.helpId} />
-              )}
-            />
+              <WCSRoute
+                hasSearch
+                hasTab
+                exact
+                path="/troubleshoot"
+                component={Troubleshoot}
+              />
+              <WCSRoute
+                hasSearch
+                hasTab
+                path={'/Troubleshoot/:helpId'}
+                render={(props) => (
+                  <TroubleShootCard helpId={props.match.params.helpId} />
+                )}
+              />
 
-            <WCSRoute
-              hasSearch
-              hasTab
-              exact
-              path="/settings"
-              component={Settings}
-            />
-          </Switch>
+              <WCSRoute
+                hasSearch
+                hasTab
+                exact
+                path="/settings"
+                component={Settings}
+              />
+            </Switch>
+          )}
         </div>
       </Router>
     </ThemeProvider>
