@@ -5,31 +5,33 @@ export const styles = (theme: Theme) =>
     videoCard: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
+      alignItems: 'center',
       width: '230px',
       height: '128px',
       borderRadius: 18,
       boxShadow:
-        'box-shadow: 0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
       marginRight: theme.spacing(2)
     },
     thumbnail: {
-      width: '230px',
-      objectFit: 'fill'
+      width: '215px',
+      objectFit: 'scale-down'
     },
     videoCardAll: {
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'space-between',
+      justifyContent: 'center',
+      alignItems: 'center',
       marginBottom: theme.spacing(2),
       width: '40vw',
       height: '23.79vw',
       borderRadius: 18
     },
     thumbnailAll: {
-      width: '40vw',
-      objectFit: 'contain',
+      width: '38vw',
+      objectFit: 'scale-down',
       zIndex: 0
     },
     favorite: {
