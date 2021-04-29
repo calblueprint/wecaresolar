@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './VideoCardStyles';
 import { isVideo, Resource } from '../../store/resourcesSlice';
@@ -24,13 +23,15 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
       return (
         <Card className={classes.videoCardAll}>
           <img className={classes.thumbnailAll} src={resource.data.imageUrl} />
-          <FavoriteButton
-            id={props.resourceID}
-            isFavorited={resource.isFavorited}
-          />
+          <div className={classes.favorite}>
+            <FavoriteButton
+              id={props.resourceID}
+              isFavorited={resource.isFavorited}
+            />
+          </div>
           <Fab className={classes.button} variant="extended">
             <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
-            {resource.data.duration}
+            <text className={classes.duration}>{resource.data.duration}</text>
           </Fab>
         </Card>
       );

@@ -15,10 +15,10 @@ export const styles = (theme: Theme) =>
     },
     thumbnail: {
       width: '230px',
-      height: '128px',
-      objectFit: 'contain'
+      objectFit: 'contain',
     },
     videoCardAll: {
+      position: 'relative',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
@@ -29,13 +29,33 @@ export const styles = (theme: Theme) =>
     },
     thumbnailAll: {
       width: '40vw',
-      height: '23.79vw',
       objectFit: 'contain',
       zIndex: 0
     },
-    button: {
-      top: '0px',
+    favorite: {
+      position: 'absolute',
+      top: '16px',
+      left: '90%',
       zIndex: 1
+    },
+    button: {
+      position: 'absolute',
+      width: '74.08px',
+      height: '20px',
+      top: '84.04%',
+      left: '31vw',
+      backgroundColor: theme.palette.black.main,
+      zIndex: 1
+    },
+    clock: {
+      color: theme.palette.white.main,
+      width: '12.31px',
+      height: '12.31px',
+      marginRight: '23.76px'
+    },
+    duration: {
+      color: theme.palette.white.main,
+      fontSize: '10px'
     }
     /** 
     title: {
