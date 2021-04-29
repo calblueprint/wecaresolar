@@ -58,5 +58,5 @@ export const styles = (theme: Theme) =>
       padding: theme.spacing(3),
       display: 'flex',
       justifyContent: 'space-between'
-    },
+    }
   });

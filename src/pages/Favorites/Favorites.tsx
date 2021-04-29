@@ -6,7 +6,7 @@ import { selectFavoritedResources } from '../../store/resourcesSlice';
 import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './FavoriteStyles';
 import FilterDropdown from '../../components/Filters/FilterDropdown';
-import { ReactComponent as FavoritedIcon} from './FavoritedIcon.svg';
+import { ReactComponent as FavoritedIcon } from './FavoritedIcon.svg';
 
 function Favorites({ match, classes }) {
   const favResources = useSelector(selectFavoritedResources);
@@ -25,10 +25,8 @@ function Favorites({ match, classes }) {
       Array.from(currTopics.values())
         .map((topic) => favResources[resource].tags.includes(topic))
         .includes(true)
-        
     ) {
       if (resType.size == 0 || resType.has(favResources[resource].type)) {
-        console.log(currTopics, resType)
         return (
           <StandardCard
             key={resource}
@@ -57,13 +55,16 @@ function Favorites({ match, classes }) {
           />
         </div>
       </div>
-      <div className={classes.message} >
-      {Object.keys(favResources).length === 0 ? 
-      <Typography variant='body1' align='center'> 
-        You don’t have any favorite resources yet! 
-        Tap the <FavoritedIcon/> icon on a resource to add some. </Typography> : 
-      Object.keys(favResources).map(filteredFavResources) }
-        </div> 
+      <div className={classes.message}>
+        {Object.keys(favResources).length === 0 ? (
+          <Typography variant="body1" align="center">
+            You don’t have any favorite resources yet! Tap the <FavoritedIcon />{' '}
+            icon on a resource to add some.{' '}
+          </Typography>
+        ) : (
+          Object.keys(favResources).map(filteredFavResources)
+        )}
+      </div>
     </div>
   );
 }

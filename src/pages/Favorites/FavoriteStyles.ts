@@ -31,7 +31,5 @@ export const styles = (theme: Theme) =>
     },
     message: {
       padding: theme.spacing(2)
-      // border: '4px solid',
-      // borderColor: 'black'
     }
   });
