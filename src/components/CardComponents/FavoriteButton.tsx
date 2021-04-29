@@ -22,7 +22,6 @@ function FavoriteButton(props: FavoriteButtonProps) {
   return (
     <div>
       {props.isFavorited ? (
-        // <FavoritedIcon onClick={changeFav} fill={'#FFFFF'} stroke={'#FFFFF'} />
         <svg
           width="22"
           height="22"
