@@ -104,7 +104,7 @@ const Video = ({ resId, classes }: VideoProps) => {
         </div>
         <div className={classes.header}>
           <h1 className={classes.title}>{videoDetails.title}</h1>
-          <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} />
+          <FavoriteButton id={resId} isFavorited={videoDetails.isFavorited} fillColor={'#FFFFFF'} />
         </div>
       </div>
       <ReactPlayer url={videoUrl} playing controls width="100%" />

@@ -61,6 +61,7 @@ const StandardCard = (props: StandardCardProps) => {
                 <FavoriteButton
                   id={props.resourceID}
                   isFavorited={props.resource.isFavorited}
+                  fillColor={'#020202'}
                 />
               </div>
             </div>
