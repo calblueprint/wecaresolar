@@ -16,8 +16,8 @@ function Favorites({ match, classes }) {
   );
   const allTypes: string[] = ['Article', 'Video'];
 
-  const [currTopics, setTopic] = useState<Set<string>>(new Set(allTopics));
-  const [resType, setresType] = useState<Set<string>>(new Set(allTypes));
+  const [currTopics, setTopic] = useState<Set<string>>(new Set());
+  const [resType, setresType] = useState<Set<string>>(new Set());
 
   function filteredFavResources(resource: any) {
     if (
