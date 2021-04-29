@@ -4,7 +4,8 @@ export const styles = (theme: Theme) =>
     fixed: {
       position: 'fixed',
       top: '60px',
-      height: '150px',
+      width: '100%',
+      height: '100px',
       backgroundColor: '#FAFAFA',
       zIndex: 1
     },
@@ -12,17 +13,17 @@ export const styles = (theme: Theme) =>
       position: 'fixed',
       width: '100vw',
       top: '75px',
-      left: '6.5vw'
+      left: '1.5vw'
     },
     progressBar: {
       position: 'fixed',
       width: '100%',
-      left: '6.5vw',
+      left: '1.5vw',
       marginTop: '60px'
     },
     progressText: {
       position: 'fixed',
-      left: '79vw',
+      left: '73vw',
       marginTop: '55px',
       opacity: '0.4'
     },
