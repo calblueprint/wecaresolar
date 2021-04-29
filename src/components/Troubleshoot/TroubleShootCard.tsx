@@ -7,6 +7,7 @@ import { styles } from './TroubleShootStyles';
 import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { AnswerOption } from '../../store/troubleshootingSlice';
+import { Typography } from '@material-ui/core';
 
 type TroubleShootProps = {
   helpId: string;
@@ -25,7 +26,7 @@ const TroubleShootCard = ({ helpId, classes }) => {
           let buttonType = `${classes.button}`;
 
           if (option.style == 'Boxy') {
-            buttonType = `${classes.button} ${classes.buttonBoxy}`;
+            buttonType = `${classes.button} ${classes.buttonBox}`;
           }
 
           if (option.style == 'Green') {
@@ -96,7 +97,7 @@ const TroubleShootCard = ({ helpId, classes }) => {
         <HelpOutlineIcon />
         <p style={{ paddingLeft: '5px' }}>Troubleshooting</p>
       </div>
-      <h3>{help.question}</h3>
+      <Typography variant="h2">{help.question}</Typography>
       <p>{help.description}</p>
       {createOptions(help.answerOptions)}
     </div>

@@ -4,15 +4,12 @@ export const styles = (theme: Theme) =>
     page: {
       backgroundColor: theme.palette.black.main,
       display: 'flex',
-      height: '100%',
-      width: '100%',
       flexDirection: 'column',
       overflow: 'scroll',
-      paddingTop: '20%',
-      paddingBottom: '20%'
+      padding: theme.spacing(3)
     },
     nonVideo: {
-      padding: '5%'
+      paddingTop: theme.spacing(3)
     },
     header: {
       display: 'flex',
@@ -20,9 +17,7 @@ export const styles = (theme: Theme) =>
       alignItems: 'center'
     },
     title: {
-      color: theme.palette.white.main,
-      paddingRight: '5%',
-      flex: '10'
+      color: theme.palette.white.main
     },
     buttons: {
       display: 'flex',
@@ -45,8 +40,6 @@ export const styles = (theme: Theme) =>
 
       fontSize: '1rem',
       fontWeight: 700
-
-      // display: "inline-block",
     },
     filledButton: {
       border: 'none',

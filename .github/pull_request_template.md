@@ -13,4 +13,4 @@ If you ran into any bugs, explain how you solved them
 How do we test your feature?
 
 
-cc: @joelenelatief
+cc: @susan-lin

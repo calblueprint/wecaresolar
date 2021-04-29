@@ -5,20 +5,19 @@ export const styles = (theme: Theme) =>
     background: {
       backgroundColor: theme.palette.background.default
     },
-
     header: {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      color: theme.palette.accent2.main,
-      fontWeight: 500
+      color: theme.palette.accent2.main
     },
 
     card: {
-      margin: '5%',
+      padding: theme.spacing(3),
+      overflow: 'scroll',
+      display: 'flex',
+      flexDirection: 'column',
       position: 'relative',
-      height: '100vh',
-      width: '100%',
       bottom: 0
     },
 
@@ -31,18 +30,19 @@ export const styles = (theme: Theme) =>
       textDecoration: 'none'
     },
 
-    buttonBoxy: {
+    buttonBox: {
       display: 'flex',
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'stretch',
       alignContent: 'center',
-      width: 400,
+      width: '100%',
       height: 60,
       marginRight: 48,
       marginBottom: 32,
       borderRadius: 10,
-      boxShadow: '10px 8px 12px 8px rgba(218, 207, 207, 0.6)',
+      boxShadow:
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
       backgroundColor: 'white',
       '&:hover': {
         backgroundColor: 'white'
