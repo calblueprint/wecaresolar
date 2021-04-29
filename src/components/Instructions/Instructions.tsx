@@ -11,7 +11,7 @@ type InstructionProps = {
   resId: string;
   classes: any;
 };
-
+//the
 const Instruction = ({
   resId,
   classes
