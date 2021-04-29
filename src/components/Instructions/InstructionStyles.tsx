@@ -27,7 +27,7 @@ export const styles = (theme: Theme) =>
       opacity: '0.4'
     },
     sections: {
-      marginTop: '25px',
+      marginTop: theme.spacing(4),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center'

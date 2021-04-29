@@ -49,47 +49,47 @@ function App() {
                 <Redirect to="/Guides" />
               </WCSRoute>
 
-            <WCSRoute
-              hasSearch
-              hasTab
-              exact
-              path="/guides"
-              component={Guides}
-            />
-            <WCSRoute
-              hasSearch
-              hasTab
-              exact
-              path="/Guides/:type"
-              render={(props) => (
-                <SeeAll
-                  match={props.match}
-                  typeofres={props.match.params.type}
-                />
-              )}
-            />
-            <WCSRoute
-              hasSearch
-              hasTab
-              path={'/Guides/Playlists/:lessonId'}
-              render={(props) => (
-                <PlaylistPage lessonId={props.match.params.lessonId} />
-              )}
-            />
-            <WCSRoute
-              hasSearch
-              hasTab
-              path={'/Guides/Instructions/:articleId'}
-              render={(props) => (
-                <Instructions resId={props.match.params.articleId} />
-              )}
-            />
-            <WCSRoute
-              hasSearch
-              hasTab
-              path={'/Guides/Videos/:videoId'}
-              render={(props) => <Video resId={props.match.params.videoId} />}
-            />
+              <WCSRoute
+                hasSearch
+                hasTab
+                exact
+                path="/guides"
+                component={Guides}
+              />
+              <WCSRoute
+                hasSearch
+                hasTab
+                exact
+                path="/Guides/:type"
+                render={(props) => (
+                  <SeeAll
+                    match={props.match}
+                    typeofres={props.match.params.type}
+                  />
+                )}
+              />
+              <WCSRoute
+                hasSearch
+                hasTab
+                path={'/Guides/Playlists/:lessonId'}
+                render={(props) => (
+                  <PlaylistPage lessonId={props.match.params.lessonId} />
+                )}
+              />
+              <WCSRoute
+                hasSearch
+                hasTab
+                path={'/Guides/Instructions/:articleId'}
+                render={(props) => (
+                  <Instructions resId={props.match.params.articleId} />
+                )}
+              />
+              <WCSRoute
+                hasSearch
+                hasTab
+                path={'/Guides/Videos/:videoId'}
+                render={(props) => <Video resId={props.match.params.videoId} />}
+              />
 
               <WCSRoute
                 hasSearch
