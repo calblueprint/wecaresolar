@@ -9,6 +9,7 @@ import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
 import { ReactComponent as VideoIcon } from './VideoIcon.svg';
 import ProgressBar from './ProgressBar';
 import CountTag from '../Count/CountTag';
+import ResourceCard from './ResourceCard';
 
 type PlaylistPageProps = {
   lessonId: string;
@@ -80,7 +81,7 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
       {currentLesson.resourceIDs.map((id) => {
         if (id in resources) {
           return (
-            <StandardCard
+            <ResourceCard
               resource={resources[id]}
               resourceID={id}
               completeCheck={true}
