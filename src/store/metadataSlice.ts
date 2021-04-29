@@ -4,11 +4,13 @@ import { FetchStatus } from './loadInitialState';
 export type MetadataSlice = {
   lastServerRefreshTime: number;
   lastRefreshStatus: FetchStatus;
+  didInitialLoad: boolean;
 };
 
 const INITIAL_METADATA = {
   lastServerRefreshTime: 0,
-  lastRefreshStatus: 'FAILURE'
+  lastRefreshStatus: 'FAILURE',
+  didInitialLoad: false
 };
 
 export const metadataSlice = createSlice({
@@ -22,6 +24,7 @@ export const metadataSlice = createSlice({
         if (result === FetchStatus.SuccessFromServer) {
           state.lastServerRefreshTime = time;
         }
+        state.didInitialLoad = true;
       },
       prepare: (result: FetchStatus) => {
         const time = Date.now();

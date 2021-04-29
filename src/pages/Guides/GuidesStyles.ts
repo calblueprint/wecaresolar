@@ -26,6 +26,7 @@ export const styles = (theme: Theme) =>
 
     list: {
       color: theme.palette.black.main,
-      textDecoration: 'none'
+      textDecoration: 'none',
+      paddingRight: theme.spacing(3)
     }
   });
