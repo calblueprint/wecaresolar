@@ -30,7 +30,7 @@ export const styles = (theme: Theme) =>
       alignItems: 'center'
     },
     image: {
-      width: '35vw',
+      width: '50vw',
       objectFit: 'contain',
       borderRadius: '4px'
     },

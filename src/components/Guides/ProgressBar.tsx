@@ -1,7 +1,16 @@
 import React from 'react';
+import { Typography } from '@material-ui/core';
 
 const ProgressBar = (progress: number) => {
   const style = {
+    display: 'flex',
+    flex: 'column',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    margin: '0rem 0.3rem 0.3rem 0rem'
+  };
+
+  const barBase = {
     width: '70vw',
     height: '5px',
     background: 'white',
@@ -10,18 +19,24 @@ const ProgressBar = (progress: number) => {
     marginRight: '0.3rem'
   };
 
-  const fillStyles = {
+  const fillBar = {
     width: `${progress}%`,
     height: '5px',
     background: '#33BF68',
     borderRadius: '20px'
   };
+  const text = {
+    color: 'rgba(35, 31, 32, 0.4)'
+  };
 
   return (
-    <div>
-      <div style={style}>
-        <div style={fillStyles}></div>
+    <div style={style}>
+      <div style={barBase}>
+        <div style={fillBar}></div>
       </div>
+      <Typography variant="body2" style={text}>
+        {progress}% Complete
+      </Typography>
     </div>
   );
 };

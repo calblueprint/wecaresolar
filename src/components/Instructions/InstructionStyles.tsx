@@ -4,31 +4,21 @@ export const styles = (theme: Theme) =>
     fixed: {
       position: 'fixed',
       top: '60px',
-      width: '100%',
       height: '90px',
       backgroundColor: '#FAFAFA',
       zIndex: 1
     },
     title: {
       position: 'fixed',
-      width: '100vw',
       top: '75px',
       left: '1.7vw'
     },
     progressBar: {
       position: 'fixed',
-      width: '100%',
-      left: '1.7vw',
       marginTop: '60px'
     },
-    progressText: {
-      position: 'fixed',
-      left: '73vw',
-      marginTop: '55px',
-      opacity: '0.4'
-    },
     sections: {
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(4) * 2.5,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'left'

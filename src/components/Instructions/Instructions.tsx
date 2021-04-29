@@ -47,11 +47,8 @@ const Instruction = ({
           <div className={classes.title}>
             <Typography variant="h1">{instruction.title}</Typography>
           </div>
-          <div className={classes.progressBar}>{ProgressBar(scrollTop)}</div>
-          <div className={classes.progressText}>
-            <Typography variant="h3">
-              {Math.round(scrollTop)} % Complete
-            </Typography>
+          <div className={classes.progressBar}>
+            {ProgressBar(Math.round(scrollTop))}
           </div>
         </div>
         <div className={classes.sections}>
