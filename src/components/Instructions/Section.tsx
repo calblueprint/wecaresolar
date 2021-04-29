@@ -18,7 +18,7 @@ const SectionCard = ({
     return (
       <Card className={classes.card}>
         <CardContent>
-          <div className={classes.labelBox}>{section.label}</div>
+          <div className={classes.labelBox}><Typography variant="caption">{section.label}</Typography></div>
           <Typography variant="h2" className={classes.title}>
             {section.title}
           </Typography>

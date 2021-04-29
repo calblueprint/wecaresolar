@@ -13,13 +13,9 @@ export const styles = (theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       background: 'rgba(134, 157, 176, 0.3)',
-      width: '75.38px',
+      width: '10.05vw',
       height: '22.96px',
       borderRadius: '4.875px',
-      fontFamily: theme.typography.fontFamily,
-      fontWeight: 'bold',
-      fontSize: '10.6124px',
-      lineHeight: '13px',
       color: theme.palette.suitcase.dark
     },
     title: {
@@ -27,7 +23,7 @@ export const styles = (theme: Theme) =>
       paddingTop: '12.35px'
     },
     imageDiv: {
-      paddingTop: '13px',
+      paddingTop: theme.spacing(2),
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -39,6 +35,6 @@ export const styles = (theme: Theme) =>
       borderRadius: '4px'
     },
     text: {
-      paddingTop: '12px'
+      paddingTop: theme.spacing(2)
     }
   });
