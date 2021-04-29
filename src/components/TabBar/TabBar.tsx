@@ -38,7 +38,7 @@ const TabBar = (props: TabProps) => {
           classes={classes}
           component={Link}
           to="/Guides"
-          label="Manuals"
+          label="Resources"
           icon={
             <SvgIcon>
               <ManualsIcon />
