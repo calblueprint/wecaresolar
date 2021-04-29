@@ -32,7 +32,8 @@ const SearchAppBar = (props: SearchProps) => {
     '/Guides',
     '/Troubleshoot',
     '/Favorites',
-    '/Suitcase'
+    '/Suitcase',
+    '/Settings'
   ].includes(location.pathname);
 
   return (
