@@ -24,7 +24,6 @@ interface VideoCardProps {
 const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const { classes } = props;
   const resource = props.resource;
-
   function renderComplete() {
     if (props.completeCheck == true) {
       return (
@@ -62,6 +61,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
             <FavoriteButton
               id={props.resourceID}
               isFavorited={resource.isFavorited}
+              fillColor={'#020202'}
             />
           </div>
           <Fab className={classes.button} variant="extended">
