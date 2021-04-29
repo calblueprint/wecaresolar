@@ -5,7 +5,7 @@ export const styles = (theme: Theme) =>
       position: 'fixed',
       top: '60px',
       width: '100%',
-      height: '100px',
+      height: '90px',
       backgroundColor: '#FAFAFA',
       zIndex: 1
     },
@@ -13,12 +13,12 @@ export const styles = (theme: Theme) =>
       position: 'fixed',
       width: '100vw',
       top: '75px',
-      left: '1.5vw'
+      left: '1.7vw'
     },
     progressBar: {
       position: 'fixed',
       width: '100%',
-      left: '1.5vw',
+      left: '1.7vw',
       marginTop: '60px'
     },
     progressText: {

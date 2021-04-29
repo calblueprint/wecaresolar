@@ -1,5 +1,4 @@
 import { createStyles, Theme } from '@material-ui/core/styles';
-import { Palette } from '@material-ui/icons';
 export const styles = (theme: Theme) =>
   createStyles({
     card: {
@@ -12,10 +11,12 @@ export const styles = (theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       background: 'rgba(134, 157, 176, 0.3)',
-      width: '10.05vw',
+      width: 'fit-content',
       height: '22.96px',
       borderRadius: '4.875px',
-      color: theme.palette.suitcase.dark
+      color: theme.palette.suitcase.dark,
+      paddingLeft: theme.spacing(3),
+      paddingRight: theme.spacing(3)
     },
     title: {
       position: 'relative',
