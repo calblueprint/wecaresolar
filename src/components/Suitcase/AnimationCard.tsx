@@ -20,17 +20,19 @@ function AnimationCard(props: AnimationProps) {
       <Card className={classes.card}>
         <img className={classes.img} src={topic.imageUrl} />
         <div className={classes.rightSide}>
-          <Typography variant="h5"> {topic.name} </Typography>
+          <Typography variant="h2"> {topic.name} </Typography>
           <Typography variant="body1"> {topic.description} </Typography>
           <div className={classes.buttonsRow}>
             <Link to={`${props.match.url}/${topic.name}`}>
               <button className={classes.manualsButton}>
-                <Typography variant="body2"> See All Manuals </Typography>{' '}
+                <Typography variant="body1"> See All Resources </Typography>{' '}
               </button>
             </Link>
+            {/* <Link to={`${props.match.url}/${topic.name}`}> */}
             <button className={classes.helpButton}>
-              <Typography variant="body2"> Help </Typography>{' '}
+              <Typography variant="body1"> Help </Typography>{' '}
             </button>
+            {/* </Link> */}
           </div>
         </div>
         <CancelIcon className={classes.cancel} onClick={props.exit} />

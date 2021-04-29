@@ -8,6 +8,7 @@ import ResourceCard from './Guides/ResourceCard';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SeeAllStyles';
 import StandardCard from './Cards/StandardCard';
+import VideoCard from './Video/VideoCard';
 import CountTag from '../components/Count/CountTag';
 import { Typography } from '@material-ui/core';
 
@@ -109,7 +110,11 @@ function SeeAll(props: SeeAllProps) {
                 to={`${props.match.url}/${key}`}
               >
                 <div className={classes.videoCard}>
-                  <ResourceCard resource={resources[key]} />
+                  <VideoCard
+                    resource={resources[key]}
+                    resourceID={key}
+                    viewAll={true}
+                  />
                 </div>
               </Link>
             ))}

@@ -1,6 +1,7 @@
 import React from 'react';
 import PlaylistCard from '../../components/Guides/PlaylistCard';
 import ResourceCard from '../../components/Guides/ResourceCard';
+import VideoCard from '../../components/Video/VideoCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link, Route, Router, BrowserRouter } from 'react-router-dom';
@@ -84,7 +85,7 @@ function Guides(props: GuidesProps) {
             style={{ textDecoration: 'none' }}
             to={`${props.match.url}/Videos/${key}`}
           >
-            <ResourceCard resource={resources[key]} />
+            <VideoCard resource={resources[key]} />
           </Link>
         ))}
       </div>

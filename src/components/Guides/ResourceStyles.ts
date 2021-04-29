@@ -10,7 +10,7 @@ export const styles = (theme: Theme) =>
       fontSize: 12,
       fontWeight: 400
     },
-    card: {
+    articleCard: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
@@ -22,11 +22,5 @@ export const styles = (theme: Theme) =>
       borderRadius: 18,
       boxShadow:
         '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
-    },
-    column: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      color: '#000'
     }
   });
