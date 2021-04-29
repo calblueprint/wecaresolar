@@ -26,7 +26,7 @@ const TroubleShootCard = ({ helpId, classes }) => {
           let buttonType = `${classes.button}`;
 
           if (option.style == 'Boxy') {
-            buttonType = `${classes.button} ${classes.buttonBoxy}`;
+            buttonType = `${classes.button} ${classes.buttonBox}`;
           }
 
           if (option.style == 'Green') {

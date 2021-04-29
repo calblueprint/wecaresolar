@@ -5,31 +5,27 @@ export const styles = (theme: Theme) =>
     root: {
       minWidth: 60,
       maxWidth: '100%',
-      opacity: 0.65,
-      color: theme.palette.black.main,
+      color: theme.palette.navgrey.main,
       padding: '0%',
       '&$selected': {
         width: '100%',
         color: theme.palette.yellow2.main,
-        borderTop: 'solid',
-        opacity: 1
+        borderTop: 'solid'
       }
     },
     fabRoot: {
       display: 'flex',
       flexDirection: 'column',
-      color: theme.palette.black.main,
+      color: theme.palette.navgrey.main,
       backgroundColor: theme.palette.white.main,
-      opacity: 0.65,
       position: 'fixed',
       bottom: '2.5vh',
-      height: '10vh',
-      width: '10vh',
+      height: '11vh',
+      width: '11vh',
       textTransform: 'capitalize',
       '&:hover': {
         color: theme.palette.yellow2.main,
         backgroundColor: theme.palette.white.main,
-        opacity: 1,
         border: '3px solid',
         borderColor: theme.palette.yellow2.main
       }

@@ -1,4 +1,7 @@
 import React from 'react';
+import { Typography } from '@material-ui/core';
+import CountTag from '../Count/CountTag';
+import theme from '../../CustomStyles';
 
 interface TopicHeaderProps {
   topicTitle: string;
@@ -7,24 +10,22 @@ interface TopicHeaderProps {
 }
 
 function TopicHeader(props: TopicHeaderProps) {
-  const tags = {
-    paddingTop: '30px'
+  const tagsPadding = {
+    display: 'flex',
+    padding: theme.spacing('10vh', 1, 1, 1)
   };
 
   return (
     <div>
-      <h1>{props.topicTitle}</h1>
-      <div style={tags}>
-        <h3>
-          {props.articleCount} Article(s) {props.videoCount} Video(s)
-        </h3>
+      <Typography variant="h1"> {props.topicTitle} </Typography>
+      <div>
+        <Typography variant="subtitle1" style={tagsPadding}>
+          <CountTag media={'Article'} count={props.articleCount}></CountTag>
+          <CountTag media={'Video'} count={props.videoCount}></CountTag>
+        </Typography>
       </div>
     </div>
   );
 }
 
 export default TopicHeader;
-
-//another child of TopicView
-//count inside of TopicView
-//View is whole page - we'd want to render the header on top of the view
