@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
 import { useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import RefreshButton from '../RefreshButton';
+import RefreshButton from '../Offline/RefreshButton';
 import { loadInitialState } from '../../store/loadInitialState';
 import SearchList from './SearchList';
 

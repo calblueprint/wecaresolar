@@ -7,6 +7,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
 import { red, green } from '@material-ui/core/colors';
 import { Typography } from '@material-ui/core';
+import CacheableImage from '../../components/Offline/CacheableImage';
 
 const CustomSwitch = withStyles({
   switchBase: {
@@ -65,7 +66,7 @@ function Suitcase({ classes, match }) {
       </div>
       <div>
         {toggled ? (
-          <img src={SuitcaseLabeled} style={labeled} />
+          <CacheableImage src={SuitcaseLabeled} style={labeled} />
         ) : (
           <SuitcaseAnimation classes={styles} match={match} />
         )}

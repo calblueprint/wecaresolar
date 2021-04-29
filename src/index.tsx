@@ -59,8 +59,9 @@ if (firebase.messaging.isSupported()) {
 
 loadInitialState();
 
-// Set up IndexedDB store for caching videos
-export const videoStore = new Store('Resources', 'VideoStore');
+// Set up IndexedDB stores
+export const videoStore = new Store('Videos', 'VideoStore'); // For downloaded videos
+export const imageStore = new Store('Images', 'ImageStore'); // For cached images (automatic)
 
 ReactDOM.render(
   <React.StrictMode>

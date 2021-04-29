@@ -4,6 +4,7 @@ import { styles } from './SectionStyles';
 import { Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import { Section } from '../../store/sectionsSlice';
+import CacheableImage from '../Offline/CacheableImage';
 
 type SectionProps = {
   section: Section;
@@ -41,7 +42,7 @@ const SectionCard = ({
             <Typography variant="h2">{section.title}</Typography>
           </div>
           <div className={classes.imageDiv}>
-            <img className={classes.image} src={section.imageUrl} />
+            <CacheableImage className={classes.image} src={section.imageUrl} />
           </div>
           <div className={classes.textImage}>
             <Typography variant="body1">{section.text}</Typography>
