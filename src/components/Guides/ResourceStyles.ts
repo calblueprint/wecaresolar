@@ -22,37 +22,5 @@ export const styles = (theme: Theme) =>
       borderRadius: 18,
       boxShadow:
         '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
-    },
-    videoCard: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      width: 226,
-      height: 172,
-      marginRight: 12,
-      marginBottom: '2vw',
-      borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
-    },
-    videoCardAll: {
-      position: 'relative',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'space-between',
-      width: '62.1vw',
-      height: '47.265vw',
-      marginRight: 12,
-      marginBottom: '2vw',
-      borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
-    },
-    column: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-end',
-      color: '#000'
     }
   });
