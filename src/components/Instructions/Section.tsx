@@ -28,7 +28,7 @@ const SectionCard = ({
     if (section.label != null) {
       return (
         <div className={classes.labelBox}>
-          <Typography variant="caption">{section.label}</Typography>
+          <Typography variant="body1">{section.label}</Typography>
         </div>
       );
     }

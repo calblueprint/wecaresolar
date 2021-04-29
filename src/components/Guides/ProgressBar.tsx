@@ -9,17 +9,15 @@ const ProgressBar = (progress: number) => {
     alignItems: 'center',
     margin: '0rem 0.3rem 0.3rem 0rem'
   };
-
   const barBase = {
-    width: '70vw',
+    width: '60vw',
     height: '5px',
     background: 'white',
     boxShadow: '-2px 4px 20px rgba(79, 42, 29, 0.15)',
     borderRadius: '20px',
     marginRight: '0.3rem'
   };
-
-  const fillBar = {
+  const barFill = {
     width: `${progress}%`,
     height: '5px',
     background: '#33BF68',
@@ -32,7 +30,7 @@ const ProgressBar = (progress: number) => {
   return (
     <div style={style}>
       <div style={barBase}>
-        <div style={fillBar}></div>
+        <div style={barFill}></div>
       </div>
       <Typography variant="body2" style={text}>
         {progress}% Complete

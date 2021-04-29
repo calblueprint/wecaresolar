@@ -12,11 +12,9 @@ export const styles = (theme: Theme) =>
       alignItems: 'center',
       background: 'rgba(134, 157, 176, 0.3)',
       width: 'fit-content',
-      height: '22.96px',
       borderRadius: '4.875px',
       color: theme.palette.suitcase.dark,
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3)
+      padding: theme.spacing(1, 3)
     },
     title: {
       position: 'relative',

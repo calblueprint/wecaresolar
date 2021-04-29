@@ -10,7 +10,7 @@ export const styles = (theme: Theme) =>
       flexGrow: 1,
       width: '100%',
       top: 0,
-
+      position: 'absolute',
       color: theme.palette.background.default,
       backgroundColor: theme.palette.background.default
     },

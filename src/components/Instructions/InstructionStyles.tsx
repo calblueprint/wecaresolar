@@ -3,22 +3,22 @@ export const styles = (theme: Theme) =>
   createStyles({
     fixed: {
       position: 'fixed',
-      top: '60px',
-      height: '90px',
+      flex: 'column',
+      top: 50,
+      height: 'fit-content',
       backgroundColor: '#FAFAFA',
       zIndex: 1
     },
     title: {
-      position: 'fixed',
-      top: '75px',
-      left: '1.7vw'
+      padding: theme.spacing(3, 3),
+      display: 'flex'
     },
     progressBar: {
-      position: 'fixed',
-      marginTop: '60px'
+      padding: theme.spacing(0, 3, 3, 3),
+      display: 'flex'
     },
     sections: {
-      marginTop: theme.spacing(4) * 2.5,
+      marginTop: '15vh',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'left'
