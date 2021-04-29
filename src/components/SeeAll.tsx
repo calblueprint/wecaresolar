@@ -23,7 +23,7 @@ type SeeAllProps = {
 function SeeAll(props: SeeAllProps) {
   const resources = useSelector((state: RootState) => state.resources);
   const lessons = useSelector((state: RootState) => state.lessons);
-  const articles = Object.keys(resources)z.filter(
+  const articles = Object.keys(resources).filter(
     (id) => resources[id].type == 'Article'
   );
   const videos = Object.keys(resources).filter(
@@ -97,7 +97,6 @@ function SeeAll(props: SeeAllProps) {
       return (
         <div className={classes.root}>
           <div className={classes.header}>
-            <div className={classes.title}>All Videos</div>
             <Typography variant="h1"> All Videos </Typography>
             <Typography variant="body1" className={classes.countText}>
               {' '}

@@ -15,15 +15,6 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column'
     },
-    title: {
-      fontSize: '1.5rem',
-      lineHeight: '30px',
-      fontWeight: 'bold',
-      marginTop: '71px',
-      marginLeft: '2vw',
-      color: theme.palette.black.main,
-      font: theme.typography.fontFamily
-    },
     countText: {
       opacity: 0.7,
       padding: theme.spacing(1)
