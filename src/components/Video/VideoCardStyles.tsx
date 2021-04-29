@@ -15,7 +15,7 @@ export const styles = (theme: Theme) =>
     },
     thumbnail: {
       width: '230px',
-      objectFit: 'contain',
+      objectFit: 'contain'
     },
     videoCardAll: {
       position: 'relative',
