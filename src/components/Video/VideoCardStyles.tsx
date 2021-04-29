@@ -34,18 +34,24 @@ export const styles = (theme: Theme) =>
       objectFit: 'scale-down',
       zIndex: 0
     },
+    complete: {
+      position: 'absolute',
+      top: '2vw',
+      left: '2vw',
+      zIndex: 1
+    },
     favorite: {
       position: 'absolute',
-      top: '16px',
-      left: '90%',
+      top: '2vw',
+      left: '35vw',
       zIndex: 1
     },
     button: {
       position: 'absolute',
       width: '74.08px',
       height: '20px',
-      top: '84.04%',
-      left: '31vw',
+      top: '20vw',
+      left: '30vw',
       backgroundColor: theme.palette.black.main,
       zIndex: 1
     },

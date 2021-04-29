@@ -32,6 +32,7 @@ const ResourceCard = (props: ResourceCardProps): typeof ResourceCard => {
           resourceID={props.resourceID}
           viewAll={props.viewAll}
           classes={props.classes}
+          completeCheck={false}
         ></VideoCard>
       );
     }
