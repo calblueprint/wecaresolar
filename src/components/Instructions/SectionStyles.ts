@@ -3,7 +3,6 @@ import { Palette } from '@material-ui/icons';
 export const styles = (theme: Theme) =>
   createStyles({
     card: {
-      width: '70vw',
       backgroundColor: 'transparent',
       boxShadow: 'none'
     },

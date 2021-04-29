@@ -14,42 +14,40 @@ const SectionCard = ({
   section,
   classes
 }: SectionProps): typeof SectionCard => {
-  if (section.imageUrl == null) {
-    return (
-      <Card className={classes.card}>
-        <CardContent>
-          <div className={classes.labelBox}>
-            <Typography variant="caption">{section.label}</Typography>
-          </div>
-          <Typography variant="h2" className={classes.title}>
-            {section.title}
-          </Typography>
-          <Typography variant="body1" className={classes.text}>
-            {section.text}
-          </Typography>
-        </CardContent>
-      </Card>
-    );
-  } else {
-    return (
-      <Card className={classes.card}>
-        <CardContent>
-          <div className={classes.labelBox}>
-            <text className={classes.labelText}>{section.label}</text>
-          </div>
-          <Typography variant="h2" className={classes.title}>
-            {section.title}
-          </Typography>
-          <div className={classes.imageDiv}>
-            <img src={section.imageUrl} className={classes.image}></img>
-          </div>
-          <Typography variant="body1" className={classes.text}>
-            {section.text}
-          </Typography>
-        </CardContent>
-      </Card>
-    );
+  function renderImage() {
+    if (section.imageUrl != null) {
+      return (
+        <div className={classes.imageDiv}>
+          <img src={section.imageUrl} className={classes.image}></img>
+        </div>
+      );
+    }
   }
+
+  function renderLabel() {
+    if (section.label != null) {
+      return (
+        <div className={classes.labelBox}>
+          <Typography variant="caption">{section.label}</Typography>
+        </div>
+      );
+    }
+  }
+
+  return (
+    <Card className={classes.card}>
+      <CardContent>
+        {renderLabel()}
+        <Typography variant="h2" className={classes.title}>
+          {section.title}
+        </Typography>
+        {renderImage()}
+        <Typography variant="body1" className={classes.text}>
+          {section.text}
+        </Typography>
+      </CardContent>
+    </Card>
+  );
 };
 
 export default withStyles(styles)(SectionCard);

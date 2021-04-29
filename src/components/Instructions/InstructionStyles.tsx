@@ -30,6 +30,6 @@ export const styles = (theme: Theme) =>
       marginTop: theme.spacing(4),
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'left'
     }
   });
