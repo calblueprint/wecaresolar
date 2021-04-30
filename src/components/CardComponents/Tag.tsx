@@ -10,7 +10,6 @@ interface TagProps {
 }
 
 const Tag = (props: TagProps) => {
-  console.log(props.color);
   const { classes } = props;
   let buttonType = `${classes.tag}`;
 

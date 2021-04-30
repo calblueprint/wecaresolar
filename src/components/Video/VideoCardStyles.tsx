@@ -25,12 +25,12 @@ export const styles = (theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: theme.spacing(2),
-      width: '40vw',
-      height: '23.79vw',
+      width: '60vw',
+      // height: '23.79vw',
       borderRadius: 18
     },
     thumbnailAll: {
-      width: '38vw',
+      width: '58vw',
       objectFit: 'scale-down',
       zIndex: 0
     },
@@ -43,15 +43,15 @@ export const styles = (theme: Theme) =>
     favorite: {
       position: 'absolute',
       top: '2vw',
-      left: '35vw',
+      right: '2vw',
       zIndex: 1
     },
     button: {
       position: 'absolute',
       width: '74.08px',
       height: '20px',
-      top: '20vw',
-      left: '30vw',
+      bottom: '2vw',
+      right: '2vw',
       backgroundColor: theme.palette.black.main,
       zIndex: 1
     },

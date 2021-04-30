@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { AnswerOption } from '../../store/troubleshootingSlice';
 import { Typography } from '@material-ui/core';
+import SectionCard from '../Instructions/Section';
 
 type TroubleShootProps = {
   helpId: string;
@@ -18,6 +19,7 @@ const TroubleShootCard = ({ helpId, classes }) => {
   const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
   helpId = decodeURIComponent(helpId);
   const help = troubleshoot[helpId];
+  const sections = useSelector((state: RootState) => state.sections);
 
   const createOptions = (options) => {
     return (
@@ -99,6 +101,11 @@ const TroubleShootCard = ({ helpId, classes }) => {
       </div>
       <Typography variant="h2">{help.question}</Typography>
       <p>{help.description}</p>
+      <div className={classes.sections}>
+        {help.sections.map((key: any) => (
+          <SectionCard section={sections[key]}></SectionCard>
+        ))}
+      </div>
       {createOptions(help.answerOptions)}
     </div>
   );

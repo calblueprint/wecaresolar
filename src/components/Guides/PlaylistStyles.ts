@@ -3,10 +3,10 @@ import { createStyles, Theme } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     page: {
-      margin: '25% 3% 15%',
       overflow: 'scroll',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      padding: theme.spacing(3)
     },
     title: {
       color: theme.palette.black.main,

@@ -23,6 +23,7 @@ export const styles = (theme: Theme) =>
 
     button: {
       borderRadius: '18px',
+      maxWidth: '400px',
       marginRight: '1%',
       padding: theme.spacing(1, 2, 1, 2),
       borderStyle: 'none',
@@ -38,8 +39,7 @@ export const styles = (theme: Theme) =>
       alignContent: 'center',
       width: '100%',
       height: 60,
-      marginRight: 48,
-      marginBottom: 32,
+      marginBottom: theme.spacing(2),
       borderRadius: 10,
       boxShadow:
         '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
