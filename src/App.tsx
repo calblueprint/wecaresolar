@@ -8,7 +8,7 @@ import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
 import Settings from './pages/Settings/Settings';
 import { makeStyles } from '@material-ui/core/styles';
-import PlaylistPage from './components/Guides/PlaylistPage';
+import PlaylistPage from './components/Playlist/PlaylistPage';
 import TopicViews from './components/Topics/TopicViews';
 import Video from './components/Video/Video';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';

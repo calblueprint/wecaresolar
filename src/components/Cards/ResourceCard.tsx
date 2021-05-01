@@ -3,7 +3,7 @@ import Card from '@material-ui/core/Card';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './ResourceStyles';
 import { isVideo, Resource } from '../../store/resourcesSlice';
-import VideoCard from '../Video/VideoCard';
+import VideoCard from './VideoCard';
 
 interface ResourceCardProps {
   resource: Resource;

@@ -5,10 +5,8 @@ import { styles } from './PlaylistStyles';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import StandardCard from '../Cards/StandardCard';
-import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
-import { ReactComponent as VideoIcon } from './VideoIcon.svg';
 import ProgressBar from './ProgressBar';
-import CountTag from '../Count/CountTag';
+import CountTag from '../CardComponents/Count/CountTag';
 
 type PlaylistPageProps = {
   lessonId: string;

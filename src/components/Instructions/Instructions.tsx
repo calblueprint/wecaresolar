@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { isInstruction } from '../../store/resourcesSlice';
-import ProgressBar from '../Guides/ProgressBar';
+import ProgressBar from '../Playlist/ProgressBar';
 import { styles } from './InstructionStyles';
 import SectionCard from './Section';
 

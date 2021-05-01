@@ -1,7 +1,7 @@
 import React from 'react';
-import PlaylistCard from '../../components/Guides/PlaylistCard';
-import ResourceCard from '../../components/Guides/ResourceCard';
-import VideoCard from '../../components/Video/VideoCard';
+import PlaylistCard from '../../components/Playlist/PlaylistCard';
+import ResourceCard from '../../components/Cards/ResourceCard';
+import VideoCard from '../../components/Cards/VideoCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link, Route, Router, BrowserRouter } from 'react-router-dom';

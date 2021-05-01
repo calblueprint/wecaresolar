@@ -10,10 +10,6 @@ import { SectionsSlice } from './sectionsSlice';
 import { UserSlice } from './userSlice';
 import { TopicsSlice } from './topicsSlice';
 import { TroubleshootingSlice } from './troubleshootingSlice';
-import FetalImage from '../components/Images/fetaldopplerTopic.jpg';
-import LightsImage from '../components/Images/lightsTopic.jpg';
-import HeadlampImage from '../components/Images/headlampTopic.jpg';
-import PhoneImage from '../components/Images/phoneTopic.jpg';
 
 export const INITIAL_TROUBLESHOOTING: TroubleshootingSlice = {};
 
@@ -143,13 +139,6 @@ export const INITIAL_USER: UserSlice = {
 };
 
 export const INITIAL_TOPICS: TopicsSlice = {
-  '4': {
-    name: 'Fetal Doppler',
-    description: 'This is the Fetal Doppler.',
-    imageUrl: FetalImage,
-    suitcaseCoordinates: [0.5, 0.5],
-    color: 'Brown'
-  },
   '13': {
     name: 'Cables',
     description: 'This is the Cables topic.',
