@@ -56,7 +56,6 @@ const StandardCard = (props: StandardCardProps) => {
           <div className={classes.contentColumn}>
             <div className={classes.titleButtonRow}>
               <div className={classes.title}>{props.resource.title}</div>
-              {/* <h5 className={classes.type}>{props.resource.type}</h5> */}
               <div className={classes.favorite}>
                 <FavoriteButton
                   id={props.resourceID}

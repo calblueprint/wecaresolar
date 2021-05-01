@@ -36,15 +36,15 @@ export const styles = (theme: Theme) =>
       height: '100%',
       pointerEvents: 'none',
       display: 'flex',
-      position: 'relative',
-      left: 1,
+      // position: 'relative',
+      // left: 1,
       alignItems: 'center',
-      justifyContent: 'center',
-      transition: 'all 3s ease',
-      '&::after': {
-        position: 'relative',
-        left: 3
-      }
+      justifyContent: 'center'
+      // transition: 'all 3s ease',
+      // '&::after': {
+      //   position: 'relative',
+      //   left: 3
+      // }
     },
     searchButton: {
       margin: 3,
@@ -61,13 +61,15 @@ export const styles = (theme: Theme) =>
       animationDirection: 'reverse',
       animationIterationCount: 'infinite',
       animationDuration: '3s',
-      transition: 'all 3s ease'
+      transition: 'all 3s ease',
+      cursor: 'pointer'
     },
     searchIconWrapped: {
       color: theme.palette.black.main,
       height: '100%',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      cursor: 'pointer'
     },
     inputRoot: {
       width: '100%'
@@ -76,22 +78,31 @@ export const styles = (theme: Theme) =>
       padding: theme.spacing(1),
       color: theme.palette.black.main,
       fontWeight: 600,
-      fontSize: '3.5vw',
+      fontSize: 12,
       width: '100%',
       flexGrow: 1
     },
     searchList: {
-      color: theme.palette.brown.main,
+      color: theme.palette.black.main,
       padding: 24,
-      paddingTop: 50
+      paddingTop: 50,
+      display: 'flex',
+      flexDirection: 'column',
+      // padding: theme.spacing(3),
+      overflow: 'scroll'
     },
     header: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      margin: '1%',
       height: 'fit-content'
+    },
+    results: {
+      display: 'flex',
+      flexDirection: 'column',
+      marginTop: theme.spacing(1),
+      padding: theme.spacing(2)
     },
     backButton: {
       color: 'black',
