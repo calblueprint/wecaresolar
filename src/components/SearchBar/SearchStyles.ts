@@ -1,4 +1,5 @@
 import { createStyles, Theme, fade } from '@material-ui/core/styles';
+import zIndex from '@material-ui/core/styles/zIndex';
 import { relative } from 'path';
 export const styles = (theme: Theme) =>
   createStyles({
@@ -30,21 +31,18 @@ export const styles = (theme: Theme) =>
       boxShadow: '-2px 4px 23px 0px rgba(2, 2, 2, 0.0685)',
       zIndex: 2
     },
+    form: {
+      backgroundColor: theme.palette.wcsgrey.main,
+      transition: 'none'
+    },
     searchIcon: {
       padding: theme.spacing(1),
       color: theme.palette.black.main,
       height: '100%',
       pointerEvents: 'none',
       display: 'flex',
-      // position: 'relative',
-      // left: 1,
       alignItems: 'center',
       justifyContent: 'center'
-      // transition: 'all 3s ease',
-      // '&::after': {
-      //   position: 'relative',
-      //   left: 3
-      // }
     },
     searchButton: {
       margin: 3,
@@ -85,7 +83,7 @@ export const styles = (theme: Theme) =>
     searchList: {
       color: theme.palette.black.main,
       padding: 24,
-      paddingTop: 50,
+      paddingTop: 80,
       display: 'flex',
       flexDirection: 'column',
       // padding: theme.spacing(3),
@@ -111,7 +109,9 @@ export const styles = (theme: Theme) =>
     },
     dropdown: {
       display: 'flex',
-      margin: '0%'
+      margin: '0%',
+      position: 'relative',
+      zIndex: 0
     },
     overlayBackground: {
       height: '100%',

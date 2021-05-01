@@ -16,6 +16,7 @@ import SeeAll from './components/SeeAll';
 
 import Article from './components/Article/Article';
 import WCSRoute from './WCSRoute';
+import SearchList from './components/SearchBar/SearchList';
 
 const useStyles = makeStyles({
   root: {
@@ -128,6 +129,16 @@ function App() {
               exact
               path="/settings"
               component={Settings}
+            />
+
+            <WCSRoute
+              hasSearch
+              hasTab
+              exact
+              path="/search/q=:queryString"
+              render={(props) => (
+                <SearchList query={props.match.params.queryString} />
+              )}
             />
           </Switch>
         </div>

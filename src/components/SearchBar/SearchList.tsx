@@ -18,15 +18,6 @@ function SearchList(props) {
       (r: string) => state.resources[r]
     );
   });
-  // if (props.video) {
-  //   resources = resources.filter((r) => r.type == 'Video');
-  // }
-  // if (props.article) {
-  //   resources = resources.filter((r) => r.type == 'Article');
-  // }
-  // if (props.playlist) {
-  //   resources = resources.filter((r) => r.type == 'Playlist');
-  // }
 
   const topics = useSelector((state: RootState) => state.topics);
   const allTopics: string[] = Object.keys(topics).map(

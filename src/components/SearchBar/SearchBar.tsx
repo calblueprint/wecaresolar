@@ -3,6 +3,8 @@ import { Offline } from 'react-detect-offline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
 import BackIcon from '@material-ui/icons/ArrowBackIos';
 import SearchIcon from '@material-ui/icons/Search';
 import WifiIcon from '@material-ui/icons/WifiOff';
@@ -24,9 +26,6 @@ const SearchAppBar = (props: SearchProps) => {
   const location = useLocation();
 
   const [query, setQuery] = useState('');
-  // const [video, setVideo] = useState(false);
-  // const [article, setArticle] = useState(false);
-  // const [playlist, setPlaylist] = useState(false);
 
   const hideBackButton = [
     '/Guides',
@@ -36,6 +35,8 @@ const SearchAppBar = (props: SearchProps) => {
   ].includes(location.pathname);
 
   const [idle, setIdle] = useState(true);
+
+  // function handleSearch();
 
   return (
     <div className={classes.root}>
@@ -58,11 +59,31 @@ const SearchAppBar = (props: SearchProps) => {
           <div
             className={classes.search}
             onClick={(event) => {
-              // event.preventDefault();
-              // event.stopPropagation();
               setIdle(false);
             }}
           >
+            {/* <form
+              action={`/search/`}
+              method={'get'}
+              className={classes.search}
+              // onSubmit={handleSearch}
+            >
+              <input
+                className={classes.search}
+                placeholder="Search all resources"
+                type="search"
+                // classes={{
+                //   root: classes.inputRoot,
+                //   input: classes.inputInput
+                // }}
+                // inputProps={{ 'aria-label': 'search' }}
+                onChange={(event) => setQuery(event.target.value)}
+              ></input>
+              <button className={classes.searchButton}>
+                <SearchIcon className={classes.searchIconWrapped} />
+              </button>
+            </form> */}
+
             <InputBase
               placeholder="Search all resources"
               type="search"
@@ -78,15 +99,13 @@ const SearchAppBar = (props: SearchProps) => {
                 <SearchIcon />
               </div>
             ) : (
-              <Link
+              <button
                 className={classes.searchButton}
-                to={{ pathname: '/favorites' }}
+                // onClick={handleSearch}
+                // to={{ pathname: '/favorites' }}
               >
                 <SearchIcon className={classes.searchIconWrapped} />
-              </Link>
-              // <Button className={classes.searchButton}>
-              //   <SearchIcon className={classes.searchIconWrapped} />
-              // </Button>
+              </button>
             )}
           </div>
           <RefreshButton fetch={() => loadInitialState()} />
