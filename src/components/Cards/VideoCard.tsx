@@ -17,9 +17,9 @@ import { Link } from 'react-router-dom';
 interface VideoCardProps {
   resource: Resource;
   resourceID: string;
-  viewAll: boolean;
+  expand: boolean;
   classes: any;
-  completeCheck: boolean;
+  includeCheck: boolean;
 }
 
 const VideoCard = (props: VideoCardProps): typeof VideoCard => {
@@ -28,7 +28,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const url = '/Guides/Videos/' + props.resourceID;
 
   function renderComplete() {
-    if (props.completeCheck == true) {
+    if (props.includeCheck == true) {
       return (
         <div className={classes.complete}>
           <CompletedButton
@@ -55,7 +55,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
     );
   }
   if (isVideo(resource.data)) {
-    if (props.viewAll) {
+    if (props.expand) {
       return (
         <Link className={classes.link} to={url}>
           <Card className={classes.videoCardAll}>

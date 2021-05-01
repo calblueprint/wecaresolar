@@ -25,6 +25,11 @@ function Guides(props: GuidesProps) {
 
   const { classes } = props;
 
+  const typesToData: Record<string, string[]> = {
+    Instructions: articles,
+    Videos: videos
+  };
+
   return (
     <div className={classes.root}>
       <div className={classes.header}>

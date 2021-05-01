@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import FavoriteButton from '../CardComponents/FavoriteButton';
 import CompletedButton from '../CardComponents/CompletedButton';
 import { Link } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 
 interface InstructionCardProps {
   resource: Resource;
@@ -39,8 +40,8 @@ const InstructionCard = (props: InstructionCardProps) => {
     return (
       <Link to={url}>
         <Card className={classes.articleCard}>
-          <h3 className={classes.title}>{resource.title}</h3>
-          <text className={classes.text}>{resource.data.preview}</text>
+          <Typography variant="h3">{resource.title}</Typography>
+          <Typography variant="body1">{resource.data.preview}</Typography>
         </Card>
       </Link>
     );
@@ -63,7 +64,7 @@ const InstructionCard = (props: InstructionCardProps) => {
           ) : null}
           <div className={classes.contentColumn}>
             <div className={classes.titleButtonRow}>
-              <div className={classes.title}>{props.resource.title}</div>
+              <Typography variant="h3">{props.resource.title}</Typography>
               <div className={classes.favorite}>
                 <FavoriteButton
                   id={props.resourceID}
@@ -73,7 +74,9 @@ const InstructionCard = (props: InstructionCardProps) => {
               </div>
             </div>
             {props.resource.isCompleted ? null : (
-              <p className={classes.body}>{props.resource.data.preview}</p>
+              <Typography variant="h3">
+                {props.resource.data.preview}
+              </Typography>
             )}
           </div>
         </div>

@@ -17,8 +17,6 @@ type SeeAllProps = {
   typeofres;
 };
 
-//function to return the list of playlists/articles/videos based on string type
-
 function SeeAll(props: SeeAllProps) {
   const resources = useSelector((state: RootState) => state.resources);
   const lessons = useSelector((state: RootState) => state.lessons);

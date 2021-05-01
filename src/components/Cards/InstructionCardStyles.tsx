@@ -42,11 +42,6 @@ export const styles = (theme: Theme) =>
       alignItems: 'flex-start',
       alignSelf: 'stretch'
     },
-    title: {
-      fontSize: '1rem',
-      fontWeight: 'bold',
-      lineHeight: '1.4rem'
-    },
     favorite: {
       padding: '0px 0px',
       marginLeft: '0.2rem'
@@ -65,10 +60,6 @@ export const styles = (theme: Theme) =>
     link: {
       textDecoration: 'none',
       margin: '1%'
-    },
-    text: {
-      fontSize: 12,
-      fontWeight: 400
     },
     articleCard: {
       display: 'flex',
