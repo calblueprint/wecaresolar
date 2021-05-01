@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import React from 'react';
 import { RootState } from '../store/reducers';
 import { Link } from 'react-router-dom';
-import PlaylistCard from './Playlist/PlaylistCard';
+import PlaylistCard from './Cards/PlaylistCard';
 import ResourceCard from './Cards/ResourceCard';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SeeAllStyles';

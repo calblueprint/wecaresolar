@@ -1,5 +1,5 @@
 import React from 'react';
-import PlaylistCard from '../../components/Playlist/PlaylistCard';
+import PlaylistCard from '../../components/Cards/PlaylistCard';
 import ResourceCard from '../../components/Cards/ResourceCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
