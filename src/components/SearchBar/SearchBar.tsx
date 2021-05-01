@@ -12,6 +12,7 @@ import { useHistory, useLocation, Link } from 'react-router-dom';
 import RefreshButton from '../RefreshButton';
 import { loadInitialState } from '../../store/loadInitialState';
 import SearchList from './SearchList';
+import { Button } from '@material-ui/core';
 
 type SearchProps = {
   classes: any;
@@ -23,9 +24,9 @@ const SearchAppBar = (props: SearchProps) => {
   const location = useLocation();
 
   const [query, setQuery] = useState('');
-  const [video, setVideo] = useState(false);
-  const [article, setArticle] = useState(false);
-  const [playlist, setPlaylist] = useState(false);
+  // const [video, setVideo] = useState(false);
+  // const [article, setArticle] = useState(false);
+  // const [playlist, setPlaylist] = useState(false);
 
   const hideBackButton = [
     '/Guides',
@@ -54,18 +55,14 @@ const SearchAppBar = (props: SearchProps) => {
               onClick={() => history.goBack()}
             />
           )}
-
           <div
             className={classes.search}
             onClick={(event) => {
-              event.preventDefault();
-              event.stopPropagation();
+              // event.preventDefault();
+              // event.stopPropagation();
               setIdle(false);
             }}
           >
-            {/* <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div> */}
             <InputBase
               placeholder="Search all resources"
               type="search"
@@ -75,16 +72,21 @@ const SearchAppBar = (props: SearchProps) => {
               }}
               inputProps={{ 'aria-label': 'search' }}
               onChange={(event) => setQuery(event.target.value)}
-              // onTouchStart={(event) => setIdle(false)}
             />
             {idle ? (
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
             ) : (
-              <Link to="/Favorites" className={classes.searchButton}>
+              <Link
+                className={classes.searchButton}
+                to={{ pathname: '/favorites' }}
+              >
                 <SearchIcon className={classes.searchIconWrapped} />
               </Link>
+              // <Button className={classes.searchButton}>
+              //   <SearchIcon className={classes.searchIconWrapped} />
+              // </Button>
             )}
           </div>
           <RefreshButton fetch={() => loadInitialState()} />
@@ -93,11 +95,12 @@ const SearchAppBar = (props: SearchProps) => {
           </Offline>
         </Toolbar>
       </AppBar>
+
       {query && (
         <SearchList
-          video={video}
-          article={article}
-          playlist={playlist}
+          // video={video}
+          // article={article}
+          // playlist={playlist}
           query={query}
         />
       )}
