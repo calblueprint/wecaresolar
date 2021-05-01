@@ -1,7 +1,6 @@
 import React from 'react';
 import PlaylistCard from '../../components/Playlist/PlaylistCard';
 import ResourceCard from '../../components/Cards/ResourceCard';
-import VideoCard from '../../components/Cards/VideoCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
@@ -53,47 +52,33 @@ function Guides(props: GuidesProps) {
           </Link>
         ))}
       </div>
-      <div className={classes.divider} />
-      <div className={classes.header}>
-        <Typography variant="h1">Instructions</Typography>
+
+      {Object.keys(typesToData).map((type) => (
         <div>
-          <Link
-            className={classes.list}
-            to={{ pathname: 'Guides/Instructions' }}
-          >
-            See all
-          </Link>
+          <div className={classes.divider} />
+          <div className={classes.header}>
+            <Typography variant="h1">{type}</Typography>
+            <div>
+              <Link
+                className={classes.list}
+                to={{ pathname: `Guides/${type}` }}
+              >
+                See all
+              </Link>
+            </div>
+          </div>
+          <div className={classes.scroll}>
+            {typesToData[type].map((key: any) => (
+              <ResourceCard
+                resource={resources[key]}
+                resourceID={key}
+                includeCheck={false}
+                expand={false}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className={classes.scroll}>
-        {articles.map((key: any) => (
-          <ResourceCard
-            resource={resources[key]}
-            resourceID={key}
-            includeCheck={false}
-            expand={false}
-          />
-        ))}
-      </div>
-      <div className={classes.divider} />
-      <div className={classes.header}>
-        <Typography variant="h1">Videos</Typography>
-        <div>
-          <Link className={classes.list} to={{ pathname: 'Guides/Videos' }}>
-            See all
-          </Link>
-        </div>
-      </div>
-      <div className={classes.scroll}>
-        {videos.map((key: any) => (
-          <ResourceCard
-            resource={resources[key]}
-            resourceID={key}
-            includeCheck={false}
-            expand={false}
-          />
-        ))}
-      </div>
+      ))}
     </div>
   );
 }
