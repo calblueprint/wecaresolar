@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { styles } from './StandardCardStyles';
+import { styles } from './InstructionCardStyles';
 import { Resource } from '../../store/resourcesSlice';
 import { useDispatch } from 'react-redux';
 import { setResourceIsCompleted } from '../../store/resourcesSlice';
@@ -9,16 +9,18 @@ import FavoriteButton from '../CardComponents/FavoriteButton';
 import CompletedButton from '../CardComponents/CompletedButton';
 import { Link } from 'react-router-dom';
 
-interface StandardCardProps {
+interface InstructionCardProps {
   resource: Resource;
   resourceID: string;
+  expand: boolean;
+  includeCheck: boolean;
   classes: any;
-  completeCheck: boolean;
-  collapsed: boolean;
 }
 
-const StandardCard = (props: StandardCardProps) => {
+const InstructionCard = (props: InstructionCardProps) => {
   const { classes } = props;
+  const resource = props.resource;
+
   const dispatch = useDispatch();
   function handleOverlay(event) {
     event.preventDefault();
@@ -31,17 +33,23 @@ const StandardCard = (props: StandardCardProps) => {
     );
   }
 
-  let url = '/Guides/';
-  if (props.resource.type == 'Video') {
-    url = '/Guides/Videos/' + props.resourceID;
-  } else {
-    url = '/Guides/Instructions/' + props.resourceID;
+  const url = '/Guides/Instructions/' + props.resourceID;
+
+  if (!props.expand) {
+    return (
+      <Link to={url}>
+        <Card className={classes.articleCard}>
+          <h3 className={classes.title}>{resource.title}</h3>
+          <text className={classes.text}>{resource.data.preview}</text>
+        </Card>
+      </Link>
+    );
   }
   return (
     <Link className={classes.link} to={url}>
       <Card className={classes.card}>
         <div className={classes.box}>
-          {props.completeCheck ? (
+          {props.includeCheck ? (
             <div className={classes.buttonColumn}>
               {' '}
               <CompletedButton
@@ -56,7 +64,6 @@ const StandardCard = (props: StandardCardProps) => {
           <div className={classes.contentColumn}>
             <div className={classes.titleButtonRow}>
               <div className={classes.title}>{props.resource.title}</div>
-              {/* <h5 className={classes.type}>{props.resource.type}</h5> */}
               <div className={classes.favorite}>
                 <FavoriteButton
                   id={props.resourceID}
@@ -65,7 +72,7 @@ const StandardCard = (props: StandardCardProps) => {
                 />
               </div>
             </div>
-            {props.collapsed ? null : (
+            {props.resource.isCompleted ? null : (
               <p className={classes.body}>{props.resource.data.preview}</p>
             )}
           </div>
@@ -75,4 +82,4 @@ const StandardCard = (props: StandardCardProps) => {
   );
 };
 
-export default withStyles(styles)(StandardCard);
+export default withStyles(styles)(InstructionCard);

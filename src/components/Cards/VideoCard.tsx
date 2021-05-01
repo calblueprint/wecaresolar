@@ -12,6 +12,7 @@ import Fab from '@material-ui/core/Fab';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { useDispatch } from 'react-redux';
 import CompletedButton from '../CardComponents/CompletedButton';
+import { Link } from 'react-router-dom';
 
 interface VideoCardProps {
   resource: Resource;
@@ -24,6 +25,8 @@ interface VideoCardProps {
 const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const { classes } = props;
   const resource = props.resource;
+  const url = '/Guides/Videos/' + props.resourceID;
+
   function renderComplete() {
     if (props.completeCheck == true) {
       return (
@@ -54,27 +57,34 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   if (isVideo(resource.data)) {
     if (props.viewAll) {
       return (
-        <Card className={classes.videoCardAll}>
-          <img className={classes.thumbnailAll} src={resource.data.imageUrl} />
-          {renderComplete}
-          <div className={classes.favorite}>
-            <FavoriteButton
-              id={props.resourceID}
-              isFavorited={resource.isFavorited}
-              fillColor={'#020202'}
+        <Link className={classes.link} to={url}>
+          <Card className={classes.videoCardAll}>
+            <img
+              className={classes.thumbnailAll}
+              src={resource.data.imageUrl}
             />
-          </div>
-          <Fab className={classes.button} variant="extended">
-            <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
-            <text className={classes.duration}>{resource.data.duration}</text>
-          </Fab>
-        </Card>
+            {renderComplete}
+            <div className={classes.favorite}>
+              <FavoriteButton
+                id={props.resourceID}
+                isFavorited={resource.isFavorited}
+                fillColor={'#020202'}
+              />
+            </div>
+            <Fab className={classes.button} variant="extended">
+              <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
+              <text className={classes.duration}>{resource.data.duration}</text>
+            </Fab>
+          </Card>
+        </Link>
       );
     } else {
       return (
-        <Card className={classes.videoCard}>
-          <img className={classes.thumbnail} src={resource.data.imageUrl} />
-        </Card>
+        <Link className={classes.link} to={url}>
+          <Card className={classes.videoCard}>
+            <img className={classes.thumbnail} src={resource.data.imageUrl} />
+          </Card>
+        </Link>
       );
     }
   }

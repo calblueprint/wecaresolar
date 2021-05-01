@@ -4,13 +4,13 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './ResourceStyles';
 import { isVideo, Resource } from '../../store/resourcesSlice';
 import VideoCard from './VideoCard';
-
+import InstructionCard from './InstructionCard';
 interface ResourceCardProps {
   resource: Resource;
   resourceID: string;
-  viewAll: boolean;
+  includeCheck: boolean;
+  expand: boolean;
   classes: any;
-  completeCheck: boolean;
 }
 
 const ResourceCard = (props: ResourceCardProps): typeof ResourceCard => {
@@ -20,10 +20,13 @@ const ResourceCard = (props: ResourceCardProps): typeof ResourceCard => {
 
   if (type == 'Article') {
     return (
-      <Card className={classes.articleCard}>
-        <h3 className={classes.title}>{resource.title}</h3>
-        <text className={classes.text}>{resource.data.preview}</text>
-      </Card>
+      <InstructionCard
+        resource={props.resource}
+        resourceID={props.resourceID}
+        expand={props.expand}
+        classes={props.classes}
+        includeCheck={props.includeCheck}
+      />
     );
   } else {
     if (isVideo(resource.data)) {
@@ -31,10 +34,10 @@ const ResourceCard = (props: ResourceCardProps): typeof ResourceCard => {
         <VideoCard
           resource={props.resource}
           resourceID={props.resourceID}
-          viewAll={props.viewAll}
+          viewAll={props.expand}
           classes={props.classes}
-          completeCheck={false}
-        ></VideoCard>
+          completeCheck={props.includeCheck}
+        />
       );
     }
   }

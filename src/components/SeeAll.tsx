@@ -7,7 +7,6 @@ import PlaylistCard from './Playlist/PlaylistCard';
 import ResourceCard from './Cards/ResourceCard';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SeeAllStyles';
-import StandardCard from './Cards/StandardCard';
 import VideoCard from './Cards/VideoCard';
 import CountTag from './CardComponents/Count/CountTag';
 import { Typography } from '@material-ui/core';
@@ -78,14 +77,12 @@ function SeeAll(props: SeeAllProps) {
                 style={{ textDecoration: 'none' }}
                 to={`${props.match.url}/${key}`}
               >
-                {/* <div className={classes.articlesCard}> */}
-                <StandardCard
+                <ResourceCard
                   resource={resources[key]}
                   resourceID={key}
-                  completeCheck={false}
-                  collapsed={false}
+                  includeCheck={false}
+                  expand={true}
                 />
-                {/* </div> */}
               </Link>
             ))}
           </div>
@@ -110,10 +107,11 @@ function SeeAll(props: SeeAllProps) {
                 to={`${props.match.url}/${key}`}
               >
                 <div className={classes.videoCard}>
-                  <VideoCard
+                  <ResourceCard
                     resource={resources[key]}
                     resourceID={key}
-                    viewAll={true}
+                    includeCheck={false}
+                    expand={true}
                   />
                 </div>
               </Link>

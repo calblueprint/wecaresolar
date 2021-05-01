@@ -4,7 +4,7 @@ import ResourceCard from '../../components/Cards/ResourceCard';
 import VideoCard from '../../components/Cards/VideoCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import { Link, Route, Router, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './GuidesStyles';
 
@@ -62,12 +62,12 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {articles.map((key: any) => (
-          <Link
-            style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Instructions/${key}`}
-          >
-            <ResourceCard resource={resources[key]} />
-          </Link>
+          <ResourceCard
+            resource={resources[key]}
+            resourceID={key}
+            includeCheck={false}
+            expand={false}
+          />
         ))}
       </div>
       <div className={classes.divider} />
@@ -81,12 +81,12 @@ function Guides(props: GuidesProps) {
       </div>
       <div className={classes.scroll}>
         {videos.map((key: any) => (
-          <Link
-            style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Videos/${key}`}
-          >
-            <VideoCard resource={resources[key]} />
-          </Link>
+          <ResourceCard
+            resource={resources[key]}
+            resourceID={key}
+            includeCheck={false}
+            expand={false}
+          />
         ))}
       </div>
     </div>

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
 import { useSelector } from 'react-redux';
 import { Resource } from '../../store/resourcesSlice';
-import StandardCard from '../Cards/StandardCard';
+import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
 
 function SearchList(props) {
@@ -33,11 +33,11 @@ function SearchList(props) {
       {results.length > 0 &&
         results.map((resource: any) => {
           return (
-            <StandardCard
+            <ResourceCard
               resource={resource.item}
               resourceID={resource.item.title}
-              completeCheck={false}
-              collapsed={false}
+              expand={true}
+              includeCheck={true}
             />
           );
         })}
