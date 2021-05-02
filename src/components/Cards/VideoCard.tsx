@@ -27,14 +27,6 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const resource = props.resource;
   const url = '/Guides/Videos/' + props.resourceID;
 
-  // function renderComplete() {
-  //   if (props.includeCheck == true) {
-  //     return (
-
-  //     );
-  //   }
-  // }
-
   const dispatch = useDispatch();
   function handleOverlay(event) {
     event.preventDefault();
