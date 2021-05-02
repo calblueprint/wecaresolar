@@ -1,10 +1,9 @@
 import React from 'react';
-import PlaylistCard from '../../components/Playlist/PlaylistCard';
+import PlaylistCard from '../../components/Cards/PlaylistCard';
 import ResourceCard from '../../components/Cards/ResourceCard';
-import VideoCard from '../../components/Cards/VideoCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import { Link, Route, Router, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './GuidesStyles';
 
@@ -24,6 +23,11 @@ function Guides(props: GuidesProps) {
   );
 
   const { classes } = props;
+
+  const typesToData: Record<string, string[]> = {
+    Instructions: articles,
+    Videos: videos
+  };
 
   return (
     <div className={classes.root}>
@@ -48,47 +52,33 @@ function Guides(props: GuidesProps) {
           </Link>
         ))}
       </div>
-      <div className={classes.divider} />
-      <div className={classes.header}>
-        <Typography variant="h1">Instructions</Typography>
+
+      {Object.keys(typesToData).map((type) => (
         <div>
-          <Link
-            className={classes.list}
-            to={{ pathname: 'Guides/Instructions' }}
-          >
-            See all
-          </Link>
+          <div className={classes.divider} />
+          <div className={classes.header}>
+            <Typography variant="h1">{type}</Typography>
+            <div>
+              <Link
+                className={classes.list}
+                to={{ pathname: `Guides/${type}` }}
+              >
+                See all
+              </Link>
+            </div>
+          </div>
+          <div className={classes.scroll}>
+            {typesToData[type].map((key: any) => (
+              <ResourceCard
+                resource={resources[key]}
+                resourceID={key}
+                includeCheck={false}
+                expand={false}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      <div className={classes.scroll}>
-        {articles.map((key: any) => (
-          <Link
-            style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Instructions/${key}`}
-          >
-            <ResourceCard resource={resources[key]} />
-          </Link>
-        ))}
-      </div>
-      <div className={classes.divider} />
-      <div className={classes.header}>
-        <Typography variant="h1">Videos</Typography>
-        <div>
-          <Link className={classes.list} to={{ pathname: 'Guides/Videos' }}>
-            See all
-          </Link>
-        </div>
-      </div>
-      <div className={classes.scroll}>
-        {videos.map((key: any) => (
-          <Link
-            style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Videos/${key}`}
-          >
-            <VideoCard resource={resources[key]} />
-          </Link>
-        ))}
-      </div>
+      ))}
     </div>
   );
 }

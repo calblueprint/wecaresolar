@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import StandardCard from '../../components/Cards/StandardCard';
+import ResourceCard from '../../components/Cards/ResourceCard';
 import { selectFavoritedResources } from '../../store/resourcesSlice';
 import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './FavoriteStyles';
@@ -28,12 +28,12 @@ function Favorites({ match, classes }) {
     ) {
       if (resType.size == 0 || resType.has(favResources[resource].type)) {
         return (
-          <StandardCard
+          <ResourceCard
             key={resource}
             resource={favResources[resource]}
             resourceID={resource}
-            completeCheck={false}
-            collapsed={false}
+            expand={true}
+            includeCheck={false}
           />
         );
       }

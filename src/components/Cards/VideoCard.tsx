@@ -12,33 +12,20 @@ import Fab from '@material-ui/core/Fab';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { useDispatch } from 'react-redux';
 import CompletedButton from '../CardComponents/CompletedButton';
+import { Link } from 'react-router-dom';
 
 interface VideoCardProps {
   resource: Resource;
   resourceID: string;
-  viewAll: boolean;
+  expand: boolean;
   classes: any;
-  completeCheck: boolean;
+  includeCheck: boolean;
 }
 
 const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const { classes } = props;
   const resource = props.resource;
-  function renderComplete() {
-    if (props.completeCheck == true) {
-      return (
-        <div className={classes.complete}>
-          <CompletedButton
-            isCompleted={resource.isCompleted}
-            handleClick={handleOverlay}
-            fillColor={'#33BF68'}
-            width={'19'}
-            height={'19'}
-          />
-        </div>
-      );
-    }
-  }
+  const url = '/Guides/Videos/' + props.resourceID;
 
   const dispatch = useDispatch();
   function handleOverlay(event) {
@@ -52,29 +39,48 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
     );
   }
   if (isVideo(resource.data)) {
-    if (props.viewAll) {
+    if (props.expand) {
       return (
-        <Card className={classes.videoCardAll}>
-          <img className={classes.thumbnailAll} src={resource.data.imageUrl} />
-          {renderComplete}
-          <div className={classes.favorite}>
-            <FavoriteButton
-              id={props.resourceID}
-              isFavorited={resource.isFavorited}
-              fillColor={'#020202'}
+        <Link className={classes.link} to={url}>
+          <Card className={classes.videoCardAll}>
+            <img
+              className={classes.thumbnailAll}
+              src={resource.data.imageUrl}
             />
-          </div>
-          <Fab className={classes.button} variant="extended">
-            <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
-            <text className={classes.duration}>{resource.data.duration}</text>
-          </Fab>
-        </Card>
+            {props.includeCheck ? (
+              <div className={classes.complete}>
+                <CompletedButton
+                  isCompleted={resource.isCompleted}
+                  handleClick={handleOverlay}
+                  fillColor={'#33BF68'}
+                  width={'24'}
+                  height={'24'}
+                />
+              </div>
+            ) : (
+              <span />
+            )}
+            <div className={classes.favorite}>
+              <FavoriteButton
+                id={props.resourceID}
+                isFavorited={resource.isFavorited}
+                fillColor={'#020202'}
+              />
+            </div>
+            <Fab className={classes.button} variant="extended">
+              <AccessTimeIcon className={classes.clock}></AccessTimeIcon>
+              <text className={classes.duration}>{resource.data.duration}</text>
+            </Fab>
+          </Card>
+        </Link>
       );
     } else {
       return (
-        <Card className={classes.videoCard}>
-          <img className={classes.thumbnail} src={resource.data.imageUrl} />
-        </Card>
+        <Link className={classes.link} to={url}>
+          <Card className={classes.videoCard}>
+            <img className={classes.thumbnail} src={resource.data.imageUrl} />
+          </Card>
+        </Link>
       );
     }
   }
