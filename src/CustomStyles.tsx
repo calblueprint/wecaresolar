@@ -64,11 +64,11 @@ const theme = createMuiTheme({
   overrides: {
     MuiTypography: {
       h1: {
-        fontSize: 28,
+        fontSize: 24,
         fontWeight: 700
       },
       h2: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: 700
       },
       h3: {
