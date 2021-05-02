@@ -6,6 +6,7 @@ function Settings({ match, classes }) {
   return (
     <div className={classes.container}>
       <Typography variant="h1">Settings</Typography>
+      <Typography variant="body1">No Settings yet!</Typography>
     </div>
   );
 }
