@@ -64,7 +64,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiTypography: {
       h1: {
-        fontSize: 30,
+        fontSize: 28,
         fontWeight: 700
       },
       h2: {
@@ -72,15 +72,15 @@ const theme = createMuiTheme({
         fontWeight: 700
       },
       h3: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: 700
       },
       body1: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 400
       },
       body2: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: 600
       },
       caption: {
