@@ -27,21 +27,13 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const resource = props.resource;
   const url = '/Guides/Videos/' + props.resourceID;
 
-  function renderComplete() {
-    if (props.includeCheck == true) {
-      return (
-        <div className={classes.complete}>
-          <CompletedButton
-            isCompleted={resource.isCompleted}
-            handleClick={handleOverlay}
-            fillColor={'#33BF68'}
-            width={'19'}
-            height={'19'}
-          />
-        </div>
-      );
-    }
-  }
+  // function renderComplete() {
+  //   if (props.includeCheck == true) {
+  //     return (
+
+  //     );
+  //   }
+  // }
 
   const dispatch = useDispatch();
   function handleOverlay(event) {
@@ -63,7 +55,19 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
               className={classes.thumbnailAll}
               src={resource.data.imageUrl}
             />
-            {renderComplete}
+            {props.includeCheck ? (
+              <div className={classes.complete}>
+                <CompletedButton
+                  isCompleted={resource.isCompleted}
+                  handleClick={handleOverlay}
+                  fillColor={'#33BF68'}
+                  width={'24'}
+                  height={'24'}
+                />
+              </div>
+            ) : (
+              <span />
+            )}
             <div className={classes.favorite}>
               <FavoriteButton
                 id={props.resourceID}

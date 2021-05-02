@@ -25,12 +25,10 @@ export const styles = (theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: theme.spacing(2),
-      width: '60vw',
-      // height: '23.79vw',
       borderRadius: 18
     },
     thumbnailAll: {
-      width: '58vw',
+      width: '80vw',
       objectFit: 'scale-down',
       zIndex: 0
     },
@@ -38,13 +36,13 @@ export const styles = (theme: Theme) =>
       position: 'absolute',
       top: '2vw',
       left: '2vw',
-      zIndex: 1
+      zIndex: 10
     },
     favorite: {
       position: 'absolute',
       top: '2vw',
       right: '2vw',
-      zIndex: 1
+      zIndex: 10
     },
     button: {
       position: 'absolute',
