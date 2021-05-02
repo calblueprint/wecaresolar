@@ -33,7 +33,7 @@ function Favorites({ match, classes }) {
             resource={favResources[resource]}
             resourceID={resource}
             expand={true}
-            includeCheck={true}
+            includeCheck={false}
           />
         );
       }

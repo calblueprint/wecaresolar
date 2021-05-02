@@ -58,8 +58,7 @@ export const styles = (theme: Theme) =>
       fontWeight: 'normal'
     },
     link: {
-      textDecoration: 'none',
-      margin: '1%'
+      textDecoration: 'none'
     },
     articleCard: {
       display: 'flex',

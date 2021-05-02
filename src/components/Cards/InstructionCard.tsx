@@ -38,7 +38,7 @@ const InstructionCard = (props: InstructionCardProps) => {
 
   if (!props.expand) {
     return (
-      <Link to={url}>
+      <Link className={classes.link} to={url}>
         <Card className={classes.articleCard}>
           <Typography variant="h3">{resource.title}</Typography>
           <Typography variant="body1">{resource.data.preview}</Typography>
