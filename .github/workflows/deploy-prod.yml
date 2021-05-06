@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-    # Optionally configure to run only for specific files. For example:
+    # Optionally configure to run only for specific files. For example
     # paths:
     # - "website/**"
 
@@ -17,7 +17,7 @@ jobs:
       - run: npm install --only=dev && npm install && CI=false npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           expires: 30d
           channelId: live
