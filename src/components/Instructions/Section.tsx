@@ -4,6 +4,7 @@ import { styles } from './SectionStyles';
 import { Typography } from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import { Section } from '../../store/sectionsSlice';
+import CacheableImage from '../Offline/CacheableImage';
 
 type SectionProps = {
   section: Section;
@@ -18,7 +19,10 @@ const SectionCard = ({
     if (section.imageUrl != null) {
       return (
         <div className={classes.imageDiv}>
-          <img src={section.imageUrl} className={classes.image}></img>
+          <CacheableImage
+            src={section.imageUrl}
+            className={classes.image}
+          ></CacheableImage>
         </div>
       );
     }
