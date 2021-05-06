@@ -23,7 +23,14 @@ const PlaylistCard = (props: PlaylistCardProps) => {
   const resources = useSelector((state: RootState) => state.resources);
   const topics = useSelector((state: RootState) => state.topics);
   const countMedia = (media: string) =>
-    lesson.resourceIDs.filter((id) => resources[id].type == media).length;
+    lesson.resourceIDs.filter((id) => {
+      if (!resources[id]) {
+        console.log(
+          `[countMedia] Error: Could not find resource "${resources[id]}" in playlist "${lesson.title}"`
+        );
+      }
+      return resources[id].type == media;
+    }).length;
 
   const numVideos = countMedia('Video');
   const numArticles = countMedia('Article');

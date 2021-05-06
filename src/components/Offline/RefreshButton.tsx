@@ -16,7 +16,7 @@ import SyncIcon from '@material-ui/icons/Sync';
 import SyncProblemIcon from '@material-ui/icons/SyncProblem';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CheckIcon from '@material-ui/icons/Check';
-import { FetchStatus } from '../store/loadInitialState';
+import { FetchStatus } from '../../store/loadInitialState';
 
 interface RefreshButtonProps {
   fetch: () => Promise<FetchStatus>;
