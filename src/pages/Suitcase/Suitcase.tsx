@@ -1,5 +1,5 @@
 import React from 'react';
-import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimation';
+import SuitcaseRenderer from '../../components/Suitcase/SuitcaseRenderer';
 import SuitcaseLabeled from '../../components/Images/labeledSuitcase.png';
 import { styles } from './SuitcaseStyles';
 import Switch from '@material-ui/core/Switch';
@@ -50,7 +50,7 @@ function Suitcase({ classes, match }) {
         {toggled ? (
           <CacheableImage src={SuitcaseLabeled} style={labeled} />
         ) : (
-          <SuitcaseAnimation classes={styles} toggle={toggled} match={match} />
+          <SuitcaseRenderer classes={styles} toggle={toggled} match={match} />
         )}
       </div>
     </div>

@@ -17,7 +17,7 @@ export async function loadOrFetchImage(imageUrl: string) {
     try {
       const blob = await fetch(imageUrl).then((res) => res.blob());
       await set(imageUrl, blob, imageStore);
-      return urlResult;
+      return imageUrl;
     } catch (err) {
       console.log(
         '[offlineUtils] An error occurred while trying to load the image:',

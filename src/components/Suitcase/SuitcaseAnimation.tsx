@@ -1,4 +1,4 @@
-import { ThemeProvider, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import theme from '../../CustomStyles';
@@ -6,12 +6,12 @@ import { RootState } from '../../store/reducers';
 import { Topic } from '../../store/topicsSlice';
 import Suitcase from '../Images/Suitcase.png';
 import AnimationCard from './AnimationCard';
-import { loadIDBImage } from '../Offline/offlineUtils';
 import { ReactComponent as TapIcon } from './TapIcon.svg';
 
 type SuitcaseProps = {
   classes: any;
   toggle: boolean;
+  image: HTMLImageElement;
   match;
 };
 
@@ -23,17 +23,12 @@ interface ClipDimensions {
 }
 
 const SuitcaseAnimation = (props: SuitcaseProps) => {
-  const { classes } = props;
+  const { classes, image } = props;
   const [selectedTopic, setSelectedTopic] = useState<Topic | undefined>(
     undefined
   );
-  const [imageUrl, setImageUrl] = useState<string>(Suitcase);
   const topics = useSelector((state: RootState) => state.topics);
   let id = Number.NEGATIVE_INFINITY;
-
-  /* Create an ImageData object */
-  const image = new Image(975, 650);
-  image.src = imageUrl;
 
   /* clipDims: x, y, width, and height of the currently visible portion of the suitcase */
   const [clipDims, setClipDims] = useState<ClipDimensions>({
@@ -106,31 +101,7 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       const ctx = canvasCtxRef.current;
       if (!ctx) return;
       ctx.clearRect(0, 0, cWidth, cHeight);
-      image.onload = function () {
-        drawCanvas(ctx);
-      };
-      image.onerror = function () {
-        // Suitcase image could not be loaded. Attempt to get a cached version from IDB instead
-        loadIDBImage(Suitcase)
-          .then((idbImageUrl) => {
-            if (idbImageUrl !== undefined) {
-              setImageUrl(idbImageUrl);
-              image.src = idbImageUrl;
-            } else {
-              console.log(
-                '[SuitcaseAnimation] Error: offline, and no cached version of suitcase image exists'
-              );
-            }
-          })
-          .catch((err) => {
-            // TODO: display some kind of error message for this state?
-            // (user won't be able to see suitcase, so drawing the blue dots might be confusing)
-            console.log(
-              '[SuitcaseAnimation] Error loading suitcase image:',
-              err
-            );
-          });
-      };
+      drawCanvas(ctx);
     }
   }, []); //runs once, not watching
 
