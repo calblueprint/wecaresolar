@@ -3,12 +3,11 @@ import { useSelector } from 'react-redux';
 import React from 'react';
 import { RootState } from '../store/reducers';
 import { Link } from 'react-router-dom';
-import PlaylistCard from './Guides/PlaylistCard';
-import ResourceCard from './Guides/ResourceCard';
+import PlaylistCard from './Cards/PlaylistCard';
+import ResourceCard from './Cards/ResourceCard';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SeeAllStyles';
-import StandardCard from './Cards/StandardCard';
-import CountTag from '../components/Count/CountTag';
+import CountTag from './CardComponents/Count/CountTag';
 import { Typography } from '@material-ui/core';
 
 type SeeAllProps = {
@@ -17,23 +16,54 @@ type SeeAllProps = {
   typeofres;
 };
 
-//function to return the list of playlists/articles/videos based on string type
-
 function SeeAll(props: SeeAllProps) {
+  const { classes } = props;
   const resources = useSelector((state: RootState) => state.resources);
-  const lessons = useSelector((state: RootState) => state.lessons);
   const articles = Object.keys(resources).filter(
     (id) => resources[id].type == 'Article'
   );
   const videos = Object.keys(resources).filter(
     (id) => resources[id].type == 'Video'
   );
+  const lessons = useSelector((state: RootState) => state.lessons);
 
   const countMedia = (obj) => {
     return Object.keys(obj).length;
   };
 
-  const { classes } = props;
+  const typesToData: Record<string, string[]> = {
+    Instructions: articles,
+    Videos: videos
+  };
+
+  const showResource = (type: string) => {
+    return (
+      <div className={classes.root}>
+        <div className={classes.header}>
+          <Typography variant="h1"> All {type} </Typography>
+          <Typography variant="body1" className={classes.countText}>
+            {' '}
+            <CountTag media={type} count={countMedia(videos)} />
+          </Typography>
+        </div>
+        <div className={classes.scroll}>
+          {typesToData[type].map((key: any) => (
+            <Link
+              style={{ textDecoration: 'none' }}
+              to={`${props.match.url}/${key}`}
+            >
+              <ResourceCard
+                resource={resources[key]}
+                resourceID={key}
+                includeCheck={false}
+                expand={true}
+              />
+            </Link>
+          ))}
+        </div>
+      </div>
+    );
+  };
 
   function filterType(type: string): JSX.Element {
     if (type == 'Playlists') {
@@ -61,64 +91,16 @@ function SeeAll(props: SeeAllProps) {
         </div>
       );
     }
-    if (type == 'Articles') {
-      return (
-        <div className={classes.root}>
-          <div className={classes.header}>
-            <Typography variant="h1"> All Instructions </Typography>
-            <Typography variant="body1" className={classes.countText}>
-              {' '}
-              <CountTag media={'Article'} count={countMedia(articles)} />
-            </Typography>
-          </div>
-          <div className={classes.scroll}>
-            {articles.map((key: any) => (
-              <Link
-                style={{ textDecoration: 'none' }}
-                to={`${props.match.url}/${key}`}
-              >
-                <div className={classes.articlesCard}>
-                  <StandardCard
-                    resource={resources[key]}
-                    resourceID={key}
-                    completeCheck={false}
-                    collapsed={false}
-                  />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      );
+    if (type == 'Instructions') {
+      return showResource(type);
     }
 
     if (type == 'Videos') {
-      return (
-        <div className={classes.root}>
-          <div className={classes.header}>
-            <Typography variant="h1"> All Videos </Typography>
-            <Typography variant="body1" className={classes.countText}>
-              {' '}
-              <CountTag media={'Video'} count={countMedia(videos)} />
-            </Typography>
-          </div>
-          <div className={classes.scroll}>
-            {videos.map((key: any) => (
-              <Link
-                style={{ textDecoration: 'none' }}
-                to={`${props.match.url}/${key}`}
-              >
-                <div className={classes.videoCard}>
-                  <ResourceCard resource={resources[key]} />
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      );
+      return showResource(type);
     }
     return <span />;
   }
+
   return filterType(props.typeofres);
 }
 

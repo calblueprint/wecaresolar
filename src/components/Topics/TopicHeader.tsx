@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import CountTag from '../Count/CountTag';
+import CountTag from '../CardComponents/Count/CountTag';
 import theme from '../../CustomStyles';
 
 interface TopicHeaderProps {

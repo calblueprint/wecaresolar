@@ -4,10 +4,10 @@ import { Lesson } from '../../store/lessonsSlice';
 import Card from '@material-ui/core/Card';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import { withStyles } from '@material-ui/core/styles';
+import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './PlaylistCardStyles';
-import { ReactComponent as InstructionIcon } from '../Count/InstructionIcon.svg';
-import { ReactComponent as VideoIcon } from '../Count/VideoIcon.svg';
+import { ReactComponent as InstructionIcon } from '../CardComponents/Count/InstructionIcon.svg';
+import { ReactComponent as VideoIcon } from '../CardComponents/Count/VideoIcon.svg';
 import { Topic } from '../../store/topicsSlice';
 
 interface PlaylistCardProps {
@@ -40,7 +40,7 @@ const PlaylistCard = (props: PlaylistCardProps) => {
 
   return (
     <Card className={classes.card}>
-      <h2 className={classes.title}>{lesson.title}</h2>
+      <Typography variant="h3">{lesson.title}</Typography>
       <div className={classes.spread}>
         <div className={classes.column}>
           {Array.from<Topic>(mySet)

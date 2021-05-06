@@ -8,7 +8,7 @@ import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
 import Settings from './pages/Settings/Settings';
 import { makeStyles } from '@material-ui/core/styles';
-import PlaylistPage from './components/Guides/PlaylistPage';
+import PlaylistPage from './components/Playlist/PlaylistPage';
 import TopicViews from './components/Topics/TopicViews';
 import Video from './components/Video/Video';
 import TroubleShootCard from './components/Troubleshoot/TroubleShootCard';
@@ -16,8 +16,8 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './CustomStyles';
 import SeeAll from './components/SeeAll';
 import ScrollToTop from './ScrollToTop';
-import Article from './components/Article/Article';
 import WCSRoute from './WCSRoute';
+import Instructions from './components/Instructions/Instructions';
 
 const useStyles = makeStyles({
   root: {
@@ -79,9 +79,9 @@ function App() {
               <WCSRoute
                 hasSearch
                 hasTab
-                path={'/Guides/Articles/:articleId'}
+                path={'/Guides/Instructions/:articleId'}
                 render={(props) => (
-                  <Article resId={props.match.params.articleId} />
+                  <Instructions resId={props.match.params.articleId} />
                 )}
               />
               <WCSRoute

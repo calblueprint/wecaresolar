@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import StandardCard from '../../components/Cards/StandardCard';
+import ResourceCard from '../../components/Cards/ResourceCard';
 import { selectFavoritedResources } from '../../store/resourcesSlice';
 import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './FavoriteStyles';
-import { Link } from 'react-router-dom';
 import FilterDropdown from '../../components/Filters/FilterDropdown';
+import { ReactComponent as FavoritedIcon } from './FavoritedIcon.svg';
 
 function Favorites({ match, classes }) {
   const favResources = useSelector(selectFavoritedResources);
@@ -28,17 +28,15 @@ function Favorites({ match, classes }) {
     ) {
       if (resType.size == 0 || resType.has(favResources[resource].type)) {
         return (
-          <StandardCard
+          <ResourceCard
             key={resource}
             resource={favResources[resource]}
             resourceID={resource}
-            completeCheck={false}
-            collapsed={false}
+            expand={true}
+            includeCheck={false}
           />
         );
       }
-    } else {
-      return <span />;
     }
   }
 
@@ -57,7 +55,16 @@ function Favorites({ match, classes }) {
           />
         </div>
       </div>
-      {Object.keys(favResources).map(filteredFavResources)}
+      <div className={classes.message}>
+        {Object.keys(favResources).length === 0 ? (
+          <Typography variant="body1" align="center">
+            You don’t have any favorite resources yet! Tap the <FavoritedIcon />{' '}
+            icon on a resource to add some.{' '}
+          </Typography>
+        ) : (
+          Object.keys(favResources).map(filteredFavResources)
+        )}
+      </div>
     </div>
   );
 }

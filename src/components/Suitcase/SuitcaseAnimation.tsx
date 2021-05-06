@@ -1,13 +1,17 @@
+import { ThemeProvider, Typography } from '@material-ui/core';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import theme from '../../CustomStyles';
 import { RootState } from '../../store/reducers';
 import { Topic } from '../../store/topicsSlice';
 import Suitcase from '../Images/Suitcase.png';
 import AnimationCard from './AnimationCard';
 import { loadIDBImage } from '../Offline/offlineUtils';
+import { ReactComponent as TapIcon } from './TapIcon.svg';
 
 type SuitcaseProps = {
   classes: any;
+  toggle: boolean;
   match;
 };
 
@@ -240,8 +244,22 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
     }
   }
 
+  const tap = {
+    paddingLeft: theme.spacing(3),
+    color: '#6BADE8',
+    display: 'flex',
+    alignItems: 'center'
+  };
+
   return (
     <div>
+      <div style={tap}>
+        <TapIcon />
+        <Typography variant="body1">
+          {' '}
+          Tap on a part of the Solar Suitcase{' '}
+        </Typography>
+      </div>
       <canvas
         id="canvas"
         ref={canvasRef}

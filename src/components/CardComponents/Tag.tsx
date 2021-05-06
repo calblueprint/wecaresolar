@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './TagsStyles';
-import { Topic } from '../../store/topicsSlice';
+import { Typography } from '@material-ui/core';
 
 interface TagProps {
   tag: string;
@@ -10,7 +10,6 @@ interface TagProps {
 }
 
 const Tag = (props: TagProps) => {
-  console.log(props.color);
   const { classes } = props;
   let buttonType = `${classes.tag}`;
 
@@ -37,7 +36,11 @@ const Tag = (props: TagProps) => {
   if (props.color == 'Sky Blue') {
     buttonType = `${classes.tag} ${classes.skyblue}`;
   }
-  return <div className={buttonType}>{props.tag}</div>;
+  return (
+    <div className={buttonType}>
+      <Typography variant="caption">{props.tag}</Typography>
+    </div>
+  );
 };
 
 export default withStyles(styles)(Tag);

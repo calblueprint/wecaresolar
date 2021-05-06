@@ -53,5 +53,11 @@ export const styles = (theme: Theme) =>
     },
     icon: {
       paddingRight: '1rem'
+    },
+    scroll: {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column'
+      // alignItems: 'center'
     }
   });

@@ -4,11 +4,9 @@ import { withStyles, Theme } from '@material-ui/core/styles';
 import { styles } from './PlaylistStyles';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/reducers';
-import StandardCard from '../Cards/StandardCard';
-import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
-import { ReactComponent as VideoIcon } from './VideoIcon.svg';
+import ResourceCard from '../Cards/ResourceCard';
 import ProgressBar from './ProgressBar';
-import CountTag from '../Count/CountTag';
+import CountTag from '../CardComponents/Count/CountTag';
 
 type PlaylistPageProps = {
   lessonId: string;
@@ -53,12 +51,7 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
           </Typography>
         </div>
       </div>
-      <div className={classes.progressBar}>
-        {ProgressBar(calcProgress())}
-        <Typography variant="body2" className={classes.countText}>
-          {calcProgress()}% Complete
-        </Typography>
-      </div>
+      {ProgressBar(calcProgress())}
       <Typography variant="body1" className={classes.description}>
         {currentLesson.description}
       </Typography>
@@ -80,11 +73,11 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
       {currentLesson.resourceIDs.map((id) => {
         if (id in resources) {
           return (
-            <StandardCard
+            <ResourceCard
               resource={resources[id]}
               resourceID={id}
-              completeCheck={true}
-              collapsed={resources[id].isCompleted}
+              expand={true}
+              includeCheck={true}
             />
           );
         } else {

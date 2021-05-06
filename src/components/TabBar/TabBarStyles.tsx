@@ -34,7 +34,8 @@ export const styles = (theme: Theme) =>
       position: 'fixed',
       width: '100vw',
       height: '10vh',
-      bottom: 0
+      bottom: 0,
+      zIndex: 10
     },
     selected: {}
   });

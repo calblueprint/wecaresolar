@@ -42,11 +42,6 @@ export const styles = (theme: Theme) =>
       alignItems: 'flex-start',
       alignSelf: 'stretch'
     },
-    title: {
-      fontSize: '1rem',
-      fontWeight: 'bold',
-      lineHeight: '1.4rem'
-    },
     favorite: {
       padding: '0px 0px',
       marginLeft: '0.2rem'
@@ -63,7 +58,19 @@ export const styles = (theme: Theme) =>
       fontWeight: 'normal'
     },
     link: {
-      textDecoration: 'none',
-      margin: '1%'
+      textDecoration: 'none'
+    },
+    articleCard: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      width: 184,
+      height: 130,
+      padding: 21,
+      marginRight: 12,
+      marginBottom: 10,
+      borderRadius: 18,
+      boxShadow:
+        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
     }
   });

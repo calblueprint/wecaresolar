@@ -1,5 +1,4 @@
-import React from 'react';
-import { createMuiTheme, Theme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 declare module '@material-ui/core/styles/createPalette' {
   interface Palette {
@@ -69,24 +68,23 @@ const theme = createMuiTheme({
         fontWeight: 700
       },
       h2: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: 700
       },
       h3: {
-        fontSize: 14,
+        fontSize: 18,
         fontWeight: 700
       },
-      //can we please change body1 to 14
       body1: {
-        fontSize: 12,
+        fontSize: 14,
         fontWeight: 400
       },
       body2: {
-        fontSize: 12,
+        fontSize: 14,
         fontWeight: 600
       },
       caption: {
-        fontSize: 9,
+        fontSize: 10,
         fontStyle: 'semibold'
       }
     }

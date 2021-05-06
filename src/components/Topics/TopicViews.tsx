@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import StandardCard from '../Cards/StandardCard';
+import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
 import { ResourcesSlice } from '../../store/resourcesSlice';
 import TopicHeader from './TopicHeader';
@@ -72,11 +72,11 @@ function TopicViews({ topicId }: TopicViewProps) {
       </div>
       <div>
         {Object.keys(guideResources).map((resource: any) => (
-          <StandardCard
+          <ResourceCard
             resource={guideResources[resource]}
             resourceID={resource}
-            completeCheck={false}
-            collapsed={false}
+            includeCheck={false}
+            expand={true}
           />
         ))}
       </div>
