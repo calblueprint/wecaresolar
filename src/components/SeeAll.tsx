@@ -83,7 +83,7 @@ function SeeAll(props: SeeAllProps) {
                 to={`${props.match.url}/${key}`}
               >
                 <div className={classes.playlistCard}>
-                  <PlaylistCard lesson={lessons[key]} />
+                  <PlaylistCard lesson={lessons[key]} expand={true} />
                 </div>
               </Link>
             ))}

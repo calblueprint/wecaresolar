@@ -10,16 +10,24 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      width: 234.18,
-      height: 176.23,
-      padding: 21,
-      marginRight: 13,
-      marginBottom: 10,
+      width: '235px',
+      height: '150px',
+      padding: '1.25rem',
+      marginBottom: '0.5rem',
       borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
+      boxShadow: theme.shadows[0]
     },
-
+    cardAll: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      position: 'relative',
+      padding: '0rem 1rem 0rem 1rem',
+      height: '150px',
+      marginBottom: theme.spacing(2),
+      borderRadius: 18,
+      boxShadow: theme.shadows[0]
+    },
     icon: {
       display: 'flex',
       flexDirection: 'row',
@@ -31,7 +39,8 @@ export const styles = (theme: Theme) =>
     column: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'flex-end'
+      justifyContent: 'flex-end',
+      marginTop: '0.5rem'
     },
     spread: {
       display: 'flex',

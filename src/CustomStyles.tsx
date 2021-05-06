@@ -90,6 +90,7 @@ const theme = createMuiTheme({
     }
   },
   spacing: [0, 6, 12, 18, 24],
+  shadows: Array(25).fill('1px 2.5px 3px 1px rgba(218, 207, 207, 0.5)') as any,
   palette: {
     black: {
       main: '#020202'

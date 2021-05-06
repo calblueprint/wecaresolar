@@ -47,7 +47,7 @@ function Guides(props: GuidesProps) {
             to={`${props.match.url}/Playlists/${key}`}
           >
             <div className={classes.playlistCard}>
-              <PlaylistCard lesson={lessons[key]} />
+              <PlaylistCard lesson={lessons[key]} expand={false} />
             </div>
           </Link>
         ))}

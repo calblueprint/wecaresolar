@@ -10,8 +10,7 @@ export const styles = (theme: Theme) =>
       width: '230px',
       height: '128px',
       borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+      boxShadow: theme.shadows[0],
       marginRight: theme.spacing(2)
     },
     thumbnail: {

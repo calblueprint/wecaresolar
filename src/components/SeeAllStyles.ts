@@ -40,8 +40,7 @@ export const styles = (theme: Theme) =>
       color: theme.palette.brown.main,
       paddingLeft: '1.5rem',
       paddingRight: '1.5rem',
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+      boxShadow: theme.shadows[0],
       borderRadius: '1rem'
     },
     selectMenu: {

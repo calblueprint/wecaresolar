@@ -12,6 +12,7 @@ import { Topic } from '../../store/topicsSlice';
 
 interface PlaylistCardProps {
   lesson: Lesson;
+  expand: boolean;
   classes: any;
 }
 
@@ -31,30 +32,57 @@ const PlaylistCard = (props: PlaylistCardProps) => {
     resources[resID].tags.map((tag) => mySet.add(topics[tag]))
   );
 
-  return (
-    <Card className={classes.card}>
-      <Typography variant="h3">{lesson.title}</Typography>
-      <div className={classes.spread}>
-        <div className={classes.column}>
-          {Array.from<Topic>(mySet)
-            .slice(0, 3)
-            .map((topic: Topic) => (
-              <Tag tag={topic.name} color={topic.color} />
-            ))}
-        </div>
-        <div className={classes.column}>
-          <div className={classes.icon}>
-            <InstructionIcon />
-            <div>&nbsp;{numArticles}</div>
+  if (props.expand) {
+    return (
+      <Card className={classes.cardAll}>
+        <Typography variant="h3">{lesson.title}</Typography>
+        <div className={classes.spread}>
+          <div className={classes.column}>
+            {Array.from<Topic>(mySet)
+              .slice(0, 3)
+              .map((topic: Topic) => (
+                <Tag tag={topic.name} color={topic.color} />
+              ))}
           </div>
-          <div className={classes.icon}>
-            <VideoIcon />
-            <div>&nbsp;{numVideos}</div>
+          <div className={classes.column}>
+            <div className={classes.icon}>
+              <InstructionIcon />
+              <div>&nbsp;{numArticles}</div>
+            </div>
+            <div className={classes.icon}>
+              <VideoIcon />
+              <div>&nbsp;{numVideos}</div>
+            </div>
           </div>
         </div>
-      </div>
-    </Card>
-  );
+      </Card>
+    );
+  } else {
+    return (
+      <Card className={classes.card}>
+        <Typography variant="h3">{lesson.title}</Typography>
+        <div className={classes.spread}>
+          <div className={classes.column}>
+            {Array.from<Topic>(mySet)
+              .slice(0, 3)
+              .map((topic: Topic) => (
+                <Tag tag={topic.name} color={topic.color} />
+              ))}
+          </div>
+          <div className={classes.column}>
+            <div className={classes.icon}>
+              <InstructionIcon />
+              <div>&nbsp;{numArticles}</div>
+            </div>
+            <div className={classes.icon}>
+              <VideoIcon />
+              <div>&nbsp;{numVideos}</div>
+            </div>
+          </div>
+        </div>
+      </Card>
+    );
+  }
 };
 
 export default withStyles(styles)(PlaylistCard);

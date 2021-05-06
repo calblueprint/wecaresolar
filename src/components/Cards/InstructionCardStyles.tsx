@@ -13,8 +13,7 @@ export const styles = (theme: Theme) =>
       marginBottom: 12,
       padding: 24,
       backgroundColor: theme.palette.white.main,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
+      boxShadow: theme.shadows[0]
     },
     box: {
       display: 'flex',
@@ -70,7 +69,6 @@ export const styles = (theme: Theme) =>
       marginRight: 12,
       marginBottom: 10,
       borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
+      boxShadow: theme.shadows[0]
     }
   });

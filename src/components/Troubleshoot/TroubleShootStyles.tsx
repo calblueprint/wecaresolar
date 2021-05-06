@@ -41,8 +41,7 @@ export const styles = (theme: Theme) =>
       height: 60,
       marginBottom: theme.spacing(2),
       borderRadius: 10,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+      boxShadow: theme.shadows[0],
       backgroundColor: 'white',
       '&:hover': {
         backgroundColor: 'white'
