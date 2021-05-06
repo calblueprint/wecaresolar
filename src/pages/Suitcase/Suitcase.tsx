@@ -1,5 +1,5 @@
 import React from 'react';
-import SuitcaseRenderer from '../../components/Suitcase/SuitcaseRenderer';
+import SuitcaseAnimation from '../../components/Suitcase/SuitcaseAnimation';
 import SuitcaseLabeled from '../../components/Images/labeledSuitcase.png';
 import { styles } from './SuitcaseStyles';
 import Switch from '@material-ui/core/Switch';
@@ -7,7 +7,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
 import { red, green } from '@material-ui/core/colors';
 import { Typography } from '@material-ui/core';
-import CacheableImage from '../../components/Offline/CacheableImage';
 
 const CustomSwitch = withStyles({
   switchBase: {
@@ -48,9 +47,9 @@ function Suitcase({ classes, match }) {
       </div>
       <div>
         {toggled ? (
-          <CacheableImage src={SuitcaseLabeled} style={labeled} />
+          <img src={SuitcaseLabeled} style={labeled} />
         ) : (
-          <SuitcaseRenderer classes={styles} toggle={toggled} match={match} />
+          <SuitcaseAnimation classes={styles} toggle={toggled} match={match} />
         )}
       </div>
     </div>

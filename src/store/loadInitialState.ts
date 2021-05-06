@@ -7,10 +7,6 @@ import { refreshTopics } from './topicsSlice';
 import { refreshTroubleshooting } from './troubleshootingSlice';
 import { onFetchResult } from './metadataSlice';
 import { ActionCreator } from 'redux';
-import { loadOrFetchImage } from '../components/Offline/offlineUtils';
-
-// Images to preload (will be saved in IndexedDB in case we're offline)
-import SuitcaseImage from '../components/Images/Suitcase.png';
 
 export enum FetchStatus {
   SuccessFromServer = 'SUCCESS_FROM_SERVER',
@@ -174,17 +170,6 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     }
   );
 
-  const loadedMedia: FetchStatus = await (async () => {
-    const results = await Promise.all(
-      [SuitcaseImage].map<Promise<string | undefined>>((imageUrl) =>
-        loadOrFetchImage(imageUrl)
-      )
-    );
-    return results.every((result) => result !== undefined)
-      ? FetchStatus.SuccessFromServer
-      : FetchStatus.Failure;
-  })();
-
   // Overall status is the *most pessimistic possible status* from all of the attempted requests.
   // For example, if 4 requests succeeded from server but 1 was retrieved from cache, overallStatus is "SuccessFromCache".
   // If even one of the requests failed, overallStatus is "Failure".
@@ -194,8 +179,7 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
     loadedSections,
     loadedLessons,
     loadedTopics,
-    loadedTroubleshooting,
-    loadedMedia
+    loadedTroubleshooting
   ].map((status) => fetchStatusToNum[status]);
   const overallStatus: FetchStatus = numToFetchStatus[Math.min(...statusNums)];
 
@@ -206,7 +190,6 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
   console.log(`Loaded lessons: ${loadedLessons}`);
   console.log(`Loaded topics: ${loadedTopics}`);
   console.log(`Loaded troubleshooting: ${loadedTroubleshooting}`);
-  console.log(`Loaded media: ${loadedMedia}`);
   console.log(`Overall fetch status: ${overallStatus}`);
 
   return overallStatus;

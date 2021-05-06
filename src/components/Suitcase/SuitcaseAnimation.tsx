@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { ThemeProvider, Typography } from '@material-ui/core';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import theme from '../../CustomStyles';
@@ -11,7 +11,6 @@ import { ReactComponent as TapIcon } from './TapIcon.svg';
 type SuitcaseProps = {
   classes: any;
   toggle: boolean;
-  image: HTMLImageElement;
   match;
 };
 
@@ -23,12 +22,16 @@ interface ClipDimensions {
 }
 
 const SuitcaseAnimation = (props: SuitcaseProps) => {
-  const { classes, image } = props;
+  const { classes } = props;
   const [selectedTopic, setSelectedTopic] = useState<Topic | undefined>(
     undefined
   );
   const topics = useSelector((state: RootState) => state.topics);
   let id = Number.NEGATIVE_INFINITY;
+
+  /* Create an ImageData object */
+  const image = new Image(975, 650);
+  image.src = Suitcase;
 
   /* clipDims: x, y, width, and height of the currently visible portion of the suitcase */
   const [clipDims, setClipDims] = useState<ClipDimensions>({
@@ -101,7 +104,9 @@ const SuitcaseAnimation = (props: SuitcaseProps) => {
       const ctx = canvasCtxRef.current;
       if (!ctx) return;
       ctx.clearRect(0, 0, cWidth, cHeight);
-      drawCanvas(ctx);
+      image.onload = function () {
+        drawCanvas(ctx);
+      };
     }
   }, []); //runs once, not watching
 

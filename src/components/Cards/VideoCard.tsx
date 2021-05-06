@@ -13,7 +13,6 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { useDispatch } from 'react-redux';
 import CompletedButton from '../CardComponents/CompletedButton';
 import { Link } from 'react-router-dom';
-import CacheableImage from '../Offline/CacheableImage';
 
 interface VideoCardProps {
   resource: Resource;
@@ -44,7 +43,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
       return (
         <Link className={classes.link} to={url}>
           <Card className={classes.videoCardAll}>
-            <CacheableImage
+            <img
               className={classes.thumbnailAll}
               src={resource.data.imageUrl}
             />
@@ -79,10 +78,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
       return (
         <Link className={classes.link} to={url}>
           <Card className={classes.videoCard}>
-            <CacheableImage
-              className={classes.thumbnail}
-              src={resource.data.imageUrl}
-            />
+            <img className={classes.thumbnail} src={resource.data.imageUrl} />
           </Card>
         </Link>
       );
