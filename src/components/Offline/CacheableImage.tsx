@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { get, set } from 'idb-keyval';
-import { imageStore } from '../../index';
+import { loadOrFetchImage } from './offlineUtils';
 
 interface CacheableImageProps {
   src: string;
@@ -16,32 +15,12 @@ const CacheableImage = (props: CacheableImageProps) => {
 
   useEffect(() => {
     async function loadImage(): Promise<void> {
-      let imageData: Blob;
-      try {
-        imageData = await get<Blob>(src, imageStore);
-        if (imageData === undefined) {
-          // Image does not exist in cache. Use `src` as the image URL for now...
-          setImageURL(src);
-
-          // ...but also fetch the image and save it to the cache for future visits.
-          const blob = await fetch(src).then((res) => res.blob());
-          await set(src, blob, imageStore);
-          console.log('Successfully saved image to idb!');
-          setImageState('Success');
-        } else {
-          // Image exists in cache; can use that directly
-          const URL = window.URL || window.webkitURL;
-          const urlResult = URL.createObjectURL(imageData);
-          console.log('Found cached image in idb:', urlResult);
-          setImageURL(urlResult);
-          setImageState('Success');
-        }
-      } catch (err) {
-        console.log(
-          '[CacheableImage] An error occurred while trying to load the image:',
-          err
-        );
+      const urlResult = await loadOrFetchImage(src);
+      if (urlResult === undefined) {
         setImageState('Failure');
+      } else {
+        setImageState('Success');
+        setImageURL((urlResult as unknown) as string);
       }
     }
     loadImage();
