@@ -45,7 +45,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
         <Link className={classes.link} to={url}>
           <Card className={classes.videoCardAll}>
             <CacheableImage
-              className={classes.thumbnailAll}
+              className={classes.thumbnail}
               src={resource.data.imageUrl}
             />
             {props.includeCheck ? (
@@ -79,9 +79,25 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
       return (
         <Link className={classes.link} to={url}>
           <Card className={classes.videoCard}>
+            {props.includeCheck ? (
+              <CompletedButton
+                isCompleted={resource.isCompleted}
+                handleClick={handleOverlay}
+                fillColor={'#33BF68'}
+                width={'20'}
+                height={'20'}
+              />
+            ) : (
+              <span />
+            )}
             <CacheableImage
               className={classes.thumbnail}
               src={resource.data.imageUrl}
+            />
+            <FavoriteButton
+              id={props.resourceID}
+              isFavorited={resource.isFavorited}
+              fillColor={'#020202'}
             />
           </Card>
         </Link>

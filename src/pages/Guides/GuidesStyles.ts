@@ -14,7 +14,7 @@ export const styles = (theme: Theme) =>
       fontWeight: 700
     },
     divider: {
-      paddingTop: 32
+      paddingTop: theme.spacing(4)
     },
     scroll: {
       display: 'flex',

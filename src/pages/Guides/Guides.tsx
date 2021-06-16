@@ -72,7 +72,8 @@ function Guides(props: GuidesProps) {
               <ResourceCard
                 resource={resources[key]}
                 resourceID={key}
-                includeCheck={false}
+                includeCheck={true}
+                includePhoto={true}
                 expand={false}
               />
             ))}

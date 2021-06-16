@@ -12,9 +12,9 @@ export const styles = (theme: Theme) =>
       justifyContent: 'space-between',
       width: '235px',
       height: '150px',
-      padding: '1.25rem',
-      marginBottom: '0.5rem',
-      borderRadius: 18,
+      padding: theme.spacing(3),
+      margin: theme.spacing(2, 3, 1, 0),
+      borderRadius: theme.spacing(3),
       boxShadow: theme.shadows[0]
     },
     cardAll: {
@@ -22,10 +22,11 @@ export const styles = (theme: Theme) =>
       flexDirection: 'column',
       justifyContent: 'center',
       position: 'relative',
-      padding: '0rem 1rem 0rem 1rem',
+      padding: theme.spacing(2),
+      paddingTop: theme.spacing(1),
       height: '150px',
-      marginBottom: theme.spacing(2),
-      borderRadius: 18,
+      marginBottom: theme.spacing(1),
+      borderRadius: theme.spacing(3),
       boxShadow: theme.shadows[0]
     },
     icon: {
@@ -40,7 +41,7 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-end',
-      marginTop: '0.5rem'
+      marginTop: theme.spacing(1)
     },
     spread: {
       display: 'flex',

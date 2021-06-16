@@ -3,7 +3,7 @@ import { createStyles, Theme, fade } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     root: {
-      padding: theme.spacing(1, 2, 1, 2),
+      padding: theme.spacing(3),
       color: theme.palette.black.main
     },
     button: {
@@ -32,7 +32,7 @@ export const styles = (theme: Theme) =>
     formControl: {
       minWidth: 100,
       maxWidth: 200,
-      margin: '5%'
+      margin: theme.spacing(3)
     },
     select: {
       fontSize: '.9rem',

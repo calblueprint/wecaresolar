@@ -36,14 +36,16 @@ function SeeAll(props: SeeAllProps) {
     Videos: videos
   };
 
-  const showResource = (type: string) => {
+  const showResource = (type: string, typeCount) => {
+    console.log('TYPE', type);
+
     return (
       <div className={classes.root}>
         <div className={classes.header}>
           <Typography variant="h1"> All {type} </Typography>
           <Typography variant="body1" className={classes.countText}>
             {' '}
-            <CountTag media={type} count={countMedia(videos)} />
+            <CountTag media={type} count={countMedia(typeCount)} />
           </Typography>
         </div>
         <div className={classes.scroll}>
@@ -55,7 +57,8 @@ function SeeAll(props: SeeAllProps) {
               <ResourceCard
                 resource={resources[key]}
                 resourceID={key}
-                includeCheck={false}
+                includeCheck={true}
+                includePhoto={true}
                 expand={true}
               />
             </Link>
@@ -92,11 +95,11 @@ function SeeAll(props: SeeAllProps) {
       );
     }
     if (type == 'Instructions') {
-      return showResource(type);
+      return showResource(type, articles);
     }
 
     if (type == 'Videos') {
-      return showResource(type);
+      return showResource(type, videos);
     }
     return <span />;
   }
