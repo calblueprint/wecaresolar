@@ -6,7 +6,6 @@ interface ResourceCardProps {
   resource: Resource;
   resourceID: string;
   includeCheck: boolean;
-  includePhoto: boolean;
   expand: boolean;
 }
 
@@ -25,14 +24,12 @@ const ResourceCard = (props: ResourceCardProps): typeof ResourceCard => {
     );
   } else {
     if (isVideo(resource.data)) {
-      console.log(props.includePhoto);
       return (
         <VideoCard
           resource={props.resource}
           resourceID={props.resourceID}
           expand={props.expand}
           includeCheck={props.includeCheck}
-          includePhoto={props.includePhoto}
         />
       );
     }
