@@ -7,6 +7,7 @@ import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
 import Settings from './pages/Settings/Settings';
+import Search from './components/SearchBar/Search';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Playlist/PlaylistPage';
 import TopicViews from './components/Topics/TopicViews';
@@ -137,6 +138,14 @@ function App() {
                 exact
                 path="/settings"
                 component={Settings}
+              />
+
+              <WCSRoute
+                hasSearch
+                hasTab
+                exact
+                path="/search"
+                component={Search}
               />
             </Switch>
           )}
