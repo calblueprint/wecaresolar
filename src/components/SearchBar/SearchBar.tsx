@@ -69,14 +69,7 @@ const SearchAppBar = (props: SearchProps) => {
           </Offline>
         </Toolbar>
       </AppBar>
-      {query && (
-        <SearchList
-          video={video}
-          article={article}
-          playlist={playlist}
-          query={query}
-        />
-      )}
+      {query && <SearchList query={query} />}
     </div>
   );
 };
