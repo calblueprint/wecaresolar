@@ -60,9 +60,19 @@ const SearchAppBar = (props: SearchProps) => {
               }}
               inputProps={{ 'aria-label': 'search' }}
               onChange={(event) => setQuery(event.target.value)}
+              value={query}
             />
           </div>
-          {active && <button onClick={() => setActive(false)}>Cancel</button>}
+          {active && (
+            <button
+              onClick={() => {
+                setActive(false);
+                setQuery('');
+              }}
+            >
+              Cancel
+            </button>
+          )}
           <RefreshButton fetch={() => loadInitialState()} />
           <Offline>
             <WifiIcon />
