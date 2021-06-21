@@ -51,7 +51,7 @@ const SearchAppBar = (props: SearchProps) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search for an article or resource"
+              placeholder="Search for all resources"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
