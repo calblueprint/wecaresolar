@@ -36,6 +36,8 @@ const SearchAppBar = (props: SearchProps) => {
     '/Settings'
   ].includes(location.pathname);
 
+  const [active, setActive] = useState(false);
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.bar}>
@@ -46,12 +48,12 @@ const SearchAppBar = (props: SearchProps) => {
               onClick={() => history.goBack()}
             />
           )}
-          <div className={classes.search}>
+          <div className={classes.search} onClick={() => setActive(true)}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search for all resources"
+              placeholder="Search all resources"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput
@@ -60,6 +62,7 @@ const SearchAppBar = (props: SearchProps) => {
               onChange={(event) => setQuery(event.target.value)}
             />
           </div>
+          {active && <button onClick={() => setActive(false)}>Cancel</button>}
           <RefreshButton fetch={() => loadInitialState()} />
           <Offline>
             <WifiIcon />
