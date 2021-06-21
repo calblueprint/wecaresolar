@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import WifiIcon from '@material-ui/icons/WifiOff';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import RefreshButton from '../Offline/RefreshButton';
 import { loadInitialState } from '../../store/loadInitialState';
@@ -23,7 +23,7 @@ const SearchAppBar = (props: SearchProps) => {
   const history = useHistory();
   const location = useLocation();
 
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(''); //query will be done through react router, not react state
   const [video, setVideo] = useState(false);
   const [article, setArticle] = useState(false);
   const [playlist, setPlaylist] = useState(false);
@@ -37,6 +37,8 @@ const SearchAppBar = (props: SearchProps) => {
   ].includes(location.pathname);
 
   const [active, setActive] = useState(false);
+
+  //want to filter within search; video/article will pass into SearchList as props for filtering (implement later)
 
   return (
     <div className={classes.root}>
@@ -52,27 +54,19 @@ const SearchAppBar = (props: SearchProps) => {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
-              placeholder="Search all resources"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              onChange={(event) => setQuery(event.target.value)}
-              value={query}
-            />
+            <Link to="/search">
+              <InputBase
+                placeholder="Search all resources"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </Link>
           </div>
-          {active && (
-            <button
-              onClick={() => {
-                setActive(false);
-                setQuery('');
-              }}
-            >
-              Cancel
-            </button>
-          )}
+          {active && <button onClick={() => setActive(false)}>Cancel</button>}
           <RefreshButton fetch={() => loadInitialState()} />
           <Offline>
             <WifiIcon />
