@@ -360,12 +360,18 @@ const processTopics = (record) => {
   const imageUrl = getImageUrl(record);
   const suitcaseCoordinates = record.get('Suitcase coordinates');
   const color = record.get('Color') || DEFAULT_TOPIC_COLOR;
+  const tbPage = record.get('Troubleshooting Page ID');
+  const troubleshootingPage = tbPage
+    ? db.collection('troubleshooting').doc(tbPage[0])
+    : '';
+
   return {
     name,
     description,
     imageUrl,
     suitcaseCoordinates,
-    color
+    color,
+    troubleshootingPage
   };
 };
 

@@ -120,7 +120,10 @@ export const loadInitialState = async (): Promise<FetchStatus> => {
         ...topic,
         suitcaseCoordinates: topic.suitcaseCoordinates
           .split(',')
-          .map(parseFloat)
+          .map(parseFloat),
+        troubleshootingPage: topic.troubleshootingPage
+          ? topic.troubleshootingPage.id
+          : undefined
       };
     }
   );
