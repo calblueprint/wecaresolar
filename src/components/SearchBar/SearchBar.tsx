@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Offline } from 'react-detect-offline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -21,12 +21,19 @@ type SearchProps = {
 const SearchAppBar = (props: SearchProps) => {
   const { classes } = props;
   const history = useHistory();
-  const location = useLocation();
+  const location = useLocation(); //use for parsing query string
 
-  const [query, setQuery] = useState(''); //query will be done through react router, not react state
+  const { search } = useLocation();
+  const query = new URLSearchParams(search).get('s');
+  const [searchQuery, setSearchQuery] = useState(query || ''); //query will be done through react router, not react state
+  const [active, setActive] = useState(false);
   const [video, setVideo] = useState(false);
   const [article, setArticle] = useState(false);
   const [playlist, setPlaylist] = useState(false);
+
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   const hideBackButton = [
     '/Guides',
@@ -35,8 +42,6 @@ const SearchAppBar = (props: SearchProps) => {
     '/Suitcase',
     '/Settings'
   ].includes(location.pathname);
-
-  const [active, setActive] = useState(false);
 
   //want to filter within search; video/article will pass into SearchList as props for filtering (implement later)
 
@@ -47,33 +52,47 @@ const SearchAppBar = (props: SearchProps) => {
           {!hideBackButton && (
             <BackIcon
               className={classes.backButton}
-              onClick={() => history.goBack()}
+              onClick={() => {
+                history.goBack();
+              }}
             />
           )}
-          <div className={classes.search} onClick={() => setActive(true)}>
+          <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <Link to="/search">
-              <InputBase
-                placeholder="Search all resources"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }}
-                inputProps={{ 'aria-label': 'search' }}
-                onChange={(event) => setQuery(event.target.value)}
-              />
-            </Link>
+            <div>
+              <form
+                action="/search"
+                method="get"
+                onClick={() => setActive(true)}
+              >
+                <InputBase
+                  value={searchQuery}
+                  placeholder="Search all resources"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                  inputProps={{ 'aria-label': 'search' }}
+                  onChange={handleChange}
+                  name="s"
+                />
+                {active ? (
+                  <button type="submit" onClick={() => setActive(false)}>
+                    Search
+                  </button>
+                ) : null}
+              </form>
+            </div>
           </div>
-          {active && <button onClick={() => setActive(false)}>Cancel</button>}
           <RefreshButton fetch={() => loadInitialState()} />
           <Offline>
             <WifiIcon />
           </Offline>
         </Toolbar>
       </AppBar>
-      {query && <SearchList query={query} />}
+      {query ? <SearchList query={query} /> : null}
     </div>
   );
 };

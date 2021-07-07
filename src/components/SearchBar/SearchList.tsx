@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Fuse from 'fuse.js';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
@@ -6,9 +6,18 @@ import { useSelector } from 'react-redux';
 import { Resource } from '../../store/resourcesSlice';
 import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
+import { useLocation } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 
 function SearchList(props) {
   const { classes } = props;
+  //set up query
+
+  const { search } = useLocation();
+  const query = new URLSearchParams(search).get('s');
+  const [searchQuery, setSearchQuery] = useState(query || '');
+
+  //pull resources from Redux using Fuse
   const options = {
     keys: ['title']
   };
@@ -24,14 +33,14 @@ function SearchList(props) {
     resources = resources.filter((r) => r.type == 'Article');
   }
   const fuse = new Fuse(resources, options);
-  const results = fuse.search(props.query);
+  const filteredResults = fuse.search(props.query);
 
   return (
     <div className={classes.searchList}>
-      <h1>Search Results</h1>
-      {results.length <= 0 && <div>No Results Found</div>}
-      {results.length > 0 &&
-        results.map((resource: any) => {
+      <Typography variant="h1"> Search Results </Typography>
+      {filteredResults.length <= 0 && <div>No Results Found</div>}
+      {filteredResults.length > 0 &&
+        filteredResults.map((resource: any) => {
           return (
             <ResourceCard
               resource={resource.item}
