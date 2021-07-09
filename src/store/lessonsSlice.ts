@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-// import { INITIAL_LESSONS } from './initialStates';
+import { INITIAL_LESSONS } from './initialStates';
 import { refreshValues } from './reduxUtils';
 
 export type LessonsSlice = {
@@ -25,8 +25,7 @@ type LessonIsFinishedPayload = {
 
 export const lessonsSlice = createSlice({
   name: 'lessons',
-  // initialState: INITIAL_LESSONS,
-  initialState: {},
+  initialState: INITIAL_LESSONS,
   reducers: {
     refreshLessons(state, action: PayloadAction<LessonsSlice>) {
       refreshValues(state, action.payload, DEFAULT_FIELDS);
