@@ -6,16 +6,10 @@ import { useSelector } from 'react-redux';
 import { Resource } from '../../store/resourcesSlice';
 import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
-import { useLocation } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 
 function SearchList(props) {
   const { classes } = props;
-  //set up query
-
-  const { search } = useLocation();
-  const query = new URLSearchParams(search).get('s');
-  const [searchQuery, setSearchQuery] = useState(query || '');
 
   //pull resources from Redux using Fuse
   const options = {
