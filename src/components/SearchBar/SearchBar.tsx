@@ -67,8 +67,8 @@ const SearchAppBar = (props: SearchProps) => {
             <BackIcon
               className={classes.backButton}
               onClick={() => {
-                history.replace(location);
-                setSearchQuery('');
+                history.goBack();
+                // setSearchQuery('');
               }}
             />
           )}
