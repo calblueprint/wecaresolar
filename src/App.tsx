@@ -7,7 +7,6 @@ import Guides from './pages/Guides/Guides';
 import Suitcase from './pages/Suitcase/Suitcase';
 import Troubleshoot from './pages/Troubleshoot/Troubleshoot';
 import Settings from './pages/Settings/Settings';
-import Search from './components/SearchBar/Search';
 import { makeStyles } from '@material-ui/core/styles';
 import PlaylistPage from './components/Playlist/PlaylistPage';
 import TopicViews from './components/Topics/TopicViews';
@@ -19,6 +18,7 @@ import SeeAll from './components/SeeAll';
 import ScrollToTop from './ScrollToTop';
 import WCSRoute from './WCSRoute';
 import Instructions from './components/Instructions/Instructions';
+import SearchList from './components/SearchBar/SearchList';
 
 const useStyles = makeStyles({
   root: {
@@ -145,7 +145,7 @@ function App() {
                 hasTab
                 exact
                 path="/search"
-                component={Search}
+                component={SearchList}
               />
             </Switch>
           )}

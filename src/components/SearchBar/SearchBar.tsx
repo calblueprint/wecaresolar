@@ -22,13 +22,8 @@ const SearchAppBar = (props: SearchProps) => {
   const { classes } = props;
   const history = useHistory();
   const location = useLocation(); //use to access search query
-
   const query = new URLSearchParams(location.search).get('name');
-  const [searchQuery, setSearchQuery] = useState(query || ''); //query will be done through react router, not react state
-
-  const [video, setVideo] = useState(false);
-  const [article, setArticle] = useState(false);
-  const [playlist, setPlaylist] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(query || '');
 
   const hideBackButton = [
     '/Guides',
@@ -51,9 +46,9 @@ const SearchAppBar = (props: SearchProps) => {
   };
 
   //want to filter within search; video/article will pass into SearchList as props for filtering (implement later)
-  const searchResults = () => {
+  const searchResults = (sq) => {
     if (location.pathname.includes('search')) {
-      return <SearchList query={searchQuery} />;
+      return <SearchList query={sq} />;
     }
   };
 
@@ -90,7 +85,6 @@ const SearchAppBar = (props: SearchProps) => {
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={handleChange}
                 onClick={handleClick}
-                name="s"
               />
             </div>
           </div>
@@ -100,7 +94,7 @@ const SearchAppBar = (props: SearchProps) => {
           </Offline>
         </Toolbar>
       </AppBar>
-      {searchResults()}
+      {searchResults(searchQuery)}
     </div>
   );
 };

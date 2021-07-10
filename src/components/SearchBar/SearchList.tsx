@@ -8,42 +8,48 @@ import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
 import { Typography } from '@material-ui/core';
 
-function SearchList(props) {
-  const { classes } = props;
+interface SearchListProps {
+  classes: any;
+  query: string;
+}
+
+function SearchList(props: SearchListProps) {
+  const { classes, query } = props;
 
   //pull resources from Redux using Fuse
   const options = {
     keys: ['title']
   };
-  let resources = useSelector((state: RootState) => {
-    return Object.keys(state.resources).map<Resource>(
-      (r: string) => state.resources[r]
-    );
-  });
-  if (props.video) {
-    resources = resources.filter((r) => r.type == 'Video');
-  }
-  if (props.article) {
-    resources = resources.filter((r) => r.type == 'Article');
-  }
-  const fuse = new Fuse(resources, options);
-  const filteredResults = fuse.search(props.query);
+
+  const search = (query) => {
+    const resources = useSelector((state: RootState) => {
+      return Object.keys(state.resources).map<Resource>(
+        (r: string) => state.resources[r]
+      );
+    });
+    const fuse = new Fuse(resources, options);
+    if (!query) {
+      return [];
+    }
+    return fuse.search(query);
+  };
+  const searchResults = search(query);
 
   return (
     <div className={classes.searchList}>
       <Typography variant="h1"> Search Results </Typography>
-      {filteredResults.length <= 0 && <div>No Results Found</div>}
-      {filteredResults.length > 0 &&
-        filteredResults.map((resource: any) => {
-          return (
-            <ResourceCard
-              resource={resource.item}
-              resourceID={resource.item.title}
-              expand={true}
-              includeCheck={true}
-            />
-          );
-        })}
+      {searchResults.length == 0 ? <div> No Results Found</div> : null}
+
+      {searchResults.map((resource: any) => {
+        return (
+          <ResourceCard
+            resource={resource.item}
+            resourceID={resource.item.title}
+            expand={true}
+            includeCheck={true}
+          />
+        );
+      })}
     </div>
   );
 }
