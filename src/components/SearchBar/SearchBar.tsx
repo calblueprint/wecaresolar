@@ -36,7 +36,6 @@ const SearchAppBar = (props: SearchProps) => {
 
   console.log('searchQuery', searchQuery);
 
-  const [active, setActive] = useState(false);
   const [video, setVideo] = useState(false);
   const [article, setArticle] = useState(false);
   const [playlist, setPlaylist] = useState(false);
@@ -77,7 +76,6 @@ const SearchAppBar = (props: SearchProps) => {
               className={classes.backButton}
               onClick={() => {
                 history.goBack();
-                setSearchQuery('');
               }}
             />
           )}
