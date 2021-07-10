@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import WifiIcon from '@material-ui/icons/WifiOff';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import RefreshButton from '../Offline/RefreshButton';
 import { loadInitialState } from '../../store/loadInitialState';
@@ -21,28 +21,14 @@ type SearchProps = {
 const SearchAppBar = (props: SearchProps) => {
   const { classes } = props;
   const history = useHistory();
-  const location = useLocation(); //use for parsing query string
+  const location = useLocation(); //use to access search query
 
-  console.log(history.location);
-
-  const { search } = useLocation();
-  const query = new URLSearchParams(search).get('name');
-
-  console.log('query', query);
-
-  //onclick - update url with query
-
+  const query = new URLSearchParams(location.search).get('name');
   const [searchQuery, setSearchQuery] = useState(query || ''); //query will be done through react router, not react state
-
-  console.log('searchQuery', searchQuery);
 
   const [video, setVideo] = useState(false);
   const [article, setArticle] = useState(false);
   const [playlist, setPlaylist] = useState(false);
-
-  const handleChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
 
   const hideBackButton = [
     '/Guides',
@@ -52,9 +38,26 @@ const SearchAppBar = (props: SearchProps) => {
     '/Settings'
   ].includes(location.pathname);
 
-  console.log('location pathname', location.pathname);
-  // console.log('HISTORY', history);
+  const handleBack = (e) => {
+    history.goBack();
+  };
 
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleClick = (e) => {
+    history.push('/search');
+  };
+
+  //want to filter within search; video/article will pass into SearchList as props for filtering (implement later)
+  const searchResults = () => {
+    if (location.pathname.includes('search')) {
+      return <SearchList query={searchQuery} />;
+    }
+  };
+
+  //while user is typing, update url parameters
   useEffect(() => {
     const params = new URLSearchParams();
     if (searchQuery) {
@@ -65,19 +68,12 @@ const SearchAppBar = (props: SearchProps) => {
     history.replace({ pathname: 'search', search: params.toString() });
   }, [searchQuery, history]);
 
-  //want to filter within search; video/article will pass into SearchList as props for filtering (implement later)
-
   return (
     <div className={classes.root}>
       <AppBar className={classes.bar}>
         <Toolbar>
           {!hideBackButton && (
-            <BackIcon
-              className={classes.backButton}
-              onClick={() => {
-                history.goBack();
-              }}
-            />
+            <BackIcon className={classes.backButton} onClick={handleBack} />
           )}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -93,14 +89,9 @@ const SearchAppBar = (props: SearchProps) => {
                 }}
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={handleChange}
-                onClick={() => history.push('/search')}
+                onClick={handleClick}
                 name="s"
               />
-              {/* {active ? (
-                  <button type="submit" onClick={() => setActive(false)}>
-                    Search
-                  </button>
-                ) : null} */}
             </div>
           </div>
           <RefreshButton fetch={() => loadInitialState()} />
@@ -109,9 +100,7 @@ const SearchAppBar = (props: SearchProps) => {
           </Offline>
         </Toolbar>
       </AppBar>
-      {location.pathname.includes('search') ? (
-        <SearchList query={searchQuery} />
-      ) : null}
+      {searchResults()}
     </div>
   );
 };

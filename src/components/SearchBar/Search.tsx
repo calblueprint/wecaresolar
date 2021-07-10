@@ -9,19 +9,8 @@ interface SearchProps {
   userInput: any;
 }
 
-// 1. render SearchList here based on query input prop
-
 const Search = (props: SearchProps) => {
-  return (
-    <div>
-      <Typography variant="body1">
-        {' '}
-        Whoops! You did not search anything!{' '}
-      </Typography>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default withStyles(styles)(Search);
-
-// {query ? <SearchList query={query} /> : null}
