@@ -23,10 +23,18 @@ const SearchAppBar = (props: SearchProps) => {
   const history = useHistory();
   const location = useLocation(); //use for parsing query string
 
+  console.log(history.location);
+
   const { search } = useLocation();
   const query = new URLSearchParams(search).get('name');
 
-  const [searchQuery, setSearchQuery] = useState(''); //query will be done through react router, not react state
+  console.log('query', query);
+
+  //onclick - update url with query
+
+  const [searchQuery, setSearchQuery] = useState(query || ''); //query will be done through react router, not react state
+
+  console.log('searchQuery', searchQuery);
 
   const [active, setActive] = useState(false);
   const [video, setVideo] = useState(false);
@@ -45,16 +53,17 @@ const SearchAppBar = (props: SearchProps) => {
     '/Settings'
   ].includes(location.pathname);
 
+  console.log('location pathname', location.pathname);
+  // console.log('HISTORY', history);
+
   useEffect(() => {
     const params = new URLSearchParams();
-
-    // console.log('params:', params);
     if (searchQuery) {
       params.append('name', searchQuery);
     } else {
       params.delete('name');
     }
-    history.push({ pathname: 'search', search: params.toString() });
+    history.replace({ pathname: 'search', search: params.toString() });
   }, [searchQuery, history]);
 
   //want to filter within search; video/article will pass into SearchList as props for filtering (implement later)
@@ -68,7 +77,7 @@ const SearchAppBar = (props: SearchProps) => {
               className={classes.backButton}
               onClick={() => {
                 history.goBack();
-                // setSearchQuery('');
+                setSearchQuery('');
               }}
             />
           )}
@@ -86,7 +95,7 @@ const SearchAppBar = (props: SearchProps) => {
                 }}
                 inputProps={{ 'aria-label': 'search' }}
                 onChange={handleChange}
-                // onSubmit={handleSubmit}
+                onClick={() => history.push('/search')}
                 name="s"
               />
               {/* {active ? (
@@ -102,11 +111,8 @@ const SearchAppBar = (props: SearchProps) => {
           </Offline>
         </Toolbar>
       </AppBar>
-      {searchQuery ? (
-        <Link to="/search">
-          {' '}
-          <SearchList query={searchQuery} />{' '}
-        </Link>
+      {location.pathname.includes('search') ? (
+        <SearchList query={searchQuery} />
       ) : null}
     </div>
   );
