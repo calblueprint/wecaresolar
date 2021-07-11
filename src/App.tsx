@@ -145,7 +145,7 @@ function App() {
                 hasTab
                 exact
                 path="/search"
-                component={SearchList}
+                // component={SearchList}; rendering component will render SearchList content twice 
               />
             </Switch>
           )}
