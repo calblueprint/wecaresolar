@@ -2,7 +2,7 @@ import { createStyles, Theme, fade } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     bar: {
-      color: theme.palette.brown.main,
+      color: theme.palette.black.main,
       backgroundColor: theme.palette.background.default,
       boxShadow: 'none'
     },
@@ -39,8 +39,8 @@ export const styles = (theme: Theme) =>
     },
     inputRoot: {
       color: theme.palette.black.main,
-      fontWeight: 600,
-      width: '100%'
+      fontWeight: 600
+      // width: '100%'
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
@@ -52,7 +52,7 @@ export const styles = (theme: Theme) =>
       flexGrow: 1
     },
     searchList: {
-      color: theme.palette.brown.main,
+      color: theme.palette.black.main,
       padding: 24,
       paddingTop: 50
     },

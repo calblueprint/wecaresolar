@@ -18,6 +18,7 @@ import SeeAll from './components/SeeAll';
 import ScrollToTop from './ScrollToTop';
 import WCSRoute from './WCSRoute';
 import Instructions from './components/Instructions/Instructions';
+import SearchList from './components/SearchBar/SearchList';
 
 const useStyles = makeStyles({
   root: {
@@ -137,6 +138,14 @@ function App() {
                 exact
                 path="/settings"
                 component={Settings}
+              />
+
+              <WCSRoute
+                hasSearch
+                hasTab
+                exact
+                path="/search"
+                // component={SearchList}; rendering component will render SearchList content twice
               />
             </Switch>
           )}
