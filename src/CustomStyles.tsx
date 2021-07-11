@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import { Shadows } from '@material-ui/core/styles/shadows';
 
 declare module '@material-ui/core/styles/createPalette' {
   interface Palette {
@@ -57,6 +58,9 @@ declare module '@material-ui/core/styles/createPalette' {
   }
 }
 
+const cardShadow = '1px 2.5px 3px 1px rgba(218, 207, 207, 0.5)';
+const buttonShadow = '-2px 4px 23px rgba(79, 42, 29, 0.15)';
+
 const theme = createMuiTheme({
   typography: {
     fontFamily: ['"Source Sans Pro'].join(',')
@@ -90,6 +94,7 @@ const theme = createMuiTheme({
     }
   },
   spacing: [0, 6, 12, 18, 24],
+  shadows: [cardShadow, buttonShadow] as any,
   palette: {
     black: {
       main: '#020202'

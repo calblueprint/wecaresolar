@@ -18,6 +18,7 @@ import SeeAll from './components/SeeAll';
 import ScrollToTop from './ScrollToTop';
 import WCSRoute from './WCSRoute';
 import Instructions from './components/Instructions/Instructions';
+import { resourceTypes } from './resourceTypes';
 
 const useStyles = makeStyles({
   root: {
@@ -71,7 +72,7 @@ function App() {
               <WCSRoute
                 hasSearch
                 hasTab
-                path={'/Guides/Playlists/:lessonId'}
+                path={`/Guides/${resourceTypes.PLAYLIST}/:lessonId`}
                 render={(props) => (
                   <PlaylistPage lessonId={props.match.params.lessonId} />
                 )}
@@ -79,7 +80,7 @@ function App() {
               <WCSRoute
                 hasSearch
                 hasTab
-                path={'/Guides/Instructions/:articleId'}
+                path={`/Guides/${resourceTypes.INSTRUCTION}/:articleId`}
                 render={(props) => (
                   <Instructions resId={props.match.params.articleId} />
                 )}
@@ -87,7 +88,7 @@ function App() {
               <WCSRoute
                 hasSearch
                 hasTab
-                path={'/Guides/Videos/:videoId'}
+                path={`/Guides/${resourceTypes.VIDEO}/:videoId`}
                 render={(props) => <Video resId={props.match.params.videoId} />}
               />
 

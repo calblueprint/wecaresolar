@@ -30,6 +30,6 @@ export const styles = (theme: Theme) =>
       margin: '0%'
     },
     message: {
-      padding: theme.spacing(2)
+      padding: theme.spacing(1)
     }
   });

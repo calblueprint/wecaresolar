@@ -3,7 +3,7 @@ import { createStyles, Theme, fade } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     root: {
-      padding: theme.spacing(1, 2, 1, 2),
+      padding: theme.spacing(3),
       color: theme.palette.black.main
     },
     button: {
@@ -32,7 +32,7 @@ export const styles = (theme: Theme) =>
     formControl: {
       minWidth: 100,
       maxWidth: 200,
-      margin: '5%'
+      margin: theme.spacing(3)
     },
     select: {
       fontSize: '.9rem',
@@ -40,8 +40,7 @@ export const styles = (theme: Theme) =>
       color: theme.palette.brown.main,
       paddingLeft: '1.5rem',
       paddingRight: '1.5rem',
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
+      boxShadow: theme.shadows[0],
       borderRadius: '1rem'
     },
     selectMenu: {
@@ -58,6 +57,5 @@ export const styles = (theme: Theme) =>
       width: '100%',
       display: 'flex',
       flexDirection: 'column'
-      // alignItems: 'center'
     }
   });

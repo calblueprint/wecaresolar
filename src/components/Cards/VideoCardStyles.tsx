@@ -4,19 +4,18 @@ export const styles = (theme: Theme) =>
   createStyles({
     videoCard: {
       display: 'flex',
-      flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center',
       width: '230px',
       height: '128px',
-      borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)',
-      marginRight: theme.spacing(2)
+      borderRadius: theme.spacing(3),
+      boxShadow: theme.shadows[0],
+      margin: theme.spacing(2, 3, 3, 0),
+      padding: theme.spacing(2, 1, 0, 1)
     },
     thumbnail: {
-      width: '215px',
-      objectFit: 'scale-down'
+      width: '80%',
+      objectFit: 'contain',
+      zIndex: 0
     },
     videoCardAll: {
       position: 'relative',
@@ -25,12 +24,7 @@ export const styles = (theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       marginBottom: theme.spacing(2),
-      borderRadius: 18
-    },
-    thumbnailAll: {
-      width: '80vw',
-      objectFit: 'scale-down',
-      zIndex: 0
+      borderRadius: theme.spacing(3)
     },
     complete: {
       position: 'absolute',
