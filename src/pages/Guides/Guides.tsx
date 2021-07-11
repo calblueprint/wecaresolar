@@ -6,6 +6,7 @@ import { RootState } from '../../store/reducers';
 import { Link } from 'react-router-dom';
 import { Typography, withStyles } from '@material-ui/core';
 import { styles } from './GuidesStyles';
+import { resourceTypes } from '../../resourceTypes';
 
 type GuidesProps = {
   classes: any;
@@ -25,8 +26,8 @@ function Guides(props: GuidesProps) {
   const { classes } = props;
 
   const typesToData: Record<string, string[]> = {
-    Instructions: articles,
-    Videos: videos
+    [resourceTypes.INSTRUCTION]: articles,
+    [resourceTypes.VIDEO]: videos
   };
 
   return (
@@ -34,7 +35,10 @@ function Guides(props: GuidesProps) {
       <div className={classes.header}>
         <Typography variant="h1">Playlists</Typography>
         <div>
-          <Link className={classes.list} to={{ pathname: 'Guides/Playlists' }}>
+          <Link
+            className={classes.list}
+            to={{ pathname: `Guides/${resourceTypes.PLAYLIST}` }}
+          >
             See all
           </Link>
         </div>
@@ -44,7 +48,7 @@ function Guides(props: GuidesProps) {
           <Link
             key={key}
             style={{ textDecoration: 'none' }}
-            to={`${props.match.url}/Playlists/${key}`}
+            to={`${props.match.url}/${resourceTypes.PLAYLIST}/${key}`}
           >
             <div className={classes.playlistCard}>
               <PlaylistCard lesson={lessons[key]} expand={false} />
@@ -57,7 +61,7 @@ function Guides(props: GuidesProps) {
         <div>
           <div className={classes.divider} />
           <div className={classes.header}>
-            <Typography variant="h1">{type}</Typography>
+            <Typography variant="h1">{type}s</Typography>
             <div>
               <Link
                 className={classes.list}

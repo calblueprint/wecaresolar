@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SeeAllStyles';
 import CountTag from './CardComponents/Count/CountTag';
 import { Typography } from '@material-ui/core';
+import { resourceTypes } from '../resourceTypes';
 
 type SeeAllProps = {
   classes: any;
@@ -32,17 +33,15 @@ function SeeAll(props: SeeAllProps) {
   };
 
   const typesToData: Record<string, string[]> = {
-    Instructions: articles,
-    Videos: videos
+    [resourceTypes.INSTRUCTION]: articles,
+    [resourceTypes.VIDEO]: videos
   };
 
   const showResource = (type: string, typeCount) => {
-    console.log('TYPE', type);
-
     return (
       <div className={classes.root}>
         <div className={classes.header}>
-          <Typography variant="h1"> All {type} </Typography>
+          <Typography variant="h1"> All {type}s </Typography>
           <Typography variant="body1" className={classes.countText}>
             {' '}
             <CountTag media={type} count={countMedia(typeCount)} />
@@ -69,14 +68,20 @@ function SeeAll(props: SeeAllProps) {
   };
 
   function filterType(type: string): JSX.Element {
-    if (type == 'Playlists') {
+    if (type == resourceTypes.PLAYLIST) {
       return (
         <div className={classes.root}>
           <div className={classes.header}>
-            <Typography variant="h1"> All Playlists </Typography>
+            <Typography variant="h1">
+              {' '}
+              All {resourceTypes.PLAYLIST}s{' '}
+            </Typography>
             <Typography variant="body1" className={classes.countText}>
               {' '}
-              <CountTag media={'Playlist'} count={countMedia(lessons)} />
+              <CountTag
+                media={resourceTypes.PLAYLIST}
+                count={countMedia(lessons)}
+              />
             </Typography>
           </div>
           <div className={classes.scroll}>
@@ -94,11 +99,11 @@ function SeeAll(props: SeeAllProps) {
         </div>
       );
     }
-    if (type == 'Instructions') {
+    if (type == resourceTypes.INSTRUCTION) {
       return showResource(type, articles);
     }
 
-    if (type == 'Videos') {
+    if (type == resourceTypes.VIDEO) {
       return showResource(type, videos);
     }
     return <span />;

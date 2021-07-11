@@ -9,6 +9,7 @@ import FavoriteButton from '../CardComponents/FavoriteButton';
 import CompletedButton from '../CardComponents/CompletedButton';
 import { Link } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
+import { resourceTypes } from '../../resourceTypes';
 
 interface InstructionCardProps {
   resource: Resource;
@@ -34,7 +35,7 @@ const InstructionCard = (props: InstructionCardProps) => {
     );
   }
 
-  const url = '/Guides/Instructions/' + props.resourceID;
+  const url = '/Guides/' + resourceTypes.INSTRUCTION + '/' + props.resourceID;
 
   if (!props.expand) {
     return (

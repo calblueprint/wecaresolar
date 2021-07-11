@@ -7,6 +7,7 @@ import { RootState } from '../../store/reducers';
 import ResourceCard from '../Cards/ResourceCard';
 import ProgressBar from './ProgressBar';
 import CountTag from '../CardComponents/Count/CountTag';
+import { resourceTypes } from '../../resourceTypes';
 
 type PlaylistPageProps = {
   lessonId: string;
@@ -40,14 +41,17 @@ const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
         <div className={classes.count}>
           <Typography variant="body2" className={classes.countText}>
             <CountTag
-              media={'Article'}
-              count={countMedia('Article')}
+              media={resourceTypes.INSTRUCTION}
+              count={countMedia(resourceTypes.INSTRUCTION)}
             ></CountTag>
           </Typography>
         </div>
         <div className={classes.count}>
           <Typography variant="body2" className={classes.countText}>
-            <CountTag media={'Video'} count={countMedia('Video')}></CountTag>
+            <CountTag
+              media={resourceTypes.VIDEO}
+              count={countMedia(resourceTypes.VIDEO)}
+            ></CountTag>
           </Typography>
         </div>
       </div>

@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import CompletedButton from '../CardComponents/CompletedButton';
 import { Link } from 'react-router-dom';
 import CacheableImage from '../Offline/CacheableImage';
+import { resourceTypes } from '../../resourceTypes';
 
 interface VideoCardProps {
   resource: Resource;
@@ -26,7 +27,7 @@ interface VideoCardProps {
 const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const { classes } = props;
   const resource = props.resource;
-  const url = '/Guides/Videos/' + props.resourceID;
+  const url = '/Guides/' + resourceTypes.VIDEO + '/' + props.resourceID;
 
   const dispatch = useDispatch();
   function handleOverlay(event) {
