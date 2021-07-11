@@ -12,6 +12,7 @@ export type Topic = {
   imageUrl: string;
   suitcaseCoordinates: Array<number>;
   color: string;
+  troubleshootingPage?: string;
 };
 
 const DEFAULT_FIELDS = {};
