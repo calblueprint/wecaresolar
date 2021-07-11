@@ -34,7 +34,6 @@ function Favorites({ match, classes }) {
             resourceID={resource}
             expand={true}
             includeCheck={false}
-            includePhoto={false}
           />
         );
       }

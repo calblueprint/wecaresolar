@@ -77,7 +77,6 @@ function Guides(props: GuidesProps) {
                 resource={resources[key]}
                 resourceID={key}
                 includeCheck={true}
-                includePhoto={true}
                 expand={false}
               />
             ))}
