@@ -5,23 +5,23 @@ import { styles } from './SuitcaseStyles';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
-import { red, green } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
 import { Typography } from '@material-ui/core';
 import CacheableImage from '../../components/Offline/CacheableImage';
 
 const CustomSwitch = withStyles({
   switchBase: {
-    color: red[700],
+    color: grey[400],
     '&$checked': {
-      color: green[600]
+      color: grey[500]
     },
     '&$checked + $track': {
-      backgroundColor: green[500]
+      backgroundColor: grey[500]
     }
   },
   checked: {},
   track: {
-    backgroundColor: red[800]
+    backgroundColor: grey[400]
   }
 })(Switch);
 
@@ -32,17 +32,17 @@ function Suitcase({ classes, match }) {
 
   const [toggled, setToggle] = React.useState(false);
 
-  const showLabels = () => {
+  const handleChange = () => {
     setToggle((prev) => !prev);
   };
 
   return (
     <div>
       <div className={classes.title}>
-        <Typography variant="h1"> Suitcase </Typography>
+        <Typography variant="h1"> Solar Suitcase </Typography>
         <FormControlLabel
-          control={<CustomSwitch checked={toggled} onChange={showLabels} />}
-          label="Show Labels"
+          control={<CustomSwitch checked={toggled} onChange={handleChange} />}
+          label={toggled ? 'Labels On' : 'Labels Off'}
           labelPlacement="start"
         />
       </div>
