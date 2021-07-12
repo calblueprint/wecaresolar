@@ -15,7 +15,7 @@ type TroubleShootProps = {
   classes: any;
 };
 
-const TroubleShootCard = ({ helpId, classes }:TroubleShootProps) => {
+const TroubleShootCard = ({ helpId, classes }: TroubleShootProps) => {
   const troubleshoot = useSelector((state: RootState) => state.troubleshoot);
   helpId = decodeURIComponent(helpId);
   const help = troubleshoot[helpId];
