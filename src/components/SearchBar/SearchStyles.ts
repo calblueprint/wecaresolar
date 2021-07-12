@@ -68,12 +68,20 @@ export const styles = (theme: Theme) =>
     searchList: {
       color: theme.palette.black.main,
       padding: 24,
-      paddingTop: '15vw'
+      paddingTop: '15vw',
+      paddingBottom: 72
     },
     backButton: {
       color: 'black',
       cursor: 'pointer',
       margin: theme.spacing(0, 3)
+    },
+    header: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      height: 'fit-content'
     },
     searchHeader: {
       margin: theme.spacing(2, 0)

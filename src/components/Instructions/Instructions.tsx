@@ -7,10 +7,10 @@ import ProgressBar from '../Playlist/ProgressBar';
 import { styles } from './InstructionStyles';
 import SectionCard from './Section';
 
-type InstructionProps = {
+interface InstructionProps {
   resId: string;
   classes: any;
-};
+}
 
 const Instruction = ({
   resId,

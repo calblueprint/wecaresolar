@@ -16,10 +16,10 @@ import { RootState } from '../../store/reducers';
 import DeleteButton from './DeleteButton';
 import { topicsSlice } from '../../store/topicsSlice';
 
-type VideoProps = {
+interface VideoProps {
   resId: string;
   classes: any;
-};
+}
 
 const Video = ({ resId, classes }: VideoProps) => {
   const resources = useSelector((state: RootState) => state.resources);

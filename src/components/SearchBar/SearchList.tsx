@@ -7,6 +7,7 @@ import { Resource } from '../../store/resourcesSlice';
 import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
 import { Typography } from '@material-ui/core';
+import FilterDropdown from '../Filters/FilterDropdown';
 
 interface SearchListProps {
   classes: any;
@@ -35,14 +36,61 @@ function SearchList(props: SearchListProps) {
   };
   const searchResults = Search(query);
 
+  const topics = useSelector((state: RootState) => state.topics);
+  const allTopics: string[] = Object.keys(topics).map(
+    (topic) => topics[topic].name
+  );
+  const allTypes: string[] = ['Article', 'Video'];
+
+  const [currTopics, setTopic] = useState<Set<string>>(new Set(allTopics));
+  const [resType, setresType] = useState<Set<string>>(new Set(allTypes));
+
+  function filteredSearchResults(resource: any) {
+    if (
+      currTopics.size === 0 ||
+      Array.from(currTopics.values())
+        .map((topic) => searchResults[resource].item.tags.includes(topic))
+        .includes(true)
+    ) {
+      if (
+        resType.size === 0 ||
+        resType.has(searchResults[resource].item.type)
+      ) {
+        return (
+          <ResourceCard
+            key={resource.item.title}
+            resource={resource.item}
+            resourceID={resource.item.title}
+            expand={true}
+            includeCheck={true}
+          />
+        );
+      }
+    }
+  }
+
   return (
     <div className={classes.searchList}>
-      <Typography variant="h1" className={classes.searchHeader}>
-        Search Results
-      </Typography>
+      <div className={classes.header}>
+        <Typography variant="h1" className={classes.searchHeader}>
+          Search Results
+        </Typography>
+        <div className={classes.dropdown}>
+          <FilterDropdown
+            topics={allTopics}
+            currTopics={currTopics}
+            changeTopic={setTopic}
+            types={allTypes}
+            currTypes={resType}
+            changeType={setresType}
+          />
+        </div>
+      </div>
+
       {searchResults.length == 0 ? <div> No Results Found</div> : null}
 
-      {searchResults.map((resource: any) => {
+      {Object.keys(searchResults).map(filteredSearchResults)}
+      {/* {searchResults.map((resource: any) => {
         return (
           <ResourceCard
             resource={resource.item}
@@ -51,7 +99,7 @@ function SearchList(props: SearchListProps) {
             includeCheck={true}
           />
         );
-      })}
+      })} */}
     </div>
   );
 }

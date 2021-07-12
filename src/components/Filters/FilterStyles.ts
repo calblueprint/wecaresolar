@@ -13,7 +13,7 @@ export const styles = (theme: Theme) =>
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: '3% 5% 3% 12%',
+      padding: '0.3rem 0.5rem 0.3rem 1.2rem',
       margin: '0rem',
       width: '7rem',
       backgroundColor: 'white',
@@ -27,7 +27,7 @@ export const styles = (theme: Theme) =>
       flexGrow: 1,
       cursor: 'pointer',
       position: 'relative',
-      zindex: '3'
+      zIndex: 1000
     },
     buttonLabel: {
       paddingLeft: '5%',
@@ -48,7 +48,7 @@ export const styles = (theme: Theme) =>
       padding: '0.5rem',
       background: 'white',
       borderRadius: '10px',
-      zindex: '2',
+      zIndex: 1000,
       overflowY: 'scroll'
     },
     headerBox: {
@@ -95,7 +95,7 @@ export const styles = (theme: Theme) =>
       height: '100%',
       width: '100%',
       position: 'fixed',
-      zindex: '0',
+      zIndex: 999,
       left: '0',
       right: '0',
       top: '0',
