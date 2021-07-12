@@ -29,7 +29,7 @@ const Video = ({ resId, classes }: VideoProps) => {
   const videoData = videoDetails.data as VideoData;
 
   const [videoUrl, setVideoUrl] = useState(videoData.watchUrl);
-  console.log('video page', location.pathname);
+  console.log('video page', window.location.pathname);
 
   useEffect(() => {
     refreshVideoUrl();

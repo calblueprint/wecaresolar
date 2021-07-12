@@ -21,7 +21,7 @@ function SearchList(props: SearchListProps) {
     keys: ['title']
   };
 
-  const search = (query) => {
+  const Search = (query) => {
     const resources = useSelector((state: RootState) => {
       return Object.keys(state.resources).map<Resource>(
         (r: string) => state.resources[r]
@@ -33,7 +33,7 @@ function SearchList(props: SearchListProps) {
     }
     return fuse.search(query);
   };
-  const searchResults = search(query);
+  const searchResults = Search(query);
 
   return (
     <div className={classes.searchList}>
