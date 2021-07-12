@@ -47,14 +47,14 @@ function App() {
           ) : (
             <Switch>
               <WCSRoute hasSearch hasTab exact path="/">
-                <Redirect to="/Guides" />
+                <Redirect to="/Suitcase" />
               </WCSRoute>
 
               <WCSRoute
                 hasSearch
                 hasTab
                 exact
-                path="/guides"
+                path="/Guides"
                 component={Guides}
               />
               <WCSRoute
@@ -96,7 +96,7 @@ function App() {
                 hasSearch
                 hasTab
                 exact
-                path="/favorites"
+                path="/Favorites"
                 component={Favorites}
               />
 
@@ -104,13 +104,13 @@ function App() {
                 hasSearch
                 hasTab
                 exact
-                path="/suitcase"
+                path="/Suitcase"
                 component={Suitcase}
               />
               <WCSRoute
                 hasSearch
                 hasTab
-                path={'/suitcase/:topicId'}
+                path={'/Suitcase/:topicId'}
                 render={(props) => (
                   <TopicViews topicId={props.match.params.topicId} />
                 )}
@@ -120,7 +120,7 @@ function App() {
                 hasSearch
                 hasTab
                 exact
-                path="/troubleshoot"
+                path="/Troubleshoot"
                 component={Troubleshoot}
               />
               <WCSRoute
@@ -136,7 +136,7 @@ function App() {
                 hasSearch
                 hasTab
                 exact
-                path="/settings"
+                path="/Settings"
                 component={Settings}
               />
             </Switch>

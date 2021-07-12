@@ -4,23 +4,21 @@ import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
 import { ResourcesSlice } from '../../store/resourcesSlice';
 import TopicHeader from './TopicHeader';
-import { Typography } from '@material-ui/core';
-import theme from '../../CustomStyles';
+import { styles } from './TopicStyles';
+import { withStyles } from '@material-ui/core';
 
 interface TopicViewProps {
+  classes: any;
   topicId: string;
 }
 
-function TopicViews({ topicId }: TopicViewProps) {
+function TopicViews({ topicId, classes }: TopicViewProps) {
   const currentTopic = useSelector((state: RootState) => state.topics[topicId]);
   const name = currentTopic.name;
 
   const headerStyle = {
     backgroundImage: `url(${currentTopic.imageUrl})`,
     backgroundSize: 'cover'
-  };
-  const pageStyle = {
-    padding: theme.spacing(1, 2, 1, 2)
   };
 
   const selectTopicResources = (state: RootState) =>
@@ -62,7 +60,7 @@ function TopicViews({ topicId }: TopicViewProps) {
     countMedia(troubleshootingResources, 'Video');
 
   return (
-    <div style={pageStyle}>
+    <div className={classes.root}>
       <div style={headerStyle}>
         <TopicHeader
           topicTitle={currentTopic.name}
@@ -84,4 +82,4 @@ function TopicViews({ topicId }: TopicViewProps) {
   );
 }
 
-export default TopicViews;
+export default withStyles(styles)(TopicViews);
