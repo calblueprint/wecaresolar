@@ -24,8 +24,13 @@ export const styles = (theme: Theme) =>
       borderRadius: 9,
       backgroundColor: theme.palette.wcsgrey.main,
       width: '100%',
-      margin: '0px 4px',
-      boxShadow: '-2px 4px 23px 0px rgba(2, 2, 2, 0.0685)'
+      margin: theme.spacing(0, 1),
+      padding: theme.spacing(0, 1, 0, 0),
+      boxShadow: '-2px 4px 23px 0px rgba(2, 2, 2, 0.0685)',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),
@@ -51,14 +56,26 @@ export const styles = (theme: Theme) =>
       width: '100%',
       flexGrow: 1
     },
+    clearButton: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    clearIcon: {
+      width: '0.8em',
+      opacity: '0.6'
+    },
     searchList: {
       color: theme.palette.black.main,
       padding: 24,
-      paddingTop: 50
+      paddingTop: '15vw'
     },
     backButton: {
       color: 'black',
       cursor: 'pointer',
-      margin: '0px 24px'
+      margin: theme.spacing(0, 3)
+    },
+    searchHeader: {
+      margin: theme.spacing(2, 0)
     }
   });

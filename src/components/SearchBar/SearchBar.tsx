@@ -13,6 +13,7 @@ import { useLocation } from 'react-router-dom';
 import RefreshButton from '../Offline/RefreshButton';
 import { loadInitialState } from '../../store/loadInitialState';
 import SearchList from './SearchList';
+import ClearIcon from '@material-ui/icons/Clear';
 
 type SearchProps = {
   classes: any;
@@ -87,6 +88,14 @@ const SearchAppBar = (props: SearchProps) => {
                 onClick={handleClick}
               />
             </div>
+            {searchQuery !== '' ? (
+              <div className={classes.clearButton}>
+                <ClearIcon
+                  className={classes.clearIcon}
+                  onClick={() => setSearchQuery('')}
+                />
+              </div>
+            ) : null}
           </div>
           <RefreshButton fetch={() => loadInitialState()} />
           <Offline>

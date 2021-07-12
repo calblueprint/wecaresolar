@@ -37,7 +37,9 @@ function SearchList(props: SearchListProps) {
 
   return (
     <div className={classes.searchList}>
-      <Typography variant="h1"> Search Results </Typography>
+      <Typography variant="h1" className={classes.searchHeader}>
+        Search Results
+      </Typography>
       {searchResults.length == 0 ? <div> No Results Found</div> : null}
 
       {searchResults.map((resource: any) => {
