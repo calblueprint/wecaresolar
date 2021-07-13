@@ -23,11 +23,7 @@ function TopicViews({ topicId, classes }: TopicViewProps) {
 
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
-      .filter(
-        (id) =>
-          state.resources[id].tags.includes(name, 0) &&
-          !state.resources[id].tags.includes('Troubleshooting', 0)
-      )
+      .filter((id) => state.resources[id].tags.includes(name, 0))
       .reduce<ResourcesSlice>((res, key) => {
         res[key] = state.resources[key];
         return res;
