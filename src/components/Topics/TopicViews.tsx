@@ -23,41 +23,20 @@ function TopicViews({ topicId, classes }: TopicViewProps) {
 
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
-      .filter(
-        (id) =>
-          state.resources[id].tags.includes(name, 0) &&
-          !state.resources[id].tags.includes('Troubleshooting', 0)
-      )
-      .reduce<ResourcesSlice>((res, key) => {
-        res[key] = state.resources[key];
-        return res;
-      }, {});
-
-  const selectTroubleshootingResources = (state: RootState) =>
-    Object.keys(state.resources as ResourcesSlice)
-      .filter(
-        (id) =>
-          state.resources[id].tags.includes(name, 0) &&
-          state.resources[id].tags.includes('Troubleshooting', 0)
-      )
+      .filter((id) => state.resources[id].tags.includes(name, 0))
       .reduce<ResourcesSlice>((res, key) => {
         res[key] = state.resources[key];
         return res;
       }, {});
 
   const guideResources = useSelector(selectTopicResources);
-  const troubleshootingResources = useSelector(selectTroubleshootingResources);
 
   const countMedia = (obj, media: string) =>
     Object.keys(obj).filter((id) => obj[id].type == media).length;
 
-  const articleCount =
-    countMedia(guideResources, 'Article') +
-    countMedia(troubleshootingResources, 'Article');
+  const articleCount = countMedia(guideResources, 'Article');
 
-  const videoCount =
-    countMedia(guideResources, 'Video') +
-    countMedia(troubleshootingResources, 'Video');
+  const videoCount = countMedia(guideResources, 'Video');
 
   return (
     <div className={classes.root}>
