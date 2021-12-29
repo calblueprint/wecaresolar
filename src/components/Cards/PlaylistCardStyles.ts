@@ -10,16 +10,25 @@ export const styles = (theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      width: 234.18,
-      height: 176.23,
-      padding: 21,
-      marginRight: 13,
-      marginBottom: 10,
-      borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
+      width: '235px',
+      height: '150px',
+      padding: theme.spacing(3),
+      margin: theme.spacing(2, 3, 1, 0),
+      borderRadius: theme.spacing(3),
+      boxShadow: theme.shadows[0]
     },
-
+    cardAll: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      position: 'relative',
+      padding: theme.spacing(2),
+      paddingTop: theme.spacing(1),
+      height: '150px',
+      marginBottom: theme.spacing(1),
+      borderRadius: theme.spacing(3),
+      boxShadow: theme.shadows[0]
+    },
     icon: {
       display: 'flex',
       flexDirection: 'row',
@@ -31,7 +40,8 @@ export const styles = (theme: Theme) =>
     column: {
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'flex-end'
+      justifyContent: 'flex-end',
+      marginTop: theme.spacing(1)
     },
     spread: {
       display: 'flex',

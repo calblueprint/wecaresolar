@@ -19,7 +19,7 @@ export const styles = (theme: Theme) =>
       backgroundColor: 'white',
       border: '1px red',
       /* The Rachel */
-      boxShadow: '-2px 4px 23px rgba(2, 2, 2, 0.0685)',
+      boxShadow: theme.shadows[1],
       borderRadius: '30px',
       fontSize: '.9rem',
       fontWeight: 600,

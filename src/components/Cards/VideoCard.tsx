@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import CompletedButton from '../CardComponents/CompletedButton';
 import { Link } from 'react-router-dom';
 import CacheableImage from '../Offline/CacheableImage';
+import { resourceTypes } from '../../resourceTypes';
 
 interface VideoCardProps {
   resource: Resource;
@@ -26,7 +27,7 @@ interface VideoCardProps {
 const VideoCard = (props: VideoCardProps): typeof VideoCard => {
   const { classes } = props;
   const resource = props.resource;
-  const url = '/Guides/Videos/' + props.resourceID;
+  const url = '/Guides/' + resourceTypes.VIDEO + '/' + props.resourceID;
 
   const dispatch = useDispatch();
   function handleOverlay(event) {
@@ -45,7 +46,7 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
         <Link className={classes.link} to={url}>
           <Card className={classes.videoCardAll}>
             <CacheableImage
-              className={classes.thumbnailAll}
+              className={classes.thumbnail}
               src={resource.data.imageUrl}
             />
             {props.includeCheck ? (
@@ -79,9 +80,25 @@ const VideoCard = (props: VideoCardProps): typeof VideoCard => {
       return (
         <Link className={classes.link} to={url}>
           <Card className={classes.videoCard}>
+            {props.includeCheck ? (
+              <CompletedButton
+                isCompleted={resource.isCompleted}
+                handleClick={handleOverlay}
+                fillColor={'#33BF68'}
+                width={'20'}
+                height={'20'}
+              />
+            ) : (
+              <span />
+            )}
             <CacheableImage
               className={classes.thumbnail}
               src={resource.data.imageUrl}
+            />
+            <FavoriteButton
+              id={props.resourceID}
+              isFavorited={resource.isFavorited}
+              fillColor={'#020202'}
             />
           </Card>
         </Link>

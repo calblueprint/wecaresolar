@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactComponent as InstructionIcon } from './InstructionIcon.svg';
 import { ReactComponent as PlaylistIcon } from './PlaylistIcon.svg';
 import { ReactComponent as VideoIcon } from './VideoIcon.svg';
-
+import { resourceTypes } from '../../../resourceTypes';
 interface countProps {
   media: string; //Article, Video, or Playlist
   count: number;
@@ -32,11 +32,15 @@ const CountTag = ({ media, count }: countProps) => {
 
   return (
     <div>
-      {media == 'Article'
-        ? mediaRender('Instruction', <InstructionIcon />)
+      {media == resourceTypes.INSTRUCTION
+        ? mediaRender(resourceTypes.INSTRUCTION, <InstructionIcon />)
         : null}
-      {media == 'Video' ? mediaRender('Video', <VideoIcon />) : null}
-      {media == 'Playlist' ? mediaRender('Playlist', <PlaylistIcon />) : null}
+      {media == resourceTypes.VIDEO
+        ? mediaRender(resourceTypes.VIDEO, <VideoIcon />)
+        : null}
+      {media == resourceTypes.PLAYLIST
+        ? mediaRender(resourceTypes.PLAYLIST, <PlaylistIcon />)
+        : null}
     </div>
   );
 };

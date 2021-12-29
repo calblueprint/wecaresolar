@@ -4,14 +4,15 @@ import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
 import { ResourcesSlice } from '../../store/resourcesSlice';
 import TopicHeader from './TopicHeader';
-import { Typography } from '@material-ui/core';
-import theme from '../../CustomStyles';
+import { styles } from './TopicStyles';
+import { withStyles } from '@material-ui/core';
 
 interface TopicViewProps {
+  classes: any;
   topicId: string;
 }
 
-function TopicViews({ topicId }: TopicViewProps) {
+function TopicViews({ topicId, classes }: TopicViewProps) {
   const currentTopic = useSelector((state: RootState) => state.topics[topicId]);
   const name = currentTopic.name;
 
@@ -19,50 +20,26 @@ function TopicViews({ topicId }: TopicViewProps) {
     backgroundImage: `url(${currentTopic.imageUrl})`,
     backgroundSize: 'cover'
   };
-  const pageStyle = {
-    padding: theme.spacing(1, 2, 1, 2)
-  };
 
   const selectTopicResources = (state: RootState) =>
     Object.keys(state.resources as ResourcesSlice)
-      .filter(
-        (id) =>
-          state.resources[id].tags.includes(name, 0) &&
-          !state.resources[id].tags.includes('Troubleshooting', 0)
-      )
-      .reduce<ResourcesSlice>((res, key) => {
-        res[key] = state.resources[key];
-        return res;
-      }, {});
-
-  const selectTroubleshootingResources = (state: RootState) =>
-    Object.keys(state.resources as ResourcesSlice)
-      .filter(
-        (id) =>
-          state.resources[id].tags.includes(name, 0) &&
-          state.resources[id].tags.includes('Troubleshooting', 0)
-      )
+      .filter((id) => state.resources[id].tags.includes(name, 0))
       .reduce<ResourcesSlice>((res, key) => {
         res[key] = state.resources[key];
         return res;
       }, {});
 
   const guideResources = useSelector(selectTopicResources);
-  const troubleshootingResources = useSelector(selectTroubleshootingResources);
 
   const countMedia = (obj, media: string) =>
     Object.keys(obj).filter((id) => obj[id].type == media).length;
 
-  const articleCount =
-    countMedia(guideResources, 'Article') +
-    countMedia(troubleshootingResources, 'Article');
+  const articleCount = countMedia(guideResources, 'Article');
 
-  const videoCount =
-    countMedia(guideResources, 'Video') +
-    countMedia(troubleshootingResources, 'Video');
+  const videoCount = countMedia(guideResources, 'Video');
 
   return (
-    <div style={pageStyle}>
+    <div className={classes.root}>
       <div style={headerStyle}>
         <TopicHeader
           topicTitle={currentTopic.name}
@@ -84,4 +61,4 @@ function TopicViews({ topicId }: TopicViewProps) {
   );
 }
 
-export default TopicViews;
+export default withStyles(styles)(TopicViews);

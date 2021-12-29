@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
+import theme from '../../CustomStyles';
 
 const ProgressBar = (progress: number) => {
   const style = {
@@ -13,7 +14,7 @@ const ProgressBar = (progress: number) => {
     width: '60vw',
     height: '5px',
     background: 'white',
-    boxShadow: '-2px 4px 20px rgba(79, 42, 29, 0.15)',
+    boxShadow: theme.shadows[1],
     borderRadius: '20px',
     marginRight: '0.3rem'
   };

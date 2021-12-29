@@ -51,7 +51,6 @@ export const styles = (theme: Theme) =>
       padding: theme.spacing(1, 1, 1, 0),
       color: theme.palette.black.main,
       fontWeight: 500,
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
       width: '100%',
       flexGrow: 1

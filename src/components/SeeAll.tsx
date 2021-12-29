@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SeeAllStyles';
 import CountTag from './CardComponents/Count/CountTag';
 import { Typography } from '@material-ui/core';
+import { resourceTypes } from '../resourceTypes';
 
 type SeeAllProps = {
   classes: any;
@@ -32,18 +33,18 @@ function SeeAll(props: SeeAllProps) {
   };
 
   const typesToData: Record<string, string[]> = {
-    Instructions: articles,
-    Videos: videos
+    [resourceTypes.INSTRUCTION]: articles,
+    [resourceTypes.VIDEO]: videos
   };
 
-  const showResource = (type: string) => {
+  const showResource = (type: string, typeCount) => {
     return (
       <div className={classes.root}>
         <div className={classes.header}>
-          <Typography variant="h1"> All {type} </Typography>
+          <Typography variant="h1"> All {type}s </Typography>
           <Typography variant="body1" className={classes.countText}>
             {' '}
-            <CountTag media={type} count={countMedia(videos)} />
+            <CountTag media={type} count={countMedia(typeCount)} />
           </Typography>
         </div>
         <div className={classes.scroll}>
@@ -55,7 +56,8 @@ function SeeAll(props: SeeAllProps) {
               <ResourceCard
                 resource={resources[key]}
                 resourceID={key}
-                includeCheck={false}
+                includeCheck={true}
+                includePhoto={true}
                 expand={true}
               />
             </Link>
@@ -66,14 +68,20 @@ function SeeAll(props: SeeAllProps) {
   };
 
   function filterType(type: string): JSX.Element {
-    if (type == 'Playlists') {
+    if (type == resourceTypes.PLAYLIST) {
       return (
         <div className={classes.root}>
           <div className={classes.header}>
-            <Typography variant="h1"> All Playlists </Typography>
+            <Typography variant="h1">
+              {' '}
+              All {resourceTypes.PLAYLIST}s{' '}
+            </Typography>
             <Typography variant="body1" className={classes.countText}>
               {' '}
-              <CountTag media={'Playlist'} count={countMedia(lessons)} />
+              <CountTag
+                media={resourceTypes.PLAYLIST}
+                count={countMedia(lessons)}
+              />
             </Typography>
           </div>
           <div className={classes.scroll}>
@@ -83,7 +91,7 @@ function SeeAll(props: SeeAllProps) {
                 to={`${props.match.url}/${key}`}
               >
                 <div className={classes.playlistCard}>
-                  <PlaylistCard lesson={lessons[key]} />
+                  <PlaylistCard lesson={lessons[key]} expand={true} />
                 </div>
               </Link>
             ))}
@@ -91,12 +99,12 @@ function SeeAll(props: SeeAllProps) {
         </div>
       );
     }
-    if (type == 'Instructions') {
-      return showResource(type);
+    if (type == resourceTypes.INSTRUCTION) {
+      return showResource(type, articles);
     }
 
-    if (type == 'Videos') {
-      return showResource(type);
+    if (type == resourceTypes.VIDEO) {
+      return showResource(type, videos);
     }
     return <span />;
   }

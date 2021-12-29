@@ -29,11 +29,17 @@ function AnimationCard(props: AnimationProps) {
                 <Typography variant="body1"> See All Resources </Typography>{' '}
               </button>
             </Link>
-            {/* <Link to={`${props.match.url}/${topic.name}`}> */}
-            <button className={classes.helpButton}>
-              <Typography variant="body1"> Help </Typography>{' '}
-            </button>
-            {/* </Link> */}
+            {topic.troubleshootingPage && (
+              <Link
+                to={`Troubleshoot/${encodeURIComponent(
+                  topic.troubleshootingPage
+                )}`}
+              >
+                <button className={classes.helpButton}>
+                  <Typography variant="body1"> Help </Typography>{' '}
+                </button>
+              </Link>
+            )}
           </div>
         </div>
         <CancelIcon className={classes.cancel} onClick={props.exit} />

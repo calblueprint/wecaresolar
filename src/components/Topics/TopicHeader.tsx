@@ -1,25 +1,24 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import CountTag from '../CardComponents/Count/CountTag';
-import theme from '../../CustomStyles';
+import { styles } from './TopicStyles';
+import { withStyles } from '@material-ui/core';
 
 interface TopicHeaderProps {
+  classes: any;
   topicTitle: string;
   articleCount: number;
   videoCount: number;
 }
 
 function TopicHeader(props: TopicHeaderProps) {
-  const tagsPadding = {
-    display: 'flex',
-    padding: theme.spacing('10vh', 1, 1, 1)
-  };
+  const { classes } = props;
 
   return (
     <div>
       <Typography variant="h1"> {props.topicTitle} </Typography>
       <div>
-        <Typography variant="subtitle1" style={tagsPadding}>
+        <Typography variant="subtitle1" className={classes.tags}>
           <CountTag media={'Article'} count={props.articleCount}></CountTag>
           <CountTag media={'Video'} count={props.videoCount}></CountTag>
         </Typography>
@@ -28,4 +27,4 @@ function TopicHeader(props: TopicHeaderProps) {
   );
 }
 
-export default TopicHeader;
+export default withStyles(styles)(TopicHeader);

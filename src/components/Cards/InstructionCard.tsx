@@ -9,6 +9,7 @@ import FavoriteButton from '../CardComponents/FavoriteButton';
 import CompletedButton from '../CardComponents/CompletedButton';
 import { Link } from 'react-router-dom';
 import { Typography } from '@material-ui/core';
+import { resourceTypes } from '../../resourceTypes';
 
 interface InstructionCardProps {
   resource: Resource;
@@ -34,14 +35,35 @@ const InstructionCard = (props: InstructionCardProps) => {
     );
   }
 
-  const url = '/Guides/Instructions/' + props.resourceID;
+  const url = '/Guides/' + resourceTypes.INSTRUCTION + '/' + props.resourceID;
 
   if (!props.expand) {
     return (
       <Link className={classes.link} to={url}>
         <Card className={classes.articleCard}>
-          <Typography variant="h3">{resource.title}</Typography>
-          <Typography variant="body1">{resource.data.preview}</Typography>
+          <div className={classes.box}>
+            {props.includeCheck ? (
+              <div className={classes.buttonColumn}>
+                {' '}
+                <CompletedButton
+                  isCompleted={props.resource.isCompleted}
+                  handleClick={handleOverlay}
+                  fillColor={'#33BF68'}
+                  width={'20'}
+                  height={'20'}
+                />
+              </div>
+            ) : null}
+            <Typography variant="h3">{resource.title}</Typography>
+            <Typography variant="body1">{resource.data.preview}</Typography>
+            <div className={classes.favorite}>
+              <FavoriteButton
+                id={props.resourceID}
+                isFavorited={props.resource.isFavorited}
+                fillColor={'#020202'}
+              />
+            </div>
+          </div>
         </Card>
       </Link>
     );

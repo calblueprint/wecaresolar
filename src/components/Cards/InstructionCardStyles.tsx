@@ -11,10 +11,9 @@ export const styles = (theme: Theme) =>
     card: {
       borderRadius: 10,
       marginBottom: 12,
-      padding: 24,
+      padding: theme.spacing(2),
       backgroundColor: theme.palette.white.main,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
+      boxShadow: theme.shadows[0]
     },
     box: {
       display: 'flex',
@@ -25,7 +24,6 @@ export const styles = (theme: Theme) =>
     buttonColumn: {
       display: 'flex',
       alignItems: 'flex-start',
-      padding: '0px 0px',
       marginRight: '1rem'
     },
     contentColumn: {
@@ -43,7 +41,6 @@ export const styles = (theme: Theme) =>
       alignSelf: 'stretch'
     },
     favorite: {
-      padding: '0px 0px',
       marginLeft: '0.2rem'
     },
     type: {
@@ -66,11 +63,10 @@ export const styles = (theme: Theme) =>
       justifyContent: 'space-between',
       width: 184,
       height: 130,
-      padding: 21,
-      marginRight: 12,
-      marginBottom: 10,
+      padding: theme.spacing(2),
+      paddingTop: theme.spacing(4),
+      margin: theme.spacing(2, 3, 1, 0),
       borderRadius: 18,
-      boxShadow:
-        '0.896084px 2.38956px 2.98695px 0.896084px rgba(218, 207, 207, 0.5)'
+      boxShadow: theme.shadows[0]
     }
   });

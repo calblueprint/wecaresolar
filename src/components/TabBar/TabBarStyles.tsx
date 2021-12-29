@@ -23,6 +23,7 @@ export const styles = (theme: Theme) =>
       height: '11vh',
       width: '11vh',
       textTransform: 'capitalize',
+      boxShadow: theme.shadows[1],
       '&:hover': {
         color: theme.palette.yellow2.main,
         backgroundColor: theme.palette.white.main,
