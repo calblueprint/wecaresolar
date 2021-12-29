@@ -140,13 +140,7 @@ function App() {
                 component={Settings}
               />
 
-              <WCSRoute
-                hasSearch
-                hasTab
-                exact
-                path="/search"
-                // component={SearchList}; rendering component will render SearchList content twice
-              />
+              <WCSRoute hasSearch hasTab exact path="/search" />
             </Switch>
           )}
         </div>

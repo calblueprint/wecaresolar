@@ -44,8 +44,8 @@ export const styles = (theme: Theme) =>
     },
     inputRoot: {
       color: theme.palette.black.main,
-      fontWeight: 600
-      // width: '100%'
+      fontWeight: 600,
+      width: '100%'
     },
     inputInput: {
       padding: theme.spacing(1, 1, 1, 0),
@@ -66,7 +66,7 @@ export const styles = (theme: Theme) =>
     },
     searchList: {
       color: theme.palette.black.main,
-      padding: 24,
+      padding: theme.spacing(4),
       paddingTop: '15vw',
       paddingBottom: 72
     },

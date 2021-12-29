@@ -46,14 +46,14 @@ const SearchAppBar = (props: SearchProps) => {
     history.push('/search');
   };
 
-  //want to filter within search; video/article will pass into SearchList as props for filtering (implement later)
+  // TO DO : Implement Filtering in Search -- pass video/article/etc. into SearchList as props
   const searchResults = (sq) => {
     if (location.pathname.includes('search')) {
       return <SearchList query={sq} />;
     }
   };
 
-  //while user is typing, update url parameters
+  // Update Search Query based on URL Parameters
   useEffect(() => {
     const params = new URLSearchParams();
     if (searchQuery) {

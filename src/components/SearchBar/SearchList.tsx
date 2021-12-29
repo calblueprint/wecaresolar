@@ -88,7 +88,6 @@ function SearchList(props: SearchListProps) {
       </div>
 
       {searchResults.length == 0 ? <div> No Results Found</div> : null}
-
       {Object.keys(searchResults).map(filteredSearchResults)}
     </div>
   );
