@@ -58,9 +58,9 @@ function SearchList(props: SearchListProps) {
       ) {
         return (
           <ResourceCard
-            key={resource.item.title}
-            resource={resource.item}
-            resourceID={resource.item.title}
+            key={searchResults[resource].item.title}
+            resource={searchResults[resource].item}
+            resourceID={searchResults[resource].item.title}
             expand={true}
             includeCheck={true}
           />
@@ -90,16 +90,6 @@ function SearchList(props: SearchListProps) {
       {searchResults.length == 0 ? <div> No Results Found</div> : null}
 
       {Object.keys(searchResults).map(filteredSearchResults)}
-      {/* {searchResults.map((resource: any) => {
-        return (
-          <ResourceCard
-            resource={resource.item}
-            resourceID={resource.item.title}
-            expand={true}
-            includeCheck={true}
-          />
-        );
-      })} */}
     </div>
   );
 }
