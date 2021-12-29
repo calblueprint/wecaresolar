@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Fuse from 'fuse.js';
 import { withStyles } from '@material-ui/core/styles';
 import { styles } from './SearchStyles';
@@ -6,41 +6,89 @@ import { useSelector } from 'react-redux';
 import { Resource } from '../../store/resourcesSlice';
 import ResourceCard from '../Cards/ResourceCard';
 import { RootState } from '../../store/reducers';
+import { Typography } from '@material-ui/core';
+import FilterDropdown from '../Filters/FilterDropdown';
 
-function SearchList(props) {
-  const { classes } = props;
+interface SearchListProps {
+  classes: any;
+  query: string;
+}
+
+function SearchList(props: SearchListProps) {
+  const { classes, query } = props;
+
+  //pull resources from Redux using Fuse
   const options = {
     keys: ['title']
   };
-  let resources = useSelector((state: RootState) => {
-    return Object.keys(state.resources).map<Resource>(
-      (r: string) => state.resources[r]
-    );
-  });
-  if (props.video) {
-    resources = resources.filter((r) => r.type == 'Video');
+
+  const Search = (query) => {
+    const resources = useSelector((state: RootState) => {
+      return Object.keys(state.resources).map<Resource>(
+        (r: string) => state.resources[r]
+      );
+    });
+    const fuse = new Fuse(resources, options);
+    if (!query) {
+      return [];
+    }
+    return fuse.search(query);
+  };
+  const searchResults = Search(query);
+
+  const topics = useSelector((state: RootState) => state.topics);
+  const allTopics: string[] = Object.keys(topics).map(
+    (topic) => topics[topic].name
+  );
+  const allTypes: string[] = ['Article', 'Video'];
+
+  const [currTopics, setTopic] = useState<Set<string>>(new Set(allTopics));
+  const [resType, setresType] = useState<Set<string>>(new Set(allTypes));
+
+  function filteredSearchResults(resource: any) {
+    if (
+      currTopics.size === 0 ||
+      Array.from(currTopics.values())
+        .map((topic) => searchResults[resource].item.tags.includes(topic))
+        .includes(true)
+    ) {
+      if (
+        resType.size === 0 ||
+        resType.has(searchResults[resource].item.type)
+      ) {
+        return (
+          <ResourceCard
+            key={searchResults[resource].item.title}
+            resource={searchResults[resource].item}
+            resourceID={searchResults[resource].item.title}
+            expand={true}
+            includeCheck={true}
+          />
+        );
+      }
+    }
   }
-  if (props.article) {
-    resources = resources.filter((r) => r.type == 'Article');
-  }
-  const fuse = new Fuse(resources, options);
-  const results = fuse.search(props.query);
 
   return (
     <div className={classes.searchList}>
-      <h1>Search Results</h1>
-      {results.length <= 0 && <div>No Results Found</div>}
-      {results.length > 0 &&
-        results.map((resource: any) => {
-          return (
-            <ResourceCard
-              resource={resource.item}
-              resourceID={resource.item.title}
-              expand={true}
-              includeCheck={true}
-            />
-          );
-        })}
+      <div className={classes.header}>
+        <Typography variant="h1" className={classes.searchHeader}>
+          Search Results
+        </Typography>
+        <div className={classes.dropdown}>
+          <FilterDropdown
+            topics={allTopics}
+            currTopics={currTopics}
+            changeTopic={setTopic}
+            types={allTypes}
+            currTypes={resType}
+            changeType={setresType}
+          />
+        </div>
+      </div>
+
+      {searchResults.length == 0 ? <div> No Results Found</div> : null}
+      {Object.keys(searchResults).map(filteredSearchResults)}
     </div>
   );
 }

@@ -16,10 +16,10 @@ import { RootState } from '../../store/reducers';
 import DeleteButton from './DeleteButton';
 import { topicsSlice } from '../../store/topicsSlice';
 
-type VideoProps = {
+interface VideoProps {
   resId: string;
   classes: any;
-};
+}
 
 const Video = ({ resId, classes }: VideoProps) => {
   const resources = useSelector((state: RootState) => state.resources);
@@ -29,6 +29,7 @@ const Video = ({ resId, classes }: VideoProps) => {
   const videoData = videoDetails.data as VideoData;
 
   const [videoUrl, setVideoUrl] = useState(videoData.watchUrl);
+  console.log('video page', window.location.pathname);
 
   useEffect(() => {
     refreshVideoUrl();

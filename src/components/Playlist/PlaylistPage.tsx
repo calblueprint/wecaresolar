@@ -9,10 +9,10 @@ import ProgressBar from './ProgressBar';
 import CountTag from '../CardComponents/Count/CountTag';
 import { resourceTypes } from '../../resourceTypes';
 
-type PlaylistPageProps = {
+interface PlaylistPageProps {
   lessonId: string;
   classes: any;
-};
+}
 
 const PlaylistPage = ({ lessonId, classes }: PlaylistPageProps) => {
   const lessons = useSelector((state: RootState) => state.lessons);

@@ -2,7 +2,7 @@ import { createStyles, Theme, fade } from '@material-ui/core/styles';
 export const styles = (theme: Theme) =>
   createStyles({
     bar: {
-      color: theme.palette.brown.main,
+      color: theme.palette.black.main,
       backgroundColor: theme.palette.background.default,
       boxShadow: 'none'
     },
@@ -24,8 +24,13 @@ export const styles = (theme: Theme) =>
       borderRadius: 9,
       backgroundColor: theme.palette.wcsgrey.main,
       width: '100%',
-      margin: '0px 4px',
-      boxShadow: theme.spacing[1]
+      margin: theme.spacing(0, 1),
+      padding: theme.spacing(0, 1, 0, 0),
+      boxShadow: '-2px 4px 23px 0px rgba(2, 2, 2, 0.0685)',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center'
     },
     searchIcon: {
       padding: theme.spacing(0, 2),
@@ -50,14 +55,34 @@ export const styles = (theme: Theme) =>
       width: '100%',
       flexGrow: 1
     },
+    clearButton: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    clearIcon: {
+      width: '0.8em',
+      opacity: '0.6'
+    },
     searchList: {
-      color: theme.palette.brown.main,
-      padding: 24,
-      paddingTop: 50
+      color: theme.palette.black.main,
+      padding: theme.spacing(4),
+      paddingTop: '15vw',
+      paddingBottom: 72
     },
     backButton: {
       color: 'black',
       cursor: 'pointer',
-      margin: '0px 24px'
+      margin: theme.spacing(0, 3)
+    },
+    header: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      height: 'fit-content'
+    },
+    searchHeader: {
+      margin: theme.spacing(2, 0)
     }
   });

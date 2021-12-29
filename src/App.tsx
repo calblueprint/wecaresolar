@@ -139,6 +139,8 @@ function App() {
                 path="/Settings"
                 component={Settings}
               />
+
+              <WCSRoute hasSearch hasTab exact path="/search" />
             </Switch>
           )}
         </div>
